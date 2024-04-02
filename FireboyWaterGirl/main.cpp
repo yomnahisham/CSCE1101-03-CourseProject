@@ -1,11 +1,29 @@
 #include "players.h"
-
+#include <QGraphicsPixmapItem>
+#include <QGraphicsTextItem>
+#include <QGraphicsScene>
+#include <QGraphicsView>
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Players w;
-    w.show();
+
+    QGraphicsView * view = new QGraphicsView();
+    view->setFixedSize(1000, 800);
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    // creating scene
+    QGraphicsScene * scene =  new QGraphicsScene() ;
+    scene->setSceneRect(0, 0, 1000, 800);
+
+        Players* players = new Players();
+    // players->setPos(scene->width()/2, (200));
+
+        // add scene ot view
+        view->setScene(scene);
+        view->show();
+
     return a.exec();
 }
