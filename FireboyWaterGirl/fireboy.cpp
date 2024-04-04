@@ -1,3 +1,4 @@
-#include "fireboy.h"
+#include "FireBoy.h"
+
 
 FireBoy::FireBoy() {}

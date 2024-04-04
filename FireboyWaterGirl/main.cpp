@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     QGraphicsScene * scene =  new QGraphicsScene() ;
     scene->setSceneRect(0, 0, 1000, 800);
 
-        Players* players = new Players();
+
     // players->setPos(scene->width()/2, (200));
 
         // add scene ot view

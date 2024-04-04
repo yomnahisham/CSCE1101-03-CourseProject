@@ -1,10 +1,14 @@
 #ifndef FIREBOY_H
 #define FIREBOY_H
 
-class FireBoy
+#include "Players.h"
+
+class FireBoy : public Players
 {
 public:
     FireBoy();
 };
 
 #endif // FIREBOY_H
+
+
