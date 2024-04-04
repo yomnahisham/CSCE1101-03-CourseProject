@@ -2,9 +2,11 @@
 #define FIREBOY_H
 
 #include "Players.h"
+#include <QGraphicsPixmapItem>
 
-class FireBoy : public Players
+class FireBoy : public Players, public QGraphicsPixmapItem, public QObject
 {
+    Q_OBJECT
 public:
     FireBoy();
 };

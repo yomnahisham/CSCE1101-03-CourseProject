@@ -1,4 +1,5 @@
 #include "players.h"
+#include "Fireboy.h"
 #include <QGraphicsPixmapItem>
 #include <QGraphicsTextItem>
 #include <QGraphicsScene>
@@ -18,6 +19,8 @@ int main(int argc, char *argv[])
     QGraphicsScene * scene =  new QGraphicsScene() ;
     scene->setSceneRect(0, 0, 1000, 800);
 
+    Players* Fire = new FireBoy();
+    scene->addItem(Fire);
 
     // players->setPos(scene->width()/2, (200));
 

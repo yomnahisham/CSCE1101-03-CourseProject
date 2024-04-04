@@ -5,6 +5,7 @@
 
 class WaterGirl : public Players
 {
+    Q_OBJECT
 public:
     WaterGirl(); // Constructor declaration
 };
