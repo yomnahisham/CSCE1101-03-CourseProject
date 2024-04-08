@@ -1228,7 +1228,9 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_Resources.cpp
 qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../../../../Qt/6.7.0/macos/libexec/rcc \
-		../FireboyWaterGirl/PinkcChick\ .png
+		../FireboyWaterGirl/img/fireboy.png \
+		../FireboyWaterGirl/img/gems.png \
+		../FireboyWaterGirl/img/watergirl.png
 	/Users/yomnahisham/Qt/6.7.0/macos/libexec/rcc -name Resources --no-zstd ../FireboyWaterGirl/Resources.qrc -o qrc_Resources.cpp
 
 compiler_moc_header_make_all: moc_level.cpp moc_loginwindow.cpp moc_players.cpp moc_registerwindow.cpp
