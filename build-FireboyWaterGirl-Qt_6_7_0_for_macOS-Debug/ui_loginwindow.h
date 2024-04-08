@@ -24,8 +24,8 @@ public:
     QLabel *passLabel;
     QLineEdit *username_line;
     QLineEdit *pass_line;
-    QLabel *label;
-    QLabel *label_2;
+    QLabel *usernameError;
+    QLabel *passError;
 
     void setupUi(QDialog *LoginWindow)
     {
@@ -34,22 +34,23 @@ public:
         LoginWindow->resize(979, 838);
         usernameLabel = new QLabel(LoginWindow);
         usernameLabel->setObjectName("usernameLabel");
-        usernameLabel->setGeometry(QRect(260, 400, 91, 16));
+        usernameLabel->setGeometry(QRect(330, 360, 91, 16));
         passLabel = new QLabel(LoginWindow);
         passLabel->setObjectName("passLabel");
-        passLabel->setGeometry(QRect(260, 430, 81, 16));
+        passLabel->setGeometry(QRect(330, 390, 81, 16));
         username_line = new QLineEdit(LoginWindow);
         username_line->setObjectName("username_line");
-        username_line->setGeometry(QRect(350, 400, 211, 21));
+        username_line->setGeometry(QRect(420, 360, 211, 21));
         pass_line = new QLineEdit(LoginWindow);
         pass_line->setObjectName("pass_line");
-        pass_line->setGeometry(QRect(350, 430, 211, 21));
-        label = new QLabel(LoginWindow);
-        label->setObjectName("label");
-        label->setGeometry(QRect(570, 400, 141, 21));
-        label_2 = new QLabel(LoginWindow);
-        label_2->setObjectName("label_2");
-        label_2->setGeometry(QRect(570, 430, 141, 21));
+        pass_line->setGeometry(QRect(420, 390, 211, 21));
+        pass_line->setEchoMode(QLineEdit::Password);
+        usernameError = new QLabel(LoginWindow);
+        usernameError->setObjectName("usernameError");
+        usernameError->setGeometry(QRect(640, 360, 141, 21));
+        passError = new QLabel(LoginWindow);
+        passError->setObjectName("passError");
+        passError->setGeometry(QRect(640, 390, 141, 21));
 
         retranslateUi(LoginWindow);
 
@@ -61,8 +62,8 @@ public:
         LoginWindow->setWindowTitle(QCoreApplication::translate("LoginWindow", "Dialog", nullptr));
         usernameLabel->setText(QCoreApplication::translate("LoginWindow", "Username:", nullptr));
         passLabel->setText(QCoreApplication::translate("LoginWindow", "Password:", nullptr));
-        label->setText(QCoreApplication::translate("LoginWindow", "*error username", nullptr));
-        label_2->setText(QCoreApplication::translate("LoginWindow", "*error pass", nullptr));
+        usernameError->setText(QCoreApplication::translate("LoginWindow", "*error username", nullptr));
+        passError->setText(QCoreApplication::translate("LoginWindow", "*error pass", nullptr));
     } // retranslateUi
 
 };

@@ -9,6 +9,13 @@ LoginWindow::LoginWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->usernameError->setVisible(false);
+    ui->passError->setVisible(false);
+    ui->usernameError->setStyleSheet("QLabel { color : red; }");
+    ui->passError->setStyleSheet("QLabel { color : red; }");
+    ui->usernameLabel->setStyleSheet("QLabel { color : white; }");
+    ui->passLabel->setStyleSheet("QLabel { color : white; }");
+
     QPixmap background(":/image/img/TempleHallForest.png");
     background = background.scaled(this->size(), Qt::KeepAspectRatio);
 

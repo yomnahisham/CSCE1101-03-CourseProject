@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 
     LoginWindow login;
     login.resize(1000, 500);
-    //login.show();
+    login.show();
 
 
 

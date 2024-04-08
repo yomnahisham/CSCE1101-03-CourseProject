@@ -16,8 +16,8 @@
   <widget class="QLabel" name="usernameLabel">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>400</y>
+     <x>330</x>
+     <y>360</y>
      <width>91</width>
      <height>16</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QLabel" name="passLabel">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>430</y>
+     <x>330</x>
+     <y>390</y>
      <width>81</width>
      <height>16</height>
     </rect>
@@ -42,8 +42,8 @@
   <widget class="QLineEdit" name="username_line">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>400</y>
+     <x>420</x>
+     <y>360</y>
      <width>211</width>
      <height>21</height>
     </rect>
@@ -52,18 +52,21 @@
   <widget class="QLineEdit" name="pass_line">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>430</y>
+     <x>420</x>
+     <y>390</y>
      <width>211</width>
      <height>21</height>
     </rect>
    </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="usernameError">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>400</y>
+     <x>640</x>
+     <y>360</y>
      <width>141</width>
      <height>21</height>
     </rect>
@@ -72,11 +75,11 @@
     <string>*error username</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="passError">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>430</y>
+     <x>640</x>
+     <y>390</y>
      <width>141</width>
      <height>21</height>
     </rect>
