@@ -16,7 +16,7 @@ private:
 
     bool isJumping = false;
     int jumpStep;
-    QPointF originalPos;
+    int originalY;
 
 };
 
