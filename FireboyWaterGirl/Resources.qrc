@@ -1,5 +1,7 @@
 <RCC>
-    <qresource prefix="/img">
-        <file>PinkcChick .png</file>
+    <qresource prefix="/image">
+        <file>img/fireboy.png</file>
+        <file>img/gems.png</file>
+        <file>img/watergirl.png</file>
     </qresource>
 </RCC>
