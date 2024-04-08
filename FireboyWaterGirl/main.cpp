@@ -2,8 +2,9 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QKeyEvent>
-#include "FireBoy.h"
-#include "WaterGirl.h"
+#include "fireboy.h"
+#include "watergirl.h"
+#include "loginwindow.h"
 
 class Scene : public QGraphicsScene {
 public:
@@ -23,12 +24,19 @@ protected:
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
+
+
+    LoginWindow login;
+    login.resize(1000, 500);
+    //login.show();
+
+
+
     QGraphicsView * view = new QGraphicsView();
     view->setFixedSize(1000, 800);
     view->setWindowTitle("Fire Boy & Water Girl");
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
     Scene scene;
     scene.setSceneRect(0, 0, 1000, 800);
 
@@ -44,6 +52,5 @@ int main(int argc, char *argv[]) {
 
     view->setScene(&scene);
     view->show();
-
     return app.exec();
 }

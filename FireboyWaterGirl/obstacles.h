@@ -3,7 +3,8 @@
 
 #include<QObject>
 #include<QGraphicsPixmapItem>
-#include<QPixamp>
+#include<QPixmap>
+
 class Obstacles : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:

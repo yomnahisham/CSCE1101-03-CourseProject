@@ -8,7 +8,7 @@ FireBoy::FireBoy(QGraphicsItem* parent) : Players(parent) {
 
 void FireBoy::keyPressEvent(QKeyEvent* event) {
     if (event->key() == Qt::Key_Up) {
-        moveBy(0, -10);
+        jump();
     } else if (event->key() == Qt::Key_Left) {
         moveBy(-10, 0);
     } else if (event->key() == Qt::Key_Right) {

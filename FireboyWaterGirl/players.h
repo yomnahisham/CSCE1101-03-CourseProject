@@ -10,6 +10,15 @@ class Players : public QObject, public QGraphicsRectItem {
 public:
     Players(QGraphicsItem* parent = nullptr);
     virtual void keyPressEvent(QKeyEvent* event) = 0;
+    int jumpHeight = 10;
+
+public slots:
+    void jump();
+
+//protected:
+    //QTimer jumpTimer;
+
+
 };
 
 #endif // PLAYERS_H
