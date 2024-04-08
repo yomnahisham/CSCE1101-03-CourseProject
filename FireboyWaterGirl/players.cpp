@@ -1,10 +1,6 @@
-#include "players.h"
-#include <QGraphicsRectItem>
-#include <QGraphicsScene>
+#include "Players.h"
 
-Players::Players(QWidget *parent) : QMainWindow(parent)
-{
+Players::Players(QGraphicsItem* parent) : QGraphicsRectItem(parent) {}
 
-}
 
-Players::~Players() {}
+//Players::~Players() {}

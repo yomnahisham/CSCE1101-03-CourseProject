@@ -1,13 +1,12 @@
 #ifndef WATERGIRL_H
 #define WATERGIRL_H
 
-#include "Players.h" // Include the header file where Players class is defined
+#include "Players.h"
 
-class WaterGirl : public Players
-{
-    Q_OBJECT
+class WaterGirl : public Players {
 public:
-    WaterGirl(); // Constructor declaration
+    WaterGirl(QGraphicsItem* parent = nullptr);
+    void keyPressEvent(QKeyEvent* event) override;
 };
 
 #endif // WATERGIRL_H

@@ -59,7 +59,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSPlayersENDCLASS[] = {
 };
 
 Q_CONSTINIT const QMetaObject Players::staticMetaObject = { {
-    QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
+    QMetaObject::SuperData::link<QObject::staticMetaObject>(),
     qt_meta_stringdata_CLASSPlayersENDCLASS.offsetsAndSizes,
     qt_meta_data_CLASSPlayersENDCLASS,
     qt_static_metacall,
@@ -89,16 +89,14 @@ void *Players::qt_metacast(const char *_clname)
     if (!_clname) return nullptr;
     if (!strcmp(_clname, qt_meta_stringdata_CLASSPlayersENDCLASS.stringdata0))
         return static_cast<void*>(this);
-    if (!strcmp(_clname, "QGraphicsPixmapItem"))
-        return static_cast< QGraphicsPixmapItem*>(this);
-    if (!strcmp(_clname, "QObject"))
-        return static_cast< QObject*>(this);
-    return QMainWindow::qt_metacast(_clname);
+    if (!strcmp(_clname, "QGraphicsRectItem"))
+        return static_cast< QGraphicsRectItem*>(this);
+    return QObject::qt_metacast(_clname);
 }
 
 int Players::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QMainWindow::qt_metacall(_c, _id, _a);
+    _id = QObject::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

@@ -1,32 +1,49 @@
-#include "players.h"
-#include "Fireboy.h"
-#include <QGraphicsPixmapItem>
-#include <QGraphicsTextItem>
+#include <QApplication>
 #include <QGraphicsScene>
 #include <QGraphicsView>
-#include <QApplication>
+#include <QKeyEvent>
+#include "FireBoy.h"
+#include "WaterGirl.h"
 
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
+class Scene : public QGraphicsScene {
+public:
+    Scene(QObject* parent = nullptr) : QGraphicsScene(parent) {}
+
+protected:
+    void keyPressEvent(QKeyEvent* event) override {
+        QList<QGraphicsItem*> players = items();
+        for (QGraphicsItem* item : players) {
+            Players* player = dynamic_cast<Players*>(item);
+            if (player)
+                player->keyPressEvent(event);
+        }
+    }
+};
+
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
 
     QGraphicsView * view = new QGraphicsView();
     view->setFixedSize(1000, 800);
+    view->setWindowTitle("Fire Boy & Water Girl");
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
-    // creating scene
-    QGraphicsScene * scene =  new QGraphicsScene() ;
-    scene->setSceneRect(0, 0, 1000, 800);
+    Scene scene;
+    scene.setSceneRect(0, 0, 1000, 800);
 
-    Players* Fire = new FireBoy();
-    scene->addItem(Fire);
 
-    // players->setPos(scene->width()/2, (200));
+    FireBoy firePlayer;
+    firePlayer.setPos(100, 100); //edit later
+    scene.addItem(&firePlayer);
 
-        // add scene ot view
-        view->setScene(scene);
-        view->show();
 
-    return a.exec();
+    WaterGirl waterPlayer;
+    waterPlayer.setPos(200, 200);//edit later
+    scene.addItem(&waterPlayer);
+
+    view->setScene(&scene);
+    view->show();
+
+    return app.exec();
 }

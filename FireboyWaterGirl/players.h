@@ -1,15 +1,15 @@
 #ifndef PLAYERS_H
 #define PLAYERS_H
 
-#include <QMainWindow>
-#include <QGraphicsPixmapItem>
+#include <QObject>
+#include <QGraphicsRectItem>
+#include <QKeyEvent>
 
-class Players : public QMainWindow, public QGraphicsPixmapItem, public QObject
-{
+class Players : public QObject, public QGraphicsRectItem {
     Q_OBJECT
-
 public:
-    Players(QWidget *parent = nullptr);
-    ~Players();
+    Players(QGraphicsItem* parent = nullptr);
+    virtual void keyPressEvent(QKeyEvent* event) = 0;
 };
+
 #endif // PLAYERS_H

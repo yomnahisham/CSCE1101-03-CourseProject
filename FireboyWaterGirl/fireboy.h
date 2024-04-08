@@ -2,15 +2,11 @@
 #define FIREBOY_H
 
 #include "Players.h"
-#include <QGraphicsPixmapItem>
 
-class FireBoy : public Players, public QGraphicsPixmapItem, public QObject
-{
-    Q_OBJECT
+class FireBoy : public Players {
 public:
-    FireBoy();
+    FireBoy(QGraphicsItem* parent = nullptr);
+    void keyPressEvent(QKeyEvent* event) override;
 };
 
 #endif // FIREBOY_H
-
-
