@@ -1,12 +1,12 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'players.h'
+** Meta object code from reading C++ file 'fireboy.h'
 **
 ** Created by: The Qt Meta Object Compiler version 68 (Qt 6.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../FireboyWaterGirl/players.h"
+#include "../FireboyWaterGirl/fireboy.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -16,7 +16,7 @@
 
 #include <QtCore/qxptype_traits.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'players.h' doesn't include <QObject>."
+#error "The header file 'fireboy.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
 #error "This file was generated using the moc from 6.7.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -33,16 +33,16 @@ QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
 
 #ifdef QT_MOC_HAS_STRINGDATA
-struct qt_meta_stringdata_CLASSPlayersENDCLASS_t {};
-constexpr auto qt_meta_stringdata_CLASSPlayersENDCLASS = QtMocHelpers::stringData(
-    "Players"
+struct qt_meta_stringdata_CLASSFireBoyENDCLASS_t {};
+constexpr auto qt_meta_stringdata_CLASSFireBoyENDCLASS = QtMocHelpers::stringData(
+    "FireBoy"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
 #endif // !QT_MOC_HAS_STRINGDATA
 } // unnamed namespace
 
-Q_CONSTINIT static const uint qt_meta_data_CLASSPlayersENDCLASS[] = {
+Q_CONSTINIT static const uint qt_meta_data_CLASSFireBoyENDCLASS[] = {
 
  // content:
       12,       // revision
@@ -58,20 +58,20 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSPlayersENDCLASS[] = {
        0        // eod
 };
 
-Q_CONSTINIT const QMetaObject Players::staticMetaObject = { {
-    QMetaObject::SuperData::link<QObject::staticMetaObject>(),
-    qt_meta_stringdata_CLASSPlayersENDCLASS.offsetsAndSizes,
-    qt_meta_data_CLASSPlayersENDCLASS,
+Q_CONSTINIT const QMetaObject FireBoy::staticMetaObject = { {
+    QMetaObject::SuperData::link<Players::staticMetaObject>(),
+    qt_meta_stringdata_CLASSFireBoyENDCLASS.offsetsAndSizes,
+    qt_meta_data_CLASSFireBoyENDCLASS,
     qt_static_metacall,
     nullptr,
-    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSPlayersENDCLASS_t,
+    qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSFireBoyENDCLASS_t,
         // Q_OBJECT / Q_GADGET
-        QtPrivate::TypeAndForceComplete<Players, std::true_type>
+        QtPrivate::TypeAndForceComplete<FireBoy, std::true_type>
     >,
     nullptr
 } };
 
-void Players::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void FireBoy::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     (void)_o;
     (void)_id;
@@ -79,24 +79,22 @@ void Players::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
     (void)_a;
 }
 
-const QMetaObject *Players::metaObject() const
+const QMetaObject *FireBoy::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Players::qt_metacast(const char *_clname)
+void *FireBoy::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_CLASSPlayersENDCLASS.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_CLASSFireBoyENDCLASS.stringdata0))
         return static_cast<void*>(this);
-    if (!strcmp(_clname, "QGraphicsRectItem"))
-        return static_cast< QGraphicsRectItem*>(this);
-    return QObject::qt_metacast(_clname);
+    return Players::qt_metacast(_clname);
 }
 
-int Players::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int FireBoy::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QObject::qt_metacall(_c, _id, _a);
+    _id = Players::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

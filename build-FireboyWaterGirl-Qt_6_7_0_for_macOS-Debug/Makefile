@@ -65,6 +65,7 @@ SOURCES       = ../FireboyWaterGirl/abilities.cpp \
 		../FireboyWaterGirl/status.cpp \
 		../FireboyWaterGirl/user.cpp \
 		../FireboyWaterGirl/watergirl.cpp qrc_Resources.cpp \
+		moc_fireboy.cpp \
 		moc_level.cpp \
 		moc_loginwindow.cpp \
 		moc_obstacles.cpp \
@@ -84,6 +85,7 @@ OBJECTS       = abilities.o \
 		user.o \
 		watergirl.o \
 		qrc_Resources.o \
+		moc_fireboy.o \
 		moc_level.o \
 		moc_loginwindow.o \
 		moc_obstacles.o \
@@ -1236,9 +1238,20 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/watergirl.png
 	/Users/yomnahisham/Qt/6.7.0/macos/libexec/rcc -name Resources --no-zstd ../FireboyWaterGirl/Resources.qrc -o qrc_Resources.cpp
 
-compiler_moc_header_make_all: moc_level.cpp moc_loginwindow.cpp moc_obstacles.cpp moc_players.cpp moc_registerwindow.cpp
+compiler_moc_header_make_all: moc_fireboy.cpp moc_level.cpp moc_loginwindow.cpp moc_obstacles.cpp moc_players.cpp moc_registerwindow.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_level.cpp moc_loginwindow.cpp moc_obstacles.cpp moc_players.cpp moc_registerwindow.cpp
+	-$(DEL_FILE) moc_fireboy.cpp moc_level.cpp moc_loginwindow.cpp moc_obstacles.cpp moc_players.cpp moc_registerwindow.cpp
+moc_fireboy.cpp: ../FireboyWaterGirl/fireboy.h \
+		../FireboyWaterGirl/Players.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/fireboy.h -o moc_fireboy.cpp
+
 moc_level.cpp: ../FireboyWaterGirl/level.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
@@ -1256,6 +1269,8 @@ moc_obstacles.cpp: ../FireboyWaterGirl/obstacles.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
 	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/obstacles.h -o moc_obstacles.cpp
 
@@ -1321,7 +1336,9 @@ fireboy.o: ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/FireBoy.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QBrush \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbrush.h
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbrush.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fireboy.o ../FireboyWaterGirl/fireboy.cpp
 
 layout.o: ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/layout.h
@@ -1351,20 +1368,25 @@ main.o: ../FireboyWaterGirl/main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.fr
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
-		../FireboyWaterGirl/FireBoy.h \
+		../FireboyWaterGirl/fireboy.h \
 		../FireboyWaterGirl/Players.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
-		../FireboyWaterGirl/WaterGirl.h
+		../FireboyWaterGirl/watergirl.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../FireboyWaterGirl/main.cpp
 
 obstacles.o: ../FireboyWaterGirl/obstacles.cpp ../FireboyWaterGirl/obstacles.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obstacles.o ../FireboyWaterGirl/obstacles.cpp
 
 players.o: ../FireboyWaterGirl/players.cpp ../FireboyWaterGirl/Players.h \
@@ -1402,6 +1424,9 @@ watergirl.o: ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/WaterGirl.h \
 
 qrc_Resources.o: qrc_Resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Resources.o qrc_Resources.cpp
+
+moc_fireboy.o: moc_fireboy.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_fireboy.o moc_fireboy.cpp
 
 moc_level.o: moc_level.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_level.o moc_level.cpp
