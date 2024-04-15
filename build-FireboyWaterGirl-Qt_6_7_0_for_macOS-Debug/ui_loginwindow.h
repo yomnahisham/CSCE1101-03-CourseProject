@@ -14,6 +14,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
+#include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
 
@@ -26,6 +27,8 @@ public:
     QLineEdit *pass_line;
     QLabel *usernameError;
     QLabel *passError;
+    QPushButton *loginPush;
+    QPushButton *registerPush;
 
     void setupUi(QDialog *LoginWindow)
     {
@@ -51,6 +54,12 @@ public:
         passError = new QLabel(LoginWindow);
         passError->setObjectName("passError");
         passError->setGeometry(QRect(640, 390, 141, 21));
+        loginPush = new QPushButton(LoginWindow);
+        loginPush->setObjectName("loginPush");
+        loginPush->setGeometry(QRect(390, 420, 100, 32));
+        registerPush = new QPushButton(LoginWindow);
+        registerPush->setObjectName("registerPush");
+        registerPush->setGeometry(QRect(530, 420, 100, 32));
 
         retranslateUi(LoginWindow);
 
@@ -64,6 +73,8 @@ public:
         passLabel->setText(QCoreApplication::translate("LoginWindow", "Password:", nullptr));
         usernameError->setText(QCoreApplication::translate("LoginWindow", "*error username", nullptr));
         passError->setText(QCoreApplication::translate("LoginWindow", "*error pass", nullptr));
+        loginPush->setText(QCoreApplication::translate("LoginWindow", "Login", nullptr));
+        registerPush->setText(QCoreApplication::translate("LoginWindow", "Register", nullptr));
     } // retranslateUi
 
 };
