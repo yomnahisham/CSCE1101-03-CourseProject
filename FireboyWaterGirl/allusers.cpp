@@ -4,12 +4,23 @@
 #include <QCryptographicHash>
 
 AllUsers::AllUsers() {
+    QString filePath = "Assets/password.txt";
+    QString password = "";
+    QFile file(filePath);
+    if (file.open(QIODevice::ReadOnly)) {
+        QTextStream in(&file);
+        password = in.readAll();
+        file.close();
+    } else {
+        qDebug() << "Error: Unable to open password file";
+    }
+
     db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("127.0.0.1");
     db.setPort(3306); // MySQL port
     db.setDatabaseName("CSCE1101-03-CourseProject-Database");
     db.setUserName("root");
-    db.setPassword("yomnahisham");
+    db.setPassword(password);
 
     if (!db.open()) {
         qDebug() << "Error: Unable to open database";
@@ -21,8 +32,11 @@ AllUsers::AllUsers() {
     }
 }
 
+
 void AllUsers::addUser(const QString& username, const QString& password, int score){
     QSqlQuery query;
+
+    // using QCryptographicHash to ensure security of passwords in Database
     QString hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
     query.prepare("INSERT INTO users (username, password, score) VALUES (:username, :password, :score)");
     query.bindValue(":username", username);
