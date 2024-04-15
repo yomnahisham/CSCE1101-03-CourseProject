@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     login.show();
 
 
-
+    // check if username and password are valid, if so, allow show of view.
     QGraphicsView * view = new QGraphicsView();
     view->setFixedSize(1000, 800);
     view->setWindowTitle("Fire Boy & Water Girl");
@@ -52,5 +52,8 @@ int main(int argc, char *argv[]) {
 
     view->setScene(&scene);
     view->show();
+
+    //else if user pushes register, show register window and close login in window.
+    // after registering, view->show()
     return app.exec();
 }

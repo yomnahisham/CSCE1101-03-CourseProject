@@ -1,7 +1,10 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
+#include "allusers.h"
+#include "registerwindow.h"
 #include <QPixmap>
 #include <QPalette>
+#include <QString>
 
 LoginWindow::LoginWindow(QWidget *parent)
     : QDialog(parent)
@@ -29,3 +32,36 @@ LoginWindow::~LoginWindow()
 {
     delete ui;
 }
+
+void LoginWindow::on_loginPush_clicked()
+{
+    QString username = ui->lineEdit_username->text();
+    QString password = ui->lineEdit_password->text();
+
+    bool found = false;
+    for (int i = 0; i < usersCount; ++i) {
+        if (usernames[i] == username && passwords[i] == password) {
+            found = true;
+            int userAge = ages[i];
+            hide();
+            WelcomeWindow *welcomeWindow = new WelcomeWindow(username, nullptr);
+            welcomeWindow->show();
+            break;
+        }
+    }
+
+    if (!found) {
+        ui->label_error->setStyleSheet("QLabel { color : red; }");
+        ui->label_error->setText("Wrong username or password!");
+        ui->label_error->setVisible(true);
+    }
+}
+
+
+void LoginWindow::on_registerPush_clicked()
+{
+    hide();
+    RegisterWindow *registerWindow = new RegisterWindow(nullptr);
+    registerWindow->show();
+}
+
