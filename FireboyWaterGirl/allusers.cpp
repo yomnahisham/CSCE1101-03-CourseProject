@@ -1,4 +1,5 @@
 #include "allusers.h"
+#include "user.h"
 #include <QDebug>
 #include <QCryptographicHash>
 
@@ -8,7 +9,7 @@ AllUsers::AllUsers() {
     db.setPort(3306); // MySQL port
     db.setDatabaseName("CSCE1101-03-CourseProject-Database");
     db.setUserName("root");
-    db.setPassword("adminaccess");
+    db.setPassword("yomnahisham");
 
     if (!db.open()) {
         qDebug() << "Error: Unable to open database";
@@ -19,7 +20,8 @@ AllUsers::AllUsers() {
         qDebug() << "Error: Unable to create users table";
     }
 }
-void AllUsers::addUser(const QString& username, const QString& password, int score) {
+
+void AllUsers::addUser(const QString& username, const QString& password, int score){
     QSqlQuery query;
     QString hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
     query.prepare("INSERT INTO users (username, password, score) VALUES (:username, :password, :score)");
@@ -44,7 +46,7 @@ void AllUsers::showLeaderboard() {
 bool AllUsers::authenticateUser(const QString &username, const QString &password){
     QSqlQuery query;
     QString hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
-    query.prepare("SELECT COUNT(*) FROM users WHERE username = :username AND password = :passowrd");
+    query.prepare("SELECT COUNT(*) FROM users WHERE username = :username AND password = :password");
     query.bindValue(":username", username);
     query.bindValue(":password", hashedPass);
 

@@ -1330,7 +1330,7 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 abilities.o: ../FireboyWaterGirl/abilities.cpp ../FireboyWaterGirl/abilities.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o abilities.o ../FireboyWaterGirl/abilities.cpp
 
-allusers.o: ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/AllUsers.h \
+allusers.o: ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/allusers.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
@@ -1347,8 +1347,13 @@ allusers.o: ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/AllUsers.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QCryptographicHash \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcryptographichash.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o allusers.o ../FireboyWaterGirl/allusers.cpp
 
 fireboy.o: ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/FireBoy.h \
@@ -1435,7 +1440,28 @@ registerwindow.o: ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/reg
 status.o: ../FireboyWaterGirl/status.cpp ../FireboyWaterGirl/status.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o status.o ../FireboyWaterGirl/status.cpp
 
-user.o: ../FireboyWaterGirl/user.cpp ../FireboyWaterGirl/user.h
+user.o: ../FireboyWaterGirl/user.cpp ../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../FireboyWaterGirl/allusers.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o user.o ../FireboyWaterGirl/user.cpp
 
 watergirl.o: ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/WaterGirl.h \

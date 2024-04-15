@@ -1,7 +1,10 @@
-#include "User.h"
+#include "user.h"
+#include "allusers.h"
 #include <QDebug>
 
-User::User(const QString& username, const QString& password, int score) : username(username), password(password), score(0) {}
+User::User(const QString& username, const QString& password) : username(username), password(password){
+    score = 0;
+}
 
 void User::updateScore(int nScore) {
     QSqlQuery query;
@@ -15,6 +18,5 @@ void User::updateScore(int nScore) {
 }
 
 void User::newUser(const QString &username, const QString &password, int score){
-    AllUsers all;
-    all.addUser(username, password, score);
+    AllUsers::addUser(username, password, score); // Call addUser directly from AllUsers
 }

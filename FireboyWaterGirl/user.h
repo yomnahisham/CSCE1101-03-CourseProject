@@ -13,6 +13,7 @@ public:
 private:
     QString username;
     QString password;
+    int score;
 };
 
 #endif // USER_H
