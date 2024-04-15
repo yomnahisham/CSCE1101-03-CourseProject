@@ -1419,7 +1419,9 @@ watergirl.o: ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/WaterGirl.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QBrush \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbrush.h
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qbrush.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o watergirl.o ../FireboyWaterGirl/watergirl.cpp
 
 qrc_Resources.o: qrc_Resources.cpp 
