@@ -2,6 +2,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QKeyEvent>
+#include <QString>
 #include "fireboy.h"
 #include "watergirl.h"
 #include "loginwindow.h"
@@ -20,6 +21,10 @@ protected:
         }
     }
 };
+
+void LoginClicked(QString name, QString pass){
+
+}
 
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);

@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-DEFINES       = -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_QML_DEBUG -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -mmacosx-version-min=11.0 -Wall -Wextra $(DEFINES)
 CXXFLAGS      = -pipe -stdlib=libc++ -g -std=gnu++1z $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -mmacosx-version-min=11.0 -Wall -Wextra $(DEFINES)
-INCPATH       = -I../FireboyWaterGirl -I. -I../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../../Qt/6.7.0/macos/mkspecs/macx-clang -F/Users/yomnahisham/Qt/6.7.0/macos/lib
+INCPATH       = -I../FireboyWaterGirl -I. -I../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers -I../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/AGL.framework/Headers -I../../../../Qt/6.7.0/macos/mkspecs/macx-clang -F/Users/yomnahisham/Qt/6.7.0/macos/lib
 QMAKE         = /Users/yomnahisham/Qt/6.7.0/macos/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = FireboyWaterGirl1.0.0
 DISTDIR = /Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/build-FireboyWaterGirl-Qt_6_7_0_for_macOS-Debug/.tmp/FireboyWaterGirl1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk -mmacosx-version-min=11.0 -Wl,-rpath,@executable_path/../Frameworks -Wl,-rpath,/Users/yomnahisham/Qt/6.7.0/macos/lib
-LIBS          = $(SUBLIBS) -F/Users/yomnahisham/Qt/6.7.0/macos/lib -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtCore -framework IOKit -framework DiskArbitration -framework AGL -framework OpenGL   
+LIBS          = $(SUBLIBS) -F/Users/yomnahisham/Qt/6.7.0/macos/lib -framework QtMultimedia -framework QtWidgets -framework QtGui -framework AppKit -framework ImageIO -framework Metal -framework QtNetwork -framework QtSql -framework QtCore -framework IOKit -framework DiskArbitration -framework AGL -framework OpenGL   
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
 SED           = sed
@@ -823,8 +823,11 @@ Makefile: ../FireboyWaterGirl/FireboyWaterGirl.pro ../../../../Qt/6.7.0/macos/mk
 		../../../../Qt/6.7.0/macos/mkspecs/features/lex.prf \
 		../FireboyWaterGirl/FireboyWaterGirl.pro \
 		../FireboyWaterGirl/Resources.qrc \
+		../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Resources/QtMultimedia.prl \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Resources/QtWidgets.prl \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Resources/QtGui.prl \
+		../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Resources/QtNetwork.prl \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Resources/QtSql.prl \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Resources/QtCore.prl
 	$(QMAKE) -o Makefile ../FireboyWaterGirl/FireboyWaterGirl.pro -spec macx-clang CONFIG+=debug CONFIG+=qml_debug
 ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf:
@@ -1170,8 +1173,11 @@ Makefile: ../FireboyWaterGirl/FireboyWaterGirl.pro ../../../../Qt/6.7.0/macos/mk
 ../../../../Qt/6.7.0/macos/mkspecs/features/lex.prf:
 ../FireboyWaterGirl/FireboyWaterGirl.pro:
 ../FireboyWaterGirl/Resources.qrc:
+../../../../Qt/6.7.0/macos/lib/QtMultimedia.framework/Resources/QtMultimedia.prl:
 ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Resources/QtWidgets.prl:
 ../../../../Qt/6.7.0/macos/lib/QtGui.framework/Resources/QtGui.prl:
+../../../../Qt/6.7.0/macos/lib/QtNetwork.framework/Resources/QtNetwork.prl:
+../../../../Qt/6.7.0/macos/lib/QtSql.framework/Resources/QtSql.prl:
 ../../../../Qt/6.7.0/macos/lib/QtCore.framework/Resources/QtCore.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../FireboyWaterGirl/FireboyWaterGirl.pro -spec macx-clang CONFIG+=debug CONFIG+=qml_debug
@@ -1250,19 +1256,19 @@ moc_fireboy.cpp: ../FireboyWaterGirl/fireboy.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/fireboy.h -o moc_fireboy.cpp
+	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/fireboy.h -o moc_fireboy.cpp
 
 moc_level.cpp: ../FireboyWaterGirl/level.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/level.h -o moc_level.cpp
+	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/level.h -o moc_level.cpp
 
 moc_loginwindow.cpp: ../FireboyWaterGirl/loginwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/loginwindow.h -o moc_loginwindow.cpp
+	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/loginwindow.h -o moc_loginwindow.cpp
 
 moc_obstacles.cpp: ../FireboyWaterGirl/obstacles.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
@@ -1272,7 +1278,7 @@ moc_obstacles.cpp: ../FireboyWaterGirl/obstacles.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/obstacles.h -o moc_obstacles.cpp
+	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/obstacles.h -o moc_obstacles.cpp
 
 moc_players.cpp: ../FireboyWaterGirl/players.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
@@ -1282,13 +1288,13 @@ moc_players.cpp: ../FireboyWaterGirl/players.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/players.h -o moc_players.cpp
+	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/players.h -o moc_players.cpp
 
 moc_registerwindow.cpp: ../FireboyWaterGirl/registerwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/registerwindow.h -o moc_registerwindow.cpp
+	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/registerwindow.h -o moc_registerwindow.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1324,7 +1330,25 @@ compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean
 abilities.o: ../FireboyWaterGirl/abilities.cpp ../FireboyWaterGirl/abilities.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o abilities.o ../FireboyWaterGirl/abilities.cpp
 
-allusers.o: ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/allusers.h
+allusers.o: ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/AllUsers.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o allusers.o ../FireboyWaterGirl/allusers.cpp
 
 fireboy.o: ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/FireBoy.h \
@@ -1357,7 +1381,9 @@ loginwindow.o: ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/loginwind
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPalette \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpalette.h
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpalette.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwindow.o ../FireboyWaterGirl/loginwindow.cpp
 
 main.o: ../FireboyWaterGirl/main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QApplication \
@@ -1368,6 +1394,8 @@ main.o: ../FireboyWaterGirl/main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.fr
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../FireboyWaterGirl/fireboy.h \
 		../FireboyWaterGirl/Players.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
