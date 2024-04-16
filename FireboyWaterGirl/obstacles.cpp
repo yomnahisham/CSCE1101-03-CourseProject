@@ -2,27 +2,43 @@
 
 // Pavement, Fire, Water, Acid, Lever, Button, SlidingFloor, FireDoor, WaterDoor
 
-Obstacles::Obstacles(ObstacleType type) : type(type) {
+Obstacles::Obstacles(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {
+}
+
+void Obstacles::createObstacle(ObstacleType type){
     switch (type) {
-    case ObstacleType::Pavement:
-        QPixmap(":/images/obstacle_type_1.png");
+    case ObstacleType::Pavement: // no image for pavement
+        setPixmap(QPixmap(":/image/img/watergirl.png").scaled(100, 100));
         break;
     case ObstacleType::Fire:
-        // Special functionality for obstacle type 2
+        setPixmap(QPixmap(":/image/img/fire.png").scaled(100, 100));
         break;
     case ObstacleType::Water:
+        setPixmap(QPixmap(":/image/img/water.png").scaled(100, 100));
         break;
     case ObstacleType::Acid:
+        setPixmap(QPixmap(":/image/img/acid.png").scaled(100, 100));
         break;
     case ObstacleType::Lever:
+        setPixmap(QPixmap(":/image/img/lever.png"));
         break;
-    case ObstacleType::Button:
+    case ObstacleType::Button1:
+        setPixmap(QPixmap(":/image/img/pushButton1.png").scaled(100, 100));
         break;
-    case ObstacleType::SlidingFloor:
+    case ObstacleType::Button2:
+        setPixmap(QPixmap("qrc:/image/img/pushButton2.png").scaled(100, 100));
+        break;
+    case ObstacleType::SlidingFloor1:
+        setPixmap(QPixmap(":/image/img/slidingFloor.png").scaled(100, 100));
+        break;
+    case ObstacleType::SlidingFloor2:
+        setPixmap(QPixmap(":/image/img/slidingFloor2.png").scaled(100, 100));
         break;
     case ObstacleType::FireDoor:
+        setPixmap(QPixmap(":/image/img/fireDoor.png").scaled(100, 100));
         break;
     case ObstacleType::WaterDoor:
+        setPixmap(QPixmap(":/image/img/WaterDoor.png").scaled(100, 100));
         break;
         // Add more cases as needed
     }
