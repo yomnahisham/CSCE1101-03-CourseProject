@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>979</width>
-    <height>838</height>
+    <width>1072</width>
+    <height>664</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -72,7 +72,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>*error username</string>
+    <string>select a new username</string>
    </property>
   </widget>
   <widget class="QLabel" name="passError">
@@ -80,12 +80,12 @@
     <rect>
      <x>640</x>
      <y>390</y>
-     <width>141</width>
+     <width>161</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>*error pass</string>
+    <string>select another password</string>
    </property>
   </widget>
   <widget class="QPushButton" name="loginPush">

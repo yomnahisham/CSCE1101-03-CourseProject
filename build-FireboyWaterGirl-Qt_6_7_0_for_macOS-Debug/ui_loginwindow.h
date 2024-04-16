@@ -34,7 +34,7 @@ public:
     {
         if (LoginWindow->objectName().isEmpty())
             LoginWindow->setObjectName("LoginWindow");
-        LoginWindow->resize(979, 838);
+        LoginWindow->resize(1072, 664);
         usernameLabel = new QLabel(LoginWindow);
         usernameLabel->setObjectName("usernameLabel");
         usernameLabel->setGeometry(QRect(330, 360, 91, 16));
@@ -53,7 +53,7 @@ public:
         usernameError->setGeometry(QRect(640, 360, 141, 21));
         passError = new QLabel(LoginWindow);
         passError->setObjectName("passError");
-        passError->setGeometry(QRect(640, 390, 141, 21));
+        passError->setGeometry(QRect(640, 390, 161, 21));
         loginPush = new QPushButton(LoginWindow);
         loginPush->setObjectName("loginPush");
         loginPush->setGeometry(QRect(390, 420, 100, 32));
@@ -71,8 +71,8 @@ public:
         LoginWindow->setWindowTitle(QCoreApplication::translate("LoginWindow", "Dialog", nullptr));
         usernameLabel->setText(QCoreApplication::translate("LoginWindow", "Username:", nullptr));
         passLabel->setText(QCoreApplication::translate("LoginWindow", "Password:", nullptr));
-        usernameError->setText(QCoreApplication::translate("LoginWindow", "*error username", nullptr));
-        passError->setText(QCoreApplication::translate("LoginWindow", "*error pass", nullptr));
+        usernameError->setText(QCoreApplication::translate("LoginWindow", "select a new username", nullptr));
+        passError->setText(QCoreApplication::translate("LoginWindow", "select another password", nullptr));
         loginPush->setText(QCoreApplication::translate("LoginWindow", "Login", nullptr));
         registerPush->setText(QCoreApplication::translate("LoginWindow", "Register", nullptr));
     } // retranslateUi
