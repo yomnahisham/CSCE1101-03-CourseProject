@@ -1240,6 +1240,7 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/lever.png \
 		../FireboyWaterGirl/img/TempleHallForest.png \
 		../FireboyWaterGirl/img/pushButton1.png \
+		../FireboyWaterGirl/img/registerBackground.png \
 		../FireboyWaterGirl/img/fireboy.png \
 		../FireboyWaterGirl/img/fire.png \
 		../FireboyWaterGirl/img/WaterDoor.png \
@@ -1365,7 +1366,7 @@ allusers.o: ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/allusers.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qcryptographichash.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o allusers.o ../FireboyWaterGirl/allusers.cpp
 
-fireboy.o: ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/FireBoy.h \
+fireboy.o: ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/fireboy.h \
 		../FireboyWaterGirl/Players.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
@@ -1458,24 +1459,7 @@ registerwindow.o: ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/reg
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
-		../FireboyWaterGirl/allusers.h \
-		../FireboyWaterGirl/main.cpp \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QApplication \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
-		../FireboyWaterGirl/fireboy.h \
-		../FireboyWaterGirl/Players.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
-		../FireboyWaterGirl/watergirl.h \
-		../FireboyWaterGirl/loginwindow.h
+		../FireboyWaterGirl/allusers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o registerwindow.o ../FireboyWaterGirl/registerwindow.cpp
 
 status.o: ../FireboyWaterGirl/status.cpp ../FireboyWaterGirl/status.h \
@@ -1513,7 +1497,7 @@ user.o: ../FireboyWaterGirl/user.cpp ../FireboyWaterGirl/user.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o user.o ../FireboyWaterGirl/user.cpp
 
-watergirl.o: ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/WaterGirl.h \
+watergirl.o: ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/watergirl.h \
 		../FireboyWaterGirl/Players.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \

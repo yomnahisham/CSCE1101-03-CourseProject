@@ -16,5 +16,6 @@
         <file>img/fire.png</file>
         <file>img/fireDoor.png</file>
         <file>img/level1Final.png</file>
+        <file>img/registerBackground.png</file>
     </qresource>
 </RCC>

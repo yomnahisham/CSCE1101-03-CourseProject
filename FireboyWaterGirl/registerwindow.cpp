@@ -11,6 +11,17 @@ RegisterWindow::RegisterWindow(QWidget *parent)
     ui-> passerror -> hide();
     ui-> usererror -> hide();
 
+    ui->userlabel->setStyleSheet("QLabel { color : white; }");
+    ui->passlabel->setStyleSheet("QLabel { color : white; }");
+    ui->repeatlabel->setStyleSheet("QLabel { color : white; }");
+
+    QPixmap background(":/image/img/TempleHallForest.png");             //change it later to make it different from login
+    background = background.scaled(this->size(), Qt::KeepAspectRatio);
+
+    QPalette palette;
+    palette.setBrush(QPalette::Window, background);
+    this->setPalette(palette);
+
 }
 
 RegisterWindow::~RegisterWindow()
@@ -48,5 +59,12 @@ void RegisterWindow::on_regButton_clicked()
         User::newUser(inputUsername, inputPassword);
         this->hide();
     }
+}
+
+
+void RegisterWindow::on_pushButton_clicked()
+{
+    this->hide();
+    // call a function to change the window showing
 }
 
