@@ -1,7 +1,6 @@
 #include "layout.h"
 #include "players.h"
 
-
 Layout::Layout(QObject* parent) : QGraphicsScene(parent) {}
 
 void Layout::keyPressEvent(QKeyEvent* event) {

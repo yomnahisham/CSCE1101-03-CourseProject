@@ -11,8 +11,10 @@
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-    WindowManager::loginON=true;
-    WindowManager::showLoginWindow();
+    WindowManager windowManager;
+    windowManager.start();
+
+    //WindowManager::showWindow(WindowManager::login);
 
 
     // check if username and password are valid, if so, allow show of view.

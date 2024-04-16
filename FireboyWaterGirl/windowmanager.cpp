@@ -6,23 +6,28 @@
 #include "watergirl.h"
 #include "layout.h"
 
-bool WindowManager::loginON = false;
-bool WindowManager::registerON = false;
-bool WindowManager::levelON = false;
-bool WindowManager::mainON = false;
+bool loginON = false;
+bool registerON = false;
+bool levelON = false;
+bool mainON = false;
 
-RegisterWindow* WindowManager::registerWindow = new RegisterWindow();
-LoginWindow* WindowManager::loginWindow = new LoginWindow();
-QGraphicsView* WindowManager::view = new QGraphicsView();
-Layout* WindowManager::scene = new Layout();
 
-WindowManager::WindowManager(){
+RegisterWindow* registerWindow = new RegisterWindow();
+LoginWindow* loginWindow = new LoginWindow();
 
+QGraphicsView* view = new QGraphicsView();
+Layout* scene = new Layout();
+
+
+WindowManager::WindowManager(QObject *parent) : QObject(parent) {}
+
+
+void WindowManager::start(){
     registerWindow->resize(1000, 500);
     loginWindow->resize(1000, 500);
 
     //loginWindow->show();
-   // WindowManager::loginON = true;
+    // WindowManager::loginON = true;
 
     view->setFixedSize(1000, 800);
     view->setWindowTitle("Fire Boy & Water Girl");
@@ -41,17 +46,32 @@ WindowManager::WindowManager(){
 
     view->setScene(scene);
     //view->show();
-
 }
 
-void WindowManager::showLoginWindow() {
-    if(loginON)
+void WindowManager::showWindow(WindowType type) {
+    switch (type){
+    case login:
+        loginON = true;
+        break;
+    case reg:
+        registerON = true;
+        break;
+    case main:
+        mainON = true;
+    }
+
+    if(loginON){
         loginWindow->show();
-    if (registerON == false)
         registerWindow->hide();
-   // if (levelON == false)
-       // levelWindow->hide();
-    if (mainON == false)
         view->hide();
+    } else if (registerON){
+        loginWindow->hide();
+        registerWindow->show();
+        view->hide();
+    } else if (mainON){
+        loginWindow->hide();
+        registerWindow->hide();
+        view->show();
+    }
 }
 

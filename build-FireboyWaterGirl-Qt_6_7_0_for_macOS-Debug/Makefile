@@ -70,7 +70,8 @@ SOURCES       = ../FireboyWaterGirl/abilities.cpp \
 		moc_loginwindow.cpp \
 		moc_obstacles.cpp \
 		moc_players.cpp \
-		moc_registerwindow.cpp
+		moc_registerwindow.cpp \
+		moc_windowmanager.cpp
 OBJECTS       = abilities.o \
 		allusers.o \
 		fireboy.o \
@@ -90,7 +91,8 @@ OBJECTS       = abilities.o \
 		moc_loginwindow.o \
 		moc_obstacles.o \
 		moc_players.o \
-		moc_registerwindow.o
+		moc_registerwindow.o \
+		moc_windowmanager.o
 DIST          = ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/device_config.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/common/unix.conf \
@@ -1258,9 +1260,9 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/fireDoor.png
 	/Users/yomnahisham/Qt/6.7.0/macos/libexec/rcc -name Resources --no-zstd ../FireboyWaterGirl/Resources.qrc -o qrc_Resources.cpp
 
-compiler_moc_header_make_all: moc_fireboy.cpp moc_level.cpp moc_loginwindow.cpp moc_obstacles.cpp moc_players.cpp moc_registerwindow.cpp
+compiler_moc_header_make_all: moc_fireboy.cpp moc_level.cpp moc_loginwindow.cpp moc_obstacles.cpp moc_players.cpp moc_registerwindow.cpp moc_windowmanager.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_fireboy.cpp moc_level.cpp moc_loginwindow.cpp moc_obstacles.cpp moc_players.cpp moc_registerwindow.cpp
+	-$(DEL_FILE) moc_fireboy.cpp moc_level.cpp moc_loginwindow.cpp moc_obstacles.cpp moc_players.cpp moc_registerwindow.cpp moc_windowmanager.cpp
 moc_fireboy.cpp: ../FireboyWaterGirl/fireboy.h \
 		../FireboyWaterGirl/Players.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
@@ -1309,6 +1311,21 @@ moc_registerwindow.cpp: ../FireboyWaterGirl/registerwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../../../../Qt/6.7.0/macos/libexec/moc
 	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/registerwindow.h -o moc_registerwindow.cpp
+
+moc_windowmanager.cpp: ../FireboyWaterGirl/windowmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../FireboyWaterGirl/registerwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../FireboyWaterGirl/layout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/yomnahisham/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/yomnahisham/Qt/6.7.0/macos/mkspecs/macx-clang -I/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/FireboyWaterGirl -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/yomnahisham/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/yomnahisham/Qt/6.7.0/macos/lib ../FireboyWaterGirl/windowmanager.h -o moc_windowmanager.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -1384,7 +1401,16 @@ fireboy.o: ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/fireboy.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fireboy.o ../FireboyWaterGirl/fireboy.cpp
 
-layout.o: ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/layout.h
+layout.o: ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/layout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../FireboyWaterGirl/players.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o layout.o ../FireboyWaterGirl/layout.cpp
 
 level.o: ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/level.h \
@@ -1417,8 +1443,7 @@ loginwindow.o: ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/loginwind
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../FireboyWaterGirl/watergirl.h \
 		../FireboyWaterGirl/windowmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../FireboyWaterGirl/layout.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPalette \
@@ -1468,10 +1493,14 @@ registerwindow.o: ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/reg
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
 		../FireboyWaterGirl/allusers.h \
 		../FireboyWaterGirl/windowmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../FireboyWaterGirl/layout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o registerwindow.o ../FireboyWaterGirl/registerwindow.cpp
 
 status.o: ../FireboyWaterGirl/status.cpp ../FireboyWaterGirl/status.h \
@@ -1524,14 +1553,17 @@ watergirl.o: ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/watergirl.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o watergirl.o ../FireboyWaterGirl/watergirl.cpp
 
 windowmanager.o: ../FireboyWaterGirl/windowmanager.cpp ../FireboyWaterGirl/windowmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../FireboyWaterGirl/loginwindow.h \
+		../FireboyWaterGirl/registerwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../FireboyWaterGirl/registerwindow.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../FireboyWaterGirl/layout.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
 		../FireboyWaterGirl/level.h \
 		../FireboyWaterGirl/fireboy.h \
 		../FireboyWaterGirl/Players.h \
@@ -1539,8 +1571,6 @@ windowmanager.o: ../FireboyWaterGirl/windowmanager.cpp ../FireboyWaterGirl/windo
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
 		../FireboyWaterGirl/watergirl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowmanager.o ../FireboyWaterGirl/windowmanager.cpp
 
@@ -1564,6 +1594,9 @@ moc_players.o: moc_players.cpp
 
 moc_registerwindow.o: moc_registerwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_registerwindow.o moc_registerwindow.cpp
+
+moc_windowmanager.o: moc_windowmanager.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_windowmanager.o moc_windowmanager.cpp
 
 ####### Install
 

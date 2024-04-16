@@ -5,23 +5,30 @@
 #include "registerwindow.h"
 #include "loginwindow.h"
 #include "layout.h"
-//?? #include "layout.h"
 
-class WindowManager {
+class WindowManager : public QObject {
+    Q_OBJECT
 public:
-    static bool loginON;
-    static bool registerON;
-    static bool levelON;
-    static bool mainON;
+    explicit WindowManager(QObject *parent = nullptr);
+    void start();
 
-    WindowManager();
-    static void showLoginWindow();
-
+    enum WindowType{login, reg, main};
+    void showWindow(WindowType type);
 private:
-    static RegisterWindow* registerWindow;
-    static LoginWindow* loginWindow;
-    static QGraphicsView* view;
-    static Layout* scene;
+    WindowType type;
+
+    bool loginON;
+    bool registerON;
+    bool levelON;
+    bool mainON;
+
+    QGraphicsView* view;
+    RegisterWindow* registerWindow;
+    LoginWindow* loginWindow;
+    Layout* scene;
+};
+
+
 
     //static void showRegistrationWindow();
     //static void showLevelWindow();
@@ -31,6 +38,5 @@ private:
   //  static QWidget *registrationWindow;
  //   static QWidget *levelWindow;
     //static QGraphicsView *mainView;
-};
 
 #endif // WINDOWMANAGER_H
