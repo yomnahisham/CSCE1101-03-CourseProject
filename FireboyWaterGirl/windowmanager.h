@@ -4,7 +4,7 @@
 #include <QGraphicsView>
 #include "registerwindow.h"
 #include "loginwindow.h"
-//?? #include "scene.h"
+//?? #include "layout.h"
 
 class WindowManager {
 public:
