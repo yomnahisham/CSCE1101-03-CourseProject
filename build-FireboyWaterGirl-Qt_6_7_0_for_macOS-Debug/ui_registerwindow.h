@@ -44,7 +44,7 @@ public:
         passlabel->setGeometry(QRect(60, 110, 71, 20));
         repeatlabel = new QLabel(RegisterWindow);
         repeatlabel->setObjectName("repeatlabel");
-        repeatlabel->setGeometry(QRect(20, 140, 111, 20));
+        repeatlabel->setGeometry(QRect(10, 140, 111, 20));
         regButton = new QPushButton(RegisterWindow);
         regButton->setObjectName("regButton");
         regButton->setGeometry(QRect(170, 190, 100, 32));
@@ -76,7 +76,7 @@ public:
         RegisterWindow->setWindowTitle(QCoreApplication::translate("RegisterWindow", "Dialog", nullptr));
         userlabel->setText(QCoreApplication::translate("RegisterWindow", "Username: ", nullptr));
         passlabel->setText(QCoreApplication::translate("RegisterWindow", "Password: ", nullptr));
-        repeatlabel->setText(QCoreApplication::translate("RegisterWindow", "Repeat Password:", nullptr));
+        repeatlabel->setText(QCoreApplication::translate("RegisterWindow", "Re-type Password:", nullptr));
         regButton->setText(QCoreApplication::translate("RegisterWindow", "Register", nullptr));
         usererror->setText(QCoreApplication::translate("RegisterWindow", "<html><head/><body><p><span style=\" color:#941100;\">username already in use</span></p></body></html>", nullptr));
         passerror->setText(QCoreApplication::translate("RegisterWindow", "<html><head/><body><p><span style=\" color:#941100;\">password incorrect</span></p></body></html>", nullptr));
