@@ -1,5 +1,6 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
+#include "registerwindow.h"
 
 #include <QPixmap>
 #include <QPalette>
@@ -18,7 +19,7 @@ LoginWindow::LoginWindow(QWidget *parent) : QDialog(parent), ui(new Ui::LoginWin
     ui->usernameLabel->setStyleSheet("QLabel { color : white; }");
     ui->passLabel->setStyleSheet("QLabel { color : white; }");
 
-    QPixmap background(":/image/img/TempleHallForest.png");
+    QPixmap background(":/image/img/TempleHallForest.png");             //works on youmna's laptop but not ayla
     background = background.scaled(this->size(), Qt::KeepAspectRatio);
 
     QPalette palette;
@@ -43,6 +44,9 @@ void LoginWindow::on_loginPush_clicked()
 
 void LoginWindow::on_registerPush_clicked()
 {
+    hide();
+    RegisterWindow* reg = new RegisterWindow();
+    reg -> show();
 
 }
 

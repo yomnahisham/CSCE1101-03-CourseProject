@@ -2,6 +2,7 @@
 #include <QBrush>
 #include <QTimer>
 
+
 FireBoy::FireBoy(QGraphicsItem* parent) : Players(parent) {
     setRect(0, 0, 50, 50); //edit later
     setBrush(Qt::red);
@@ -9,7 +10,7 @@ FireBoy::FireBoy(QGraphicsItem* parent) : Players(parent) {
 
 void FireBoy::keyPressEvent(QKeyEvent* event) {
 
-    if (event->key() == Qt::Key_Up)
+    if (event->key()  == Qt::Key_Up)
     {
         upKey = true;
     }

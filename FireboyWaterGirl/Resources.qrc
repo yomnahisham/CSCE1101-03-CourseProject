@@ -15,5 +15,6 @@
         <file>img/acid.png</file>
         <file>img/fire.png</file>
         <file>img/fireDoor.png</file>
+        <file>img/level1Final.png</file>
     </qresource>
 </RCC>
