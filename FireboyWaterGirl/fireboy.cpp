@@ -1,4 +1,4 @@
-#include "FireBoy.h"
+#include "fireboy.h"
 #include <QBrush>
 #include <QTimer>
 

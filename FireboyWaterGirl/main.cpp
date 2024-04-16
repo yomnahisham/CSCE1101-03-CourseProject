@@ -28,8 +28,6 @@ void LoginClicked(QString name, QString pass){
 int main(int argc, char *argv[]) {
     QApplication app(argc, argv);
 
-
-
     LoginWindow login;
     login.resize(1000, 500);
     login.show();

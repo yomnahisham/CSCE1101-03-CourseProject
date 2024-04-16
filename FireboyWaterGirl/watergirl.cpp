@@ -1,4 +1,4 @@
-#include "WaterGirl.h"
+#include "watergirl.h"
 #include <QBrush>
 #include <QTimer>
 

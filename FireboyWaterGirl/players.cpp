@@ -1,4 +1,4 @@
-#include "Players.h"
+#include "players.h"
 
 Players::Players(QGraphicsItem* parent) : QGraphicsRectItem(parent) {}
 

@@ -8,10 +8,9 @@ class AllUsers{
 public:
     AllUsers();
     static void addUser(const QString& username, const QString& password);
+    static bool search(const QString& username);
     void showLeaderboard();
-    bool authenticateUser(const QString& username, const QString& password);
-    bool search( QString& username);
-
+    bool authenticateUser(const QString& username, const QString& password);  
 private:
     QSqlDatabase db;
 };

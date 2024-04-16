@@ -20,27 +20,33 @@ RegisterWindow::~RegisterWindow()
 
 void RegisterWindow::on_regButton_clicked()
 {   //check for same username
-    bool uniqueUser = false;
-    QString username;
-    uniqueUser = AllUsers::search(ui->userline -> text());
+    bool userExists = false;
+    QString inputUsername = ui->userline->text();
+    userExists = AllUsers::search(inputUsername);
 
-
+    if (userExists){
+        ui->usererror->setText("Username already exists.");
+        ui->usererror->setVisible(true);
+    }
 
     //check password and repeat is the same
-    QString password;
-    bool pass = false;
-    if (ui-> passline -> text() == ui-> repeatline -> text())
-    {
-        password = ui-> passline -> text();
-        pass = true;
-    }
-    else
-    {
+    QString inputPassword;
+
+    bool passMatchs = false;
+    QString firstPass = ui->passline->text();
+    QString secondPass = ui->repeatline->text();
+    if (firstPass == secondPass) {
+        inputPassword = ui-> passline -> text();
+        passMatchs = true;
+    } else {
+        ui->passerror->setText("Password does not match.");
         ui -> passerror -> show();
     }
-    //add user to allusers database
-   // if(uniqueUser && pass)
-        //newUser(username, password)
 
+    //add user to allusers database
+    if (passMatchs && userExists){
+        User::newUser(inputUsername, inputPassword);
+        this->hide();
+    }
 }
 

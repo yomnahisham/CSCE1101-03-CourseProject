@@ -17,6 +17,6 @@ void User::updateScore(int nScore) {
     }
 }
 
-void User::newUser(const QString &username, const QString &password){
+void User::newUser(const QString& username, const QString& password){
     AllUsers::addUser(username, password); // Call addUser directly from AllUsers
 }
