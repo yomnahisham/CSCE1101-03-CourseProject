@@ -1,26 +1,32 @@
 #include "allusers.h"
 #include "user.h"
 #include <QDebug>
+#include <fstream>
+#include <string>
 #include <QCryptographicHash>
 
+using namespace std;
+
 AllUsers::AllUsers() {
-    QString filePath = "Assets/password.txt";
-    QString password = "";
-    QFile file(filePath);
-    if (file.open(QIODevice::ReadOnly)) {
-        QTextStream in(&file);
-        password = in.readAll();
+    string filePath = "Assets/password.txt";
+    string password;
+
+    ifstream file(filePath);
+    if (file.is_open()) {
+        // Read the password from the file
+        getline(file, password);
         file.close();
     } else {
         qDebug() << "Error: Unable to open password file";
     }
+    QString qPassword = QString::fromStdString(password);
 
     db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("127.0.0.1");
     db.setPort(3306); // MySQL port
     db.setDatabaseName("CSCE1101-03-CourseProject-Database");
     db.setUserName("root");
-    db.setPassword(password);
+    db.setPassword(qPassword);
 
     if (!db.open()) {
         qDebug() << "Error: Unable to open database";
