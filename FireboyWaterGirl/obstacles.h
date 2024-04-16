@@ -9,7 +9,8 @@ class Obstacles : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
     enum ObstacleType{Pavement, Fire, Water, Acid, Lever, Button1, Button2, SlidingFloor1, SlidingFloor2, FireDoor, WaterDoor};
-    Obstacles(ObstacleType type);
+    Obstacles(QGraphicsItem* parent);
+    void createObstacle(ObstacleType type);
 private:
     ObstacleType type;
 };

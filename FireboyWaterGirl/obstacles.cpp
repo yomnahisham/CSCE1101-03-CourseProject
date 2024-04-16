@@ -20,7 +20,7 @@ void Obstacles::createObstacle(ObstacleType type){
         setPixmap(QPixmap(":/image/img/acid.png").scaled(100, 100));
         break;
     case ObstacleType::Lever:
-        setPixmap(QPixmap(":/image/img/lever.png"));
+        setPixmap(QPixmap(":/image/img/lever.png").scaled(100, 100));
         break;
     case ObstacleType::Button1:
         setPixmap(QPixmap(":/image/img/pushButton1.png").scaled(100, 100));
@@ -40,6 +40,5 @@ void Obstacles::createObstacle(ObstacleType type){
     case ObstacleType::WaterDoor:
         setPixmap(QPixmap(":/image/img/WaterDoor.png").scaled(100, 100));
         break;
-        // Add more cases as needed
     }
 }
