@@ -74,7 +74,7 @@ bool AllUsers::authenticateUser(const QString &username, const QString &password
     return count > 0;
 }
 
-bool AllUsers::search(const QString &username){
+bool AllUsers::search(QString &username){
     QSqlQuery query;
     query.prepare("SELECT COUNT(*) FROM users WHERE username = :username");
     query.bindValue(":username", username);

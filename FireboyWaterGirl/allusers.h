@@ -10,7 +10,7 @@ public:
     static void addUser(const QString& username, const QString& password);
     void showLeaderboard();
     bool authenticateUser(const QString& username, const QString& password);
-    bool search(const QString& username);
+    bool search( QString& username);
 
 private:
     QSqlDatabase db;

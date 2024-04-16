@@ -1,6 +1,7 @@
 #include "registerwindow.h"
 #include "ui_registerwindow.h"
-#include "allusers.h""
+#include "user.h"
+#include "allusers.h"
 
 RegisterWindow::RegisterWindow(QWidget *parent)
     : QDialog(parent)
@@ -21,13 +22,8 @@ void RegisterWindow::on_regButton_clicked()
 {   //check for same username
     bool uniqueUser = false;
     QString username;
-    /*for ()
-    {
-        if (!search(ui->userline -> text()))
-        {
-            uniqueUser = true;
-        }
-    }
+    uniqueUser = AllUsers::search(ui->userline -> text());
+
 
 
     //check password and repeat is the same
@@ -45,6 +41,6 @@ void RegisterWindow::on_regButton_clicked()
     //add user to allusers database
    // if(uniqueUser && pass)
         //newUser(username, password)
-*/
+
 }
 
