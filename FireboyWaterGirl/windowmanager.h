@@ -4,6 +4,7 @@
 #include <QGraphicsView>
 #include "registerwindow.h"
 #include "loginwindow.h"
+#include "layout.h"
 //?? #include "layout.h"
 
 class WindowManager {
@@ -20,6 +21,7 @@ private:
     static RegisterWindow* registerWindow;
     static LoginWindow* loginWindow;
     static QGraphicsView* view;
+    static Layout* scene;
 
     //static void showRegistrationWindow();
     //static void showLevelWindow();
