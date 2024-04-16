@@ -23,7 +23,8 @@ SOURCES += \
     registerwindow.cpp \
     status.cpp \
     user.cpp \
-    watergirl.cpp
+    watergirl.cpp \
+    windowmanager.cpp
 
 HEADERS += \
     abilities.h \
@@ -37,7 +38,8 @@ HEADERS += \
     registerwindow.h \
     status.h \
     user.h \
-    watergirl.h
+    watergirl.h \
+    windowmanager.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

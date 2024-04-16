@@ -63,7 +63,8 @@ SOURCES       = ../FireboyWaterGirl/abilities.cpp \
 		../FireboyWaterGirl/registerwindow.cpp \
 		../FireboyWaterGirl/status.cpp \
 		../FireboyWaterGirl/user.cpp \
-		../FireboyWaterGirl/watergirl.cpp qrc_Resources.cpp \
+		../FireboyWaterGirl/watergirl.cpp \
+		../FireboyWaterGirl/windowmanager.cpp qrc_Resources.cpp \
 		moc_fireboy.cpp \
 		moc_level.cpp \
 		moc_loginwindow.cpp \
@@ -82,6 +83,7 @@ OBJECTS       = abilities.o \
 		status.o \
 		user.o \
 		watergirl.o \
+		windowmanager.o \
 		qrc_Resources.o \
 		moc_fireboy.o \
 		moc_level.o \
@@ -441,7 +443,8 @@ DIST          = ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../FireboyWaterGirl/registerwindow.h \
 		../FireboyWaterGirl/status.h \
 		../FireboyWaterGirl/user.h \
-		../FireboyWaterGirl/watergirl.h ../FireboyWaterGirl/abilities.cpp \
+		../FireboyWaterGirl/watergirl.h \
+		../FireboyWaterGirl/windowmanager.h ../FireboyWaterGirl/abilities.cpp \
 		../FireboyWaterGirl/allusers.cpp \
 		../FireboyWaterGirl/fireboy.cpp \
 		../FireboyWaterGirl/layout.cpp \
@@ -452,7 +455,8 @@ DIST          = ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../FireboyWaterGirl/registerwindow.cpp \
 		../FireboyWaterGirl/status.cpp \
 		../FireboyWaterGirl/user.cpp \
-		../FireboyWaterGirl/watergirl.cpp
+		../FireboyWaterGirl/watergirl.cpp \
+		../FireboyWaterGirl/windowmanager.cpp
 QMAKE_TARGET  = FireboyWaterGirl
 DESTDIR       = 
 TARGET        = FireboyWaterGirl.app/Contents/MacOS/FireboyWaterGirl
@@ -1201,8 +1205,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../FireboyWaterGirl/Resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../FireboyWaterGirl/abilities.h ../FireboyWaterGirl/allusers.h ../FireboyWaterGirl/fireboy.h ../FireboyWaterGirl/layout.h ../FireboyWaterGirl/level.h ../FireboyWaterGirl/loginwindow.h ../FireboyWaterGirl/obstacles.h ../FireboyWaterGirl/players.h ../FireboyWaterGirl/registerwindow.h ../FireboyWaterGirl/status.h ../FireboyWaterGirl/user.h ../FireboyWaterGirl/watergirl.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../FireboyWaterGirl/abilities.cpp ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/main.cpp ../FireboyWaterGirl/obstacles.cpp ../FireboyWaterGirl/players.cpp ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/status.cpp ../FireboyWaterGirl/user.cpp ../FireboyWaterGirl/watergirl.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../FireboyWaterGirl/abilities.h ../FireboyWaterGirl/allusers.h ../FireboyWaterGirl/fireboy.h ../FireboyWaterGirl/layout.h ../FireboyWaterGirl/level.h ../FireboyWaterGirl/loginwindow.h ../FireboyWaterGirl/obstacles.h ../FireboyWaterGirl/players.h ../FireboyWaterGirl/registerwindow.h ../FireboyWaterGirl/status.h ../FireboyWaterGirl/user.h ../FireboyWaterGirl/watergirl.h ../FireboyWaterGirl/windowmanager.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../FireboyWaterGirl/abilities.cpp ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/main.cpp ../FireboyWaterGirl/obstacles.cpp ../FireboyWaterGirl/players.cpp ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/status.cpp ../FireboyWaterGirl/user.cpp ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/windowmanager.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../FireboyWaterGirl/level.ui ../FireboyWaterGirl/loginwindow.ui ../FireboyWaterGirl/registerwindow.ui $(DISTDIR)/
 
 
@@ -1510,6 +1514,18 @@ watergirl.o: ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/watergirl.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o watergirl.o ../FireboyWaterGirl/watergirl.cpp
+
+windowmanager.o: ../FireboyWaterGirl/windowmanager.cpp ../FireboyWaterGirl/windowmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../FireboyWaterGirl/registerwindow.h \
+		../FireboyWaterGirl/level.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowmanager.o ../FireboyWaterGirl/windowmanager.cpp
 
 qrc_Resources.o: qrc_Resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Resources.o qrc_Resources.cpp
