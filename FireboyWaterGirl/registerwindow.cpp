@@ -15,7 +15,7 @@ RegisterWindow::RegisterWindow(QWidget *parent)
     ui->passlabel->setStyleSheet("QLabel { color : white; }");
     ui->repeatlabel->setStyleSheet("QLabel { color : white; }");
 
-    QPixmap background(":/image/img/TempleHallForest.png");             //change it later to make it different from login
+    QPixmap background(":/image/img/registerBackground.png");             //change it later to make it different from login
     background = background.scaled(this->size(), Qt::KeepAspectRatio);
 
     QPalette palette;
