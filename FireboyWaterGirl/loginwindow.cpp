@@ -2,6 +2,7 @@
 #include "ui_loginwindow.h"
 #include "registerwindow.h"
 
+#include <main.cpp>
 #include <QPixmap>
 #include <QPalette>
 #include <QString>

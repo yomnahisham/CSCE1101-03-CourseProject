@@ -58,7 +58,6 @@ SOURCES       = ../FireboyWaterGirl/abilities.cpp \
 		../FireboyWaterGirl/layout.cpp \
 		../FireboyWaterGirl/level.cpp \
 		../FireboyWaterGirl/loginwindow.cpp \
-		../FireboyWaterGirl/main.cpp \
 		../FireboyWaterGirl/obstacles.cpp \
 		../FireboyWaterGirl/players.cpp \
 		../FireboyWaterGirl/registerwindow.cpp \
@@ -77,7 +76,6 @@ OBJECTS       = abilities.o \
 		layout.o \
 		level.o \
 		loginwindow.o \
-		main.o \
 		obstacles.o \
 		players.o \
 		registerwindow.o \
@@ -299,7 +297,6 @@ DIST          = ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../FireboyWaterGirl/layout.cpp \
 		../FireboyWaterGirl/level.cpp \
 		../FireboyWaterGirl/loginwindow.cpp \
-		../FireboyWaterGirl/main.cpp \
 		../FireboyWaterGirl/obstacles.cpp \
 		../FireboyWaterGirl/players.cpp \
 		../FireboyWaterGirl/registerwindow.cpp \
@@ -945,6 +942,7 @@ loginwindow.o: ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/loginwind
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		ui_loginwindow.h \
+<<<<<<< Updated upstream
 		../FireboyWaterGirl/registerwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
@@ -955,6 +953,10 @@ loginwindow.o: ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/loginwind
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwindow.o ../FireboyWaterGirl/loginwindow.cpp
 
 main.o: ../FireboyWaterGirl/main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QApplication \
+=======
+		../FireboyWaterGirl/main.cpp \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QApplication \
+>>>>>>> Stashed changes
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qapplication.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
@@ -971,10 +973,11 @@ main.o: ../FireboyWaterGirl/main.cpp ../../../../Qt/6.7.0/macos/lib/QtWidgets.fr
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../FireboyWaterGirl/watergirl.h \
-		../FireboyWaterGirl/loginwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../FireboyWaterGirl/main.cpp
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPalette \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpalette.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginwindow.o ../FireboyWaterGirl/loginwindow.cpp
 
 obstacles.o: ../FireboyWaterGirl/obstacles.cpp ../FireboyWaterGirl/obstacles.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \

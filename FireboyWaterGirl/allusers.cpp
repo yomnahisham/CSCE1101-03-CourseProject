@@ -27,13 +27,13 @@ AllUsers::AllUsers() {
     }
 
     QSqlQuery query;
-    if (!query.exec("CREATE TABLE IF NOT EXISTS users (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), password VARCHAR(255), score INT)")) {
+    if (!query.exec("CREATE TABLE IF NOT EXISTS users (username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), score INT)")) {
         qDebug() << "Error: Unable to create users table";
     }
 }
 
 
-void AllUsers::addUser(const QString& username, const QString& password, int score){
+void AllUsers::addUser(const QString& username, const QString& password){
     QSqlQuery query;
 
     // using QCryptographicHash to ensure security of passwords in Database
@@ -41,7 +41,7 @@ void AllUsers::addUser(const QString& username, const QString& password, int sco
     query.prepare("INSERT INTO users (username, password, score) VALUES (:username, :password, :score)");
     query.bindValue(":username", username);
     query.bindValue(":password", hashedPass);
-    query.bindValue(":score", score);
+    query.bindValue(":score", 0);
 
     if (!query.exec()) {
         qDebug() << "Error: Unable to add user";
@@ -73,3 +73,19 @@ bool AllUsers::authenticateUser(const QString &username, const QString &password
     int count = query.value(0).toInt();
     return count > 0;
 }
+
+bool AllUsers::search(const QString &username){
+    QSqlQuery query;
+    query.prepare("SELECT COUNT(*) FROM users WHERE username = :username");
+    query.bindValue(":username", username);
+
+    if (!query.exec()) {
+        qDebug() << "Error: Unable to execute search query";
+        return false;
+    }
+
+    query.next();
+    int count = query.value(0).toInt();
+    return (count > 0);
+}
+
