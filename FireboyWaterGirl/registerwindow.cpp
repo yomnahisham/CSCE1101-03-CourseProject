@@ -2,6 +2,7 @@
 #include "ui_registerwindow.h"
 #include "user.h"
 #include "allusers.h"
+#include "windowmanager.h"
 
 RegisterWindow::RegisterWindow(QWidget *parent)
     : QDialog(parent)
@@ -57,7 +58,7 @@ void RegisterWindow::on_regButton_clicked()
     //add user to allusers database
     if (passMatchs && userExists){
         User::newUser(inputUsername, inputPassword);
-        this->hide();
+        //WindowManager::showMainView();
     }
 }
 

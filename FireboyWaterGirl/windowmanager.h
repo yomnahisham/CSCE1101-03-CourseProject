@@ -6,16 +6,22 @@
 
 class WindowManager {
 public:
+    WindowManager();
     static void showLoginWindow();
-    static void showRegistrationWindow();
-    static void showLevelWindow();
-    static void showMainView();
+    //static void showRegistrationWindow();
+    //static void showLevelWindow();
+    //static void showMainView();
 
 private:
-    static QWidget *loginWindow;
-    static QWidget *registrationWindow;
-    static QWidget *levelWindow;
-    static QGraphicsView *mainView;
+    static bool loginON;
+    static bool registerON;
+    static bool levelON;
+    static bool mainON;
+
+   // static QWidget *loginWindow;
+  //  static QWidget *registrationWindow;
+ //   static QWidget *levelWindow;
+    //static QGraphicsView *mainView;
 };
 
 #endif // WINDOWMANAGER_H

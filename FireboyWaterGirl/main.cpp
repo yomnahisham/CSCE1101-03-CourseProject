@@ -5,7 +5,7 @@
 #include <QString>
 #include "fireboy.h"
 #include "watergirl.h"
-#include "loginwindow.h"
+#include "windowmanager.h"
 
 class Scene : public QGraphicsScene {
 public:

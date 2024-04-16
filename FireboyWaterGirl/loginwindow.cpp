@@ -45,10 +45,11 @@ void LoginWindow::on_loginPush_clicked()
 
 void LoginWindow::on_registerPush_clicked()
 {
-    hide();
-    RegisterWindow* registerWindow = new RegisterWindow();
-    registerWindow->resize(1000, 500);
-    registerWindow->show();
+    //WindowManager::showRegistrationWindow();
+    //hide();
+   // RegisterWindow* registerWindow = new RegisterWindow();
+  //  registerWindow->resize(1000, 500);
+   // registerWindow->show();
 
 }
 

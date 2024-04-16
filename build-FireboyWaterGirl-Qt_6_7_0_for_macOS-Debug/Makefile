@@ -1416,6 +1416,9 @@ loginwindow.o: ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/loginwind
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
 		../FireboyWaterGirl/watergirl.h \
+		../FireboyWaterGirl/windowmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPalette \
@@ -1463,7 +1466,12 @@ registerwindow.o: ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/reg
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
-		../FireboyWaterGirl/allusers.h
+		../FireboyWaterGirl/allusers.h \
+		../FireboyWaterGirl/windowmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QWidget \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o registerwindow.o ../FireboyWaterGirl/registerwindow.cpp
 
 status.o: ../FireboyWaterGirl/status.cpp ../FireboyWaterGirl/status.h \
@@ -1524,7 +1532,16 @@ windowmanager.o: ../FireboyWaterGirl/windowmanager.cpp ../FireboyWaterGirl/windo
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
 		../FireboyWaterGirl/registerwindow.h \
-		../FireboyWaterGirl/level.h
+		../FireboyWaterGirl/level.h \
+		../FireboyWaterGirl/fireboy.h \
+		../FireboyWaterGirl/Players.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../FireboyWaterGirl/watergirl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowmanager.o ../FireboyWaterGirl/windowmanager.cpp
 
 qrc_Resources.o: qrc_Resources.cpp 
