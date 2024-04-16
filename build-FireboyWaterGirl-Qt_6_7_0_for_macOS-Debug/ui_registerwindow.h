@@ -36,39 +36,39 @@ public:
     {
         if (RegisterWindow->objectName().isEmpty())
             RegisterWindow->setObjectName("RegisterWindow");
-        RegisterWindow->resize(944, 571);
+        RegisterWindow->resize(865, 507);
         userlabel = new QLabel(RegisterWindow);
         userlabel->setObjectName("userlabel");
-        userlabel->setGeometry(QRect(290, 220, 91, 16));
+        userlabel->setGeometry(QRect(130, 210, 91, 16));
         passlabel = new QLabel(RegisterWindow);
         passlabel->setObjectName("passlabel");
-        passlabel->setGeometry(QRect(290, 250, 71, 20));
+        passlabel->setGeometry(QRect(130, 240, 71, 20));
         repeatlabel = new QLabel(RegisterWindow);
         repeatlabel->setObjectName("repeatlabel");
-        repeatlabel->setGeometry(QRect(240, 280, 111, 20));
+        repeatlabel->setGeometry(QRect(80, 270, 111, 20));
         regButton = new QPushButton(RegisterWindow);
         regButton->setObjectName("regButton");
-        regButton->setGeometry(QRect(430, 320, 131, 32));
+        regButton->setGeometry(QRect(270, 310, 131, 32));
         userline = new QLineEdit(RegisterWindow);
         userline->setObjectName("userline");
-        userline->setGeometry(QRect(390, 220, 171, 21));
+        userline->setGeometry(QRect(230, 210, 171, 21));
         passline = new QLineEdit(RegisterWindow);
         passline->setObjectName("passline");
-        passline->setGeometry(QRect(390, 250, 171, 21));
+        passline->setGeometry(QRect(230, 240, 171, 21));
         passline->setEchoMode(QLineEdit::Password);
         repeatline = new QLineEdit(RegisterWindow);
         repeatline->setObjectName("repeatline");
-        repeatline->setGeometry(QRect(390, 280, 171, 21));
+        repeatline->setGeometry(QRect(230, 270, 171, 21));
         repeatline->setEchoMode(QLineEdit::Password);
         usererror = new QLabel(RegisterWindow);
         usererror->setObjectName("usererror");
-        usererror->setGeometry(QRect(580, 220, 161, 16));
+        usererror->setGeometry(QRect(420, 210, 161, 16));
         passerror = new QLabel(RegisterWindow);
         passerror->setObjectName("passerror");
-        passerror->setGeometry(QRect(580, 280, 161, 16));
+        passerror->setGeometry(QRect(420, 270, 161, 16));
         pushButton = new QPushButton(RegisterWindow);
         pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(310, 320, 100, 32));
+        pushButton->setGeometry(QRect(150, 310, 100, 32));
 
         retranslateUi(RegisterWindow);
 
