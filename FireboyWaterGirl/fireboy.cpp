@@ -4,8 +4,7 @@
 
 
 FireBoy::FireBoy(QGraphicsItem* parent) : Players(parent) {
-    setRect(0, 0, 50, 50); //edit later
-    setBrush(Qt::red);
+    setPixmap(QPixmap(":/image/img/fireboy.png").scaled(100, 100)); // fix scaling
 }
 
 void FireBoy::keyPressEvent(QKeyEvent* event) {

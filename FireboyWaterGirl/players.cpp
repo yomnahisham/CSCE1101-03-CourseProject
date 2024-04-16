@@ -1,6 +1,6 @@
 #include "players.h"
 
-Players::Players(QGraphicsItem* parent) : QGraphicsRectItem(parent) {}
+Players::Players(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {}
 
 
 //Players::~Players() {}

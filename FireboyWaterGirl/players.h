@@ -5,7 +5,7 @@
 #include <QGraphicsRectItem>
 #include <QKeyEvent>
 
-class Players : public QObject, public QGraphicsRectItem {
+class Players : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
     Players(QGraphicsItem* parent = nullptr);

@@ -3,9 +3,9 @@
 #include <QTimer>
 
 WaterGirl::WaterGirl(QGraphicsItem* parent) : Players(parent) {
-    setRect(0, 0, 50, 50); //edit later
-    setBrush(Qt::blue);
+    setPixmap(QPixmap(":/image/img/watergirl.png").scaled(100, 100)); // fix scaling
 }
+
 
 void WaterGirl::keyPressEvent(QKeyEvent* event) {
     if (event->key() == Qt::Key_W) {
