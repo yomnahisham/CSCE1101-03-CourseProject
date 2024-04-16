@@ -10,7 +10,6 @@
 class Scene : public QGraphicsScene {
 public:
     Scene(QObject* parent = nullptr) : QGraphicsScene(parent) {}
-
 protected:
     void keyPressEvent(QKeyEvent* event) override {
         QList<QGraphicsItem*> players = items();
