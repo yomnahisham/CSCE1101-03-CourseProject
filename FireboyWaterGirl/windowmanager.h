@@ -1,22 +1,29 @@
 #ifndef WINDOWMANAGER_H
 #define WINDOWMANAGER_H
 
-#include <QWidget>
 #include <QGraphicsView>
+#include "registerwindow.h"
+#include "loginwindow.h"
+//?? #include "scene.h"
 
 class WindowManager {
 public:
-    WindowManager();
-    static void showLoginWindow();
-    //static void showRegistrationWindow();
-    //static void showLevelWindow();
-    //static void showMainView();
-
-private:
     static bool loginON;
     static bool registerON;
     static bool levelON;
     static bool mainON;
+
+    WindowManager();
+    static void showLoginWindow();
+
+private:
+    static RegisterWindow* registerWindow;
+    static LoginWindow* loginWindow;
+    static QGraphicsView* view;
+
+    //static void showRegistrationWindow();
+    //static void showLevelWindow();
+    //static void showMainView();
 
    // static QWidget *loginWindow;
   //  static QWidget *registrationWindow;

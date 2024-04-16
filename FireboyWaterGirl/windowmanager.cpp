@@ -10,9 +10,9 @@ bool WindowManager::registerON = false;
 bool WindowManager::levelON = false;
 bool WindowManager::mainON = false;
 
-RegisterWindow* registerWindow = new RegisterWindow();
-LoginWindow* loginWindow = new LoginWindow();
-QGraphicsView* view = new QGraphicsView();
+RegisterWindow* WindowManager::registerWindow = new RegisterWindow();
+LoginWindow* WindowManager::loginWindow = new LoginWindow();
+QGraphicsView* WindowManager::view = new QGraphicsView();
 
 WindowManager::WindowManager(){
 
