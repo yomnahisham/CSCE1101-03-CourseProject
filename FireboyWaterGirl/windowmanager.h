@@ -5,15 +5,16 @@
 #include "registerwindow.h"
 #include "loginwindow.h"
 #include "layout.h"
+#include "level.h"
 
 class WindowManager : public QObject {
     Q_OBJECT
 public:
     explicit WindowManager(QObject *parent = nullptr);
-    void start();
+    void startLogin();
 
-    enum WindowType{login, reg, main};
-    void showWindow(WindowType type);
+    enum WindowType{login, reg, lev, main};
+    void showWindow(WindowType type,  int level = 0);
 private:
     WindowType type;
 
@@ -25,6 +26,7 @@ private:
     QGraphicsView* view;
     RegisterWindow* registerWindow;
     LoginWindow* loginWindow;
+    Level* levWindow;
     Layout* scene;
 };
 

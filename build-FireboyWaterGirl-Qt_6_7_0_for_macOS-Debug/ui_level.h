@@ -12,18 +12,23 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QPushButton>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Level
 {
 public:
+    QPushButton *Level1;
 
     void setupUi(QDialog *Level)
     {
         if (Level->objectName().isEmpty())
             Level->setObjectName("Level");
         Level->resize(400, 300);
+        Level1 = new QPushButton(Level);
+        Level1->setObjectName("Level1");
+        Level1->setGeometry(QRect(140, 120, 100, 32));
 
         retranslateUi(Level);
 
@@ -33,6 +38,7 @@ public:
     void retranslateUi(QDialog *Level)
     {
         Level->setWindowTitle(QCoreApplication::translate("Level", "Dialog", nullptr));
+        Level1->setText(QCoreApplication::translate("Level", "Level 1", nullptr));
     } // retranslateUi
 
 };

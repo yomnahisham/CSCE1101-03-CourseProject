@@ -77,7 +77,7 @@ bool AllUsers::authenticateUser(const QString &username, const QString &password
 
     query.next();
     int count = query.value(0).toInt();
-    return count > 0;
+    return (count == 1);
 }
 
 bool AllUsers::search(const QString& username){

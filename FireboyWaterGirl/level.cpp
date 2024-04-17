@@ -12,3 +12,9 @@ Level::~Level()
 {
     delete ui;
 }
+
+void Level::on_Level1_clicked()
+{
+
+}
+

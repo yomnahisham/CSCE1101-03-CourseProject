@@ -15,6 +15,9 @@ public:
     explicit Level(QWidget *parent = nullptr);
     ~Level();
 
+private slots:
+    void on_Level1_clicked();
+
 private:
     Ui::Level *ui;
 };

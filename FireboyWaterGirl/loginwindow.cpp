@@ -1,7 +1,8 @@
 #include "loginwindow.h"
 #include "ui_loginwindow.h"
 #include "registerwindow.h"
-
+#include "user.h"
+#include "allusers.h""
 #include <main.cpp>
 #include <QPixmap>
 #include <QPalette>
@@ -34,12 +35,21 @@ LoginWindow::~LoginWindow()
     delete ui;
 }
 
-void LoginWindow::on_loginPush_clicked()
+void LoginWindow::on_loginPush_clicked() // finished just test it out with user from database
 {
     QString username = ui->username_line->text();
     QString password = ui->pass_line->text();
-    //LoginClicked(username, password);
+    bool userExists = AllUsers::authenticateUser (username, password);
+    if (userExists)
+    {
+        WindowManager windowManager;
+        windowManager.showWindow(WindowManager::lev);
+    }else
+    {
+        ui->usernameError->setVisible(true);
+        ui->passError->setVisible(true);
 
+    }
 }
 
 
@@ -48,8 +58,8 @@ void LoginWindow::on_registerPush_clicked()
     //WindowManager::showRegistrationWindow();
     //hide();
    // RegisterWindow* registerWindow = new RegisterWindow();
-  //  registerWindow->resize(1000, 500);
-   // registerWindow->show();
+    //  registerWindow->resize(1000, 500);
+    // registerWindow->show();
 
 }
 
