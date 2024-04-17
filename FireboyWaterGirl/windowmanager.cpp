@@ -1,4 +1,4 @@
-#include "windowmanager.h"
+ #include "windowmanager.h"
 #include "loginwindow.h"
 #include "registerwindow.h"
 #include "level.h"
@@ -12,22 +12,23 @@ bool levelON = false;
 bool mainON = false;
 
 
-RegisterWindow* registerWindow = new RegisterWindow();
-LoginWindow* loginWindow = new LoginWindow();
-
-QGraphicsView* view = new QGraphicsView();
-Layout* scene = new Layout();
 
 
 WindowManager::WindowManager(QObject *parent) : QObject(parent) {}
 
 
 void WindowManager::start(){
+    RegisterWindow* registerWindow = new RegisterWindow();
+    LoginWindow* loginWindow = new LoginWindow();
+
+    QGraphicsView* view = new QGraphicsView();
+    Layout* scene = new Layout();
+
     registerWindow->resize(1000, 500);
     loginWindow->resize(1000, 500);
 
-    //loginWindow->show();
-    // WindowManager::loginON = true;
+    loginWindow->show();
+    WindowManager::loginON = true;
 
     view->setFixedSize(1000, 800);
     view->setWindowTitle("Fire Boy & Water Girl");
