@@ -26,7 +26,7 @@ void WindowManager::startLogin(){
 
 }
 
-void WindowManager::showWindow(WindowType type, int level) {
+void WindowManager::showWindow(WindowType type) {
     LoginWindow* loginWindow = new LoginWindow();
     loginWindow->resize(1000, 500);
 

@@ -2,7 +2,7 @@
 #include "ui_loginwindow.h"
 #include "registerwindow.h"
 #include "user.h"
-#include "allusers.h""
+#include "allusers.h"
 #include <main.cpp>
 #include <QPixmap>
 #include <QPalette>

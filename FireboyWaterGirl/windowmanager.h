@@ -14,7 +14,7 @@ public:
     void startLogin();
 
     enum WindowType{login, reg, lev, main};
-    void showWindow(WindowType type,  int level = 0);
+    void showWindow(WindowType type);
 private:
     WindowType type;
 

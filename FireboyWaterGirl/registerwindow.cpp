@@ -58,7 +58,7 @@ void RegisterWindow::on_regButton_clicked()
 
     if (passMatchs && userExists){
         User::newUser(inputUsername, inputPassword);    //add user to allusers database
-       /* WindowManager win;                    //open level window
+        WindowManager win;                    //open level window
         win.showWindow(WindowManager::lev);
         hide();
     }*/

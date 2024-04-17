@@ -21,7 +21,6 @@ private slots:
 
 private:
     Ui::LoginWindow *ui;
-    friend void LoginClicked(QString name, QString pass);
 };
 
 #endif // LOGINWINDOW_H
