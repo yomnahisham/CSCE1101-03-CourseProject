@@ -2,8 +2,7 @@
 #include "loginwindow.h"
 #include "registerwindow.h"
 #include "level.h"
-#include "fireboy.h"
-#include "watergirl.h"
+
 #include "layout.h"
 
 
@@ -88,13 +87,7 @@ void WindowManager::showWindow(WindowType type) {
         scene->setSceneRect(0, 0, 1000, 800);
 
         //adding players to scene
-        FireBoy* firePlayer = new FireBoy();
-        firePlayer->setPos(100, 100);
-        scene->addItem(firePlayer);
 
-        WaterGirl* waterPlayer = new WaterGirl();
-        waterPlayer->setPos(200, 200);
-        scene->addItem(waterPlayer);
 
         //setting up layout
 

@@ -1,6 +1,8 @@
 #include "layout.h"
 #include "obstacles.h"
 #include "players.h"
+#include "fireboy.h"
+#include "watergirl.h"
 #include <QGraphicsPixmapItem>
 
 Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
@@ -37,6 +39,14 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
 
         break;
     }
+
+    FireBoy* firePlayer = new FireBoy();
+    firePlayer->setPos(100, 100);
+    addItem(firePlayer);
+
+    WaterGirl* waterPlayer = new WaterGirl();
+    waterPlayer->setPos(200, 200);
+    addItem(waterPlayer);
 }
 
 void Layout::keyPressEvent(QKeyEvent* event) {
