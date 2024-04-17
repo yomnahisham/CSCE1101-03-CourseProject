@@ -71,6 +71,7 @@ void WindowManager::showWindow(WindowType type, int level) {
     } else if (registerON){
         loginWindow->hide();
         levWindow -> hide();
+        registerWindow -> show();
 
     } else if (levelON){
         loginWindow->hide();

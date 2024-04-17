@@ -44,6 +44,7 @@ void LoginWindow::on_loginPush_clicked() // finished just test it out with user 
     {
         WindowManager windowManager;
         windowManager.showWindow(WindowManager::lev);
+        hide();
     }else
     {
         ui->usernameError->setVisible(true);
@@ -55,11 +56,8 @@ void LoginWindow::on_loginPush_clicked() // finished just test it out with user 
 
 void LoginWindow::on_registerPush_clicked()
 {
-    //WindowManager::showRegistrationWindow();
-    //hide();
-   // RegisterWindow* registerWindow = new RegisterWindow();
-    //  registerWindow->resize(1000, 500);
-    // registerWindow->show();
-
+    WindowManager windowManager;
+    windowManager.showWindow(WindowManager::reg);
+    hide();
 }
 
