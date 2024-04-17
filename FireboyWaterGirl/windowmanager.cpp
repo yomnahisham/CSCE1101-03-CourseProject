@@ -78,7 +78,7 @@ void WindowManager::showWindow(WindowType type) {
 
 
         QGraphicsView* view = new QGraphicsView();
-        Layout* scene = new Layout();
+        Layout* scene = new Layout(nullptr, l);
 
         // setting up scene to start game
         view->setFixedSize(1000, 800);
