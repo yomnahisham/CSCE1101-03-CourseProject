@@ -7,8 +7,8 @@ Obstacles::Obstacles(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {
 
 void Obstacles::createObstacle(ObstacleType type){
     switch (type) {
-    case ObstacleType::Pavement: // no image for pavement
-        setPixmap(QPixmap(":/image/img/watergirl.png").scaled(100, 100));
+    case ObstacleType::Pavement:
+        setPixmap(QPixmap(":/image/img/level1Final.png").scaled(100, 100));
         break;
     case ObstacleType::Fire:
         setPixmap(QPixmap(":/image/img/fire.png").scaled(100, 100));

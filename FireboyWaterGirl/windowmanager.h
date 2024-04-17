@@ -15,8 +15,10 @@ public:
 
     enum WindowType{login, reg, lev, main};
     void showWindow(WindowType type);
+    void transferLevel (int n);
 private:
     WindowType type;
+    int l; //level
 
     bool loginON;
     bool registerON;

@@ -25,10 +25,10 @@ public:
     {
         if (Level->objectName().isEmpty())
             Level->setObjectName("Level");
-        Level->resize(400, 300);
+        Level->resize(534, 445);
         Level1 = new QPushButton(Level);
         Level1->setObjectName("Level1");
-        Level1->setGeometry(QRect(140, 120, 100, 32));
+        Level1->setGeometry(QRect(200, 120, 100, 32));
 
         retranslateUi(Level);
 

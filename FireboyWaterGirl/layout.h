@@ -6,7 +6,7 @@
 
 class Layout : public QGraphicsScene {
 public:
-    Layout(QObject* parent = nullptr);
+    Layout(QObject* parent = nullptr, int lev = 0);
 
 protected:
     void keyPressEvent(QKeyEvent* event) override;

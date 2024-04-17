@@ -1,7 +1,10 @@
 #include "layout.h"
+#include "obstacles.h"
 #include "players.h"
 
-Layout::Layout(QObject* parent) : QGraphicsScene(parent) {}
+Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
+
+}
 
 void Layout::keyPressEvent(QKeyEvent* event) {
     QGraphicsScene::keyPressEvent(event);

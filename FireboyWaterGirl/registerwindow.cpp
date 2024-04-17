@@ -32,7 +32,7 @@ RegisterWindow::~RegisterWindow()
 
 void RegisterWindow::on_regButton_clicked()
 {   //check for same username
-   /* bool userExists = false;
+    bool userExists = false;
     QString inputUsername = ui->userline->text();
     userExists = AllUsers::search(inputUsername);
 
@@ -56,12 +56,12 @@ void RegisterWindow::on_regButton_clicked()
     }
 
 
-    if (passMatchs && userExists){
+    if (passMatchs && !userExists){
         User::newUser(inputUsername, inputPassword);    //add user to allusers database
         WindowManager win;                    //open level window
         win.showWindow(WindowManager::lev);
         hide();
-    }*/
+    }
 }
 
 
