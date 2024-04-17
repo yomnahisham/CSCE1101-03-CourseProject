@@ -64,4 +64,10 @@ void RegisterWindow::on_regButton_clicked()
     }
 }
 
+// in case user pressed register by mistake and already has an account
+void RegisterWindow::on_backButton_clicked()
+{
+    WindowManager backLogin;
+    backLogin.showWindow(WindowManager::login);
+}
 

@@ -69,7 +69,7 @@ void WindowManager::showWindow(WindowType type) {
         registerWindow->hide();
         levWindow -> show();
 
-    }else if (mainON){
+    } else if (mainON){
         //hiding other windows
         loginWindow->hide();
         registerWindow->hide();

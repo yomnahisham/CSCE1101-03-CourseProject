@@ -30,6 +30,7 @@ public:
     QLineEdit *repeatline;
     QLabel *usererror;
     QLabel *passerror;
+    QPushButton *backButton;
 
     void setupUi(QDialog *RegisterWindow)
     {
@@ -65,6 +66,9 @@ public:
         passerror = new QLabel(RegisterWindow);
         passerror->setObjectName("passerror");
         passerror->setGeometry(QRect(420, 270, 161, 16));
+        backButton = new QPushButton(RegisterWindow);
+        backButton->setObjectName("backButton");
+        backButton->setGeometry(QRect(160, 310, 100, 32));
 
         retranslateUi(RegisterWindow);
 
@@ -80,6 +84,7 @@ public:
         regButton->setText(QCoreApplication::translate("RegisterWindow", "Register", nullptr));
         usererror->setText(QCoreApplication::translate("RegisterWindow", "<html><head/><body><p><span style=\" color:#941100;\">username already in use</span></p></body></html>", nullptr));
         passerror->setText(QCoreApplication::translate("RegisterWindow", "<html><head/><body><p><span style=\" color:#941100;\">password incorrect</span></p></body></html>", nullptr));
+        backButton->setText(QCoreApplication::translate("RegisterWindow", "Back", nullptr));
     } // retranslateUi
 
 };
