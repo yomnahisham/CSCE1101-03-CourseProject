@@ -1,19 +1,26 @@
 #include "layout.h"
 #include "obstacles.h"
 #include "players.h"
+#include <QGraphicsPixmapItem>
 
 Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
+    //putting brick background
+    QGraphicsPixmapItem* brick = new QGraphicsPixmapItem();
+    brick -> setPixmap(QPixmap(":/image/img/background.png").scaled(1000,800, Qt::KeepAspectRatio));
+    brick-> setPos(0,0);
+    addItem(brick);
+
     switch (l){
     case 1:
-        Obstacles* pav = new Obstacles();
-        pav->createObstacle(Obstacles::Pavement);
+        QGraphicsPixmapItem* pav = new QGraphicsPixmapItem();
+        pav->setPixmap(QPixmap(":/image/img/level1Final.png").scaled(1000,800, Qt::KeepAspectRatio));
         pav-> setPos(0, 0);
         addItem(pav);
 
         //add fire pit
         Obstacles* fire = new Obstacles();
         fire->createObstacle(Obstacles::Fire);
-        fire-> setPos(0, 0);
+        fire-> setPos(800, 600);
         addItem(fire);
 
         //add water
