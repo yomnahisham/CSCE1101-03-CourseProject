@@ -42,8 +42,8 @@ void LoginWindow::on_loginPush_clicked() // finished just test it out with user 
     bool userExists = AllUsers::authenticateUser (username, password);
     if (userExists)
     {
-        WindowManager windowManager;
-        windowManager.showWindow(WindowManager::lev);
+        WindowManager window;
+        window.showWindow(WindowManager::lev);
         hide();
     }else
     {
@@ -56,8 +56,8 @@ void LoginWindow::on_loginPush_clicked() // finished just test it out with user 
 
 void LoginWindow::on_registerPush_clicked()
 {
-    WindowManager windowManager;
-    windowManager.showWindow(WindowManager::reg);
+    WindowManager Manager;
+    Manager.showWindow(WindowManager::reg);
     hide();
 }
 
