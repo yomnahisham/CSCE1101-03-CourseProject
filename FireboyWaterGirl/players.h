@@ -10,6 +10,10 @@ class Players : public QObject, public QGraphicsPixmapItem {
 public:
     Players(QGraphicsItem* parent = nullptr);
     virtual void keyPressEvent(QKeyEvent* event) = 0;
+    void gravity ();
+protected:
+    int direction;
+    bool right, left = true;
 };
 
 #endif // PLAYERS_H

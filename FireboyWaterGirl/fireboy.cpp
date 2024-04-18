@@ -8,7 +8,9 @@ FireBoy::FireBoy(QGraphicsItem* parent) : Players(parent) {
 }
 
 void FireBoy::keyPressEvent(QKeyEvent* event) {
-
+    Players::right= true;
+    Players::left = true;
+    Players::gravity();
     if (event->key()  == Qt::Key_Up)
     {
         upKey = true;

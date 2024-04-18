@@ -1,6 +1,4 @@
 #include "watergirl.h"
-#include "layout.h"
-#include "obstacles.h"
 #include <QGraphicsScene>
 #include <QBrush>
 #include <QTimer>
@@ -10,22 +8,22 @@ WaterGirl::WaterGirl(QGraphicsItem* parent) : Players(parent) {
 }
 
 void WaterGirl::keyPressEvent(QKeyEvent* event) {
-    right= true;
-    left = true;
-    gravity();
+    Players::right= true;
+    Players::left = true;
+    Players::gravity();
     if (event->key() == Qt::Key_W) {
         if (!isJumping) {
             isJumping = true;
             originalY = y();
             jump(15);
         }
-        direction = 0;
-    } else if ((event->key() == Qt::Key_A)&& left) {
+        Players::direction = 0;
+    } else if ((event->key() == Qt::Key_A)&& Players::left) {
         moveBy(-10, 0);
-        direction = 2;
-    } else if ((event->key() == Qt::Key_D)&& right) {
+        Players::direction = 2;
+    } else if ((event->key() == Qt::Key_D)&& Players::right) {
         moveBy(10, 0);
-        direction = 1;
+        Players::direction = 1;
     }
 }
 
@@ -40,29 +38,4 @@ void WaterGirl::jump(int jumpStep) {
     }
 }
 
-void WaterGirl::gravity ()
-{
-    QList<QGraphicsItem *> colliding_items = collidingItems();
 
-    for (int i = 0, n = colliding_items.size(); i < n; ++i){
-        if (typeid(*(colliding_items[i])) == typeid(Obstacles))//note this is all obstacles (can't pass through them)
-        {
-            setPos(x(), y());
-            /*if (direction == 1){             // need to deffrentiate between side collision and bottom and top collision
-                right = false;
-                left = true;
-            }else if (direction == 2){
-                left = false;
-                right = true;
-            }*/
-            qDebug()<<"water girl is touching pavement";
-            return;
-        }
-        else
-        {
-            qDebug()<<"water girl is in the air";
-            moveBy (0,2);
-            QTimer::singleShot(20, this, [this]() { gravity(); });
-        }
-    }
-}
