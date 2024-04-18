@@ -4,11 +4,7 @@
 
 
 FireBoy::FireBoy(QGraphicsItem* parent) : Players(parent) {
-    setPixmap(QPixmap(":/image/img/fireboy.png")); // fix scaling
-    if (QPixmap(":/image/img/fireboy.png").isNull()) {
-        qDebug() << "Failed to load FireBoy";
-    } else {
-        qDebug() << "FireBoy loaded successfully!";}
+    setPixmap(QPixmap(":/image/img/FireBoy.png").scaled(100,100, Qt::KeepAspectRatio)); // fix scaling
 }
 
 void FireBoy::keyPressEvent(QKeyEvent* event) {

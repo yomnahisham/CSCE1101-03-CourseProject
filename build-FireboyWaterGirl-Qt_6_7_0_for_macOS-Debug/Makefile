@@ -791,14 +791,15 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_Resources.cpp
 qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../../../../Qt/6.7.0/macos/libexec/rcc \
+		../FireboyWaterGirl/img/FireBoy.png \
 		../FireboyWaterGirl/img/slidingFloor2.png \
 		../FireboyWaterGirl/img/slidingFloor.png \
 		../FireboyWaterGirl/img/lever.png \
-		../FireboyWaterGirl/img/TempleHallForest.png \
 		../FireboyWaterGirl/img/pushButton1.png \
 		../FireboyWaterGirl/img/background.png \
 		../FireboyWaterGirl/img/registerBackground.png \
-		../FireboyWaterGirl/img/fireboy.png \
+		../FireboyWaterGirl/img/LoginWindow.png \
+		../FireboyWaterGirl/img/WaterGirl.png \
 		../FireboyWaterGirl/img/fire.png \
 		../FireboyWaterGirl/img/WaterDoor.png \
 		../FireboyWaterGirl/img/block.png \
@@ -807,7 +808,6 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/pushButton2.png \
 		../FireboyWaterGirl/img/level1Final.png \
 		../FireboyWaterGirl/img/gems.png \
-		../FireboyWaterGirl/img/watergirl.png \
 		../FireboyWaterGirl/img/fireDoor.png
 	/Users/LiloBilo/Qt/6.7.0/macos/libexec/rcc -name Resources --no-zstd ../FireboyWaterGirl/Resources.qrc -o qrc_Resources.cpp
 

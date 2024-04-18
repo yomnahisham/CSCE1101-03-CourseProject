@@ -3,11 +3,7 @@
 #include <QTimer>
 
 WaterGirl::WaterGirl(QGraphicsItem* parent) : Players(parent) {
-    setPixmap(QPixmap(":/image/img/watergirl.png")); // fix scaling
-    if (QPixmap(":/image/img/fireboy.png").isNull()) {
-        qDebug() << "Failed to load WaterGirl";
-    } else {
-        qDebug() << "WaterGirl loaded successfully!";}
+    setPixmap(QPixmap(":/image/img/WaterGirl.png").scaled(100,100, Qt::KeepAspectRatio)); // fix scaling
 }
 
 
