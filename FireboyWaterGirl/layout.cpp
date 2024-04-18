@@ -14,7 +14,13 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     brick-> setPos(0,0);
     addItem(brick);
 
-    QGraphicsPixmapItem* pav = new QGraphicsPixmapItem();
+    Obstacles* pav = new Obstacles();
+    pav-> createObstacle(Obstacles::Pavement);
+
+    if (pav)
+    {
+        qDebug()<<"pav constructed";
+    }
 
     switch (l){
     case 1:
@@ -47,12 +53,9 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     firePlayer->setPos(50, 657);
     addItem(firePlayer);
 
-    qDebug()<<"Layout till water constructed";
-
     WaterGirl* waterPlayer = new WaterGirl();
-    waterPlayer->setPos(50, 553);
+    waterPlayer->setPos(50, 558);
     addItem(waterPlayer);
-    /*waterPlayer->setScene(this);*/
 
 }
 

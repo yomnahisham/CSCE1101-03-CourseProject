@@ -1,22 +1,16 @@
 #include "watergirl.h"
 #include "layout.h"
+#include "obstacles.h"
 #include <QGraphicsScene>
 #include <QBrush>
 #include <QTimer>
 
 WaterGirl::WaterGirl(QGraphicsItem* parent) : Players(parent) {
-    setPixmap(QPixmap(":/image/img/WaterGirl.png").scaled(65,80, Qt::KeepAspectRatio)); // fix scaling
-    qDebug()<<"water girl successfully constructed";
-}
-
-void WaterGirl::setScene(Layout*s)
-{
-    scene = new Layout(s);
-
+    setPixmap(QPixmap(":/image/img/WaterGirl.png").scaled(45,65, Qt::KeepAspectRatio)); // fix scaling
 }
 
 void WaterGirl::keyPressEvent(QKeyEvent* event) {
-    //gravity();
+    gravity();
     if (event->key() == Qt::Key_W) {
         if (!isJumping) {
             isJumping = true;
@@ -43,9 +37,20 @@ void WaterGirl::jump(int jumpStep) {
 
 void WaterGirl::gravity ()
 {
-    if (!(this -> collidesWithItem(scene-> pav)) && ! isJumping)
-    {
-        moveBy (0,10);
-        QTimer::singleShot(20, this, [this]() { gravity(); });
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+
+    for (int i = 0, n = colliding_items.size(); i < n; ++i){
+        if (typeid(*(colliding_items[i])) == typeid(Obstacles))
+        {
+            setPos(x(), y());
+            qDebug()<<"water girl is touching pavement";
+            return;
+        }
+        else
+        {
+            qDebug()<<"water girl is in the air";
+            moveBy (0,2);
+            QTimer::singleShot(20, this, [this]() { gravity(); });
+        }
     }
 }

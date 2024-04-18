@@ -8,7 +8,6 @@ public:
     WaterGirl(QGraphicsItem* parent = nullptr);
     void keyPressEvent(QKeyEvent* event) override;
     void gravity ();
-    void setScene(Layout*s);
 private:
     void jump(int jumpStep);
     Layout* scene;
