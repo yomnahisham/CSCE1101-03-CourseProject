@@ -14,8 +14,7 @@ void WindowManager::startLogin(){
     LoginWindow* loginWindow = new LoginWindow();
     loginWindow->resize(1000, 500);
     loginWindow->show();
-    WindowManager::loginON = true;
-
+    loginON = true;
 }
 
 void WindowManager::showWindow(WindowType type) {
@@ -62,7 +61,6 @@ void WindowManager::showWindow(WindowType type) {
         levWindow -> show();
 
     } else if (mainON){
-        //hiding other windows
 
         QGraphicsView* view = new QGraphicsView();
         Layout* scene = new Layout(nullptr, l);
@@ -73,13 +71,6 @@ void WindowManager::showWindow(WindowType type) {
         view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         scene->setSceneRect(0, 0, 1000, 800);
-
-        //adding players to scene
-
-
-        //setting up layout
-
-        //setting background
 
         //adding scene to voew and showing it
         view->setScene(scene);

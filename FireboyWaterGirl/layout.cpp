@@ -5,6 +5,8 @@
 #include "watergirl.h"
 #include <QGraphicsPixmapItem>
 
+
+
 Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     //putting brick background
     QGraphicsPixmapItem* brick = new QGraphicsPixmapItem();
@@ -12,12 +14,10 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     brick-> setPos(0,0);
     addItem(brick);
 
-
-
+    QGraphicsPixmapItem* pav = new QGraphicsPixmapItem();
 
     switch (l){
     case 1:
-        QGraphicsPixmapItem* pav = new QGraphicsPixmapItem();
         pav->setPixmap(QPixmap(":/image/img/level1Final.png").scaled(1000,800, Qt::KeepAspectRatio));
         pav-> setPos(0, 0);
         addItem(pav);
@@ -47,18 +47,23 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     firePlayer->setPos(50, 657);
     addItem(firePlayer);
 
+    qDebug()<<"Layout till water constructed";
+
     WaterGirl* waterPlayer = new WaterGirl();
     waterPlayer->setPos(50, 553);
     addItem(waterPlayer);
+    /*waterPlayer->setScene(this);*/
 
 }
 
 void Layout::keyPressEvent(QKeyEvent* event) {
     QGraphicsScene::keyPressEvent(event);
-    QList<QGraphicsItem*> itemsList = items();
-    for (QGraphicsItem* item : itemsList) {
-        Players* player = dynamic_cast<Players*>(item);
-        if (player)
-            player->keyPressEvent(event);
+    QList<QGraphicsItem*> itemsList = items();              //create a list of items of qgraohics items
+    for (QGraphicsItem* item : itemsList) {                 //for each item on list
+        Players* player = dynamic_cast<Players*>(item);     //check if tyoe is of type player
+        if (player)                                         //if dynamic cast does not make player a null ptr
+            player->keyPressEvent(event);                   //call function key press event in player wich will be overriden for WaterGirl and FireBoy
     }
 }
+
+

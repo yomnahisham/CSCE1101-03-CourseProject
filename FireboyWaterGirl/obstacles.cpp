@@ -39,3 +39,8 @@ void Obstacles::createObstacle(ObstacleType type){
         break;
     }
 }
+
+void Obstacles::handleCollisions(Players *player)
+{
+
+}
