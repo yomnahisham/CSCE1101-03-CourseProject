@@ -4,7 +4,7 @@
 
 
 FireBoy::FireBoy(QGraphicsItem* parent) : Players(parent) {
-    setPixmap(QPixmap(":/image/img/FireBoy.png").scaled(100,100, Qt::KeepAspectRatio)); // fix scaling
+    setPixmap(QPixmap(":/image/img/FireBoy.png").scaled(65,80, Qt::KeepAspectRatio)); // fix scaling
 }
 
 void FireBoy::keyPressEvent(QKeyEvent* event) {

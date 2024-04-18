@@ -8,13 +8,13 @@ Obstacles::Obstacles(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {
 void Obstacles::createObstacle(ObstacleType type){
     switch (type) {
     case ObstacleType::Fire:
-        setPixmap(QPixmap(":/image/img/fire.png").scaled(100, 100)); //multiply pixels by a factor to get proper size
+        setPixmap(QPixmap(":/image/img/fire.png").scaled(174, 45)); //multiply pixels by a factor to get proper size
         break;
     case ObstacleType::Water:
-        setPixmap(QPixmap(":/image/img/water.png").scaled(100, 100));
+        setPixmap(QPixmap(":/image/img/water.png").scaled(174, 45));
         break;
     case ObstacleType::Acid:
-        setPixmap(QPixmap(":/image/img/acid.png").scaled(100, 100));
+        setPixmap(QPixmap(":/image/img/acid.png").scaled(170, 40));
         break;
     case ObstacleType::Lever:
         setPixmap(QPixmap(":/image/img/lever.png").scaled(100, 100));

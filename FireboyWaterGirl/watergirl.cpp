@@ -3,7 +3,7 @@
 #include <QTimer>
 
 WaterGirl::WaterGirl(QGraphicsItem* parent) : Players(parent) {
-    setPixmap(QPixmap(":/image/img/WaterGirl.png").scaled(100,100, Qt::KeepAspectRatio)); // fix scaling
+    setPixmap(QPixmap(":/image/img/WaterGirl.png").scaled(65,80, Qt::KeepAspectRatio)); // fix scaling
 }
 
 

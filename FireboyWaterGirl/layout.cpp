@@ -25,30 +25,30 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
         //add fire pit
         Obstacles* fire = new Obstacles();
         fire->createObstacle(Obstacles::Fire);
-        fire-> setPos(800, 600);
+        fire-> setPos(448, 715);
         addItem(fire);
 
         //add water
         Obstacles* water = new Obstacles();
         water->createObstacle(Obstacles::Water);
-        water-> setPos(0, 0);
+        water-> setPos(650, 715);
         addItem(water);
 
         //add acid
         Obstacles* acid = new Obstacles();
         acid->createObstacle(Obstacles::Acid);
-        acid-> setPos(0, 0);
+        acid-> setPos(600, 568);
         addItem(acid);
 
         break;
     }
 
     FireBoy* firePlayer = new FireBoy();
-    firePlayer->setPos(100, 100);
+    firePlayer->setPos(50, 657);
     addItem(firePlayer);
 
     WaterGirl* waterPlayer = new WaterGirl();
-    waterPlayer->setPos(200, 200);
+    waterPlayer->setPos(50, 553);
     addItem(waterPlayer);
 
 }
