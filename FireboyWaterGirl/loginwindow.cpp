@@ -21,14 +21,12 @@ LoginWindow::LoginWindow(QWidget *parent) : QDialog(parent), ui(new Ui::LoginWin
     ui->usernameLabel->setStyleSheet("QLabel { color : white; }");
     ui->passLabel->setStyleSheet("QLabel { color : white; }");
 
-    qDebug() <<"login window image:";
-
     QPixmap background(":/image/img/TempleHallForest.png");             //upload image again and add it to resource folder
-    background = background.scaled(this->size(), Qt::KeepAspectRatio);
+    //background = background.scaled(this->size(), Qt::KeepAspectRatio);
     if (background.isNull()) {
-        qDebug() << "Failed to load the image!";
+        qDebug() << "Failed to load the Login Background!";
     } else {
-        qDebug() << "Image loaded successfully!";}
+        qDebug() << "Login Background loaded successfully!";}
 
     QPalette palette;
     palette.setBrush(QPalette::Window, background);

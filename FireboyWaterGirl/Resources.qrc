@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/image">
-        <file>img/fireboy.png</file>
         <file>img/gems.png</file>
         <file>img/watergirl.png</file>
         <file>img/block.png</file>
@@ -17,5 +16,7 @@
         <file>img/level1Final.png</file>
         <file>img/registerBackground.png</file>
         <file>img/background.png</file>
+        <file>img/fireboy.png</file>
+        <file>img/TempleHallForest.png</file>
     </qresource>
 </RCC>

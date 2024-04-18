@@ -4,7 +4,10 @@
 
 WaterGirl::WaterGirl(QGraphicsItem* parent) : Players(parent) {
     setPixmap(QPixmap(":/image/img/watergirl.png")); // fix scaling
-
+    if (QPixmap(":/image/img/fireboy.png").isNull()) {
+        qDebug() << "Failed to load WaterGirl";
+    } else {
+        qDebug() << "WaterGirl loaded successfully!";}
 }
 
 
