@@ -10,6 +10,8 @@ WaterGirl::WaterGirl(QGraphicsItem* parent) : Players(parent) {
 }
 
 void WaterGirl::keyPressEvent(QKeyEvent* event) {
+    right= true;
+    left = true;
     gravity();
     if (event->key() == Qt::Key_W) {
         if (!isJumping) {
@@ -17,10 +19,13 @@ void WaterGirl::keyPressEvent(QKeyEvent* event) {
             originalY = y();
             jump(15);
         }
-    } else if (event->key() == Qt::Key_A) {
+        direction = 0;
+    } else if ((event->key() == Qt::Key_A)&& left) {
         moveBy(-10, 0);
-    } else if (event->key() == Qt::Key_D) {
+        direction = 2;
+    } else if ((event->key() == Qt::Key_D)&& right) {
         moveBy(10, 0);
+        direction = 1;
     }
 }
 
@@ -40,9 +45,16 @@ void WaterGirl::gravity ()
     QList<QGraphicsItem *> colliding_items = collidingItems();
 
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
-        if (typeid(*(colliding_items[i])) == typeid(Obstacles))
+        if (typeid(*(colliding_items[i])) == typeid(Obstacles))//note this is all obstacles (can't pass through them)
         {
             setPos(x(), y());
+            /*if (direction == 1){             // need to deffrentiate between side collision and bottom and top collision
+                right = false;
+                left = true;
+            }else if (direction == 2){
+                left = false;
+                right = true;
+            }*/
             qDebug()<<"water girl is touching pavement";
             return;
         }

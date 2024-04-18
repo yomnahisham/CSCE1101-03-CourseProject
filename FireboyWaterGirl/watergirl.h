@@ -14,6 +14,8 @@ private:
     bool isJumping = false;
     int jumpStep;
     int originalY;
+    int direction;
+    bool right, left = true;
 };
 
 #endif // WATERGIRL_H
