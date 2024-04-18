@@ -19,14 +19,6 @@ void WindowManager::startLogin(){
 }
 
 void WindowManager::showWindow(WindowType type) {
-    LoginWindow* loginWindow = new LoginWindow();
-    loginWindow->resize(1000, 500);
-
-    RegisterWindow* registerWindow = new RegisterWindow();
-    registerWindow->resize(1000, 500);
-
-    Level* levWindow = new Level();
-    levWindow->resize(500, 300);
 
     switch (type){
     case login:
@@ -52,29 +44,25 @@ void WindowManager::showWindow(WindowType type) {
         registerON = false;
         levelON = false;
         loginON = false;
-    }    
+    }
 
     if(loginON){
+        LoginWindow* loginWindow = new LoginWindow();
+        loginWindow->resize(1000, 500);
         loginWindow->show();
-        registerWindow->hide();
-        levWindow -> hide();
 
     } else if (registerON){
-        loginWindow->hide();
-        levWindow -> hide();
+        RegisterWindow* registerWindow = new RegisterWindow();
+        registerWindow->resize(1000, 500);
         registerWindow -> show();
 
     } else if (levelON){
-        loginWindow->hide();
-        registerWindow->hide();
+        Level* levWindow = new Level();
+        levWindow->resize(500, 300);
         levWindow -> show();
 
     } else if (mainON){
         //hiding other windows
-        loginWindow->hide();
-        registerWindow->hide();
-        levWindow -> hide();
-
 
         QGraphicsView* view = new QGraphicsView();
         Layout* scene = new Layout(nullptr, l);

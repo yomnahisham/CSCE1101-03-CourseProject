@@ -8,7 +8,7 @@ Obstacles::Obstacles(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {
 void Obstacles::createObstacle(ObstacleType type){
     switch (type) {
     case ObstacleType::Fire:
-        setPixmap(QPixmap(":/image/img/fire.png").scaled(116, 30)); //multiply pixels by a factor to get proper size
+        setPixmap(QPixmap(":/image/img/fire.png").scaled(100, 100)); //multiply pixels by a factor to get proper size
         break;
     case ObstacleType::Water:
         setPixmap(QPixmap(":/image/img/water.png").scaled(100, 100));

@@ -12,6 +12,9 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     brick-> setPos(0,0);
     addItem(brick);
 
+
+
+
     switch (l){
     case 1:
         QGraphicsPixmapItem* pav = new QGraphicsPixmapItem();
@@ -47,6 +50,7 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     WaterGirl* waterPlayer = new WaterGirl();
     waterPlayer->setPos(200, 200);
     addItem(waterPlayer);
+
 }
 
 void Layout::keyPressEvent(QKeyEvent* event) {
