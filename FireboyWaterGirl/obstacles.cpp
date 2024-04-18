@@ -9,6 +9,8 @@ void Obstacles::createObstacle(ObstacleType type){
     switch (type) {
     case ObstacleType::Pavement:
         break;
+    case ObstacleType::Side:
+        break;
     case ObstacleType::Fire:
         setPixmap(QPixmap(":/image/img/fire.png").scaled(174, 45)); //multiply pixels by a factor to get proper size
         break;
@@ -45,4 +47,9 @@ void Obstacles::createObstacle(ObstacleType type){
 void Obstacles::handleCollisions(Players *player)
 {
 
+}
+
+Obstacles::ObstacleType Obstacles::getType()
+{
+    return type;
 }

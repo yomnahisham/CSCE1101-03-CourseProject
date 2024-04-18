@@ -11,6 +11,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
     Players::right= true;
     Players::left = true;
     Players::gravity();
+
     if (event->key()  == Qt::Key_Up)
     {
         upKey = true;
@@ -24,7 +25,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
         leftKey = true;
     }
 
-    if ((upKey) && (rightKey)) {
+    if ((upKey) && (rightKey)&& right) {
         qDebug() << "up and right key is pressed";
         if (!isJumping) {
             isJumping = true;
@@ -34,7 +35,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
         QTimer::singleShot(200, this, [this]() {
             upKey = false;
             rightKey = false; });
-    }else if ((upKey) && (leftKey)) {
+    }else if ((upKey) && (leftKey) && left) {
         if (!isJumping) {
             isJumping = true;
             originalY = y();
@@ -43,7 +44,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
         QTimer::singleShot(200, this, [this]() {
             upKey = false;
             leftKey = false; });
-    }else if (event->key() == Qt::Key_Up) {
+    }else if (event->key() == Qt::Key_Up)  {
         if (!isJumping) {
             isJumping = true;
             originalY = y();
@@ -51,9 +52,9 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
         }
         qDebug() << "up key is from event";
 
-    } else if (event->key() == Qt::Key_Left) {
+    } else if ((event->key() == Qt::Key_Left)&&left) {
         moveBy(-10, 0);
-    } else if (event->key() == Qt::Key_Right) {
+    } else if ((event->key() == Qt::Key_Right)&&right) {
         moveBy(10, 0);
     }
 }
@@ -78,13 +79,13 @@ void FireBoy::keyReleaseEvent(QKeyEvent* event) {
 void FireBoy::jump(int jumpStep, int direction) {
     if (direction == 1){
         if (jumpStep < 5) {    //if jumping right
-            moveBy(5, -10);
+            moveBy(15, -15);
             ++jumpStep;
             QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
         }
         else if (y() != originalY)
         {
-            moveBy(5, 10);
+            moveBy(15, 15);
             QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
         }
         else if (y() == originalY)
@@ -94,13 +95,13 @@ void FireBoy::jump(int jumpStep, int direction) {
         }
     }else if (direction == 2){
         if (jumpStep < 5) {    //if jumping left
-            moveBy(-5, -10);
+            moveBy(-15, -15);
             ++jumpStep;
             QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
         }
         else if (y() != originalY)
         {
-            moveBy(-5, 10);
+            moveBy(-15, 15);
             QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
         }
         else if (y() == originalY)
@@ -110,13 +111,13 @@ void FireBoy::jump(int jumpStep, int direction) {
         }
     } else if (direction == 0){
         if (jumpStep < 5) {    //if jumping only
-            moveBy(0, -10);
+            moveBy(0, -15);
             ++jumpStep;
             QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
         }
         else if (y() != originalY)
         {
-            moveBy(0, 10);
+            moveBy(0, 15);
             QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
         }
         else if (y() == originalY)

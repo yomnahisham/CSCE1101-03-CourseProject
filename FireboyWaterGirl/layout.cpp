@@ -17,14 +17,20 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     Obstacles* pav = new Obstacles();
     pav-> createObstacle(Obstacles::Pavement);
 
-    if (pav)
-    {
-        qDebug()<<"pav constructed";
-    }
+    Obstacles* s = new Obstacles();
+    s-> createObstacle(Obstacles::Side);
 
     switch (l){
     case 1:
-        pav->setPixmap(QPixmap(":/image/img/level1Final.png").scaled(1000,800, Qt::KeepAspectRatio));
+        QPixmap si (":/image/img/Level1Side.png");
+        si.scaled(2000, 1600, Qt::KeepAspectRatio);
+        s -> setPixmap(si);
+        pav-> setPos(0, 0);
+        addItem(s);
+
+        QPixmap p (":/image/img/level1Final.png");
+        p.scaled(2000, 1600, Qt::KeepAspectRatio);
+        pav->setPixmap(p);
         pav-> setPos(0, 0);
         addItem(pav);
 
