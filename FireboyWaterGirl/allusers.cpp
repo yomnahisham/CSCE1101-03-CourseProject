@@ -11,7 +11,8 @@
 
 AllUsers::AllUsers() {
     // establish connection to SQLite database
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(":/sql/fireboywatergirl.db");
     if (!db.open()) {
         qDebug() << "Error: Unable to open database";
