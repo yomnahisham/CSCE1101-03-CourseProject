@@ -7,7 +7,8 @@
 class Layout : public QGraphicsScene {
 public:
     Layout(QObject* parent = nullptr, int lev = 0);
-    QGraphicsPixmapItem* pav;
+   // QGraphicsPixmapItem* Pav;
+   // QGraphicsPixmapItem* side;
 protected:
     void keyPressEvent(QKeyEvent* event) override;
 

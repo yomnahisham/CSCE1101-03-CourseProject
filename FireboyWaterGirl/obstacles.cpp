@@ -49,7 +49,17 @@ void Obstacles::handleCollisions(Players *player)
 
 }
 
-Obstacles::ObstacleType Obstacles::getType()
+QString Obstacles::getType()
 {
-    return type;
+    switch (type) {
+    case Pavement:
+        return "Pav";
+        break;
+    case Side:
+        return "Side";
+        break;
+    default:
+        return "Null";
+        break;
+    };
 }

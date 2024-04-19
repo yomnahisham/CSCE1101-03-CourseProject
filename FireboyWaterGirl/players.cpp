@@ -13,28 +13,30 @@ void Players::gravity ()
 
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         const std::type_info& type = typeid(*(colliding_items[i]));
-        QGraphicsItem* obs = (colliding_items[i]);
-
-        qDebug() << "Colliding item type: " << type.name();
+        if (QGraphicsItem* obs = (colliding_items[i]))
+        {
+            qDebug() << obs;
+        }
 
         if (type == (typeid (Obstacles)) || (type == typeid(WaterGirl))|| type == typeid(FireBoy)) {  //note this is all obstacles (can't pass through them)
-            qDebug()<<"Player is touching obstacle";
-            Obstacles* ptr = dynamic_cast<Obstacles*>(obs);
+            Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
+            qDebug() << "Colliding item : " << ptr->getType();
 
-            if (ptr &&ptr -> getType() == Obstacles::Pavement)
+            if (ptr -> getType() == "Side")
+            {   if (direction ==1)
+                {
+                    right = false;
+                }
+                else if(direction == 2)
+                {
+                    left = false;
+                }
+                qDebug()<<"Player is touching SIDE";
+            }
+
+            if (ptr -> getType() == "Pav")
             {   setPos(x(), y());
                 qDebug()<<"Player is touching pavement";
-            }
-            if (*type.name() == Obstacles::Side)
-            {   if (direction ==1)
-                    {
-                        right = false;
-                    }
-                else if(direction == 2)
-                    {
-                        left = false;
-                    }
-                qDebug()<<"Player is touching SIDE";
             }
             return;
         }

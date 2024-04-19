@@ -14,25 +14,24 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     brick-> setPos(0,0);
     addItem(brick);
 
-    Obstacles* pav = new Obstacles();
-    pav-> createObstacle(Obstacles::Pavement);
+    Obstacles* Pav = new Obstacles();
+    Pav->createObstacle(Obstacles::Pavement);
 
-    Obstacles* s = new Obstacles();
-    s-> createObstacle(Obstacles::Side);
+    Obstacles* side = new Obstacles();
+    side->createObstacle(Obstacles::Side);
+
 
     switch (l){
     case 1:
         QPixmap si (":/image/img/Level1Side.png");
-        si.scaled(2000, 1600, Qt::KeepAspectRatio);
-        s -> setPixmap(si);
-        pav-> setPos(0, 0);
-        addItem(s);
+        side -> setPixmap(si.scaled(1000, 800, Qt::KeepAspectRatio));      //N10__cxxabiv121__vmi_class_type_infoE
+        side-> setPos(0, 0);
+        addItem(side);
 
         QPixmap p (":/image/img/level1Final.png");
-        p.scaled(2000, 1600, Qt::KeepAspectRatio);
-        pav->setPixmap(p);
-        pav-> setPos(0, 0);
-        addItem(pav);
+        Pav->setPixmap(p.scaled(1000, 800, Qt::KeepAspectRatio));       //N10__cxxabiv121__vmi_class_type_infoE
+        Pav-> setPos(0, 0);
+        addItem(Pav);
 
         //add fire pit
         Obstacles* fire = new Obstacles();
