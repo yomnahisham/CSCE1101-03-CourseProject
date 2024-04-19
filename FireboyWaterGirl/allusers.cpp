@@ -8,7 +8,7 @@
 using namespace std;
 
 AllUsers::AllUsers() {
-    string filePath = "Assets/password.txt";
+    string filePath = "password.txt";
     string password;
 
     ifstream file(filePath);

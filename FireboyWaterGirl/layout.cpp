@@ -14,9 +14,6 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     brick-> setPos(0,0);
     addItem(brick);
 
-
-
-
     switch (l){
     case 1:
         makeLevelONE();
