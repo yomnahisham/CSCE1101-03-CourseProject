@@ -21,4 +21,7 @@
         <file>img/Level1Side.png</file>
         <file>img/LeverLeft.png</file>
     </qresource>
+    <qresource prefix="/sql">
+        <file>fireboywatergirl.db</file>
+    </qresource>
 </RCC>

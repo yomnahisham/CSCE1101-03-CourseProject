@@ -12,6 +12,8 @@ LoginWindow::LoginWindow(QWidget *parent) : QDialog(parent), ui(new Ui::LoginWin
 {
     ui->setupUi(this);
 
+    qDebug()<<QSqlDatabase::drivers();
+
     ui->usernameError->setVisible(false);
     ui->usernameError->setStyleSheet("QLabel { color : red; }");
 

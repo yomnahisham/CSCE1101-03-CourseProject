@@ -2,6 +2,8 @@
 #define ALLUSERS_H
 
 #include <QtSql>
+#include <QDebug>
+
 //#include "user.h"
 
 class AllUsers{
