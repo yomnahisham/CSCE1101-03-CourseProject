@@ -24,12 +24,12 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     switch (l){
     case 1:
         QPixmap si (":/image/img/Level1Side.png");
-        side -> setPixmap(si.scaled(1000, 800, Qt::KeepAspectRatio));      //N10__cxxabiv121__vmi_class_type_infoE
+        side -> setPixmap(si.scaled(1000, 800, Qt::KeepAspectRatio));
         side-> setPos(0, 0);
         addItem(side);
 
         QPixmap p (":/image/img/level1Final.png");
-        Pav->setPixmap(p.scaled(1000, 800, Qt::KeepAspectRatio));       //N10__cxxabiv121__vmi_class_type_infoE
+        Pav->setPixmap(p.scaled(1000, 800, Qt::KeepAspectRatio));
         Pav-> setPos(0, 0);
         addItem(Pav);
 
