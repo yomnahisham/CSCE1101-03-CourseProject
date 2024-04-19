@@ -801,6 +801,7 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/LoginWindow.png \
 		../FireboyWaterGirl/img/WaterGirl.png \
 		../FireboyWaterGirl/img/fire.png \
+		../FireboyWaterGirl/img/LeverLeft.png \
 		../FireboyWaterGirl/img/WaterDoor.png \
 		../FireboyWaterGirl/img/block.png \
 		../FireboyWaterGirl/img/water.png \

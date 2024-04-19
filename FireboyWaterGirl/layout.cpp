@@ -51,6 +51,54 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
         acid-> setPos(600, 568);
         addItem(acid);
 
+        //add lever
+        Obstacles* lever = new Obstacles();
+        lever -> createObstacle(Obstacles::LeverRight);
+        lever -> setPos(210,485);
+        addItem (lever);
+
+        //add sliding Floor
+        Obstacles* floor1 = new Obstacles();
+        floor1 -> createObstacle(Obstacles::SlidingFloor1);
+        floor1 -> setPos(20,402);
+        addItem (floor1);
+
+        //add button
+        Obstacles* b1 = new Obstacles();
+        b1 -> createObstacle(Obstacles::Button1);
+        b1 -> setPos(251,382);
+        addItem (b1);
+
+        //add sliding Floor
+        Obstacles* floor2 = new Obstacles();
+        floor2 -> createObstacle(Obstacles::SlidingFloor2);
+        floor2 -> setPos(870,300);
+        addItem (floor2);
+
+        //add button
+        Obstacles* b2 = new Obstacles();
+        b2 -> createObstacle(Obstacles::Button2);
+        b2 -> setPos(755, 285);
+        addItem (b2);
+
+        //add Block
+        Obstacles* block = new Obstacles();
+        block -> createObstacle(Obstacles::Block);
+        block -> setPos(570,200);
+        addItem (block);
+
+        //add WaterDoor
+        Obstacles* WD = new Obstacles();
+        WD -> createObstacle(Obstacles::WaterDoor);
+        WD -> setPos(893,80);
+        addItem (WD);
+
+        //add FireDoor
+        Obstacles* FD = new Obstacles();
+        FD -> createObstacle(Obstacles::FireDoor);
+        FD -> setPos(789,80);
+        addItem (FD);
+
         break;
     }
 

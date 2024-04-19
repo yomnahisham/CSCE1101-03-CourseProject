@@ -45,32 +45,27 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
 }
 
 void FireBoy::jump(int jumpStep) {
-
     if (jumpStep < 5) {
         switch (direction){
         case 0:
-            moveBy(0, -15);
+            moveBy(0, -10);
             break;
         case 1:
-            moveBy(10, -15);
+            moveBy(15, -10);
             break;
         case 2:
-            moveBy(-10, -15);
+            moveBy(-15, -10);
             break ;
         }
-        qDebug() << "moved up";
         ++jumpStep;
         if (hitPavement())                                                                          //if hit pavement at the top, start falling, skip to secind else if
         {
-            qDebug() << "Hit [avement";
-
             direction = 0;
             jumpStep = 5;
         }
         if (hitSide())                                                                              //if hit side go back down and skip to last else if
         {
-            qDebug() << "Hit side";
-
+            boundries();
             direction = 0;
         }
         QTimer::singleShot(20, this, [this, jumpStep]() { jump(jumpStep); });
@@ -79,13 +74,13 @@ void FireBoy::jump(int jumpStep) {
     {
         switch (direction){
         case 0:
-            moveBy(0, 15);
+            moveBy(0, 10);
             break;
         case 1:
-            moveBy(10, 15);
+            moveBy(15, 10);
             break;
         case 2:
-            moveBy(-10, 15);
+            moveBy(-15, 10);
             break ;
         }
         QTimer::singleShot(20, this, [this, jumpStep]() { jump(jumpStep); });

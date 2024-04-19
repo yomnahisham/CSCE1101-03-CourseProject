@@ -19,5 +19,6 @@
         <file>img/FireBoy.png</file>
         <file>img/LoginWindow.png</file>
         <file>img/Level1Side.png</file>
+        <file>img/LeverLeft.png</file>
     </qresource>
 </RCC>
