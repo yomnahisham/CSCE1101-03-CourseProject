@@ -1,49 +1,37 @@
 #include "allusers.h"
 #include "user.h"
+
 #include <QDebug>
 #include <fstream>
-#include <string>
+#include <QString>
 #include <QCryptographicHash>
-
-using namespace std;
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QSqlDatabase>
 
 AllUsers::AllUsers() {
-    string filePath = "password.txt";
-    string password;
-
-    ifstream file(filePath);
-    if (file.is_open()) {
-        // Read the password from the file
-        getline(file, password);
-        file.close();
-    } else {
-        qDebug() << "Error: Unable to open password file";
-    }
-    QString qPassword = QString::fromStdString(password);
-
-    db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("127.0.0.1");
-    db.setPort(3306); // MySQL port
-    db.setDatabaseName("CSCE1101-03-CourseProject-Database");
-    db.setUserName("root");
-    db.setPassword(qPassword);
-
+    // establish connection to SQLite database
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName("fireboywatergirl.db"); // SQLite database file
     if (!db.open()) {
         qDebug() << "Error: Unable to open database";
+        qDebug() << db.lastError().text();
+        return;
     }
 
+    // create users table if it does not exist
     QSqlQuery query;
     if (!query.exec("CREATE TABLE IF NOT EXISTS users (username VARCHAR(255) PRIMARY KEY, password VARCHAR(255), score INT)")) {
         qDebug() << "Error: Unable to create users table";
+        qDebug() << query.lastError().text();
     }
 }
 
-
 void AllUsers::addUser(const QString& username, const QString& password){
-    QSqlQuery query;
-
     // using QCryptographicHash to ensure security of passwords in Database
     QString hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
+
+    QSqlQuery query;
     query.prepare("INSERT INTO users (username, password, score) VALUES (:username, :password, :score)");
     query.bindValue(":username", username);
     query.bindValue(":password", hashedPass);
@@ -51,6 +39,7 @@ void AllUsers::addUser(const QString& username, const QString& password){
 
     if (!query.exec()) {
         qDebug() << "Error: Unable to add user";
+        qDebug() << query.lastError().text();
     }
 }
 
@@ -64,14 +53,15 @@ void AllUsers::showLeaderboard() {
 }
 
 bool AllUsers::authenticateUser(const QString &username, const QString &password){
-    QSqlQuery query;
     QString hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
+    QSqlQuery query;
     query.prepare("SELECT COUNT(*) FROM users WHERE username = :username AND password = :password");
     query.bindValue(":username", username);
     query.bindValue(":password", hashedPass);
 
     if(!query.exec()){
         qDebug() << "Error: Unable to authenticate user";
+        qDebug() << query.lastError().text();
         return false;
     }
 
@@ -87,6 +77,7 @@ bool AllUsers::search(const QString& username){
 
     if (!query.exec()) {
         qDebug() << "Error: Unable to execute search query";
+        qDebug() << query.lastError().text();
         return false;
     }
 
