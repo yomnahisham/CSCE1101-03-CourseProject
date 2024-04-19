@@ -67,7 +67,7 @@ void WaterGirl::jump(int jumpStep) {
             boundries();
             direction = 0;
         }
-        QTimer::singleShot(50, this, [this, jumpStep]() { jump(jumpStep); });
+        QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
     }
     else if (y() != originalY)
     {
@@ -82,7 +82,7 @@ void WaterGirl::jump(int jumpStep) {
             moveBy(-15, 10);
             break ;
         }
-        QTimer::singleShot(50, this, [this, jumpStep]() { jump(jumpStep); });
+        QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
     }
     else if (y() == originalY)
     {

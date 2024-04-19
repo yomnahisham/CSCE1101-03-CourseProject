@@ -25,7 +25,7 @@ void Players::gravity ()
     if (!hitPavement())
     {
         moveBy (0,2);
-        QTimer::singleShot(20, this, [this]() { gravity(); });
+        QTimer::singleShot(10, this, [this]() { gravity(); });
     }
     else
     {
