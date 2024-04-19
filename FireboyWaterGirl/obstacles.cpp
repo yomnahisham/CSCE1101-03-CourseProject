@@ -49,9 +49,10 @@ void Obstacles::handleCollisions(Players *player)
 
 }
 
-QString Obstacles::getType()
+Obstacles::ObstacleType Obstacles::getType() const
 {
-    switch (type) {
+    return type;
+    /*switch (type) {
     case Pavement:
         return "Pav";
         break;
@@ -61,5 +62,5 @@ QString Obstacles::getType()
     default:
         return "Null";
         break;
-    };
+    };*/
 }

@@ -11,6 +11,7 @@ public:
     Players(QGraphicsItem* parent = nullptr);
     virtual void keyPressEvent(QKeyEvent* event) = 0;
     void gravity ();
+    bool hitPavement();
 protected:
     int direction;
     bool right, left = true;

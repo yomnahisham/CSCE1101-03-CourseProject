@@ -5,8 +5,7 @@
 #include <QTimer>
 
 WaterGirl::WaterGirl(QGraphicsItem* parent) : Players(parent) {
-    //setPixmap(QPixmap(":/image/img/WaterGirl.png").scaled(45,65, Qt::KeepAspectRatio)); // fix scaling
-    setRect(45,65);
+    setPixmap(QPixmap(":/image/img/WaterGirl.png").scaled(45,65, Qt::KeepAspectRatio)); // fix scaling
 }
 
 void WaterGirl::keyPressEvent(QKeyEvent* event) {

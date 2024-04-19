@@ -15,6 +15,7 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     addItem(brick);
 
     Obstacles* Pav = new Obstacles();
+    Pav-> setObjectName("Pavement");
     Pav->createObstacle(Obstacles::Pavement);
 
     Obstacles* side = new Obstacles();
