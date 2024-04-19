@@ -9,8 +9,6 @@ Players::Players(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {}
 
 bool Players::hitPavement ()
 {
-    qDebug()<<"entered hit";
-
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
@@ -24,10 +22,8 @@ bool Players::hitPavement ()
 
 void Players::gravity ()
 {
-    qDebug()<<"entered gravity";
     if (!hitPavement())
     {
-        qDebug()<<"hasn't hitPavement";
         moveBy (0,2);
         QTimer::singleShot(20, this, [this]() { gravity(); });
     }
@@ -35,6 +31,19 @@ void Players::gravity ()
     {
         return;
     }
+}
+
+bool Players:: hitSide ()
+{
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+    for (int i = 0, n = colliding_items.size(); i < n; ++i){
+        Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
+
+        if ((ptr) && (ptr -> objectName() == "Side")) {
+            return true;
+        }
+    }
+    return false;
 }
 
 //Players::~Players() {}

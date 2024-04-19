@@ -8,122 +8,113 @@ FireBoy::FireBoy(QGraphicsItem* parent) : Players(parent) {
 }
 
 void FireBoy::keyPressEvent(QKeyEvent* event) {
-    Players::right= true;
-    Players::left = true;
-    Players::gravity();
+    right= true;
+    left = true;
+    gravity();
+    boundries();
 
-    if (event->key()  == Qt::Key_Up)
-    {
-        upKey = true;
-    }
-    if (event->key() == Qt::Key_Right)
-    {
-        rightKey = true;
-    }
-    if (event->key() == Qt::Key_Left)
-    {
-        leftKey = true;
-    }
-
-    if ((upKey) && (rightKey)&& right) {
+    if (event->key() == Qt::Key_Shift&& right) {
         qDebug() << "up and right key is pressed";
         if (!isJumping) {
             isJumping = true;
             originalY = y();
-            jump(0, 1);
+            direction = 1;
+            jump(0);
         }
-        QTimer::singleShot(200, this, [this]() {
-            upKey = false;
-            rightKey = false; });
-    }else if ((upKey) && (leftKey) && left) {
+    }else if (event->key() == Qt::Key_Slash && left) {
         if (!isJumping) {
             isJumping = true;
             originalY = y();
-            jump(0,2);
+            direction = 2;
+            jump(0);
         }
-        QTimer::singleShot(200, this, [this]() {
-            upKey = false;
-            leftKey = false; });
     }else if (event->key() == Qt::Key_Up)  {
         if (!isJumping) {
             isJumping = true;
             originalY = y();
-            jump(0, 0);
+            direction = 0;
+            jump(0);
         }
-        qDebug() << "up key is from event";
-
     } else if ((event->key() == Qt::Key_Left)&&left) {
         moveBy(-10, 0);
+        direction = 2;
     } else if ((event->key() == Qt::Key_Right)&&right) {
         moveBy(10, 0);
+        direction = 1;
     }
 }
 
-void FireBoy::keyReleaseEvent(QKeyEvent* event) {
-    if (event->key() == Qt::Key_Up) {
-        upKey = false;
-        qDebug() << "up key is false";
-    }
-    if (event->key() == Qt::Key_Right) {
-        rightKey = false;
-    }
-    if (event->key() == Qt::Key_Left) {
-        leftKey = false;
-    }
+void FireBoy::jump(int jumpStep) {
 
-    if (!upKey && !rightKey) {
-        isJumping = false; // Reset isJumping flag if no jump key is pressed
-    }
-}
-
-void FireBoy::jump(int jumpStep, int direction) {
-    if (direction == 1){
-        if (jumpStep < 5) {    //if jumping right
-            moveBy(15, -15);
-            ++jumpStep;
-            QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
-        }
-        else if (y() != originalY)
-        {
-            moveBy(15, 15);
-            QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
-        }
-        else if (y() == originalY)
-        {
-            isJumping = false; // Reset isJumping flag
-            return;
-        }
-    }else if (direction == 2){
-        if (jumpStep < 5) {    //if jumping left
-            moveBy(-15, -15);
-            ++jumpStep;
-            QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
-        }
-        else if (y() != originalY)
-        {
-            moveBy(-15, 15);
-            QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
-        }
-        else if (y() == originalY)
-        {
-            isJumping = false; // Reset isJumping flag
-            return;
-        }
-    } else if (direction == 0){
-        if (jumpStep < 5) {    //if jumping only
+    if (jumpStep < 5) {
+        switch (direction){
+        case 0:
             moveBy(0, -15);
-            ++jumpStep;
-            QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
+            break;
+        case 1:
+            moveBy(10, -15);
+            break;
+        case 2:
+            moveBy(-10, -15);
+            break ;
         }
-        else if (y() != originalY)
+        qDebug() << "moved up";
+        ++jumpStep;
+        if (hitPavement())                                                                          //if hit pavement at the top, start falling, skip to secind else if
         {
+            qDebug() << "Hit [avement";
+
+            direction = 0;
+            jumpStep = 5;
+        }
+        if (hitSide())                                                                              //if hit side go back down and skip to last else if
+        {
+            qDebug() << "Hit side";
+
+            direction = 0;
+        }
+        QTimer::singleShot(20, this, [this, jumpStep]() { jump(jumpStep); });
+    }
+    else if (y() != originalY)
+    {
+        switch (direction){
+        case 0:
             moveBy(0, 15);
-            QTimer::singleShot(20, this, [this, jumpStep, direction]() { jump(jumpStep, direction); });
+            break;
+        case 1:
+            moveBy(10, 15);
+            break;
+        case 2:
+            moveBy(-10, 15);
+            break ;
         }
-        else if (y() == originalY)
+        QTimer::singleShot(20, this, [this, jumpStep]() { jump(jumpStep); });
+    }
+    else if (y() == originalY)
+    {
+        isJumping = false; // Reset isJumping flag
+        return;
+    }
+}
+
+void FireBoy::boundries()
+{
+    if (hitSide())
+    {
+        if (direction ==1)
         {
-            isJumping = false; // Reset isJumping flag
-            return;
+            right = false;
         }
-    }    return;
+        else if(direction == 2)
+        {
+            left = false;
+        }
+        QTimer::singleShot(20, this, [this]() { boundries(); });
+    }
+    else
+    {
+        right = true;
+        left = false;
+        return;
+    }
 }

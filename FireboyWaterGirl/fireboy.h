@@ -10,16 +10,15 @@ class FireBoy : public Players {
 public:
     FireBoy(QGraphicsItem* parent = nullptr);
     void keyPressEvent(QKeyEvent* event) override;
-    void keyReleaseEvent(QKeyEvent* event);
+    void boundries() override;
 
 private:
-    void jump(int jumpStep, int direction);
-
+    void jump(int jumpStep);
+    int direction;
+    bool right, left = true;
     bool isJumping = false;
     int jumpStep;
     int originalY;
-    bool upKey, rightKey, leftKey;
-
 };
 
 #endif // FIREBOY_H

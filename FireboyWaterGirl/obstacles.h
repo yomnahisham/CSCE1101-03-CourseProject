@@ -13,9 +13,6 @@ public:
     Obstacles(QGraphicsItem* parent = nullptr);
     void createObstacle(ObstacleType type);
     void handleCollisions(Players *player);
-    Obstacles::ObstacleType getType() const;
-    QGraphicsPixmapItem* Pav;
-    QGraphicsPixmapItem* side;
 private:
     ObstacleType type;
 };

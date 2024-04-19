@@ -12,9 +12,8 @@ public:
     virtual void keyPressEvent(QKeyEvent* event) = 0;
     void gravity ();
     bool hitPavement();
-protected:
-    int direction;
-    bool right, left = true;
+    bool hitSide();
+    virtual void boundries() = 0;
 };
 
 #endif // PLAYERS_H
