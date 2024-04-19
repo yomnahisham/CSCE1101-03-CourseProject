@@ -8,12 +8,14 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlDatabase>
+#include <sqlite3.h>
+#include <sqlite3ext.h>
 
 AllUsers::AllUsers() {
     // establish connection to SQLite database
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(":/sql/fireboywatergirl.db");
+    db.setDatabaseName("/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/fireboywatergirl.db");
     if (!db.open()) {
         qDebug() << "Error: Unable to open database";
         qDebug() << db.lastError().text();
