@@ -7,6 +7,7 @@
 class Layout : public QGraphicsScene {
 public:
     Layout(QObject* parent = nullptr, int lev = 0);
+    void makeLevelONE();
    // QGraphicsPixmapItem* Pav;
    // QGraphicsPixmapItem* side;
 protected:

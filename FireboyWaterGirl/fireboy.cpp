@@ -21,14 +21,14 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
             direction = 1;
             jump(0);
         }
-    }else if (event->key() == Qt::Key_Slash && left) {
+    } else if (event->key() == Qt::Key_Slash && left) {
         if (!isJumping) {
             isJumping = true;
             originalY = y();
             direction = 2;
             jump(0);
         }
-    }else if (event->key() == Qt::Key_Up)  {
+    } else if (event->key() == Qt::Key_Up)  {
         if (!isJumping) {
             isJumping = true;
             originalY = y();
