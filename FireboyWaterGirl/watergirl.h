@@ -8,6 +8,7 @@ public:
     WaterGirl(QGraphicsItem* parent = nullptr);
     void keyPressEvent(QKeyEvent* event) override;
     void boundries() override;
+    void kill() override;
 
 private:
     void jump(int jumpStep);

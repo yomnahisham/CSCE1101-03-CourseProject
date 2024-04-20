@@ -15,13 +15,5 @@ int main(int argc, char *argv[]) {
     WindowManager windowManager;
     windowManager.startLogin();
 
-    //WindowManager::showWindow(WindowManager::login);
-
-
-    // check if username and password are valid, if so, allow show of view.
-
-
-    //else if user pushes register, show register window and close login in window.
-    // after registering, view->show()
     return app.exec();
 }

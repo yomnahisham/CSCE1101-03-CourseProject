@@ -1,7 +1,8 @@
- #include "windowmanager.h"
+#include "windowmanager.h"
 #include "loginwindow.h"
 #include "registerwindow.h"
 #include "level.h"
+#include "gameover.h"
 
 #include "layout.h"
 
@@ -25,24 +26,36 @@ void WindowManager::showWindow(WindowType type) {
         registerON = false;
         levelON = false;
         mainON = false;
+        overON = false;
         break;
     case reg:
         registerON = true;
         loginON = false;
         levelON = false;
         mainON = false;
+        overON = false;
         break;
     case lev:
         levelON = true;
         registerON = false;
         loginON = false;
         mainON = false;
+        overON = false;
         break;
     case main: // game main window
         mainON = true;
         registerON = false;
         levelON = false;
         loginON = false;
+        overON = false;
+        break;
+    case over:
+        mainON = false;
+        registerON = false;
+        levelON = false;
+        loginON = false;
+        overON = true;
+        break;
     }
 
     if(loginON){
@@ -50,17 +63,17 @@ void WindowManager::showWindow(WindowType type) {
         loginWindow->resize(1000, 500);
         loginWindow->show();
 
-    } else if (registerON){
+    } else if(registerON){
         RegisterWindow* registerWindow = new RegisterWindow();
         registerWindow->resize(1000, 500);
         registerWindow -> show();
 
-    } else if (levelON){
+    } else if(levelON){
         Level* levWindow = new Level();
         levWindow->resize(500, 300);
         levWindow -> show();
 
-    } else if (mainON){
+    } else if(mainON){
 
         QGraphicsView* view = new QGraphicsView();
         Layout* scene = new Layout(nullptr, l);
@@ -75,6 +88,10 @@ void WindowManager::showWindow(WindowType type) {
         //adding scene to voew and showing it
         view->setScene(scene);
         view->show();
+    } else if(overON){
+        GameOver* gameover = new GameOver();
+        gameover->resize(500, 300);
+        gameover -> show();
     }
 }
 

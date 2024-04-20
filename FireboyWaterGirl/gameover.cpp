@@ -1,5 +1,6 @@
 #include "gameover.h"
 #include "ui_gameover.h"
+#include "windowmanager.h"
 
 GameOver::GameOver(QWidget *parent)
     : QDialog(parent)
@@ -15,21 +16,8 @@ GameOver::~GameOver()
 
 void GameOver::on_retryButton_clicked()
 {
-
-}
-
-void GameOver::on_leaderboardButton_clicked()
-{
-
-}
-
-void GameOver::on_checkLevelsButton_clicked()
-{
-
-}
-
-void GameOver::on_exitButton_clicked()
-{
-
+    this->close();
+    WindowManager Manager;
+    Manager.showWindow(WindowManager::main);
 }
 

@@ -91,7 +91,7 @@ void WaterGirl::jump(int jumpStep) {
     }
 }
 
-void ::WaterGirl::boundries()
+void WaterGirl::boundries()
 {
     if (hitSide())
     {
@@ -113,4 +113,6 @@ void ::WaterGirl::boundries()
     }
 }
 
+void WaterGirl::kill(){
 
+}

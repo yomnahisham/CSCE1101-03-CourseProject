@@ -113,3 +113,8 @@ void FireBoy::boundries()
         return;
     }
 }
+
+void FireBoy::kill(){
+    delete this;
+
+}
