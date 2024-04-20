@@ -85,11 +85,21 @@ void Obstacles::handleCollisions(Players *player)
                 qDebug()<<"touched Fire";
             }else if (objectName() == "Water"){
                 qDebug()<<"FireBoy touched Water";
-                //fireboy->kill();
+                fireboy->kill();
             }else if (objectName() == "Acid"){
                 // Perform actions for Watergirl colliding with acid obstacle
             }
         } else if (watergirl) {
+            if (objectName() == "Fire"){
+                qDebug()<<"WATER touched Fire";
+                // perfom end of game
+                watergirl->kill(); // exits the game completely
+            }else if (objectName() == "Water"){
+                qDebug()<<"FireBoy touched Water";
+                fireboy->kill();
+            }else if (objectName() == "Acid"){
+                // Perform actions for Watergirl colliding with acid obstacle
+            }
             /*switch (getType()) {
             case ObstacleType::Fire:
                 watergirl->setPos(watergirl->x(), watergirl->y() + 10);

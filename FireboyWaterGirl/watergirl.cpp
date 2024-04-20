@@ -158,7 +158,7 @@ void WaterGirl::boundries()
 }
 
 void WaterGirl::kill(){
-    delete this;
+    hide();
     WindowManager Manager;
     Manager.showWindow(WindowManager::over);
     hide();

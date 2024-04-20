@@ -158,7 +158,7 @@ void FireBoy::boundries()
 }
 
 void FireBoy::kill(){
-    delete this;
+    hide();
     WindowManager Manager;
     Manager.showWindow(WindowManager::over);
 }
