@@ -97,11 +97,11 @@ void FireBoy::boundries()
 {
     if (hitSide())
     {
-        if (direction ==1)
+        if (direction == 1)
         {
             right = false;
         }
-        else if(direction == 2)
+        else if (direction == 2)
         {
             left = false;
         }
@@ -110,8 +110,7 @@ void FireBoy::boundries()
     else
     {
         right = true;
-        left = false;
-        return;
+        left = true;
     }
 }
 

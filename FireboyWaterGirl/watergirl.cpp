@@ -14,6 +14,7 @@ void WaterGirl::keyPressEvent(QKeyEvent* event) {
     left = true;
     gravity();
     boundries();
+
     if (event->key() == Qt::Key_Q || event->key() == Qt::Key_E || event->key() == Qt::Key_W) {
         if (!isJumping) {
             isJumping = true;
