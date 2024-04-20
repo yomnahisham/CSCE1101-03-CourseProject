@@ -1,4 +1,6 @@
 #include "obstacles.h"
+#include "fireboy.h"
+#include "watergirl.h"
 
 // Pavement, Fire, Water, Acid, Lever, Button, SlidingFloor, FireDoor, WaterDoor
 
@@ -49,7 +51,42 @@ void Obstacles::createObstacle(ObstacleType type){
 
 void Obstacles::handleCollisions(Players *player)
 {
+    // check if the obstacle collides with the player
+    if (this->collidesWithItem(player)) {
 
+        // check if the player is a Fireboy or Watergirl
+        FireBoy* fireboy = dynamic_cast<FireBoy*>(player);
+        WaterGirl* watergirl = dynamic_cast<WaterGirl*>(player);
+
+        if (fireboy) {
+            switch (type) {
+            case ObstacleType::Fire:
+                // Perform actions for Fireboy colliding with fire obstacle
+                break;
+            case ObstacleType::Water:
+                fireboy->kill();
+                break;
+            case ObstacleType::Acid:
+                // Perform actions for Fireboy colliding with acid obstacle
+                break;
+                // Handle collisions for other obstacle types similarly
+            }
+        } else if (watergirl) {
+            switch (type) {
+            case ObstacleType::Fire:
+                // Perform actions for Watergirl colliding with fire obstacle
+                break;
+            case ObstacleType::Water:
+                // Perform actions for Watergirl colliding with water obstacle
+                break;
+            case ObstacleType::Acid:
+                // Perform actions for Watergirl colliding with acid obstacle
+                break;
+                // Handle collisions for other obstacle types similarly
+            }
+        }
+    }
 }
+
 
 

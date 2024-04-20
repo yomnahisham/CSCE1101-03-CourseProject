@@ -33,15 +33,4 @@ private:
 };
 
 
-
-    /*  Static idea → variables/functions that belong to all objects of a class and do not change from one object to the next
-    static void showRegistrationWindow();
-    static void showLevelWindow();
-    static void showMainView();
-
-    static QWidget *loginWindow;
-    static QWidget *registrationWindow;
-    static QWidget *levelWindow;
-    static QGraphicsView *mainView;*/
-
 #endif // WINDOWMANAGER_H

@@ -4,7 +4,6 @@
 #include <QtSql>
 #include <QDebug>
 
-//#include "user.h"
 
 class AllUsers{
 public:
