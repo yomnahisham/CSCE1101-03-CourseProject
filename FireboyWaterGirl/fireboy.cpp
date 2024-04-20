@@ -53,9 +53,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
             moveBy(10, 0);
 
     }
-
-    boundries();
-
+    //checkCollisions();
 }
 
 void FireBoy::jump(int jumpStep, int height) {

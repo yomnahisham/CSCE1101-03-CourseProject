@@ -72,6 +72,22 @@ bool Players:: hitCeiling ()
     return false;
 }
 
+void Players::checkCollisions ()
+{
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+    for (int i = 0, n = colliding_items.size(); i < n; ++i){
+        Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
+        if (ptr)
+        {
+            ptr -> handleCollisions(this);
+            qDebug() << ptr->objectName();
+        }
+
+    }
+}
+
+
+
 //Players::~Players() {}
 
 

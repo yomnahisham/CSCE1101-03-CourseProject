@@ -45,28 +45,24 @@ void Layout::keyPressEvent(QKeyEvent* event) {
 void Layout::makeLevelONE(){
 
     Obstacles* side = new Obstacles();
-    side-> setObjectName("Side");
     side->createObstacle(Obstacles::Side);
     side -> setPixmap(QPixmap (":/image/img/Level1Side.png").scaled(1000, 800, Qt::KeepAspectRatio));
     side-> setPos(0, 0);
     addItem(side);
 
     Obstacles* slope = new Obstacles();
-    slope-> setObjectName("Slope");
     slope->createObstacle(Obstacles::Slope);
     slope -> setPixmap(QPixmap(":/image/img/levelSlopes.png").scaled (1000,800, Qt::KeepAspectRatio));
     slope -> setPos(0,0);
     addItem(slope);
 
     Obstacles* c = new Obstacles();
-    c-> setObjectName("Ceiling");
     c->createObstacle(Obstacles::Ceiling);
     c -> setPixmap(QPixmap(":/image/img/level1Ceiling.png").scaled (1000,800, Qt::KeepAspectRatio));
     c -> setPos(0,0);
     addItem(c);
 
     Obstacles* Pav = new Obstacles();
-    Pav-> setObjectName("Pavement");
     Pav->createObstacle(Obstacles::Pavement);
     Pav->setPixmap(QPixmap (":/image/img/level1Final.png").scaled(1000, 800, Qt::KeepAspectRatio));
     Pav-> setPos(0, 0);

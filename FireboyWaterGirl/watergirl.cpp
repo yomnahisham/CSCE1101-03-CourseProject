@@ -46,6 +46,7 @@ void WaterGirl::keyPressEvent(QKeyEvent* event) {
         else
             moveBy(10, 0);
     }
+    checkCollisions();
 }
 
 void WaterGirl::jump(int jumpStep, int height) {
