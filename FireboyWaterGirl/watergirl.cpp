@@ -28,16 +28,78 @@ void WaterGirl::keyPressEvent(QKeyEvent* event) {
             jump(0);
         }
     } else if ((event->key() == Qt::Key_A)&& left) {
-        moveBy(-10, 0);
         direction = 2;
+        if (isJumping){
+            isJumping = false;
+            moveBy (-20,0);
+            jump (5, 5);
+        }
+        else
+            moveBy(-10, 0);
     } else if ((event->key() == Qt::Key_D)&& right) {
-        moveBy(10, 0);
         direction = 1;
+        if (isJumping){
+            isJumping = false;
+            moveBy (20,0);
+            jump (5, 5);
+        }
+        else
+            moveBy(10, 0);
     }
 }
 
-void WaterGirl::jump(int jumpStep) {
+void WaterGirl::jump(int jumpStep, int height) {
     if (jumpStep < 5) {
+        switch (direction){
+        case 0:
+            moveBy(0, -height);
+            break;
+        case 1:
+            moveBy(15, -height);
+            break;
+        case 2:
+            moveBy(-15, -height);
+            break ;
+        }
+        ++jumpStep;
+        if (hitPavement())                                                                          //if hit pavement at the top, start falling, skip to secind else if
+        {
+            direction = 0;
+            jumpStep = 5;
+        }
+        if (hitSide())                                                                              //if hit side go back down and skip to last else if
+        {
+            boundries();
+            direction = 0;
+        }
+        QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
+    }
+    else if (!hitPavement())
+    {
+        qDebug()<< "jump turn not hit pav";
+
+        switch (direction){
+        case 0:
+            moveBy(0, height);
+            break;
+        case 1:
+            moveBy(15, height);
+            break;
+        case 2:
+            moveBy(-15, height);
+            break ;
+        }
+        QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
+    }
+    else if (hitPavement())
+    {
+        qDebug()<< "jump turn  HIT";
+
+        isJumping = false; // Reset isJumping flag
+        return;
+    }
+
+    /* if (jumpStep < 5) {
         int dy = -10;
         if (direction == 1)
             moveBy(15, dy);
@@ -62,7 +124,7 @@ void WaterGirl::jump(int jumpStep) {
         QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
     } else {
         isJumping = false;
-    }
+    }*/
 }
 
 void WaterGirl::boundries()

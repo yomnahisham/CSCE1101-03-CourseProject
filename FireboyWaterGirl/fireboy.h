@@ -14,7 +14,7 @@ public:
     void kill() override;
 
 private:
-    void jump(int jumpStep);
+    void jump(int jumpStep, int height = 10);
     int direction;
     bool right, left = true;
     bool isJumping = false;

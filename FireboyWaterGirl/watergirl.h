@@ -11,7 +11,7 @@ public:
     void kill() override;
 
 private:
-    void jump(int jumpStep);
+    void jump(int jumpStep, int height = 10);
     Layout* scene;
     bool isJumping = false;
     int jumpStep;

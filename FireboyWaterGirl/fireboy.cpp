@@ -37,25 +37,39 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
             jump(0);
         }
     } else if ((event->key() == Qt::Key_Left)&&left) {
-        moveBy(-10, 0);
-        direction = 2;
-    } else if ((event->key() == Qt::Key_Right)&&right) {
-        moveBy(10, 0);
         direction = 1;
+        if (isJumping){
+            isJumping = false;
+            moveBy (-20,0);
+            jump (5, 5);
+        }
+        else
+            moveBy(-10, 0);
+
+    } else if ((event->key() == Qt::Key_Right)&&right) {
+        direction = 1;
+        if (isJumping){
+            isJumping = false;
+            moveBy (20,0);
+            jump (5, 5);
+        }
+        else
+            moveBy(10, 0);
+
     }
 }
 
-void FireBoy::jump(int jumpStep) {
+void FireBoy::jump(int jumpStep, int height) {
     if (jumpStep < 5) {
         switch (direction){
         case 0:
-            moveBy(0, -10);
+            moveBy(0, -height);
             break;
         case 1:
-            moveBy(15, -10);
+            moveBy(15, -height);
             break;
         case 2:
-            moveBy(-15, -10);
+            moveBy(-15, -height);
             break ;
         }
         ++jumpStep;
@@ -71,23 +85,27 @@ void FireBoy::jump(int jumpStep) {
         }
         QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
     }
-    else if (y() != originalY)
+    else if (!hitPavement())
     {
+        qDebug()<< "jump turn not hit pav";
+
         switch (direction){
         case 0:
-            moveBy(0, 10);
+            moveBy(0, height);
             break;
         case 1:
-            moveBy(15, 10);
+            moveBy(15, height);
             break;
         case 2:
-            moveBy(-15, 10);
+            moveBy(-15, height);
             break ;
         }
         QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
     }
-    else if (y() == originalY)
+    else if (hitPavement())
     {
+        qDebug()<< "jump turn  HIT";
+
         isJumping = false; // Reset isJumping flag
         return;
     }
