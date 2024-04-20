@@ -60,7 +60,7 @@ void Layout::makeLevelONE(){
     //add fire pit
     Obstacles* fire = new Obstacles();
     fire->createObstacle(Obstacles::Fire);
-    fire-> setPos(448, 715);
+    fire-> setPos(448, 710);
     addItem(fire);
 
     //add water
