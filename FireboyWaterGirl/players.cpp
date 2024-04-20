@@ -6,15 +6,18 @@
 
 
 Players::Players(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {}
-
-bool Players::hitPavement ()
+bool Players::hitPavement()
 {
     QList<QGraphicsItem *> colliding_items = collidingItems();
-    for (int i = 0, n = colliding_items.size(); i < n; ++i){
+    for (int i = 0, n = colliding_items.size(); i < n; ++i) {
         Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
 
-        if ((ptr) && (ptr -> objectName() == "Pavement")) {
-            return true;
+        if (ptr) {
+            if (ptr->objectName() == "Pavement") {
+                return true;
+            } else if (ptr->objectName() == "Fire") {
+                ptr->handleCollisions(this); // call handlecollision in obstacles
+            }
         }
     }
     return false;
@@ -38,11 +41,6 @@ bool Players:: hitSide ()
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
-
-        if((ptr) && (ptr->objectName()=="Fire")){
-            Obstacles::handleCollisions(this);
-        }
-
         if ((ptr) && (ptr -> objectName() == "Side")) {
             return true;
         }

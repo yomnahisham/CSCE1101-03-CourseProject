@@ -59,7 +59,7 @@ void Obstacles::handleCollisions(Players *player)
         WaterGirl* watergirl = dynamic_cast<WaterGirl*>(player);
 
         if (fireboy) {
-            switch (type) {
+            switch (this->type) {
             case ObstacleType::Fire:
                 fireboy->setPos(fireboy->x(), fireboy->y() + 10);
                 break;
@@ -80,7 +80,7 @@ void Obstacles::handleCollisions(Players *player)
                 break;
             case ObstacleType::Water:
                 watergirl->setPos(watergirl->x(), watergirl->y() + 10);
-                // problem is water is seen as a boundary and so is fire
+                // problem is water is seen as a boundary
                 break;
             case ObstacleType::Acid:
                 // Perform actions for Watergirl colliding with acid obstacle
