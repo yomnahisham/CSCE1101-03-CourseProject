@@ -798,11 +798,13 @@ compiler_rcc_clean:
 qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../../../../Qt/6.7.0/macos/libexec/rcc \
 		../FireboyWaterGirl/img/FireBoy.png \
+		../FireboyWaterGirl/img/levelSlopes.png \
 		../FireboyWaterGirl/img/slidingFloor2.png \
 		../FireboyWaterGirl/img/slidingFloor.png \
 		../FireboyWaterGirl/img/lever.png \
 		../FireboyWaterGirl/img/pushButton1.png \
 		../FireboyWaterGirl/img/background.png \
+		../FireboyWaterGirl/img/level1Ceiling.png \
 		../FireboyWaterGirl/img/registerBackground.png \
 		../FireboyWaterGirl/img/LoginWindow.png \
 		../FireboyWaterGirl/img/WaterGirl.png \
@@ -2627,12 +2629,6 @@ players.o: ../FireboyWaterGirl/players.cpp ../FireboyWaterGirl/players.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../FireboyWaterGirl/watergirl.h \
-		../FireboyWaterGirl/layout.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-		../FireboyWaterGirl/Players.h \
-		../FireboyWaterGirl/fireboy.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o players.o ../FireboyWaterGirl/players.cpp

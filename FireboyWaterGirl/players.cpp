@@ -1,7 +1,5 @@
 #include "players.h"
 #include "obstacles.h"
-#include "watergirl.h"
-#include "fireboy.h"
 #include <QTimer>
 
 
@@ -26,7 +24,7 @@ bool Players::hitPavement()
 
 void Players::gravity ()
 {
-    if (!hitPavement())
+    if (!hitPavement()||hitCeiling())
     {
         moveBy (0,2);
         QTimer::singleShot(10, this, [this]() { gravity(); });
@@ -43,6 +41,30 @@ bool Players:: hitSide ()
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
         if ((ptr) && (ptr -> objectName() == "Side")) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Players:: hitSlope ()
+{
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+    for (int i = 0, n = colliding_items.size(); i < n; ++i){
+        Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
+        if ((ptr) && (ptr -> objectName() == "Slope")) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool Players:: hitCeiling ()
+{
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+    for (int i = 0, n = colliding_items.size(); i < n; ++i){
+        Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
+        if ((ptr) && (ptr -> objectName() == "Ceiling")) {
             return true;
         }
     }

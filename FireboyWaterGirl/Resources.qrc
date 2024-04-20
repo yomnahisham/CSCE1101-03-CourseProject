@@ -20,5 +20,7 @@
         <file>img/LoginWindow.png</file>
         <file>img/Level1Side.png</file>
         <file>img/LeverLeft.png</file>
+        <file>img/levelSlopes.png</file>
+        <file>img/level1Ceiling.png</file>
     </qresource>
 </RCC>

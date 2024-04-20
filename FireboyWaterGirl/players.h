@@ -16,6 +16,8 @@ public:
     void gravity ();
     bool hitPavement();
     bool hitSide();
+    bool hitSlope();
+    bool hitCeiling();
 
 };
 

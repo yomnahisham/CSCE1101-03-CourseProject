@@ -62,21 +62,31 @@ void WaterGirl::jump(int jumpStep, int height) {
             break ;
         }
         ++jumpStep;
-        if (hitPavement())                                                                          //if hit pavement at the top, start falling, skip to secind else if
+
+        if (hitCeiling())                                                                          //if hit pavement at the top, start falling, skip to secind else if
         {
+            qDebug()<< "hit ceiling";
             direction = 0;
             jumpStep = 5;
+            /*while(hitPavement())
+            {moveBy(0, height);}
+            qDebug()<< "boy moved";*/
         }
+
         if (hitSide())                                                                              //if hit side go back down and skip to last else if
         {
+            qDebug()<< "hit side";
             boundries();
             direction = 0;
+            jumpStep = 5;
+
         }
+
         QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
     }
-    else if (!hitPavement())
+    else if (!hitPavement()||hitCeiling())
     {
-        qDebug()<< "jump turn not hit pav";
+        qDebug()<< "going down";
 
         switch (direction){
         case 0:
@@ -91,10 +101,10 @@ void WaterGirl::jump(int jumpStep, int height) {
         }
         QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
     }
-    else if (hitPavement())
+    else if (hitPavement()&& !hitCeiling()&&!hitSide())
     {
-        qDebug()<< "jump turn  HIT";
-
+        qDebug()<< "jump done";
+        setPos(x(), y());
         isJumping = false; // Reset isJumping flag
         return;
     }
