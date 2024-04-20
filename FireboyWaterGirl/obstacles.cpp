@@ -61,9 +61,10 @@ void Obstacles::handleCollisions(Players *player)
         if (fireboy) {
             switch (type) {
             case ObstacleType::Fire:
-                // Perform actions for Fireboy colliding with fire obstacle
+                fireboy->setPos(fireboy->x(), fireboy->y() + 10);
                 break;
             case ObstacleType::Water:
+                fireboy->setPos(fireboy->x(), fireboy->y() + 10);
                 fireboy->kill();
                 break;
             case ObstacleType::Acid:
@@ -74,10 +75,12 @@ void Obstacles::handleCollisions(Players *player)
         } else if (watergirl) {
             switch (type) {
             case ObstacleType::Fire:
-                // Perform actions for Watergirl colliding with fire obstacle
+                watergirl->setPos(watergirl->x(), watergirl->y() + 10);
+                watergirl->kill();
                 break;
             case ObstacleType::Water:
-                // Perform actions for Watergirl colliding with water obstacle
+                watergirl->setPos(watergirl->x(), watergirl->y() + 10);
+                // problem is water is seen as a boundary and so is fire
                 break;
             case ObstacleType::Acid:
                 // Perform actions for Watergirl colliding with acid obstacle

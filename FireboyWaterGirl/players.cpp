@@ -39,6 +39,10 @@ bool Players:: hitSide ()
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
 
+        if((ptr) && (ptr->objectName()=="Fire")){
+            Obstacles::handleCollisions(this);
+        }
+
         if ((ptr) && (ptr -> objectName() == "Side")) {
             return true;
         }

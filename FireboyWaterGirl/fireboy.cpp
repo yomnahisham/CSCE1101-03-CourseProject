@@ -118,5 +118,4 @@ void FireBoy::kill(){
     delete this;
     WindowManager Manager;
     Manager.showWindow(WindowManager::over);
-    hide();
 }
