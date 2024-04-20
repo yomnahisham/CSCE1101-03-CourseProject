@@ -1,4 +1,5 @@
 #include "watergirl.h"
+#include "windowmanager.h"
 #include <QGraphicsScene>
 #include<QGraphicsRectItem>
 #include <QBrush>
@@ -13,25 +14,16 @@ void WaterGirl::keyPressEvent(QKeyEvent* event) {
     left = true;
     gravity();
     boundries();
-    if (event->key() == Qt::Key_Q) {
+    if (event->key() == Qt::Key_Q || event->key() == Qt::Key_E || event->key() == Qt::Key_W) {
         if (!isJumping) {
             isJumping = true;
             originalY = y();
-            direction = 2;
-            jump(0);
-        }
-    } else if (event->key() == Qt::Key_E) {
-            if (!isJumping) {
-                isJumping = true;
-                originalY = y();
+            if (event->key() == Qt::Key_Q)
+                direction = 2;
+            else if (event->key() == Qt::Key_E)
                 direction = 1;
-                jump(0);
-            }
-    }else if (event->key() == Qt::Key_W) {
-        if (!isJumping) {
-            isJumping = true;
-            originalY = y();
-            direction = 0;
+            else if (event->key() == Qt::Key_W)
+                direction = 0;
             jump(0);
         }
     } else if ((event->key() == Qt::Key_A)&& left) {
@@ -45,57 +37,38 @@ void WaterGirl::keyPressEvent(QKeyEvent* event) {
 
 void WaterGirl::jump(int jumpStep) {
     if (jumpStep < 5) {
-        switch (direction){
-        case 0:
-            moveBy(0, -10);
-            break;
-        case 1:
-            moveBy(15, -10);
-            break;
-        case 2:
-            moveBy(-15, -10);
-            break ;
-        }
+        int dy = -10;
+        if (direction == 1)
+            moveBy(15, dy);
+        else if (direction == 2)
+            moveBy(-15, dy);
         ++jumpStep;
-        if (hitPavement())                                                                          //if hit pavement at the top, start falling, skip to secind else if
-        {
+        if (hitPavement()) {
             direction = 0;
             jumpStep = 5;
         }
-        if (hitSide())                                                                              //if hit side go back down and skip to last else if
-        {
+        if (hitSide()) {
             boundries();
             direction = 0;
         }
         QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
-    }
-    else if (y() != originalY)
-    {
-        switch (direction){
-        case 0:
-            moveBy(0, 10);
-            break;
-        case 1:
-            moveBy(15, 10);
-            break;
-        case 2:
-            moveBy(-15, 10);
-            break ;
-        }
+    } else if (y() != originalY) {
+        int dy = 10;
+        if (direction == 1)
+            moveBy(15, dy);
+        else if (direction == 2)
+            moveBy(-15, dy);
         QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
-    }
-    else if (y() == originalY)
-    {
-        isJumping = false; // Reset isJumping flag
-        return;
+    } else {
+        isJumping = false;
     }
 }
 
 void WaterGirl::boundries()
 {
-    if (hitSide())
+    if(hitSide())
     {
-        if (direction ==1)
+        if(direction == 1)
         {
             right = false;
         }
@@ -108,11 +81,13 @@ void WaterGirl::boundries()
     else
     {
         right = true;
-        left = false;
-        return;
+        left = true;
     }
 }
 
 void WaterGirl::kill(){
-
+    delete this;
+    WindowManager Manager;
+    Manager.showWindow(WindowManager::over);
+    hide();
 }

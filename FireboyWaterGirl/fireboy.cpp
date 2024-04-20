@@ -1,4 +1,5 @@
 #include "fireboy.h"
+#include "windowmanager.h"
 #include <QBrush>
 #include <QTimer>
 
@@ -116,5 +117,7 @@ void FireBoy::boundries()
 
 void FireBoy::kill(){
     delete this;
-
+    WindowManager Manager;
+    Manager.showWindow(WindowManager::over);
+    hide();
 }

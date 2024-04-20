@@ -13,7 +13,7 @@ public:
     explicit WindowManager(QObject *parent = nullptr);
     void startLogin();
 
-    enum WindowType{login, reg, lev, main};
+    enum WindowType{login, reg, lev, main, over};
     void showWindow(WindowType type);
     void transferLevel (int n);
 private:
@@ -24,6 +24,7 @@ private:
     bool registerON;
     bool levelON;
     bool mainON;
+    bool overON;
 
     QGraphicsView* view;
     RegisterWindow* registerWindow;
