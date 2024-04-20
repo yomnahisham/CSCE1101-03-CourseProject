@@ -15,6 +15,7 @@ public:
 
     enum WindowType{login, reg, lev, main, over};
     void showWindow(WindowType type);
+    void endWindow(WindowType type);
     void transferLevel (int n);
 private:
     WindowType type;

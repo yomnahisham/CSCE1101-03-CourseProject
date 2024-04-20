@@ -90,8 +90,20 @@ void WindowManager::showWindow(WindowType type) {
         view->show();
     } else if(overON){
         GameOver* gameover = new GameOver();
-        gameover->resize(500, 300);
+        gameover->resize(1000, 500);
         gameover -> show();
+    }
+}
+
+void WindowManager::endWindow(WindowType type){
+    switch (type){
+    case lev:
+        levelON = false;
+        registerON = false;
+        loginON = false;
+        mainON = false;
+        overON = false;
+        break;
     }
 }
 
