@@ -14,7 +14,9 @@ public:
     void createObstacle(ObstacleType type);
     void handleCollisions(Players *player);
 private:
+    ObstacleType getType()const;
     ObstacleType type;
+
 };
 
 #endif // OBSTACLES_H

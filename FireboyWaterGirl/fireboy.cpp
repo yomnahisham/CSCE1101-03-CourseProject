@@ -53,7 +53,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
             moveBy(10, 0);
 
     }
-    //checkCollisions();
+    checkCollisions();
 }
 
 void FireBoy::jump(int jumpStep, int height) {
@@ -113,7 +113,7 @@ void FireBoy::jump(int jumpStep, int height) {
         }
         QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
     }
-    else if (hitPavement()&&hitSlope()&& !hitCeiling()&&!hitSide())
+    else if (hitPavement() && hitSlope()&& !hitCeiling()&&!hitSide())
     {
         qDebug()<< "jump done";
         setPos(x(), y());
