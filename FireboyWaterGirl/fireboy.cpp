@@ -6,74 +6,9 @@
 
 FireBoy::FireBoy(QGraphicsItem* parent) : Players(parent) {
     setPixmap(QPixmap(":/image/img/FireBoy.png").scaled(50,70, Qt::KeepAspectRatio)); // fix scaling
-
-    // set initial values of position, velocity, and acceleration
-    Pos[0] = 50;
-    Pos[1] = 658;
-
-    Velocity[0] = 0;
-    Velocity[1] = 0;
-
-    Acceleration = 0;
-
-    // set bool values for keypress
-    keyUpPressed = false;
-    keyLeftPressed = false;
-    keyRightPressed = false;
-
 }
 
 void FireBoy::keyPressEvent(QKeyEvent* event) {
-    // update bool values according to event
-    switch(event->key()) {
-    case Qt::Key_Up:
-        keyUpPressed = true;
-        break;
-    case Qt::Key_Left:
-        keyLeftPressed = true;
-        break;
-    case Qt::Key_Right:
-        keyRightPressed = true;
-        break;
-    default:
-        break;
-    }
-
-    int update[2] = {0, 0};
-    if(keyUpPressed){
-        update[1]++;
-    }
-    if(keyRightPressed){
-        update[0]++;
-    }
-    if(keyLeftPressed){
-        update[0]--;
-    }
-
-    // update velocity in x according to update[0]
-    if(update[0]<0){
-        Velocity[0]-=0.1;
-        // set minimum velocity
-        if(Velocity[0]<-1.5){
-            Velocity[0] = -1.5;
-        }
-    } else if (update[0]>0){
-        Velocity[0]+=0.1;
-        // set maximum velocity
-        if(Velocity[0]<1.5){
-            Velocity[0] = 1.5;
-        }
-    } else Velocity[0]=0;
-
-    // update velocity in y according to update[1]
-    if(update[1]>0){
-        if(Velocity[1]==0){
-            Velocity[1]=2.5;
-        }
-        // need to check max and min of each part of the layout
-        if(Velocity[1]==0){}
-
-
     originalY = y();
     right= true;
     left = true;
@@ -118,10 +53,8 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
             moveBy(10, 0);
 
     }
-
-    checkCollisions();
+    //checkCollisions();
 }
-
 
 void FireBoy::jump(int jumpStep, int height) {
     if (jumpStep < 5) {
@@ -180,7 +113,7 @@ void FireBoy::jump(int jumpStep, int height) {
         }
         QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
     }
-    else if (hitPavement() && hitSlope()&& !hitCeiling()&&!hitSide())
+    else if (hitPavement()&&hitSlope()&& !hitCeiling()&&!hitSide())
     {
         qDebug()<< "jump done";
         setPos(x(), y());
