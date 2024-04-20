@@ -33,6 +33,7 @@ void Players::gravity ()
     {
         return;
     }
+
 }
 
 bool Players:: hitSide ()

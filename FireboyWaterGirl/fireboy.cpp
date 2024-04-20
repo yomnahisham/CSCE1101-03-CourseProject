@@ -38,8 +38,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
         direction = 2;
         if (isJumping){
             isJumping = false;
-            moveBy (-20,0);
-            jump (5, 5);
+            jump (0, 10);
         }
         else
             moveBy(-10, 0);
@@ -48,13 +47,15 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
         direction = 1;
         if (isJumping){
             isJumping = false;
-            moveBy (20,0);
-            jump (5, 5);
+            jump (0, 10);
         }
         else
             moveBy(10, 0);
 
     }
+
+    boundries();
+
 }
 
 void FireBoy::jump(int jumpStep, int height) {
@@ -64,10 +65,10 @@ void FireBoy::jump(int jumpStep, int height) {
             moveBy(0, -height);
             break;
         case 1:
-            moveBy(15, -height);
+            moveBy(16, -height);
             break;
         case 2:
-            moveBy(-15, -height);
+            moveBy(-16, -height);
             break ;
         }
         ++jumpStep;
@@ -77,9 +78,6 @@ void FireBoy::jump(int jumpStep, int height) {
             qDebug()<< "hit ceiling";
             direction = 0;
             jumpStep = 5;
-            /*while(hitPavement())
-            {moveBy(0, height);}
-            qDebug()<< "boy moved";*/
         }
 
         if (hitSide())                                                                              //if hit side go back down and skip to last else if
@@ -87,6 +85,15 @@ void FireBoy::jump(int jumpStep, int height) {
             qDebug()<< "hit side";
             boundries();
             direction = 0;
+        }
+
+        if (hitSlope())
+        {
+            qDebug()<< "hit slope";
+            boundries();
+            setPos(x(), y());
+            isJumping = false; // Reset isJumping flag
+            return;
         }
 
         QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
@@ -100,15 +107,15 @@ void FireBoy::jump(int jumpStep, int height) {
             moveBy(0, height);
             break;
         case 1:
-            moveBy(15, height);
+            moveBy(16, height);
             break;
         case 2:
-            moveBy(-15, height);
+            moveBy(-16, height);
             break ;
         }
         QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
     }
-    else if (hitPavement()&& !hitCeiling()&&!hitSide())
+    else if (hitPavement()&&hitSlope()&& !hitCeiling()&&!hitSide())
     {
         qDebug()<< "jump done";
         setPos(x(), y());
@@ -119,7 +126,7 @@ void FireBoy::jump(int jumpStep, int height) {
 
 void FireBoy::boundries()
 {
-    if ((hitSlope()&&!isJumping) || (hitSlope() && y() > originalY))
+    if ((hitSlope()&&!isJumping) || (hitSlope() && y() >= originalY))
     {
         if (direction == 1)
         {

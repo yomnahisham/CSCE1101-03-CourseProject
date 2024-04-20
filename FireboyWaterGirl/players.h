@@ -12,12 +12,14 @@ public:
     Players(QGraphicsItem* parent = nullptr);
     virtual void keyPressEvent(QKeyEvent* event) = 0;
     virtual void kill() = 0;
+protected:
     virtual void boundries() = 0;
     void gravity ();
     bool hitPavement();
     bool hitSide();
     bool hitSlope();
     bool hitCeiling();
+    int originalY;
 
 };
 

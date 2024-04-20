@@ -63,7 +63,7 @@ void WaterGirl::jump(int jumpStep, int height) {
         }
         ++jumpStep;
 
-        if (hitCeiling())                                                                          //if hit pavement at the top, start falling, skip to secind else if
+        if (hitCeiling())                                                                          //if hit pavement at the top, start falling, skip to second else if
         {
             qDebug()<< "hit ceiling";
             direction = 0;
@@ -73,12 +73,17 @@ void WaterGirl::jump(int jumpStep, int height) {
             qDebug()<< "boy moved";*/
         }
 
-        if (hitSide())                                                                              //if hit side go back down and skip to last else if
+        if (hitSide())                                                                              //if hit side go back down and skip to second else if
         {
             qDebug()<< "hit side";
             boundries();
             direction = 0;
             jumpStep = 5;
+
+        }
+
+        if (hitSlope())
+        {
 
         }
 
@@ -109,45 +114,38 @@ void WaterGirl::jump(int jumpStep, int height) {
         return;
     }
 
-    /* if (jumpStep < 5) {
-        int dy = -10;
-        if (direction == 1)
-            moveBy(15, dy);
-        else if (direction == 2)
-            moveBy(-15, dy);
-        ++jumpStep;
-        if (hitPavement()) {
-            direction = 0;
-            jumpStep = 5;
-        }
-        if (hitSide()) {
-            boundries();
-            direction = 0;
-        }
-        QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
-    } else if (y() != originalY) {
-        int dy = 10;
-        if (direction == 1)
-            moveBy(15, dy);
-        else if (direction == 2)
-            moveBy(-15, dy);
-        QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
-    } else {
-        isJumping = false;
-    }*/
 }
 
 void WaterGirl::boundries()
 {
-    if(hitSide())
+    if ((hitSlope()&&!isJumping) || (hitSlope() && y() > originalY))
     {
-        if(direction == 1)
+        if (y() > originalY)
         {
-            right = false;
+            if (direction == 1 &&!isJumping)
+                right = false;
+            else if (direction == 2 &&!isJumping)
+                left = false;
+
+
         }
-        else if(direction == 2)
+        else if (direction == 2)
         {
             left = false;
+        }
+        QTimer::singleShot(20, this, [this]() { boundries(); });
+
+    }else if(hitSide())
+    {
+        if (direction == 1)
+        {
+            right = false;
+            moveBy(-10,0);
+        }
+        else if (direction == 2)
+        {
+            left = false;
+            moveBy(10,0);
         }
         QTimer::singleShot(20, this, [this]() { boundries(); });
     }

@@ -19,9 +19,6 @@ private:
     bool right, left = true;
     bool isJumping = false;
     int jumpStep;
-    int originalY;
-    bool solvedHit;
-
 };
 
 #endif // FIREBOY_H

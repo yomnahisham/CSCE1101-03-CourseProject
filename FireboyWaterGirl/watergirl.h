@@ -12,10 +12,8 @@ public:
 
 private:
     void jump(int jumpStep, int height = 10);
-    Layout* scene;
     bool isJumping = false;
     int jumpStep;
-    int originalY;
     int direction;
     bool right, left = true;
 };

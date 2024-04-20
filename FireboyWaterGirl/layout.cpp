@@ -23,7 +23,7 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     }
 
     FireBoy* firePlayer = new FireBoy();
-    firePlayer->setPos(50, 653);
+    firePlayer->setPos(50, 658);
     addItem(firePlayer);
 
     WaterGirl* waterPlayer = new WaterGirl();
