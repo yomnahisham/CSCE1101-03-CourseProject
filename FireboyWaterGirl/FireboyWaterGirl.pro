@@ -14,6 +14,7 @@ SOURCES += \
     abilities.cpp \
     allusers.cpp \
     fireboy.cpp \
+    gameover.cpp \
     layout.cpp \
     level.cpp \
     loginwindow.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     abilities.h \
     allusers.h \
     fireboy.h \
+    gameover.h \
     layout.h \
     level.h \
     loginwindow.h \
@@ -52,6 +54,7 @@ RESOURCES += \
     Resources.qrc
 
 FORMS += \
+    gameover.ui \
     level.ui \
     loginwindow.ui \
     registerwindow.ui
