@@ -90,7 +90,7 @@ void WindowManager::showWindow(WindowType type) {
         view->show();
     } else if(overON){
         GameOver* gameover = new GameOver();
-        gameover->resize(1000, 500);
+        gameover->resize(500, 500);
         gameover -> show();
     }
 }

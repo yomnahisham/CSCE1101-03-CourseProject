@@ -4,6 +4,9 @@
 #include "fireboy.h"
 #include "watergirl.h"
 #include <QGraphicsPixmapItem>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+
 
 
 
@@ -134,4 +137,10 @@ void Layout::makeLevelONE(){
     FD -> setPos(789,80);
     addItem (FD);
 }
+
+void Layout::closeGame(QGraphicsScene* scene){
+    QList<QGraphicsView *> views = scene->views();
+    for (QGraphicsView *view : views) {
+        view->close();
+    }}
 

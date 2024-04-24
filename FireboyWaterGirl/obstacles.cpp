@@ -75,6 +75,8 @@ void Obstacles::handleCollisions(Players *player)
     // check if the obstacle collides with the player
     if (this->collidesWithItem(player)) {
 
+        QGraphicsScene* Lay = player -> scene();
+
         // check if the player is a Fireboy or Watergirl
         FireBoy* fireboy = dynamic_cast<FireBoy*>(player);
         WaterGirl* watergirl = dynamic_cast<WaterGirl*>(player);
@@ -82,10 +84,10 @@ void Obstacles::handleCollisions(Players *player)
         if (fireboy) {
 
             if (objectName() == "Fire"){
-                qDebug()<<"touched Fire";
             }else if (objectName() == "Water"){
-                qDebug()<<"FireBoy touched Water";
                 fireboy->kill();
+                Layout::closeGame(Lay);
+                //Lay -> clear();
             }else if (objectName() == "Acid"){
                 // Perform actions for Watergirl colliding with acid obstacle
             }
@@ -100,48 +102,6 @@ void Obstacles::handleCollisions(Players *player)
             }else if (objectName() == "Acid"){
                 // Perform actions for Watergirl colliding with acid obstacle
             }
-            /*switch (getType()) {
-            case ObstacleType::Fire:
-                watergirl->setPos(watergirl->x(), watergirl->y() + 10);
-                watergirl->kill();
-                break;
-            case ObstacleType::Water:
-                watergirl->setPos(watergirl->x(), watergirl->y() + 10);
-                // problem is water is seen as a boundary
-                break;
-            case ObstacleType::Acid:
-                // Perform actions for Watergirl colliding with acid obstacle
-                break;
-            case ObstacleType::Button1:
-                // Perform actions for Fireboy colliding with acid obstacle
-                break;
-            case ObstacleType::Button2:
-                // Perform actions for Fireboy colliding with acid obstacle
-                break;
-            case ObstacleType::LeverLeft:
-                // Perform actions for Fireboy colliding with acid obstacle
-                break;
-            case ObstacleType::LeverRight:
-                // Perform actions for Fireboy colliding with acid obstacle
-                break;
-            case ObstacleType::WaterDoor:
-                // Perform actions for Fireboy colliding with acid obstacle
-                break;
-            case ObstacleType::FireDoor:
-                // Perform actions for Fireboy colliding with acid obstacle
-                break;
-            case ObstacleType::Block:
-                // Perform actions for Fireboy colliding with acid obstacle
-                break;
-            case ObstacleType::Pavement:
-                break;
-            case ObstacleType::Side:
-                break;
-            case ObstacleType::Ceiling:
-                break;
-            case ObstacleType::Slope:
-                break;
-            }*/
         }
     }
 }

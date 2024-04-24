@@ -8,6 +8,7 @@ class Layout : public QGraphicsScene {
 public:
     Layout(QObject* parent = nullptr, int lev = 0);
     void makeLevelONE();
+    static void closeGame(QGraphicsScene* scene);
    // QGraphicsPixmapItem* Pav;
    // QGraphicsPixmapItem* side;
 protected:

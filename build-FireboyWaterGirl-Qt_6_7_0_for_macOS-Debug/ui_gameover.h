@@ -30,22 +30,22 @@ public:
     {
         if (GameOver->objectName().isEmpty())
             GameOver->setObjectName("GameOver");
-        GameOver->resize(813, 588);
+        GameOver->resize(916, 644);
         retryButton = new QPushButton(GameOver);
         retryButton->setObjectName("retryButton");
-        retryButton->setGeometry(QRect(289, 270, 201, 32));
+        retryButton->setGeometry(QRect(149, 220, 201, 32));
         leaderboardButton = new QPushButton(GameOver);
         leaderboardButton->setObjectName("leaderboardButton");
-        leaderboardButton->setGeometry(QRect(290, 310, 201, 32));
+        leaderboardButton->setGeometry(QRect(150, 260, 201, 32));
         exitButton = new QPushButton(GameOver);
         exitButton->setObjectName("exitButton");
-        exitButton->setGeometry(QRect(290, 410, 201, 32));
+        exitButton->setGeometry(QRect(150, 360, 201, 32));
         checkLevelsButton = new QPushButton(GameOver);
         checkLevelsButton->setObjectName("checkLevelsButton");
-        checkLevelsButton->setGeometry(QRect(290, 350, 201, 32));
+        checkLevelsButton->setGeometry(QRect(150, 300, 201, 32));
         gameOver = new QLabel(GameOver);
         gameOver->setObjectName("gameOver");
-        gameOver->setGeometry(QRect(350, 190, 211, 61));
+        gameOver->setGeometry(QRect(210, 140, 211, 61));
 
         retranslateUi(GameOver);
 

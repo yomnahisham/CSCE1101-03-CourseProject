@@ -80,7 +80,6 @@ void Players::checkCollisions ()
         if (ptr)
         {
             ptr -> handleCollisions(this);
-            qDebug() << ptr->objectName();
         }
 
     }
