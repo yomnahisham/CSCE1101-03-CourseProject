@@ -7,9 +7,6 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
-
-
-
 Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     //putting brick background
     QGraphicsPixmapItem* brick = new QGraphicsPixmapItem();
