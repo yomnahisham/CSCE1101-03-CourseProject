@@ -33,3 +33,8 @@ void GameOver::on_exitButton_clicked()
     qApp->quit();
 }
 
+void GameOver::on_leaderboardButton_clicked()
+{
+
+}
+
