@@ -8,8 +8,7 @@
 #include <QPalette>
 #include <QString>
 
-LoginWindow::LoginWindow(QWidget *parent) : QDialog(parent), ui(new Ui::LoginWindow)
-{
+LoginWindow::LoginWindow(QWidget *parent) : QDialog(parent), ui(new Ui::LoginWindow){
     ui->setupUi(this);
 
     qDebug()<<QSqlDatabase::drivers();
@@ -32,32 +31,26 @@ LoginWindow::LoginWindow(QWidget *parent) : QDialog(parent), ui(new Ui::LoginWin
 
 }
 
-LoginWindow::~LoginWindow()
-{
+LoginWindow::~LoginWindow(){
     delete ui;
 }
 
-void LoginWindow::on_loginPush_clicked() // finished just test it out with user from database
-{
+void LoginWindow::on_loginPush_clicked(){
     QString username = ui->username_line->text();
     QString password = ui->pass_line->text();
-    bool userExists = AllUsers::authenticateUser (username, password);
-    if (userExists)
-    {
+    bool userTrue = AllUsers::authenticateUser(username, password);
+    if (userTrue){
         WindowManager window;
         window.showWindow(WindowManager::lev);
         hide();
-    }else
-    {
+    }else{
         ui->usernameError->setVisible(true);
         ui->passError->setVisible(true);
-
     }
 }
 
 
-void LoginWindow::on_registerPush_clicked()
-{
+void LoginWindow::on_registerPush_clicked(){
     WindowManager Manager;
     Manager.showWindow(WindowManager::reg);
     hide();

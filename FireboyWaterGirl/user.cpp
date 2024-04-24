@@ -7,14 +7,7 @@ User::User(const QString& username, const QString& password) : username(username
 }
 
 void User::updateScore(int nScore) {
-    QSqlQuery query;
-    query.prepare("UPDATE users SET score = :score WHERE username = :username");
-    query.bindValue(":score", nScore);
-    query.bindValue(":username", username);
-
-    if (!query.exec()) {
-        qDebug() << "Error: Unable to update score";
-    }
+    AllUsers::updateScoreInDropbox(username, nScore);
 }
 
 void User::newUser(const QString& username, const QString& password){

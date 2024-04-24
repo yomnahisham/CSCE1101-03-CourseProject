@@ -48,8 +48,6 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-QMAKE_LFLAGS_PLUGIN += -L/Users/yomnahisham/Qt/6.5.3/macos/plugins/sqldrivers
-
 RESOURCES += \
     Resources.qrc
 
