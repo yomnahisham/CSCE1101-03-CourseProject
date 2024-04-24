@@ -1,6 +1,9 @@
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
+FireboyWaterGirl/dropbox_token.txt
+FireboyWaterGirl/dropbox_refresh_token.txt
+
 *~
 *.autosave
 *.a
