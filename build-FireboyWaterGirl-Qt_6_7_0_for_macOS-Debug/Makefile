@@ -816,6 +816,7 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/water.png \
 		../FireboyWaterGirl/img/acid.png \
 		../FireboyWaterGirl/img/tinyacid.png \
+		../FireboyWaterGirl/img/fireleaping.png \
 		../FireboyWaterGirl/img/pushButton2.png \
 		../FireboyWaterGirl/img/level1Final.png \
 		../FireboyWaterGirl/img/gems.png \

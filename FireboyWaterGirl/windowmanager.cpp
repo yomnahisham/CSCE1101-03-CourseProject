@@ -37,9 +37,11 @@ void WindowManager::gameDemo(){
     infoLabel.setText("This is a demo version of Fire Boy & Water Girl, offering a fully functional level 1. \n"
                       "The full version offers additional features and levels. All of which will be available soon! \n\n"
                       "         Controls for Water Girl: \n"
-                      "             Press A, W, D, E, Q to move. \n\n"
+                      "             Press A for left, W for jump, D for right, \n "
+                      "             E and Q to leap above puddles. \n\n"
                       "         Controls for Fire Boy: \n"
-                      "             Press Left, Up, Right, /, Shift to move. \n\n"
+                      "             Press Left Arrow for left, Up Arrow for jump, Right Arrow for right,  \n"
+                      "             / and Shift to leap above puddles. \n\n"
                       "Enjoy playing the demo!");
     infoLabel.setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
     layout.addWidget(&infoLabel);

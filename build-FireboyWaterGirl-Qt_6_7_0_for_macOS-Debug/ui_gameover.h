@@ -21,7 +21,6 @@ class Ui_GameOver
 {
 public:
     QPushButton *retryButton;
-    QPushButton *leaderboardButton;
     QPushButton *exitButton;
     QPushButton *checkLevelsButton;
     QLabel *gameOver;
@@ -34,15 +33,12 @@ public:
         retryButton = new QPushButton(GameOver);
         retryButton->setObjectName("retryButton");
         retryButton->setGeometry(QRect(149, 220, 201, 32));
-        leaderboardButton = new QPushButton(GameOver);
-        leaderboardButton->setObjectName("leaderboardButton");
-        leaderboardButton->setGeometry(QRect(150, 260, 201, 32));
         exitButton = new QPushButton(GameOver);
         exitButton->setObjectName("exitButton");
-        exitButton->setGeometry(QRect(150, 360, 201, 32));
+        exitButton->setGeometry(QRect(150, 320, 201, 32));
         checkLevelsButton = new QPushButton(GameOver);
         checkLevelsButton->setObjectName("checkLevelsButton");
-        checkLevelsButton->setGeometry(QRect(150, 300, 201, 32));
+        checkLevelsButton->setGeometry(QRect(150, 260, 201, 32));
         gameOver = new QLabel(GameOver);
         gameOver->setObjectName("gameOver");
         gameOver->setGeometry(QRect(210, 140, 211, 61));
@@ -56,7 +52,6 @@ public:
     {
         GameOver->setWindowTitle(QCoreApplication::translate("GameOver", "Dialog", nullptr));
         retryButton->setText(QCoreApplication::translate("GameOver", "Retry", nullptr));
-        leaderboardButton->setText(QCoreApplication::translate("GameOver", "View Leader Board", nullptr));
         exitButton->setText(QCoreApplication::translate("GameOver", "Exit", nullptr));
         checkLevelsButton->setText(QCoreApplication::translate("GameOver", "Check Levels", nullptr));
         gameOver->setText(QCoreApplication::translate("GameOver", "Game Over!", nullptr));
