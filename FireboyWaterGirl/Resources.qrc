@@ -22,6 +22,7 @@
         <file>img/LeverLeft.png</file>
         <file>img/levelSlopes.png</file>
         <file>img/level1Ceiling.png</file>
+        <file>img/tinyacid.png</file>
         <file>img/level1Pav.png</file>
         <file>img/fireleaping.png</file>
     </qresource>

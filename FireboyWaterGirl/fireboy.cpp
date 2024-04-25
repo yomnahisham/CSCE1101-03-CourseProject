@@ -53,6 +53,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
 
     }
     checkCollisions();
+
 }
 
 void FireBoy::Leap(int Step, int height) {
@@ -121,10 +122,10 @@ void FireBoy::jump(int jumpStep, int height) {
             moveBy(0, -height);
             break;
         case 1:
-            moveBy(5, -height);
+            moveBy(7, -height);
             break;
         case 2:
-            moveBy(-5, -height);
+            moveBy(-7, -height);
             break ;
 
         }
@@ -174,10 +175,22 @@ void FireBoy::boundries()
     right = true;
     left = true;
 
-
+    if(hitSide())
+    {
+        if (direction == 1)
+        {
+            right = false;
+            moveBy(-20,0);
+        }
+        else if (direction == 2)
+        {
+            left = false;
+            moveBy(20,0);
+        }
+    }
 
     if ((hitSlope()&&!isJumping) || (hitSlope() &&!isJumping && y() > originalY))
-    {
+    { 
 
         if (direction == 1)
         {
@@ -193,24 +206,13 @@ void FireBoy::boundries()
 
     if (hitSlope() && y() < originalY) // check if it enters if
     {
+        setPos(x(), y());
         qDebug()<< "going down slope";
         right = true;
         left = true;
     }
 
-    if(hitSide())
-    {
-        if (direction == 1)
-        {
-            right = false;
-            moveBy(-10,0);
-        }
-        else if (direction == 2)
-        {
-            left = false;
-            moveBy(10,0);
-        }
-    }
+    return;
 }
 
 void FireBoy::kill(){

@@ -92,26 +92,31 @@ void Layout::makeLevelONE(){
     addItem(acid);
     obList.append(acid);
 
-    //add fire pit
-    Obstacles* f = new Obstacles();
-    f->createObstacle(Obstacles::Fire);
-    f-> setPos(170,505);
-    addItem(f);
-    obList.append(f);
+    Obstacles* tacid = new Obstacles();
+    tacid->createObstacle(Obstacles::tinyAcid);
+    tacid-> setPos(210,528);
+    addItem(tacid);
+    obList.append(tacid);
 
     //add jumping block above sliding floor 1
     Obstacles* jblock = new Obstacles();
     jblock -> createObstacle(Obstacles::Block);
-    jblock -> setPos(20,490);
+    jblock -> setPos(23,475);
     addItem (jblock);
     obList.append(jblock);
 
     //add Block
     Obstacles* block = new Obstacles();
     block -> createObstacle(Obstacles::Block);
-    block -> setPos(570,200);
+    block -> setPos(156,245);
     addItem (block);
     obList.append(block);
+
+    Obstacles* ablock = new Obstacles();
+    ablock -> createObstacle(Obstacles::Block);
+    ablock -> setPos(920,372);
+    addItem (ablock);
+    obList.append(ablock);
 
     //add WaterDoor
     Obstacles* WD = new Obstacles();
