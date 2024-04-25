@@ -35,6 +35,10 @@ void Obstacles::createObstacle(ObstacleType type){
         setObjectName("Acid");
         setPixmap(QPixmap(":/image/img/acid.png").scaled(170, 40));
         break;
+    case ObstacleType::tinyAcid:
+        setObjectName("Acid");
+        setPixmap(QPixmap(":/image/img/tinyacid.png").scaled(70, 45, Qt::KeepAspectRatio));
+        break;
     case ObstacleType::LeverRight:
         setObjectName("LeverRight");
         setPixmap(QPixmap(":/image/img/lever.png").scaled(70, 57, Qt::KeepAspectRatio));
@@ -69,7 +73,7 @@ void Obstacles::createObstacle(ObstacleType type){
         break;
     case ObstacleType::Block:
         setObjectName("Block");
-        setPixmap(QPixmap(":/image/img/block.png").scaled (50,50,Qt::KeepAspectRatio));
+        setPixmap(QPixmap(":/image/img/block.png").scaled (60,60,Qt::KeepAspectRatio));
         break;
     }
 }
@@ -83,7 +87,6 @@ void Obstacles::lowerFloor(){ //animate it more
     }
     return;
 }
-
 void Obstacles::elevateFloor(Players* player){ //animate it more
 
     while (y() > 404 )

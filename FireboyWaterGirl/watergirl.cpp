@@ -18,13 +18,13 @@ void WaterGirl::keyPressEvent(QKeyEvent* event) {
         if (!isJumping) {
             isJumping = true;
             direction = 1;
-            Leap(0,9);
+            Leap(0,10);
         }
     } else if (event->key() == Qt::Key_Q && left) {
         if (!isJumping) {
             isJumping = true;
             direction = 2;
-            Leap(0,9);
+            Leap(0,10);
         }
     }else if (event->key() == Qt::Key_W)  {
         if (!isJumping) {
@@ -79,7 +79,7 @@ void WaterGirl::Leap(int Step, int height) {
         }
         if (hitSide())
         {
-            gravity();
+            gravity ();
             boundries() ;           //make him fall
             if (hitSide())
             {
@@ -174,6 +174,20 @@ void WaterGirl::boundries()
     right = true;
     left = true;
 
+    if(hitSide())
+    {
+        if (direction == 1)
+        {
+            right = false;
+            moveBy(-10,0);
+        }
+        else if (direction == 2)
+        {
+            left = false;
+            moveBy(10,0);
+        }
+    }
+
     if ((hitSlope()&&!isJumping) || (hitSlope() &&!isJumping && y() > originalY))
     {
 
@@ -196,19 +210,7 @@ void WaterGirl::boundries()
         left = true;
     }
 
-    if(hitSide())
-    {
-        if (direction == 1)
-        {
-            right = false;
-            moveBy(-10,0);
-        }
-        else if (direction == 2)
-        {
-            left = false;
-            moveBy(10,0);
-        }
-    }
+
 }
 
 void WaterGirl::kill(){

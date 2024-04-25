@@ -10,7 +10,7 @@ bool Players::hitPavement()
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; ++i) {
         Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
-            if (ptr && ptr->objectName() == "Pavement") {
+        if (ptr && ((ptr->objectName() == "Pavement")||(ptr->objectName() == "Block"))) {
             return true;}
     }
     return false;

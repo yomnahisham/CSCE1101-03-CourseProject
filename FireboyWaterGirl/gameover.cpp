@@ -16,9 +16,9 @@ GameOver::~GameOver()
 
 void GameOver::on_retryButton_clicked()
 {
-    this->close();
     WindowManager Manager;
     Manager.showWindow(WindowManager::main);
+    this->close();
 }
 
 void GameOver::on_checkLevelsButton_clicked()
