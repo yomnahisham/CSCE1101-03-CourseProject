@@ -121,10 +121,10 @@ void FireBoy::jump(int jumpStep, int height) {
             moveBy(0, -height);
             break;
         case 1:
-            moveBy(7, -height);
+            moveBy(10, -height);
             break;
         case 2:
-            moveBy(-7, -height);
+            moveBy(-10, -height);
             break ;
 
         }
