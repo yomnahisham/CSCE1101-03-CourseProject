@@ -210,7 +210,7 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
 
                     for (int i = 0, n = obList.size(); i < n; ++i){
                         if (obList[i]->objectName() == "SlidingFloor1")
-                            obList[i] -> elevateFloor(player);}
+                                obList[i] -> elevateFloor(player);}
                     lever ++;
                 }else if (lever == 8) {lever = 0;}
                 else{lever ++;  return; }
