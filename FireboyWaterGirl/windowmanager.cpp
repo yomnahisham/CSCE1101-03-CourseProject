@@ -29,6 +29,7 @@ void WindowManager::gameDemo(){
     view->setScene(scene);
     view->show();
 
+
     QDialog dialog(view);
     dialog.setWindowTitle("Demo Information");
 
@@ -40,7 +41,7 @@ void WindowManager::gameDemo(){
                       "             Press A, W, D, E, Q to move. \n\n"
                       "         Controls for Fire Boy: \n"
                       "             Press Left, Up, Right, /, Shift to move. \n\n"
-                      "                                 Enjoy playing the demo!");
+                      "Enjoy playing the demo!");
     infoLabel.setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
     layout.addWidget(&infoLabel);
 
