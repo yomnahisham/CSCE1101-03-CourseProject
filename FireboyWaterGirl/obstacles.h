@@ -12,7 +12,7 @@ public:
     enum ObstacleType{Side, Pavement,Slope,Ceiling, Fire, Water, Acid, LeverRight, LeverLeft, Button1, Button2, SlidingFloor1, SlidingFloor2, FireDoor, WaterDoor, Block};
     Obstacles(QGraphicsItem* parent = nullptr);
     void createObstacle(ObstacleType type);
-    void handleCollisions(Players *player);
+    void lowerFloor();
 private:
     ObstacleType getType()const;
     ObstacleType type;

@@ -1,5 +1,6 @@
 #include "fireboy.h"
 #include "windowmanager.h"
+#include <QCoreApplication>
 #include <QBrush>
 #include <QTimer>
 
@@ -9,13 +10,10 @@ FireBoy::FireBoy(QGraphicsItem* parent) : Players(parent) {
 }
 
 void FireBoy::keyPressEvent(QKeyEvent* event) {
-    originalY = y();
-    right= true;
-    left = true;
     gravity();
     boundries();
 
-    if (event->key() == Qt::Key_Shift&& right) {
+    /*if (event->key() == Qt::Key_Shift && right) {
         if (!isJumping) {
             isJumping = true;
             direction = 1;
@@ -27,7 +25,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
             direction = 2;
             jump(0);
         }
-    } else if (event->key() == Qt::Key_Up)  {
+    }else*/ if (event->key() == Qt::Key_Up)  {
         if (!isJumping) {
             isJumping = true;
             direction = 0;
@@ -37,7 +35,8 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
         direction = 2;
         if (isJumping){
             isJumping = false;
-            jump (0, 11);
+            isJumping = true;
+            jump (0, 20);
         }
         else
             moveBy(-10, 0);
@@ -46,7 +45,8 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
         direction = 1;
         if (isJumping){
             isJumping = false;
-            jump (0, 11);
+            isJumping = true;
+            jump (0, 20);
         }
         else
             moveBy(10, 0);
@@ -56,9 +56,134 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
 }
 
 void FireBoy::jump(int jumpStep, int height) {
+    if (direction != 0)
+    {
+        right = false;
+        left = false;
+    }
+    if (jumpStep < 5 && isJumping) {
+        switch (direction){
+        case 0:
+            moveBy(0, -height);
+            break;
+        case 1:
+            if (height > 10)
+            {    qDebug()<< "small jump right";
+                moveBy(8, -height);}
+            else
+                moveBy(16, -height);
+            break;
+        case 2:
+            if (height > 10)
+            { qDebug()<< "small jump left";
+                moveBy(-8, -height);}
+            else
+                moveBy(-16, -height);
+            break ;
+        }
+        ++jumpStep;
+
+        QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
+
+        if (hitCeiling())
+        {
+            gravity ();         //make him fall
+            isJumping = false;  //end jump
+        }
+        if (hitSide())
+        {
+            boundries ();         //make him fall
+            gravity();
+            isJumping = false;  //end jump
+        }
+
+    } else if (!hitPavement() && isJumping ){
+        switch (direction){
+        case 0:
+            moveBy(0, height);
+            break;
+        case 1:
+            if (height > 10)
+                moveBy(8, height);
+            else
+                moveBy(16, height);
+            break;
+        case 2:
+            if (height > 10)
+                moveBy(-8, height);
+            else
+                moveBy(-16, height);
+            break ;
+        }
+        QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
+
+    }else if (hitPavement()||hitSlope())
+    {
+        //qDebug()<< "jump done";
+        setPos(x(), y());
+        isJumping = false; // Reset isJumping flag
+        right = true;
+        left = true;
+        return;
+    }else if (!isJumping)
+    {
+        right = true;
+        left = true;
+        qDebug()<< "return from jump";
+        return;
+    }
+
+}
+
+void FireBoy::boundries()
+{
+    right = true;
+    left = true;
+
+    if (hitSlope() && y() < originalY) // check if it enters if
+    {
+        qDebug()<< "going down slope";
+    }
+
+    if ((hitSlope()&&!isJumping) || (hitSlope() &&!isJumping && y() > originalY))
+    {
+
+        if (direction == 1)
+        {
+            right = false;
+            qDebug()<< "going up a slope, cant go RIGHT";
+        }
+        else if (direction == 2)
+        {
+            left = false;
+            qDebug()<< "going up a slope, cant go LEFT";
+        }
+    }
+    if(hitSide())
+    {
+        if (direction == 1)
+        {
+            right = false;
+            moveBy(-10,0);
+        }
+        else if (direction == 2)
+        {
+            left = false;
+            moveBy(10,0);
+        }
+    }
+}
+
+void FireBoy::kill(){
+    hide();
+    WindowManager Manager;
+    Manager.showWindow(WindowManager::over);
+}
+
+/*
     if (jumpStep < 5) {
         switch (direction){
-        case 0:   
+        case 0:
             moveBy(0, -height);
             break;
         case 1:
@@ -131,44 +256,6 @@ void FireBoy::jump(int jumpStep, int height) {
         isJumping = false; // Reset isJumping flag
         return;
     }
-}
-
-void FireBoy::boundries()
-{
-    right = true;
-    left = true;
-
-    if ((hitSlope()&&!isJumping) || (hitSlope() && y() >= originalY))
-    {
-        if (direction == 1)
-        {
-            right = false;
-        }
-        else if (direction == 2)
-        {
-            left = false;
-        }
-        QTimer::singleShot(20, this, [this]() { boundries(); });
-
-    }
-    if(hitSide())
-    {
-        if (direction == 1)
-        {
-            right = false;
-            moveBy(-10,0);
-        }
-        else if (direction == 2)
-        {
-            left = false;
-            moveBy(10,0);
-        }
-        QTimer::singleShot(20, this, [this]() { boundries(); });
-    }
-}
-
-void FireBoy::kill(){
-    hide();
-    WindowManager Manager;
-    Manager.showWindow(WindowManager::over);
-}
+    isJumping = false; // Reset isJumping flag
+    return;
+    }*/
