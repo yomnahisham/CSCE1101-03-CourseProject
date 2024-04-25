@@ -30,11 +30,11 @@ void GameOver::on_checkLevelsButton_clicked()
 
 void GameOver::on_exitButton_clicked()
 {
-    qApp->quit();
+    qApp->quit(); //exit the whole app
 }
 
 void GameOver::on_leaderboardButton_clicked()
 {
-
+    // implement print of leaderboard to screen ui
 }
 
