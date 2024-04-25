@@ -102,20 +102,20 @@ void Layout::makeLevelONE(){
     //add jumping block above sliding floor 1
     Obstacles* jblock = new Obstacles();
     jblock -> createObstacle(Obstacles::Block);
-    jblock -> setPos(23,475);
+    jblock -> setPos(23,465);
     addItem (jblock);
     obList.append(jblock);
 
     //add Block
     Obstacles* block = new Obstacles();
     block -> createObstacle(Obstacles::Block);
-    block -> setPos(156,245);
+    block -> setPos(156,235);
     addItem (block);
     obList.append(block);
 
     Obstacles* ablock = new Obstacles();
     ablock -> createObstacle(Obstacles::Block);
-    ablock -> setPos(920,372);
+    ablock -> setPos(920,362);
     addItem (ablock);
     obList.append(ablock);
 
