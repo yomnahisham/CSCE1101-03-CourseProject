@@ -37,11 +37,11 @@ void Obstacles::createObstacle(ObstacleType type){
         break;
     case ObstacleType::LeverRight:
         setObjectName("LeverRight");
-        setPixmap(QPixmap(":/image/img/lever.png").scaled(66, 57, Qt::KeepAspectRatio));
+        setPixmap(QPixmap(":/image/img/lever.png").scaled(70, 57, Qt::KeepAspectRatio));
         break;
         case ObstacleType::LeverLeft:
         setObjectName("LeverLeft");
-        setPixmap(QPixmap(":/image/img/LeverLeft.png").scaled(66, 57, Qt::KeepAspectRatio));
+        setPixmap(QPixmap(":/image/img/LeverLeft.png").scaled(70, 57, Qt::KeepAspectRatio));
         break;
     case ObstacleType::Button1:
         setObjectName("Button1");
@@ -74,8 +74,7 @@ void Obstacles::createObstacle(ObstacleType type){
     }
 }
 
-void Obstacles::lowerFloor(){
-    qDebug()<< "entered func";
+void Obstacles::lowerFloor(){ //animate it more
 
     while (y() < 528)
     {
@@ -83,6 +82,15 @@ void Obstacles::lowerFloor(){
         QTimer::singleShot(40, this, [this]() { lowerFloor(); });
     }
     return;
+}
+void Obstacles::elevateFloor(Players* player){ //animate it more
+
+    while (y() > 404 )
+    {
+        player -> moveBy(0,-3);
+        moveBy(0, - 3);
+        QTimer::singleShot(40, this, [this, player]() { elevateFloor(player); });
+    }
 }
 
 

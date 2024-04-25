@@ -1,8 +1,7 @@
 #include "watergirl.h"
 #include "windowmanager.h"
+#include "layout.h"
 #include <QGraphicsScene>
-#include<QGraphicsRectItem>
-#include <QBrush>
 #include <QTimer>
 
 WaterGirl::WaterGirl(QGraphicsItem* parent) : Players(parent) {

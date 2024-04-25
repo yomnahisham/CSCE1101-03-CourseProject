@@ -9,8 +9,6 @@
 #include <QList>
 
 
-
-
 Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     //putting brick background
     QGraphicsPixmapItem* brick = new QGraphicsPixmapItem();
@@ -47,7 +45,7 @@ void Layout::keyPressEvent(QKeyEvent* event) {
 }
 
 void Layout::makeLevelONE(){
-
+    lever = 0;
     QGraphicsPixmapItem* l = new QGraphicsPixmapItem();
     l -> setPixmap(QPixmap(":/image/img/level1Final.png").scaled(1000,800, Qt::KeepAspectRatio));
     l -> setPos(0,0);
@@ -155,6 +153,12 @@ void Layout::makeLevelONE(){
     obList.append(FD);
 }
 
+void Layout::closeGame(QGraphicsScene* scene){
+    QList<QGraphicsView *> views = scene->views();
+    for (QGraphicsView *view : views) {
+        view->close();
+    }}
+
 void Layout::closeGame(){
 /*    QList<QGraphicsView *> views = this -> views();
     for (QGraphicsView *view : views) {
@@ -181,21 +185,39 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
                 //fireboy->kill();
                 //closeGame();
             }else if (ob -> objectName() == "LeverRight"){
-                Obstacles* leverswitch = new Obstacles();
-                leverswitch -> createObstacle(Obstacles::LeverLeft);
-                leverswitch -> setPos(210,485);
-                addItem (leverswitch);
-                qDebug()<< "added lever2";
+                if (lever == 4){
+                    Obstacles* leverswitch = new Obstacles();
+                    leverswitch -> createObstacle(Obstacles::LeverLeft);
+                    leverswitch -> setPos(210,485);
+                    addItem (leverswitch);
 
-                removeItem(ob);
+                    removeItem(ob);
 
+                    for (int i = 0, n = obList.size(); i < n; ++i){
+                        if (obList[i]->objectName() == "SlidingFloor1")
+                            obList[i] -> lowerFloor();}
+                    lever ++;
+                }else if (lever == 8) {lever = 0;}
+                else{lever ++;  return; }
+            }else if (ob -> objectName() == "LeverLeft"){
+                if (lever == 4){
+                    Obstacles* leverswitch = new Obstacles();
+                    leverswitch -> createObstacle(Obstacles::LeverRight);
+                    leverswitch -> setPos(210,485);
+                    addItem (leverswitch);
+
+                    removeItem(ob);
+
+                    for (int i = 0, n = obList.size(); i < n; ++i){
+                        if (obList[i]->objectName() == "SlidingFloor1")
+                            obList[i] -> elevateFloor(player);}
+                    lever ++;
+                }else if (lever == 8) {lever = 0;}
+                else{lever ++;  return; }
+            }else if (ob -> objectName() == "Button1"){
                 for (int i = 0, n = obList.size(); i < n; ++i){
-                    if (obList[i]->objectName() == "SlidingFloor1")
-                    {
-                        qDebug()<< "found floor";
-                        obList[i] -> lowerFloor();
-                    }
-                }
+                    if (obList[i]->objectName() == "SlidingFloor2")
+                        obList[i] -> lowerFloor();}
             }
         } else if (watergirl) {
             if (ob -> objectName() == "Fire"){

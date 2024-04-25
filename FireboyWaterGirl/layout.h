@@ -11,10 +11,12 @@ public:
     void makeLevelONE();
     void closeGame();
     void handleCollisions(Players *player, Obstacles* ob);
+    static void closeGame(QGraphicsScene* scene);
 
 protected:
     void keyPressEvent(QKeyEvent* event) override;
     QList<Obstacles*> obList;
+    int lever;
 
 };
 #endif // LAYOUT_H

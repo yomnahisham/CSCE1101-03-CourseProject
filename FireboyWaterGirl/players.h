@@ -20,6 +20,7 @@ protected:
     bool hitSide();
     bool hitSlope();
     bool hitCeiling();
+    bool hitFloor();
     int originalY;
 
 };

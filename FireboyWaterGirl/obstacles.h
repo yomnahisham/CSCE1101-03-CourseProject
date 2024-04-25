@@ -13,6 +13,8 @@ public:
     Obstacles(QGraphicsItem* parent = nullptr);
     void createObstacle(ObstacleType type);
     void lowerFloor();
+    void elevateFloor(Players* player);
+
 private:
     ObstacleType getType()const;
     ObstacleType type;
