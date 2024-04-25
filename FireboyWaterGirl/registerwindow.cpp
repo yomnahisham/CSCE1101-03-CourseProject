@@ -52,10 +52,8 @@ void RegisterWindow::on_regButton_clicked()
         passMatchs = true;
     } else {
         ui->passerror->setText("Password does not match.");
-        ui -> passerror -> show();
+        ui->passerror->show();
     }
-
-
     if (passMatchs && !userExists){
         User::newUser(inputUsername, inputPassword);    //add user to allusers database
         WindowManager win;                    //open level window

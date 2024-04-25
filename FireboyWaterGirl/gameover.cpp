@@ -21,3 +21,20 @@ void GameOver::on_retryButton_clicked()
     Manager.showWindow(WindowManager::main);
 }
 
+void GameOver::on_checkLevelsButton_clicked()
+{
+    this->close();
+    WindowManager Manager;
+    Manager.showWindow(WindowManager::lev);
+}
+
+void GameOver::on_exitButton_clicked()
+{
+    qApp->quit();
+}
+
+void GameOver::on_leaderboardButton_clicked()
+{
+
+}
+

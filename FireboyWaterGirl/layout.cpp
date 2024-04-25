@@ -6,8 +6,6 @@
 #include <QGraphicsPixmapItem>
 #include <QGraphicsView>
 #include <QGraphicsScene>
-#include <QList>
-
 
 Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     //putting brick background
@@ -15,8 +13,6 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     brick -> setPixmap(QPixmap(":/image/img/background.png").scaled(1000,800, Qt::KeepAspectRatio));
     brick-> setPos(0,0);
     addItem(brick);
-
-
 
     switch (l){
     case 1:

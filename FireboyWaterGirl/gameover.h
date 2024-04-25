@@ -18,6 +18,10 @@ public:
 private slots:
     void on_retryButton_clicked();
 
+    void on_checkLevelsButton_clicked();
+
+    void on_exitButton_clicked();
+
 private:
     Ui::GameOver *ui;
 };
