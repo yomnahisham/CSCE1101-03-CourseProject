@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
 
     //window manager will start and it will manage all transitions between windows
     WindowManager windowManager;
-    windowManager.startLogin();
+    windowManager.gameDemo();
 
     return app.exec();
 }

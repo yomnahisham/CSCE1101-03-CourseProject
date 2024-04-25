@@ -12,6 +12,7 @@ class WindowManager : public QObject {
 public:
     explicit WindowManager(QObject *parent = nullptr);
     void startLogin();
+    void gameDemo();
 
     enum WindowType{login, reg, lev, main, over};
     void showWindow(WindowType type);

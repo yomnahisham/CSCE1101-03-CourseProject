@@ -9,7 +9,21 @@
 
 WindowManager::WindowManager(QObject *parent) : QObject(parent) {}
 
+void WindowManager::gameDemo(){
+    QGraphicsView* view = new QGraphicsView();
+    Layout* scene = new Layout(nullptr, 1);
 
+    // setting up scene to start game
+    view->setFixedSize(1000, 800);
+    view->setWindowTitle("Fire Boy & Water Girl");
+    view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    scene->setSceneRect(0, 0, 1000, 800);
+
+    //adding scene to voew and showing it
+    view->setScene(scene);
+    view->show();
+}
 void WindowManager::startLogin(){
 
     LoginWindow* loginWindow = new LoginWindow();
