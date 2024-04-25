@@ -2,6 +2,7 @@
 #include "fireboy.h"
 #include "watergirl.h"
 #include "players.h"
+#include<QTimer>
 
 // Pavement, Fire, Water, Acid, Lever, Button, SlidingFloor, FireDoor, WaterDoor
 
@@ -36,7 +37,11 @@ void Obstacles::createObstacle(ObstacleType type){
         break;
     case ObstacleType::LeverRight:
         setObjectName("LeverRight");
-        setPixmap(QPixmap(":/image/img/lever.png").scaled(66, 57, Qt::KeepAspectRatio));
+        setPixmap(QPixmap(":/image/img/lever.png").scaled(70, 57, Qt::KeepAspectRatio));
+        break;
+        case ObstacleType::LeverLeft:
+        setObjectName("LeverLeft");
+        setPixmap(QPixmap(":/image/img/LeverLeft.png").scaled(70, 57, Qt::KeepAspectRatio));
         break;
     case ObstacleType::Button1:
         setObjectName("Button1");
@@ -69,44 +74,23 @@ void Obstacles::createObstacle(ObstacleType type){
     }
 }
 
-void Obstacles::handleCollisions(Players *player)
-{
+void Obstacles::lowerFloor(){ //animate it more
 
-    // check if the obstacle collides with the player
-    if (this->collidesWithItem(player)) {
+    while (y() < 528)
+    {
+        moveBy(0, 3);
+        QTimer::singleShot(40, this, [this]() { lowerFloor(); });
+    }
+    return;
+}
+void Obstacles::elevateFloor(Players* player){ //animate it more
 
-        QGraphicsScene* Lay = player -> scene();
-
-        // check if the player is a Fireboy or Watergirl
-        FireBoy* fireboy = dynamic_cast<FireBoy*>(player);
-        WaterGirl* watergirl = dynamic_cast<WaterGirl*>(player);
-
-        if (fireboy) {
-
-            if (objectName() == "Fire"){
-            }else if (objectName() == "Water"){
-                fireboy->kill();
-                Layout::closeGame(Lay);
-                //Lay -> clear();
-            }else if (objectName() == "Acid"){
-                // Perform actions for Watergirl colliding with acid obstacle
-            }
-        } else if (watergirl) {
-            if (objectName() == "Fire"){
-                qDebug()<<"WATER touched Fire";
-                // perfom end of game
-                watergirl->kill(); // exits the game completely
-            }else if (objectName() == "Water"){
-                qDebug()<<"FireBoy touched Water";
-                fireboy->kill();
-            }else if (objectName() == "Acid"){
-                // Perform actions for Watergirl colliding with acid obstacle
-            }
-        }
+    while (y() > 404 )
+    {
+        player -> moveBy(0,-3);
+        moveBy(0, - 3);
+        QTimer::singleShot(40, this, [this, player]() { elevateFloor(player); });
     }
 }
 
-Obstacles::ObstacleType Obstacles::getType() const {
-    return type;
-}
 

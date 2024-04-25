@@ -812,6 +812,7 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/LeverLeft.png \
 		../FireboyWaterGirl/img/WaterDoor.png \
 		../FireboyWaterGirl/img/block.png \
+		../FireboyWaterGirl/img/level1Pav.png \
 		../FireboyWaterGirl/img/water.png \
 		../FireboyWaterGirl/img/acid.png \
 		../FireboyWaterGirl/img/pushButton2.png \
@@ -2038,7 +2039,9 @@ layout.o: ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/layout.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
 		../FireboyWaterGirl/fireboy.h \
 		../FireboyWaterGirl/Players.h \
-		../FireboyWaterGirl/watergirl.h
+		../FireboyWaterGirl/watergirl.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o layout.o ../FireboyWaterGirl/layout.cpp
 
 level.o: ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/level.h \

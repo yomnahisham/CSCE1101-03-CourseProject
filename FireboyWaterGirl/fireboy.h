@@ -12,9 +12,11 @@ public:
     void keyPressEvent(QKeyEvent* event) override;
     void boundries() override;
     void kill() override;
+    void Leap(int Step, int height);
+
 
 private:
-    void jump(int jumpStep, int height = 10);
+    void jump(int jumpStep, int height);
     int direction;
     bool right, left = true;
     bool isJumping = false;

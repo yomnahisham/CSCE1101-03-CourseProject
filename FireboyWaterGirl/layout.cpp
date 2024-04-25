@@ -41,6 +41,11 @@ void Layout::keyPressEvent(QKeyEvent* event) {
 }
 
 void Layout::makeLevelONE(){
+    lever = 0;
+    QGraphicsPixmapItem* l = new QGraphicsPixmapItem();
+    l -> setPixmap(QPixmap(":/image/img/level1Final.png").scaled(1000,800, Qt::KeepAspectRatio));
+    l -> setPos(0,0);
+    addItem(l);
 
     Obstacles* side = new Obstacles();
     side->createObstacle(Obstacles::Side);
@@ -62,7 +67,7 @@ void Layout::makeLevelONE(){
 
     Obstacles* Pav = new Obstacles();
     Pav->createObstacle(Obstacles::Pavement);
-    Pav->setPixmap(QPixmap (":/image/img/level1Final.png").scaled(1000, 800, Qt::KeepAspectRatio));
+    Pav->setPixmap(QPixmap (":/image/img/level1Pav.png").scaled(1000, 800, Qt::KeepAspectRatio));
     Pav-> setPos(0, 0);
     addItem(Pav);
 
@@ -71,66 +76,77 @@ void Layout::makeLevelONE(){
     fire->createObstacle(Obstacles::Fire);
     fire-> setPos(448, 710);
     addItem(fire);
+    obList.append(fire);
 
     //add water
     Obstacles* water = new Obstacles();
     water->createObstacle(Obstacles::Water);
     water-> setPos(650, 715);
     addItem(water);
+    obList.append(water);
 
     //add acid
     Obstacles* acid = new Obstacles();
     acid->createObstacle(Obstacles::Acid);
     acid-> setPos(600, 568);
     addItem(acid);
+    obList.append(acid);
 
     //add lever
     Obstacles* lever = new Obstacles();
     lever -> createObstacle(Obstacles::LeverRight);
     lever -> setPos(210,485);
     addItem (lever);
+    obList.append(lever);
 
     //add sliding Floor
     Obstacles* floor1 = new Obstacles();
     floor1 -> createObstacle(Obstacles::SlidingFloor1);
     floor1 -> setPos(20,402);
     addItem (floor1);
+    obList.append(floor1);
 
     //add button
     Obstacles* b1 = new Obstacles();
     b1 -> createObstacle(Obstacles::Button1);
     b1 -> setPos(251,382);
     addItem (b1);
+    obList.append(b1);
 
     //add sliding Floor
     Obstacles* floor2 = new Obstacles();
     floor2 -> createObstacle(Obstacles::SlidingFloor2);
     floor2 -> setPos(870,300);
     addItem (floor2);
+    obList.append(floor2);
 
     //add button
     Obstacles* b2 = new Obstacles();
     b2 -> createObstacle(Obstacles::Button2);
     b2 -> setPos(755, 285);
     addItem (b2);
+    obList.append(b2);
 
     //add Block
     Obstacles* block = new Obstacles();
     block -> createObstacle(Obstacles::Block);
     block -> setPos(570,200);
     addItem (block);
+    obList.append(block);
 
     //add WaterDoor
     Obstacles* WD = new Obstacles();
     WD -> createObstacle(Obstacles::WaterDoor);
     WD -> setPos(893,80);
     addItem (WD);
+    obList.append(WD);
 
     //add FireDoor
     Obstacles* FD = new Obstacles();
     FD -> createObstacle(Obstacles::FireDoor);
     FD -> setPos(789,80);
     addItem (FD);
+    obList.append(FD);
 }
 
 void Layout::closeGame(QGraphicsScene* scene){
@@ -139,3 +155,82 @@ void Layout::closeGame(QGraphicsScene* scene){
         view->close();
     }}
 
+void Layout::closeGame(){
+/*    QList<QGraphicsView *> views = this -> views();
+    for (QGraphicsView *view : views) {
+        view->close();
+    }*/
+}
+
+void Layout::handleCollisions(Players *player, Obstacles* ob)
+{
+
+    // check if the obstacle collides with the player
+    if (ob->collidesWithItem(player)) {
+        // check if the player is a Fireboy or Watergirl
+        FireBoy* fireboy = dynamic_cast<FireBoy*>(player);
+        WaterGirl* watergirl = dynamic_cast<WaterGirl*>(player);
+
+        if (fireboy) {
+
+            if (ob -> objectName() == "Water"){
+                //fireboy->kill();
+                //closeGame();
+
+            }else if (ob -> objectName() == "Acid"){
+                //fireboy->kill();
+                //closeGame();
+            }else if (ob -> objectName() == "LeverRight"){
+                if (lever == 4){
+                    Obstacles* leverswitch = new Obstacles();
+                    leverswitch -> createObstacle(Obstacles::LeverLeft);
+                    leverswitch -> setPos(210,485);
+                    addItem (leverswitch);
+
+                    removeItem(ob);
+
+                    for (int i = 0, n = obList.size(); i < n; ++i){
+                        if (obList[i]->objectName() == "SlidingFloor1")
+                            obList[i] -> lowerFloor();}
+                    lever ++;
+                }else if (lever == 8) {lever = 0;}
+                else{lever ++;  return; }
+            }else if (ob -> objectName() == "LeverLeft"){
+                if (lever == 4){
+                    Obstacles* leverswitch = new Obstacles();
+                    leverswitch -> createObstacle(Obstacles::LeverRight);
+                    leverswitch -> setPos(210,485);
+                    addItem (leverswitch);
+
+                    removeItem(ob);
+
+                    for (int i = 0, n = obList.size(); i < n; ++i){
+                        if (obList[i]->objectName() == "SlidingFloor1")
+                                obList[i] -> elevateFloor(player);}
+                    lever ++;
+                }else if (lever == 8) {lever = 0;}
+                else{lever ++;  return; }
+            }else if (ob -> objectName() == "Button1"){
+                for (int i = 0, n = obList.size(); i < n; ++i){
+                    if (obList[i]->objectName() == "SlidingFloor2")
+                        obList[i] -> lowerFloor();}
+            }
+        } else if (watergirl) {
+            if (ob -> objectName() == "Fire"){
+                watergirl->kill();
+                closeGame();
+
+            }else if (ob -> objectName() == "Acid"){
+                watergirl->kill();
+                closeGame();
+
+            }else if (ob -> objectName() == "LeverRight"){
+                Obstacles* leverswitch = new Obstacles();
+                leverswitch -> createObstacle(Obstacles::LeverLeft);
+                leverswitch -> setPos(210,485);
+                addItem (leverswitch);
+                delete ob;
+            }
+        }
+    }
+}

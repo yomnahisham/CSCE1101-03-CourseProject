@@ -3,8 +3,6 @@
 #include <QGraphicsView>
 #include <QKeyEvent>
 #include <QString>
-#include "fireboy.h"
-#include "watergirl.h"
 #include "windowmanager.h"
 
 
