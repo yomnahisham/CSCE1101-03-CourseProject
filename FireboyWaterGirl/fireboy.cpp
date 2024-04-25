@@ -13,6 +13,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
     boundries();
 
     if (event->key() == Qt::Key_Shift && right) {
+        setPixmap(QPixmap(":/image/img/fireleaping.png"));
         if (!isJumping) {
             isJumping = true;
             direction = 1;
