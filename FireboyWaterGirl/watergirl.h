@@ -1,7 +1,7 @@
 #ifndef WATERGIRL_H
 #define WATERGIRL_H
 #include "layout.h"
-#include "Players.h"
+#include "players.h"
 
 class WaterGirl : public Players {
 public:

@@ -83,6 +83,7 @@ void Obstacles::lowerFloor(){ //animate it more
     }
     return;
 }
+
 void Obstacles::elevateFloor(Players* player){ //animate it more
 
     while (y() > 404 )

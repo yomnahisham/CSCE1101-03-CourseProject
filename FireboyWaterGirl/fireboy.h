@@ -1,7 +1,7 @@
 #ifndef FIREBOY_H
 #define FIREBOY_H
 
-#include "Players.h"
+#include "players.h"
 #include <QKeyEvent>
 
 class FireBoy : public Players {
