@@ -18,6 +18,8 @@ public:
     void showWindow(WindowType type);
     void endWindow(WindowType type);
     void transferLevel (int n);
+    void WonGame(bool i);
+
 private:
     WindowType type;
     int l; //level
@@ -27,6 +29,7 @@ private:
     bool levelON;
     bool mainON;
     bool overON;
+    bool won;
 
     QGraphicsView* view;
     RegisterWindow* registerWindow;

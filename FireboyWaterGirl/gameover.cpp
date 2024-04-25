@@ -2,11 +2,17 @@
 #include "ui_gameover.h"
 #include "windowmanager.h"
 
-GameOver::GameOver(QWidget *parent)
+GameOver::GameOver(QWidget *parent, bool w)
     : QDialog(parent)
     , ui(new Ui::GameOver)
 {
     ui->setupUi(this);
+
+    if (!w)
+    {
+        ui -> wonLabel -> hide();
+    }else if (w)
+        ui -> wonLabel-> show();
 }
 
 GameOver::~GameOver()

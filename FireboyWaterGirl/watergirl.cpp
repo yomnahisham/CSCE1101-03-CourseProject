@@ -36,8 +36,7 @@ void WaterGirl::keyPressEvent(QKeyEvent* event) {
         direction = 2;
         if (isJumping){
             isJumping = false;
-            moveBy (-20,0);
-            jump (5, 5);
+            jump (0, 20);
         }
         else
             moveBy(-10, 0);
@@ -45,8 +44,7 @@ void WaterGirl::keyPressEvent(QKeyEvent* event) {
         direction = 1;
         if (isJumping){
             isJumping = false;
-            moveBy (20,0);
-            jump (5, 5);
+            jump (0, 20);
         }
         else
             moveBy(10, 0);

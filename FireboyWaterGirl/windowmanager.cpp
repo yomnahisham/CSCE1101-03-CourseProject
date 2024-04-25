@@ -12,7 +12,8 @@
 #include <QPushButton>
 
 
-WindowManager::WindowManager(QObject *parent) : QObject(parent) {}
+WindowManager::WindowManager(QObject *parent) : QObject(parent) {    won = false;
+}
 
 void WindowManager::gameDemo(){
     QGraphicsView* view = new QGraphicsView();
@@ -132,10 +133,15 @@ void WindowManager::showWindow(WindowType type) {
         view->setScene(scene);
         view->show();
     } else if(overON){
-        GameOver* gameover = new GameOver();
+        GameOver* gameover = new GameOver(nullptr, won);
         gameover->resize(500, 500);
         gameover -> show();
     }
+}
+
+void WindowManager::WonGame(bool i)
+{
+    won = i;
 }
 
 void WindowManager::endWindow(WindowType type){

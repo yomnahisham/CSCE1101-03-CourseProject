@@ -28,14 +28,14 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
         if (!isJumping) {
             isJumping = true;
             direction = 0;
-            jump(0,10);
+            jump(0,20);
         }
     } else if ((event->key() == Qt::Key_Left)&&left) {
         direction = 2;
         if (isJumping){
             isJumping = false;
             isJumping = true;
-            jump (0, 15);
+            jump (0, 20);
         }
         else
             moveBy(-10, 0);
@@ -45,7 +45,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
         if (isJumping){
             isJumping = false;
             isJumping = true;
-            jump (0, 15);
+            jump (0, 20);
         }
         else
             moveBy(10, 0);

@@ -65,6 +65,19 @@
     <string>Game Over!</string>
    </property>
   </widget>
+  <widget class="QLabel" name="wonLabel">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>190</y>
+     <width>58</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>You Won!</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

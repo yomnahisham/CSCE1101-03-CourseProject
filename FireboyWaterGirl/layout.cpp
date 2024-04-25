@@ -3,6 +3,7 @@
 #include "players.h"
 #include "fireboy.h"
 #include "watergirl.h"
+#include "windowmanager.h"
 #include <QGraphicsPixmapItem>
 #include <QGraphicsView>
 #include <QGraphicsScene>
@@ -148,6 +149,8 @@ void Layout::closeGame(){
 
 void Layout::handleCollisions(Players *player, Obstacles* ob)
 {
+    bool wd = false;
+    bool fd = false;
 
     // check if the obstacle collides with the player
     if (ob->collidesWithItem(player)) {
@@ -158,20 +161,32 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
         if (fireboy) {
             if (ob -> objectName() == "Water"){
                 fireboy->kill();
-                closeGame();
+                closeGame(this);
             }else if (ob -> objectName() == "Acid"){
                 fireboy->kill();
-                closeGame();
+                closeGame(this);
+            }else if (ob -> objectName() == "FireDoor"){
+                fd = true;
             }
         }
         if(watergirl){
             if (ob -> objectName() == "Fire"){
                 watergirl->kill();
-                closeGame();
+                closeGame(this);
             } else if (ob -> objectName() == "Acid"){
                 watergirl->kill();
-                closeGame();
+                closeGame(this);
+            }else if (ob -> objectName() == "WaterDoor"){
+                wd = true;
             }
         }
+    }
+
+    if (wd&&fd)
+    {
+        WindowManager Manager;
+        Manager.WonGame(true);
+        Manager.showWindow(WindowManager::over);
+        closeGame(this);
     }
 }
