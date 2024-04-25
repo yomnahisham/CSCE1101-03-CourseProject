@@ -29,13 +29,12 @@ void WindowManager::gameDemo(){
     view->setScene(scene);
     view->show();
 
-
     QDialog dialog(view);
     dialog.setWindowTitle("Demo Information");
 
     QVBoxLayout layout(&dialog);
     QLabel infoLabel(&dialog);
-    infoLabel.setText("This is a demo version of Fire Boy & Water Girl. \n"
+    infoLabel.setText("This is a demo version of Fire Boy & Water Girl, offering a fully functional level 1. \n"
                       "The full version offers additional features and levels. All of which will be available soon! \n\n"
                       "         Controls for Water Girl: \n"
                       "             Press A, W, D, E, Q to move. \n\n"
