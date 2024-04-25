@@ -22,6 +22,8 @@ private slots:
 
     void on_exitButton_clicked();
 
+    void on_leaderboardButton_clicked();
+
 private:
     Ui::GameOver *ui;
 };

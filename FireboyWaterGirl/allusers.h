@@ -16,8 +16,8 @@ public:
 
 private:
     static void saveUserDataToDropbox(const QString& username, const QString& password, int score);
+    static void refreshToken(QString& newAccessToken);
     static bool isTokenExpired();
-    static void refreshToken();
     static qint64 tokenExpirationTimestamp; //very excessively long int (qint64)
 };
 
