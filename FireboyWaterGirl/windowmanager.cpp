@@ -3,8 +3,13 @@
 #include "registerwindow.h"
 #include "level.h"
 #include "gameover.h"
-
 #include "layout.h"
+
+#include <QMessageBox>
+#include <QDialog>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QPushButton>
 
 
 WindowManager::WindowManager(QObject *parent) : QObject(parent) {}
@@ -23,6 +28,28 @@ void WindowManager::gameDemo(){
     //adding scene to voew and showing it
     view->setScene(scene);
     view->show();
+
+    QDialog dialog(view);
+    dialog.setWindowTitle("Demo Information");
+
+    QVBoxLayout layout(&dialog);
+    QLabel infoLabel(&dialog);
+    infoLabel.setText("This is a demo version of Fire Boy & Water Girl. \n"
+                      "The full version offers additional features and levels. All of which will be available soon! \n\n"
+                      "         Controls for Water Girl: \n"
+                      "             Press A, W, D, E, Q to move. \n\n"
+                      "         Controls for Fire Boy: \n"
+                      "             Press Left, Up, Right, /, Shift to move. \n\n"
+                      "                                 Enjoy playing the demo!");
+    infoLabel.setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
+    layout.addWidget(&infoLabel);
+
+    QPushButton closeButton("Close", &dialog);
+    layout.addWidget(&closeButton);
+
+    QObject::connect(&closeButton, &QPushButton::clicked, &dialog, &QDialog::close);
+
+    dialog.exec();
 }
 void WindowManager::startLogin(){
 
