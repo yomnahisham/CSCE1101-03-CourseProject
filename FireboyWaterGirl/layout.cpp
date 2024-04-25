@@ -141,10 +141,10 @@ void Layout::closeGame(QGraphicsScene* scene){
     }}
 
 void Layout::closeGame(){
-/*    QList<QGraphicsView *> views = this -> views();
+    QList<QGraphicsView *> views = this -> views();
     for (QGraphicsView *view : views) {
         view->close();
-    }*/
+    }
 }
 
 void Layout::handleCollisions(Players *player, Obstacles* ob)
