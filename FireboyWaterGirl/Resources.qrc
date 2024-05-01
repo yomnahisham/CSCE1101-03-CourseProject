@@ -24,5 +24,8 @@
         <file>img/level1Ceiling.png</file>
         <file>img/tinyacid.png</file>
         <file>img/level1Pav.png</file>
+        <file>img/level1F.png</file>
+        <file>img/level1c.png</file>
+        <file>img/level1pave.png</file>
     </qresource>
 </RCC>
