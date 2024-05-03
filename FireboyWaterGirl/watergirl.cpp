@@ -9,205 +9,191 @@ WaterGirl::WaterGirl(QGraphicsItem* parent) : Players(parent) {
 }
 
 void WaterGirl::keyPressEvent(QKeyEvent* event) {
-    right= true;
-    left = true;
     gravity();
     boundries();
 
-    if (event->key() == Qt::Key_E && right) {
+    if (event->key() == Qt::Key_E) {
         if (!isJumping) {
-            isJumping = true;
             direction = 1;
-            Leap(0,10);
-        }
-    } else if (event->key() == Qt::Key_Q && left) {
-        if (!isJumping) {
             isJumping = true;
+            upLevel = false;
+            jump(0);
+            qDebug()<< "jumped right";
+        }
+    } else if (event->key() == Qt::Key_Q) {
+        if (!isJumping) {
             direction = 2;
-            Leap(0,10);
+            isJumping = true;
+            upLevel = false;
+            jump(0);
+            qDebug()<< "jumped left";
         }
     }else if (event->key() == Qt::Key_W)  {
         if (!isJumping) {
-            isJumping = true;
             direction = 0;
-            jump(0,10);
+            isJumping = true;
+            upLevel = false;
+            jump(0);
+            qDebug()<< "jumped up";
         }
-    } else if ((event->key() == Qt::Key_A)&& left) {
+    } else if (event->key() == Qt::Key_A) {
         direction = 2;
-        if (isJumping){
-            isJumping = false;
-            jump (0, 20);
-        }
-        else
-            moveBy(-10, 0);
-    } else if ((event->key() == Qt::Key_D)&& right) {
+        moveBy(-10, 0);
+        //qDebug()<< "moved left";
+    } else if (event->key() == Qt::Key_D) {
         direction = 1;
-        if (isJumping){
-            isJumping = false;
-            jump (0, 20);
-        }
-        else
-            moveBy(10, 0);
+        moveBy(10, 0);
+        //qDebug()<< "moved right";
     }
+
     checkCollisions();
 }
 
-void WaterGirl::Leap(int Step, int height) {
-    QGraphicsScene* sce = this -> scene();
-    if (Step < 7 && isJumping) {
-        switch (direction){
-        case 1:
-            moveBy(25, -height);
-            break;
-        case 2:
-            moveBy(-25, -height);
-            break ;
-        }
-        ++Step;
-        QTimer::singleShot(40, this, [this, Step, height]() { Leap(Step, height); });
+void WaterGirl::jump(int jumpStep) {
+    if (jumpStep < 7) {                 //part 1: upwards arc of jump
+        qDebug() << "part 1";
 
-        if (hitCeiling())
-        {
-            gravity();         //make him fall
-            isJumping = false;  //end jump
-            right = true;
-            left = true;
-            qDebug()<< "return from jump";
-            return;
-        }
-        if (hitSide())
-        {
-            gravity ();
-            boundries() ;           //make him fall
-            if (hitSide())
-            {
-                Layout::closeGame(sce);
-                kill ();
-            }
-            else{
-                isJumping = false;  //end jump
-                right = true;
-                left = true;
-                qDebug()<< "return from jump";
-                return;}
-        }
-    }else if (hitPavement()||hitSlope())
-    {
-        //qDebug()<< "jump done";
-        setPos(x(), y());
-        isJumping = false; // Reset isJumping flag
-        right = true;
-        left = true;
-        return;
-    }
-
-}
-
-
-
-void WaterGirl::jump(int jumpStep, int height) {
-    QGraphicsScene* sce = this -> scene();
-    if (direction != 0)
-    {
-        right = false;
-        left = false;
-    }
-    if (jumpStep < 7 && isJumping) {
         switch (direction){
         case 0:
-            moveBy(0, -height);
+            moveBy(0, -15);
             break;
         case 1:
-            moveBy(5, -height);
+            moveBy(27, -15);
             break;
         case 2:
-            moveBy(-5, -height);
+            moveBy(-27, -15);
             break ;
-
         }
         ++jumpStep;
-        QTimer::singleShot(40, this, [this, jumpStep, height]() { jump(jumpStep, height); });
+
+        if (jumpStep == 7) // when jumpStep reaches 5 without the help of hitCeiling or hitSide then there is no ceiling there
+        {
+            upLevel = true;
+            qDebug()<<"activating uplevel";
+        }
 
         if (hitCeiling())
         {
-            gravity ();         //make him fall
-            isJumping = false;  //end jump
-            right = true;
-            left = true;
-            qDebug()<< "return from jump";
-            return;
-        }
-        if (hitSide())
-        {
-            gravity ();
-            boundries() ;           //make him fall
-            if (hitSide())
-            {
-                Layout::closeGame(sce);
-                kill ();
-            }
-            else{
-                isJumping = false;  //end jump
-                right = true;
-                left = true;
-                qDebug()<< "return from jump";
-                return;}
+            moveBy(0, 15);                  //move down 1 jumpStep
+            jumpStep = 7;                   //fast track to part 2
+            qDebug() << "Hit ceiling";
         }
 
-    }else if (hitPavement()||hitSlope())
+        if (hitSide())
+        {   qDebug() << "Hit side";
+            if (direction == 1)
+                moveBy(-27, 0);         //move back 1 jumpStep
+            else if (direction ==2)
+                moveBy(27, 0);           //move back 1 jumpStep
+
+            direction = 0;              //change direction so fall of jump can be straight dowwards
+            jumpStep =7;                //fast track to part 2
+        }
+
+        QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });   //repeatedly call Jump with new jumpstep
+    }
+    else if (!hitPavement())            //part 2: downwards arc of jump
     {
-        //qDebug()<< "jump done";
-        setPos(x(), y());
-        isJumping = false; // Reset isJumping flag
-        right = true;
-        left = true;
+        qDebug() << "part 2";
+
+        if (!upLevel)
+        {
+            qDebug() << " not up level";
+
+            switch (direction){
+            case 0:
+                moveBy(0, 15);
+                break;
+            case 1:
+                moveBy(27, 15);
+                break;
+                qDebug() << "moved down";
+            case 2:
+                moveBy(-27, 15);
+                break ;
+            }
+        }else if (upLevel)
+        {
+            qDebug() << " up level";
+
+            switch (direction){
+            case 0:
+                moveBy(0, 15);
+                break;
+            case 1:
+                moveBy(10, 15);
+                break;
+                qDebug() << "moved down";
+            case 2:
+                moveBy(-10, 15);
+                break ;
+            }
+        }
+
+        if (hitSide())
+        {   qDebug() << "Hit side";
+            if (direction == 1)
+                moveBy(-27, 0);         //move back 1 jumpStep
+            else if (direction ==2)
+                moveBy(27, 0);           //move back 1 jumpStep
+
+            direction = 0;              //change direction so fall of jump can be straight dowwards
+            jumpStep =7;                //fast track to part 2
+        }
+
+        if (hitPavement())              //if hit pavement: end jump and return
+        {
+            qDebug() << "end jump";
+            isJumping = false;
+            gravity();
+            return;
+        } else                          //else if still in the air call Jump again (jumpstep is already 5 so it will keep calling part 2 untill it reaches condition and returns
+            QTimer::singleShot(40, this, [this, jumpStep]() { jump(jumpStep); });
+    }else if (hitPavement())              //if hit pavement: end jump and return
+    {
+        qDebug() << "end jump";
+        gravity();
+        isJumping = false;
         return;
     }
-
 }
 
 
 void WaterGirl::boundries()
 {
-    right = true;
-    left = true;
-
-    if(hitSide())
+    if (hitSide())
     {
         if (direction == 1)
         {
-            right = false;
             moveBy(-10,0);
         }
         else if (direction == 2)
         {
-            left = false;
             moveBy(10,0);
         }
     }
 
-    if ((hitSlope()&&!isJumping) || (hitSlope() &&!isJumping && y() > originalY))
-    {
 
-        if (direction == 1)
-        {
-            right = false;
-            qDebug()<< "going up a slope, cant go RIGHT";
-        }
-        else if (direction == 2)
-        {
-            left = false;
-            qDebug()<< "going up a slope, cant go LEFT";
-        }
+    //level 1 specific trouble spots
+    if (x() > 920 && y() > 632 && y() < 695)
+    {
+        setPos(845, 650);
+        gravity();
     }
 
-    if (hitSlope() && y() < originalY) // check if it enters if
+    if (x() < 131 && y() > 480 && y() < 525 )
     {
-        qDebug()<< "going down slope";
-        right = true;
-        left = true;
+        setPos(160, 500);
+        gravity();
     }
 
+    if (x() > 887 && y() > 330 && y() < 380)
+    {
+        setPos(830, 360);
+        gravity();
+    }
+
+    return;
 
 }
 

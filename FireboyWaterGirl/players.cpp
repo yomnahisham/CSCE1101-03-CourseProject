@@ -32,10 +32,14 @@ void Players::gravity ()
     if (!hitPavement()||hitCeiling())
     {
         moveBy (0,2);
+        qDebug()<<"going down in gravity";
         QTimer::singleShot(10, this, [this]() { gravity(); });
+
     }
     else
     {
+        setPos(x(), y());
+        qDebug()<<"hiting pav";
         return;
     }
 

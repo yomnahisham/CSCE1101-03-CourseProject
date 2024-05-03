@@ -43,21 +43,12 @@ void Layout::keyPressEvent(QKeyEvent* event) {
 
 void Layout::makeLevelONE(){
     lever = 0;
-    QGraphicsPixmapItem* l = new QGraphicsPixmapItem();
-    l -> setPixmap(QPixmap(":/image/img/level1F.png").scaled(1000,800, Qt::KeepAspectRatio));
-    l -> setPos(0,0);
 
     Obstacles* side = new Obstacles();
     side->createObstacle(Obstacles::Side);
     side -> setPixmap(QPixmap (":/image/img/Level1Side.png").scaled(1000, 800, Qt::KeepAspectRatio));
     side-> setPos(0, 0);
     addItem(side);
-
-    Obstacles* slope = new Obstacles();
-    slope->createObstacle(Obstacles::Slope);
-    slope -> setPixmap(QPixmap(":/image/img/levelSlopes.png").scaled (1000,800, Qt::KeepAspectRatio));
-    slope -> setPos(0,0);
-    //addItem(slope);
 
     Obstacles* c = new Obstacles();
     c->createObstacle(Obstacles::Ceiling);
@@ -71,6 +62,9 @@ void Layout::makeLevelONE(){
     Pav-> setPos(0, 0);
     addItem(Pav);
 
+    QGraphicsPixmapItem* l = new QGraphicsPixmapItem();
+    l -> setPixmap(QPixmap(":/image/img/level1F.png").scaled(1000,800, Qt::KeepAspectRatio));
+    l -> setPos(0,0);
     addItem(l);
 
 
@@ -127,7 +121,8 @@ void Layout::closeGame(QGraphicsScene* scene){
     QList<QGraphicsView *> views = scene->views();
     for (QGraphicsView *view : views) {
         view->close();
-    }}
+    }
+}
 
 void Layout::closeGame(){
     QList<QGraphicsView *> views = this -> views();

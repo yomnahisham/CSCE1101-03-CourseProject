@@ -798,14 +798,12 @@ compiler_rcc_clean:
 qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../../../../Qt/6.7.0/macos/libexec/rcc \
 		../FireboyWaterGirl/img/FireBoy.png \
-		../FireboyWaterGirl/img/levelSlopes.png \
 		../FireboyWaterGirl/img/slidingFloor2.png \
 		../FireboyWaterGirl/img/slidingFloor.png \
 		../FireboyWaterGirl/img/lever.png \
 		../FireboyWaterGirl/img/pushButton1.png \
 		../FireboyWaterGirl/img/level1F.png \
 		../FireboyWaterGirl/img/background.png \
-		../FireboyWaterGirl/img/level1Ceiling.png \
 		../FireboyWaterGirl/img/registerBackground.png \
 		../FireboyWaterGirl/img/LoginWindow.png \
 		../FireboyWaterGirl/img/WaterGirl.png \
@@ -813,13 +811,11 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/LeverLeft.png \
 		../FireboyWaterGirl/img/WaterDoor.png \
 		../FireboyWaterGirl/img/block.png \
-		../FireboyWaterGirl/img/level1Pav.png \
 		../FireboyWaterGirl/img/level1pave.png \
 		../FireboyWaterGirl/img/water.png \
 		../FireboyWaterGirl/img/acid.png \
 		../FireboyWaterGirl/img/tinyacid.png \
 		../FireboyWaterGirl/img/pushButton2.png \
-		../FireboyWaterGirl/img/level1Final.png \
 		../FireboyWaterGirl/img/gems.png \
 		../FireboyWaterGirl/img/Level1Side.png \
 		../FireboyWaterGirl/img/level1c.png \
