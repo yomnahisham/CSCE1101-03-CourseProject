@@ -6,6 +6,7 @@
 
 class AllUsers {
 public:
+    AllUsers();
     static void initializeDatabase();
     static void addUser(const QString& username, const QString& password);
     static void showLeaderboard();
@@ -13,8 +14,8 @@ public:
     static bool search(const QString& username);
 
 private:
-    static QSqlDatabase getDatabaseConnection();
     static QSqlDatabase db;
+    static QSqlDatabase getDatabaseConnection();
 };
 
 #endif // ALLUSERS_H

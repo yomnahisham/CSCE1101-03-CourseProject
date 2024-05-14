@@ -10,6 +10,8 @@
 // Initialize static member
 QSqlDatabase AllUsers::db;
 
+AllUsers::AllUsers(){}
+
 void AllUsers::initializeDatabase() {
     if (!QSqlDatabase::isDriverAvailable("QSQLITE")) {
         qDebug() << "Error: QSQLITE driver not available";
