@@ -7,7 +7,7 @@ User::User(const QString& username, const QString& password) : username(username
 }
 
 void User::updateScore(int nScore) {
-    AllUsers::updateScoreInDropbox(username, nScore);
+    //AllUsers::updateScoreInDropbox(username, nScore);
 }
 
 void User::newUser(const QString& username, const QString& password){

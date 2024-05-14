@@ -1,277 +1,123 @@
 #include "allusers.h"
 #include "user.h"
+
 #include <QDebug>
-#include <QFile>
-#include <QDir>
-#include <QTextStream>
-#include <QNetworkAccessManager>
-#include <QNetworkRequest>
-#include <QNetworkReply>
+#include <QCryptographicHash>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QSqlDatabase>
 
-qint64 AllUsers::tokenExpirationTimestamp = 0;
+// Initialize static member
+QSqlDatabase AllUsers::db;
 
-AllUsers::AllUsers() {}
+void AllUsers::initializeDatabase() {
+    if (!QSqlDatabase::isDriverAvailable("QSQLITE")) {
+        qDebug() << "Error: QSQLITE driver not available";
+        return;
+    }
 
-bool AllUsers::isTokenExpired() {
-    QDateTime expirationTime = QDateTime::fromSecsSinceEpoch(AllUsers::tokenExpirationTimestamp);
-    QDateTime currentDateTime = QDateTime::currentDateTime();
-    return currentDateTime >= expirationTime;
+    db = QSqlDatabase::addDatabase("QSQLITE", "GameDB");
+    db.setDatabaseName("/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/GameDB.db");
+
+    if (!db.open()) {
+        qDebug() << "Error: Unable to open database";
+        qDebug() << db.lastError().text();
+        return;
+    }
+
+    // create userInfo table if it does not exist
+    QSqlQuery query(db);
+    if (!query.exec("CREATE TABLE IF NOT EXISTS userInfo (username VARCHAR(225) NOT NULL UNIQUE, password VARCHAR(225) NOT NULL, score INTEGER NOT NULL, PRIMARY KEY(username))")) {
+        qDebug() << "Error: Unable to create userInfo table";
+        qDebug() << query.lastError().text();
+    }
 }
 
-void AllUsers::refreshToken(QString& newAccessToken) {
-    QNetworkAccessManager* manager = new QNetworkAccessManager();
-    QNetworkRequest request(QUrl("https://api.dropbox.com/oauth2/token"));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
-    QByteArray postData;
-    postData.append("grant_type=refresh_token");
-    postData.append("&refresh_token=" + newAccessToken.toUtf8());
-    QNetworkReply* reply = manager->post(request, postData);
+void AllUsers::addUser(const QString& username, const QString& password) {
+    QSqlDatabase db = getDatabaseConnection();
+    if (!db.isOpen()) {
+        qDebug() << "Error: Database is not open";
+        return;
+    }
 
-    QObject::connect(reply, &QNetworkReply::finished, [=, &newAccessToken]() mutable {
-        if (reply->error() == QNetworkReply::NoError) {
-            QByteArray data = reply->readAll();
-            QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
-            QJsonObject jsonObject = jsonDoc.object();
-            newAccessToken = jsonObject.value("access_token").toString();
-            int expiresIn = jsonObject.value("expires_in").toInt();
-            QDateTime currentDateTime = QDateTime::currentDateTime();
-            AllUsers::tokenExpirationTimestamp = currentDateTime.addSecs(expiresIn).toSecsSinceEpoch();
-            qDebug() << "Token Expiration Time:" << currentDateTime.addSecs(expiresIn).toString();
-            qDebug() << "Access token refreshed successfully.";
-        } else {
-            qDebug() << "Error: " << reply->errorString();
-        }
-        reply->deleteLater();
-        manager->deleteLater();
-    });
-}
+    QString hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
 
-void AllUsers::addUser(const QString& username, const QString& password){
-    AllUsers::saveUserDataToDropbox(username, password, 0);
+    QSqlQuery query(db);
+    query.prepare("INSERT INTO userInfo (username, password, score) VALUES (:username, :password, :score)");
+    query.bindValue(":username", username);
+    query.bindValue(":password", hashedPass);
+    query.bindValue(":score", 0);
+
+    if (!query.exec()) {
+        qDebug() << "Error: Unable to add user";
+        qDebug() << query.lastError().text();
+    }
 }
 
 void AllUsers::showLeaderboard() {
-    QString dropboxAccessToken;
-    if (AllUsers::isTokenExpired()) {
-        AllUsers::refreshToken(dropboxAccessToken);
+    QSqlDatabase db = getDatabaseConnection();
+    if (!db.isOpen()) {
+        qDebug() << "Error: Database is not open";
+        return;
     }
 
-    QDir directory("CSCE1101-03-CourseProject-Database/UserData");
-    QStringList files = directory.entryList(QStringList() << "*.txt", QDir::Files);
-
-    QMap<int, QString> leaderboard;
-
-    for (const QString& fileName : files) {
-        QFile file("CSCE1101-03-CourseProject-Database/UserData/" + fileName);
-        if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-            QTextStream in(&file);
-            QString username = fileName.split('.').first();
-            int score = in.readAll().toInt();
-            leaderboard.insert(-score, username);
-            file.close();
-        }
-    }
-
-    qDebug() << "Top 5 Leaderboard:";
-    int count = 0;
-    QMapIterator<int, QString> i(leaderboard);
-    while (i.hasNext() && count < 5) {
-        i.next();
-        qDebug() << "Username:" << i.value() << ", Score:" << -i.key();
-        ++count;
+    QSqlQuery query("SELECT username, score FROM userInfo ORDER BY score DESC LIMIT 10", db);
+    while (query.next()) {
+        QString username = query.value(0).toString();
+        int score = query.value(1).toInt();
+        qDebug() << "Username:" << username << "Score:" << score;
     }
 }
 
 bool AllUsers::authenticateUser(const QString &username, const QString &password) {
-    QString dropboxAccessToken;
-    if (AllUsers::isTokenExpired()) {
-        AllUsers::refreshToken(dropboxAccessToken);
+    QSqlDatabase db = getDatabaseConnection();
+    if (!db.isOpen()) {
+        qDebug() << "Error: Database is not open";
+        return false;
     }
 
-    QString filePath = "/CSCE1101-03-CourseProject-Database/UserData/" + username + ".txt";
+    QString hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
+    QSqlQuery query(db);
+    query.prepare("SELECT COUNT(*) FROM userInfo WHERE username = :username AND password = :password");
+    query.bindValue(":username", username);
+    query.bindValue(":password", hashedPass);
 
-    QNetworkAccessManager* manager = new QNetworkAccessManager();
+    if (!query.exec()) {
+        qDebug() << "Error: Unable to authenticate user";
+        qDebug() << query.lastError().text();
+        return false;
+    }
 
-    QNetworkRequest request(QUrl("https://content.dropboxapi.com/2/files/download"));
-    request.setRawHeader("Authorization", ("Bearer " + dropboxAccessToken).toUtf8());
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-    QJsonObject payload;
-    payload["path"] = filePath;
-
-    QNetworkReply* reply = manager->post(request, QJsonDocument(payload).toJson());
-
-    QObject::connect(reply, &QNetworkReply::finished, [=]() {
-        bool authenticated = false;
-        if (reply->error() == QNetworkReply::NoError) {
-            QByteArray data = reply->readAll();
-            QJsonObject userData = QJsonDocument::fromJson(data).object();
-            QString storedPassword = userData.value("password").toString();
-            authenticated = (storedPassword == password);
-            qDebug() << "Authentication result:" << authenticated;
-        } else {
-            qDebug() << "Error downloading user data file:" << reply->errorString();
-        }
-        reply->deleteLater();
-        manager->deleteLater();
-    });
-
-    return false;
+    query.next();
+    int count = query.value(0).toInt();
+    return (count == 1);
 }
 
 bool AllUsers::search(const QString& username) {
-    QString dropboxAccessToken;
-    if (AllUsers::isTokenExpired()) {
-        AllUsers::refreshToken(dropboxAccessToken);
+    QSqlDatabase db = getDatabaseConnection();
+    if (!db.isOpen()) {
+        qDebug() << "Error: Database is not open";
+        return false;
     }
 
-    QString directoryPath = "/CSCE1101-03-CourseProject-Database/UserData/";
+    QSqlQuery query(db);
+    query.prepare("SELECT COUNT(*) FROM userInfo WHERE username = :username");
+    query.bindValue(":username", username);
 
-    QNetworkAccessManager* manager = new QNetworkAccessManager();
+    if (!query.exec()) {
+        qDebug() << "Error: Unable to execute search query";
+        qDebug() << query.lastError().text();
+        return false;
+    }
 
-    QNetworkRequest request(QUrl("https://content.dropboxapi.com/2/files/list_folder"));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    request.setRawHeader("Authorization", ("Bearer " + dropboxAccessToken).toUtf8());
-
-    QJsonObject payload;
-    payload["path"] = directoryPath;
-
-    QNetworkReply* reply = manager->post(request, QJsonDocument(payload).toJson());
-
-    bool fileExists = false;
-
-    QObject::connect(reply, &QNetworkReply::finished, [=, &fileExists]() mutable {
-        if (reply->error() == QNetworkReply::NoError) {
-            QByteArray data = reply->readAll();
-            QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
-            QJsonObject jsonObject = jsonDoc.object();
-            QJsonArray entries = jsonObject["entries"].toArray();
-            for (const auto& entry : entries) {
-                QJsonObject file = entry.toObject();
-                QString filename = file["name"].toString();
-                if (filename == username + ".txt") {
-                    fileExists = true;
-                    break;
-                }
-            }
-        } else {
-            qDebug() << "Error: " << reply->errorString();
-        }
-        reply->deleteLater();
-        manager->deleteLater();
-    });
-
-    QEventLoop loop;
-    QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-    loop.exec();
-
-    return fileExists;
+    query.next();
+    int count = query.value(0).toInt();
+    return (count > 0);
 }
 
-int AllUsers::getScore(const QString& username) {
-    QString dropboxAccessToken;
-    if (AllUsers::isTokenExpired()) {
-        AllUsers::refreshToken(dropboxAccessToken);
+QSqlDatabase AllUsers::getDatabaseConnection() {
+    if (!db.isOpen()) {
+        initializeDatabase();
     }
-
-    QString filePath = "/CSCE1101-03-CourseProject-Database/UserData/" + username + ".txt";
-
-    QNetworkAccessManager* manager = new QNetworkAccessManager();
-    QNetworkRequest request(QUrl("https://content.dropboxapi.com/2/files/download"));
-    request.setRawHeader("Authorization", ("Bearer " + dropboxAccessToken).toUtf8());
-
-    QNetworkReply* reply = manager->post(request, QJsonDocument(QJsonObject{{"path", filePath}}).toJson());
-
-    int score = 0;
-
-    QObject::connect(reply, &QNetworkReply::finished, [=, &score]() mutable {
-        if (reply->error() == QNetworkReply::NoError) {
-            QByteArray data = reply->readAll();
-            QJsonDocument jsonDoc = QJsonDocument::fromJson(data);
-            QJsonObject jsonObject = jsonDoc.object();
-            score = jsonObject.value("score").toInt();
-        } else {
-            qDebug() << "Error: " << reply->errorString();
-        }
-        reply->deleteLater();
-        manager->deleteLater();
-    });
-
-    QEventLoop loop;
-    QObject::connect(reply, &QNetworkReply::finished, &loop, &QEventLoop::quit);
-    loop.exec();
-
-    return score;
-}
-
-void AllUsers::saveUserDataToDropbox(const QString& username, const QString& password, int score) {
-    QString dropboxAccessToken;
-    if (AllUsers::isTokenExpired()) {
-        AllUsers::refreshToken(dropboxAccessToken);
-    }
-
-    QString filePath = "/CSCE1101-03-CourseProject-Database/UserData/" + username + ".txt";
-
-    QJsonObject jsonPayload;
-    jsonPayload["path"] = filePath;
-    jsonPayload["mode"] = "overwrite";
-    jsonPayload["autorename"] = true;
-    jsonPayload["mute"] = false;
-    jsonPayload["username"] = username;
-    jsonPayload["password"] = password;
-    jsonPayload["score"] = score;
-
-    QNetworkAccessManager* manager = new QNetworkAccessManager();
-    QNetworkRequest request(QUrl("https://content.dropboxapi.com/2/files/upload"));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
-    request.setRawHeader("Authorization", ("Bearer " + dropboxAccessToken).toUtf8());
-
-    QNetworkReply* reply = manager->post(request, QJsonDocument(jsonPayload).toJson());
-
-    QObject::connect(reply, &QNetworkReply::finished, [=]() {
-        if (reply->error() == QNetworkReply::NoError) {
-            qDebug() << "User data saved to Dropbox successfully.";
-        } else {
-            qDebug() << "Error: " << reply->errorString();
-        }
-        reply->deleteLater();
-        manager->deleteLater();
-    });
-}
-
-void AllUsers::updateScoreInDropbox(const QString& username, int newScore) {
-    QString dropboxAccessToken;
-    if (AllUsers::isTokenExpired()) {
-        AllUsers::refreshToken(dropboxAccessToken);
-    }
-
-    QString filePath = "/CSCE1101-03-CourseProject-Database/UserData/" + username + ".txt";
-
-    QJsonObject jsonPayload;
-    jsonPayload["path"] = filePath;
-    jsonPayload["mode"] = "add";
-    jsonPayload["autorename"] = true;
-    jsonPayload["mute"] = false;
-    jsonPayload["score"] = newScore;
-
-    if (newScore > getScore(username)) {
-        QNetworkAccessManager* manager = new QNetworkAccessManager();
-        QNetworkRequest request(QUrl("https://content.dropboxapi.com/2/files/upload"));
-        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/octet-stream");
-        request.setRawHeader("Authorization", ("Bearer " + dropboxAccessToken).toUtf8());
-
-        QNetworkReply* reply = manager->post(request, QJsonDocument(jsonPayload).toJson());
-
-        QObject::connect(reply, &QNetworkReply::finished, [=]() {
-            if (reply->error() == QNetworkReply::NoError) {
-                qDebug() << "Score updated in Dropbox successfully.";
-            } else {
-                qDebug() << "Error: " << reply->errorString();
-            }
-            reply->deleteLater();
-            manager->deleteLater();
-        });
-    } else {
-        qDebug() << "New score is not higher than the existing score.";
-    }
+    return db;
 }

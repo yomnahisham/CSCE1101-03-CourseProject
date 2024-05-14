@@ -48,6 +48,12 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+# Specify library search path
+LIBS += -L/opt/homebrew/opt/sqlite/lib
+
+# Specify include search path
+INCLUDEPATH += /opt/homebrew/opt/sqlite/include
+
 RESOURCES += \
     Resources.qrc
 
