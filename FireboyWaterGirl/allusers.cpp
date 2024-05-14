@@ -7,7 +7,7 @@
 #include <QSqlError>
 #include <QSqlDatabase>
 
-// Initialize static member
+// initialize static member
 QSqlDatabase AllUsers::db;
 
 AllUsers::AllUsers(){}
