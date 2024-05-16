@@ -39,7 +39,87 @@ void Obstacles::createObstacle(ObstacleType type){
         setObjectName("Acid");
         setPixmap(QPixmap(":/image/img/tinyacid.png").scaled(70, 45, Qt::KeepAspectRatio));
         break;
-    case ObstacleType::LeverRight:
+    case ObstacleType::acidBall:
+        setObjectName("Acid");
+        setPixmap(QPixmap(":/image/img/acid ball.png").scaled(15, 15, Qt::KeepAspectRatio));
+        timerAcid();
+        break;
+    case ObstacleType::openWD:
+        setObjectName("openWD");
+        setPixmap(QPixmap(":/image/img/openWD.png").scaled(90, 105, Qt::KeepAspectRatio));
+        break;
+    case ObstacleType::openFD:
+        setObjectName("openFD");
+        setPixmap(QPixmap(":/image/img/openFD.png").scaled(80, 95, Qt::KeepAspectRatio));
+        break;
+    case ObstacleType::FireDoor:
+        setObjectName("FireDoor");
+        setPixmap(QPixmap(":/image/img/fireDoor.png").scaled(80, 95, Qt::KeepAspectRatio));
+        break;
+    case ObstacleType::WaterDoor:
+        setObjectName("WaterDoor");
+        setPixmap(QPixmap(":/image/img/WaterDoor.png").scaled(90, 105, Qt::KeepAspectRatio));
+        break;
+    case ObstacleType::Block:
+        setObjectName("Block");
+        setPixmap(QPixmap(":/image/img/block.png").scaled (70,70,Qt::KeepAspectRatio));
+        break;
+    }
+}
+
+void Obstacles::timerAcid()
+{
+    QTimer * timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &Obstacles::moveAcid);
+    timer->start(40);
+}
+
+void Obstacles::moveAcid()
+{
+
+    setPos(x(),y()+5);
+
+    bool hitPav = false;
+
+    QList<QGraphicsItem *> colliding_items = collidingItems();
+    for (int i = 0, n = colliding_items.size(); i < n; ++i) {
+        Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
+        if (ptr && ((ptr->objectName() == "Pavement")||(ptr->objectName() == "Block"))) {
+            hitPav = true;}
+    }
+
+    //qDebug()<< hitPav;
+
+    if (hitPav)
+    {
+        qDebug()<< "hit pav";
+        scene()->removeItem(this);
+        delete this;
+    }
+}
+
+
+void Obstacles::lowerFloor(){ //animate it more
+
+    while (y() < 528)
+    {
+        moveBy(0, 3);
+        QTimer::singleShot(40, this, [this]() { lowerFloor(); });
+    }
+    return;
+}
+void Obstacles::elevateFloor(Players* player){ //animate it more
+
+    while (y() > 404 )
+    {
+        player -> moveBy(0,-3);
+        moveBy(0, - 3);
+        QTimer::singleShot(40, this, [this, player]() { elevateFloor(player); });
+    }
+}
+
+
+/*    case ObstacleType::LeverRight:
         setObjectName("LeverRight");
         setPixmap(QPixmap(":/image/img/lever.png").scaled(70, 57, Qt::KeepAspectRatio));
         break;
@@ -62,39 +142,5 @@ void Obstacles::createObstacle(ObstacleType type){
     case ObstacleType::SlidingFloor2:
         setObjectName("SlidingFloor2");
         setPixmap(QPixmap(":/image/img/slidingFloor2.png").scaled(110, 34, Qt::KeepAspectRatio));
-        break;
-    case ObstacleType::FireDoor:
-        setObjectName("FireDoor");
-        setPixmap(QPixmap(":/image/img/fireDoor.png").scaled(80, 95, Qt::KeepAspectRatio));
-        break;
-    case ObstacleType::WaterDoor:
-        setObjectName("WaterDoor");
-        setPixmap(QPixmap(":/image/img/WaterDoor.png").scaled(90, 105, Qt::KeepAspectRatio));
-        break;
-    case ObstacleType::Block:
-        setObjectName("Block");
-        setPixmap(QPixmap(":/image/img/block.png").scaled (70,70,Qt::KeepAspectRatio));
-        break;
-    }
-}
-
-void Obstacles::lowerFloor(){ //animate it more
-
-    while (y() < 528)
-    {
-        moveBy(0, 3);
-        QTimer::singleShot(40, this, [this]() { lowerFloor(); });
-    }
-    return;
-}
-void Obstacles::elevateFloor(Players* player){ //animate it more
-
-    while (y() > 404 )
-    {
-        player -> moveBy(0,-3);
-        moveBy(0, - 3);
-        QTimer::singleShot(40, this, [this, player]() { elevateFloor(player); });
-    }
-}
-
+        break;*/
 

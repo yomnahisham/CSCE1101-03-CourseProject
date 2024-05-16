@@ -258,6 +258,7 @@ DIST          = ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/qt_config.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/spec_post.prf \
+		../FireboyWaterGirl/.qmake.stash \
 		../../../../Qt/6.7.0/macos/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/mac/sdk.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/toolchain.prf \
@@ -322,7 +323,7 @@ TARGET        = FireboyWaterGirl.app/Contents/MacOS/FireboyWaterGirl
 EXPORT_QMAKE_MAC_SDK = macosx
 EXPORT_QMAKE_MAC_SDK_VERSION = 14.5
 EXPORT_QMAKE_XCODE_DEVELOPER_PATH = /Applications/Xcode.app/Contents/Developer
-EXPORT__QMAKE_STASH_ = 
+EXPORT__QMAKE_STASH_ = /Users/LiloBilo/Documents/GitHub/Fire&Water/build-FireboyWaterGirl-Qt_6_7_0_for_macOS-Debug/.qmake.stash
 EXPORT_VALID_ARCHS = x86_64 arm64
 EXPORT_DEFAULT_ARCHS = x86_64
 EXPORT_ARCHS = $(filter $(EXPORT_VALID_ARCHS), $(if $(ARCHS), $(ARCHS), $(if $(EXPORT_DEFAULT_ARCHS), $(EXPORT_DEFAULT_ARCHS), $(EXPORT_VALID_ARCHS))))
@@ -499,6 +500,7 @@ Makefile: ../FireboyWaterGirl/FireboyWaterGirl.pro ../../../../Qt/6.7.0/macos/mk
 		../../../../Qt/6.7.0/macos/mkspecs/features/qt_config.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt/6.7.0/macos/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/mac/sdk.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/toolchain.prf \
@@ -698,6 +700,7 @@ Makefile: ../FireboyWaterGirl/FireboyWaterGirl.pro ../../../../Qt/6.7.0/macos/mk
 ../../../../Qt/6.7.0/macos/mkspecs/features/qt_config.prf:
 ../../../../Qt/6.7.0/macos/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt/6.7.0/macos/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt/6.7.0/macos/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/6.7.0/macos/mkspecs/features/mac/sdk.prf:
 ../../../../Qt/6.7.0/macos/mkspecs/features/toolchain.prf:
@@ -772,6 +775,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r FireboyWaterGirl.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -802,6 +806,8 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/background.png \
 		../FireboyWaterGirl/img/registerBackground.png \
 		../FireboyWaterGirl/img/LoginWindow.png \
+		../FireboyWaterGirl/img/acid\ ball.png \
+		../FireboyWaterGirl/img/openWD.png \
 		../FireboyWaterGirl/img/WaterGirl.png \
 		../FireboyWaterGirl/img/fire.png \
 		../FireboyWaterGirl/img/LeverLeft.png \
@@ -809,6 +815,7 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/block.png \
 		../FireboyWaterGirl/img/level1pave.png \
 		../FireboyWaterGirl/img/water.png \
+		../FireboyWaterGirl/img/openFD.png \
 		../FireboyWaterGirl/img/acid.png \
 		../FireboyWaterGirl/img/tinyacid.png \
 		../FireboyWaterGirl/img/pushButton2.png \

@@ -145,7 +145,7 @@ void FireBoy::jump(int jumpStep) {
         {
             qDebug() << "end jump";
             if(hitCeiling())
-                moveBy(0, -20);
+                moveBy(0, -12);
             isJumping = false;
             gravity();
             return;

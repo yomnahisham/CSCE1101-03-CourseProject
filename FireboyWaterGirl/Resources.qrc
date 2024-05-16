@@ -23,5 +23,8 @@
         <file>img/level1F.png</file>
         <file>img/level1c.png</file>
         <file>img/level1pave.png</file>
+        <file>img/acid ball.png</file>
+        <file>img/openFD.png</file>
+        <file>img/openWD.png</file>
     </qresource>
 </RCC>

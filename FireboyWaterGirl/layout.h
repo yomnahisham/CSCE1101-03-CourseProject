@@ -8,7 +8,7 @@
 class Layout : public QGraphicsScene {
 public:
     Layout(QObject* parent = nullptr, int lev = 0);
-    void makeLevelONE();
+    void baseLevel();
     void makeLevelTWO();
     void makeLevelTHREE();
     void makeLevelFOUR();
@@ -25,6 +25,7 @@ protected:
     bool wd = false;
     bool fd = false;
     int level;
+    void shootAcid (int x, int y);
 
 };
 #endif // LAYOUT_H

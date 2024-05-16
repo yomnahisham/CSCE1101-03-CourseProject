@@ -190,7 +190,7 @@ void WaterGirl::boundries()
 
     if (x() > 887 && y() > 330 && y() < 380)
     {
-        setPos(830, 360);
+        setPos(830, 350);
         gravity();
     }
 
