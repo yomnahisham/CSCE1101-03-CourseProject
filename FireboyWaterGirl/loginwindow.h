@@ -1,7 +1,6 @@
 #ifndef LOGINWINDOW_H
 #define LOGINWINDOW_H
 
-#include "allusers.h"
 #include "user.h"
 #include <QDialog>
 #include <QtSQL>
@@ -16,7 +15,7 @@ class LoginWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit LoginWindow(QWidget *parent = nullptr, AllUsers* Allusers = nullptr);
+    explicit LoginWindow(QWidget *parent = nullptr);
     ~LoginWindow();
 
 private slots:
@@ -25,7 +24,6 @@ private slots:
 
 private:
     Ui::LoginWindow *ui;
-    AllUsers* users;
     User* loggedUser;
 };
 

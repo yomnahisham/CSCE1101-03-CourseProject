@@ -2,7 +2,6 @@
 #define WINDOWMANAGER_H
 
 #include "user.h"
-#include"allusers.h"
 #include <QGraphicsView>
 #include "registerwindow.h"
 #include "loginwindow.h"
@@ -17,7 +16,7 @@ public:
     void gameDemo();
 
     enum WindowType{login, reg, lev, main, over};
-    void showWindow(WindowType type, int l = 0, User* loggedUser = nullptr, AllUsers* Allusers = nullptr);
+    void showWindow(WindowType type, int l = 0, User* loggedUser = nullptr);
     void endWindow(WindowType type);
     void transferLevel (int n);
     void WonGame(bool i);
@@ -27,7 +26,6 @@ private:
     int l; //level
 
     User* user;
-    AllUsers* allusers;
 
     bool loginON;
     bool registerON;

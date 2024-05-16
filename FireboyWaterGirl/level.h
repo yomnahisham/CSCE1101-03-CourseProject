@@ -1,6 +1,7 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
+#include "user.h"
 #include <QDialog>
 
 namespace Ui {
@@ -12,7 +13,7 @@ class Level : public QDialog
     Q_OBJECT
 
 public:
-    explicit Level(QWidget *parent = nullptr);
+    explicit Level(QWidget *parent = nullptr, User* loggeduser = nullptr);
     ~Level();
 
 private slots:
@@ -27,6 +28,7 @@ private slots:
     void on_level5B_clicked();
 
 private:
+    User* user;
     Ui::Level *ui;
 };
 

@@ -9,7 +9,7 @@
 
 class Layout : public QGraphicsScene {
 public:
-    Layout(QObject* parent = nullptr, int lev = 0, User* loggedUser = nullptr, AllUsers* Allusers = nullptr);
+    Layout(QObject* parent = nullptr, int lev = 0, User* loggedUser = nullptr);
     void baseLevel();
     void makeLevelTWO();
     void makeLevelTHREE();
@@ -21,7 +21,6 @@ public:
     static void closeGame(QGraphicsScene* scene);
 
     User* user;
-    AllUsers* allusers;
 
 protected:
     void keyPressEvent(QKeyEvent* event) override;
@@ -31,7 +30,7 @@ protected:
     bool fd = false;
     int level;
     void shootAcid (int x, int y);
-
+    bool endgame = false;
     int nScore;
     int health = 1000;
     QGraphicsTextItem* healthText;

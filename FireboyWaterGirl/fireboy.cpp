@@ -43,7 +43,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
         //qDebug()<< "moved right";
     }
 
-    checkCollisions();
+    //checkCollisions();
 }
 
 void FireBoy::jump(int jumpStep) {

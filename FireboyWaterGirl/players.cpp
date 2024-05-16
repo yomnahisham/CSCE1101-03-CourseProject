@@ -8,9 +8,9 @@ Players::Players(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {
     QTimer * timer = new QTimer(this);
     connect(timer, &QTimer::timeout, [=]() {
         checkCollisions();
-    });
-    timer->start(2000);
+    });    timer->start(500);
 }
+
 bool Players::hitPavement()
 {
     QList<QGraphicsItem *> colliding_items = collidingItems();
@@ -38,7 +38,7 @@ void Players::gravity ()
 
     if (!hitPavement()||hitCeiling())
     {
-        qDebug()<< "in the air";
+        //qDebug()<< "in the air";
         moveBy (0,2);
         QTimer::singleShot(10, this, [this]() { gravity(); });
 
