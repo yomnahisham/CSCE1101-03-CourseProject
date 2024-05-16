@@ -6,11 +6,28 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlDatabase>
+#include <QDir>
+#include <QCoreApplication>
 
 // initialize static member
 QSqlDatabase AllUsers::db;
 
 AllUsers::AllUsers(){}
+
+QString AllUsers::getDatabasePath() {
+    // navigate up to get to the desired location for the database
+    QDir dir(QCoreApplication::applicationDirPath());
+    // goes up in the directory to reach repo folder including the sql db
+    dir.cdUp();
+    dir.cdUp();
+    dir.cdUp();
+    dir.cdUp();
+    dir.cdUp();
+    dir.cdUp();
+    QString dbPath = dir.absolutePath() + QDir::separator() + "GameDB.db";
+    qDebug() << "Database path: " << dbPath;
+    return dbPath;
+}
 
 void AllUsers::initializeDatabase() {
     if (!QSqlDatabase::isDriverAvailable("QSQLITE")) {
@@ -19,7 +36,7 @@ void AllUsers::initializeDatabase() {
     }
 
     db = QSqlDatabase::addDatabase("QSQLITE", "GameDB");
-    db.setDatabaseName("/Users/yomnahisham/Documents/GitHub/CSCE1101-03-CourseProject/GameDB.db");
+    db.setDatabaseName(getDatabasePath());
 
     if (!db.open()) {
         qDebug() << "Error: Unable to open database";
@@ -53,6 +70,8 @@ void AllUsers::addUser(const QString& username, const QString& password) {
     if (!query.exec()) {
         qDebug() << "Error: Unable to add user";
         qDebug() << query.lastError().text();
+    } else {
+        qDebug() << "User added successfully: " << username;
     }
 }
 
