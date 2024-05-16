@@ -18,6 +18,14 @@ public:
 private slots:
     void on_Level1_clicked();
 
+    void on_level2B_clicked();
+
+    void on_level3B_clicked();
+
+    void on_level4B_clicked();
+
+    void on_level5B_clicked();
+
 private:
     Ui::Level *ui;
 };

@@ -9,7 +9,6 @@ public:
     void keyPressEvent(QKeyEvent* event) override;
     void boundries() override;
     void kill() override;
-    bool atDoor();
 
 private:
     void jump(int jumpStep);

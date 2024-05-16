@@ -62,7 +62,7 @@ void WindowManager::startLogin(){
     loginON = true;
 }
 
-void WindowManager::showWindow(WindowType type) {
+void WindowManager::showWindow(WindowType type, int l) {
 
     switch (type){
     case login:
@@ -120,7 +120,7 @@ void WindowManager::showWindow(WindowType type) {
     } else if(mainON){
 
         QGraphicsView* view = new QGraphicsView();
-        Layout* scene = new Layout(nullptr, 1);
+        Layout* scene = new Layout(nullptr, l);
 
         // setting up scene to start game
         view->setFixedSize(1000, 800);

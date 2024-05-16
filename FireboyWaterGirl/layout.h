@@ -9,6 +9,11 @@ class Layout : public QGraphicsScene {
 public:
     Layout(QObject* parent = nullptr, int lev = 0);
     void makeLevelONE();
+    void makeLevelTWO();
+    void makeLevelTHREE();
+    void makeLevelFOUR();
+    void makeLevelFIVE();
+
     void closeGame();
     void handleCollisions(Players *player, Obstacles* ob);
     static void closeGame(QGraphicsScene* scene);
@@ -17,6 +22,8 @@ protected:
     void keyPressEvent(QKeyEvent* event) override;
     QList<Obstacles*> obList;
     int lever;
+    bool wd = false;
+    bool fd = false;
 
 };
 #endif // LAYOUT_H

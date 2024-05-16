@@ -15,7 +15,7 @@ public:
     void gameDemo();
 
     enum WindowType{login, reg, lev, main, over};
-    void showWindow(WindowType type);
+    void showWindow(WindowType type, int l = 0);
     void endWindow(WindowType type);
     void transferLevel (int n);
     void WonGame(bool i);

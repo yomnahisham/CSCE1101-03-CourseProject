@@ -19,6 +19,19 @@ Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     case 1:
         makeLevelONE();
         break;
+    case 2:
+        makeLevelONE();
+        makeLevelTWO();
+        break;
+    case 3:
+        makeLevelTHREE();
+        break;
+    case 4:
+        makeLevelFOUR();
+        break;
+    case 5:
+        makeLevelFIVE();
+        break;
     }
 
     FireBoy* firePlayer = new FireBoy();
@@ -117,6 +130,23 @@ void Layout::makeLevelONE(){
     obList.append(FD);
 }
 
+
+void Layout::makeLevelTWO(){
+
+}
+
+void Layout::makeLevelTHREE(){
+
+}
+
+void Layout::makeLevelFOUR(){
+
+}
+
+void Layout::makeLevelFIVE(){
+
+}
+
 void Layout::closeGame(QGraphicsScene* scene){
     QList<QGraphicsView *> views = scene->views();
     for (QGraphicsView *view : views) {
@@ -133,8 +163,7 @@ void Layout::closeGame(){
 
 void Layout::handleCollisions(Players *player, Obstacles* ob)
 {
-    bool wd = false;
-    bool fd = false;
+
 
     // check if the obstacle collides with the player
     if (ob->collidesWithItem(player)) {
@@ -174,3 +203,6 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
         closeGame(this);
     }
 }
+
+
+

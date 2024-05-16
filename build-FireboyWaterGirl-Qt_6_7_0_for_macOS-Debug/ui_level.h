@@ -20,6 +20,10 @@ class Ui_Level
 {
 public:
     QPushButton *Level1;
+    QPushButton *level2B;
+    QPushButton *level3B;
+    QPushButton *level4B;
+    QPushButton *level5B;
 
     void setupUi(QDialog *Level)
     {
@@ -29,6 +33,18 @@ public:
         Level1 = new QPushButton(Level);
         Level1->setObjectName("Level1");
         Level1->setGeometry(QRect(200, 120, 100, 32));
+        level2B = new QPushButton(Level);
+        level2B->setObjectName("level2B");
+        level2B->setGeometry(QRect(200, 170, 100, 32));
+        level3B = new QPushButton(Level);
+        level3B->setObjectName("level3B");
+        level3B->setGeometry(QRect(200, 220, 100, 32));
+        level4B = new QPushButton(Level);
+        level4B->setObjectName("level4B");
+        level4B->setGeometry(QRect(200, 270, 100, 32));
+        level5B = new QPushButton(Level);
+        level5B->setObjectName("level5B");
+        level5B->setGeometry(QRect(200, 320, 100, 32));
 
         retranslateUi(Level);
 
@@ -39,6 +55,10 @@ public:
     {
         Level->setWindowTitle(QCoreApplication::translate("Level", "Dialog", nullptr));
         Level1->setText(QCoreApplication::translate("Level", "Level 1", nullptr));
+        level2B->setText(QCoreApplication::translate("Level", "Level 2", nullptr));
+        level3B->setText(QCoreApplication::translate("Level", "Level 3", nullptr));
+        level4B->setText(QCoreApplication::translate("Level", "Level 4", nullptr));
+        level5B->setText(QCoreApplication::translate("Level", "Level 5", nullptr));
     } // retranslateUi
 
 };
