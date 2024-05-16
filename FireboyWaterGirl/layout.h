@@ -24,6 +24,7 @@ protected:
     int lever;
     bool wd = false;
     bool fd = false;
+    int level;
 
 };
 #endif // LAYOUT_H

@@ -133,7 +133,7 @@ void WindowManager::showWindow(WindowType type, int l) {
         view->setScene(scene);
         view->show();
     } else if(overON){
-        GameOver* gameover = new GameOver(nullptr, won);
+        GameOver* gameover = new GameOver(nullptr, l, won);
         gameover->resize(500, 500);
         gameover -> show();
     }

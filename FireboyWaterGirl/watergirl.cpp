@@ -200,8 +200,6 @@ void WaterGirl::boundries()
 
 void WaterGirl::kill(){
 
-    WindowManager Manager;
-    Manager.endWindow(WindowManager::lev);
-    Manager.showWindow(WindowManager::over);
+    hide();
 
 }

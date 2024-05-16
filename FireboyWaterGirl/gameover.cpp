@@ -2,11 +2,13 @@
 #include "ui_gameover.h"
 #include "windowmanager.h"
 
-GameOver::GameOver(QWidget *parent, bool w)
+GameOver::GameOver(QWidget *parent, int l, bool w)
     : QDialog(parent)
     , ui(new Ui::GameOver)
 {
     ui->setupUi(this);
+
+    this -> l = l;
 
     if (!w)
     {
@@ -23,7 +25,7 @@ GameOver::~GameOver()
 void GameOver::on_retryButton_clicked()
 {
     WindowManager Manager;
-    Manager.showWindow(WindowManager::main);
+    Manager.showWindow(WindowManager::main, l);
     this->close();
 }
 

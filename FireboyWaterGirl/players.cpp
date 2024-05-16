@@ -31,6 +31,8 @@ void Players::gravity ()
 {
     if (!hitPavement()||hitCeiling())
     {
+        if (hitCeiling())
+            qDebug()<< "ceiling";
         moveBy (0,2);
         qDebug()<<"going down in gravity";
         QTimer::singleShot(10, this, [this]() { gravity(); });

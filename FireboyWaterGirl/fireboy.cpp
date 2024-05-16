@@ -19,7 +19,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
             upLevel = false;
             jump(0);
         }
-    }else if (event->key() == Qt::Key_Slash)  {     //"/" key jumps right
+    }else if (event->key() == Qt::Key_Slash)  {     //"/" key jumps left
         if (!isJumping) {
             direction = 2;
             isJumping = true;
@@ -48,7 +48,7 @@ void FireBoy::keyPressEvent(QKeyEvent* event) {
 
 void FireBoy::jump(int jumpStep) {
     if (jumpStep < 14) {                 //part 1: upwards arc of jump
-        //qDebug() << "part 1";
+        qDebug() << "part 1";
 
         switch (direction){
         case 0:
@@ -66,14 +66,14 @@ void FireBoy::jump(int jumpStep) {
         if (jumpStep == 14) // when jumpStep reaches 5 without the help of hitCeiling or hitSide then there is no ceiling there
         {
             upLevel = true;
-            //qDebug()<<"activating uplevel";
+            qDebug()<<"activating uplevel";
         }
 
         if (hitCeiling())
         {
             moveBy(0, 7.5);                  //move down 1 jumpStep
             jumpStep = 14;                   //fast track to part 2
-            //qDebug() << "Hit ceiling";
+            qDebug() << "Hit ceiling";
         }
 
         if (hitPavement())
@@ -82,7 +82,7 @@ void FireBoy::jump(int jumpStep) {
         }
 
         if (hitSide())
-        {   //qDebug() << "Hit side";
+        {   qDebug() << "Hit side";
             if (direction == 1)
                 moveBy(-13.5, 0);         //move back 1 jumpStep
             else if (direction ==2)
@@ -96,11 +96,11 @@ void FireBoy::jump(int jumpStep) {
     }
     else if (!hitPavement())            //part 2: downwards arc of jump
     {
-        //qDebug() << "part 2";
+        qDebug() << "part 2";
 
         if (!upLevel)
         {
-            //qDebug() << " not up level";
+            qDebug() << " not up level";
 
             switch (direction){
             case 0:
@@ -108,15 +108,15 @@ void FireBoy::jump(int jumpStep) {
                 break;
             case 1:
                 moveBy(13.5, 7.5);
-                break;
                 qDebug() << "moved down";
+                break;
             case 2:
                 moveBy(-13.5, 7.5);
                 break ;
             }
         }else if (upLevel)
         {
-            //qDebug() << " up level";
+            qDebug() << " up level";
 
             switch (direction){
             case 0:
@@ -125,7 +125,6 @@ void FireBoy::jump(int jumpStep) {
             case 1:
                 moveBy(5, 7.5);
                 break;
-                //qDebug() << "moved down";
             case 2:
                 moveBy(-5, 7.5);
                 break ;
@@ -133,7 +132,7 @@ void FireBoy::jump(int jumpStep) {
         }
 
         if (hitSide())
-        {   //qDebug() << "Hit side";
+        {   qDebug() << "Hit side";
             if (direction == 1)
                 moveBy(-13.5, 0);         //move back 1 jumpStep
             else if (direction ==2)
@@ -144,15 +143,18 @@ void FireBoy::jump(int jumpStep) {
 
         if (hitPavement())              //if hit pavement: end jump and return
         {
-            //qDebug() << "end jump";
+            qDebug() << "end jump";
+            if(hitCeiling())
+                moveBy(0, -20);
             isJumping = false;
             gravity();
             return;
         } else                          //else if still in the air call Jump again (jumpstep is already 5 so it will keep calling part 2 untill it reaches condition and returns
             QTimer::singleShot(20, this, [this, jumpStep]() { jump(jumpStep); });
+
     }else if (hitPavement())              //if hit pavement: end jump and return
     {
-        //qDebug() << "end jump";
+        qDebug() << "end jump";
         gravity();
         isJumping = false;
         return;
@@ -201,8 +203,6 @@ void FireBoy::boundries()
 
 void FireBoy::kill(){
     hide();
-    WindowManager Manager;
-    Manager.showWindow(WindowManager::over);
 }
 
 

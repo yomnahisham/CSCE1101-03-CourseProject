@@ -29,22 +29,22 @@ public:
     {
         if (Level->objectName().isEmpty())
             Level->setObjectName("Level");
-        Level->resize(534, 445);
+        Level->resize(525, 457);
         Level1 = new QPushButton(Level);
         Level1->setObjectName("Level1");
-        Level1->setGeometry(QRect(200, 120, 100, 32));
+        Level1->setGeometry(QRect(190, 30, 100, 32));
         level2B = new QPushButton(Level);
         level2B->setObjectName("level2B");
-        level2B->setGeometry(QRect(200, 170, 100, 32));
+        level2B->setGeometry(QRect(190, 80, 100, 32));
         level3B = new QPushButton(Level);
         level3B->setObjectName("level3B");
-        level3B->setGeometry(QRect(200, 220, 100, 32));
+        level3B->setGeometry(QRect(190, 130, 100, 32));
         level4B = new QPushButton(Level);
         level4B->setObjectName("level4B");
-        level4B->setGeometry(QRect(200, 270, 100, 32));
+        level4B->setGeometry(QRect(190, 180, 100, 32));
         level5B = new QPushButton(Level);
         level5B->setObjectName("level5B");
-        level5B->setGeometry(QRect(200, 320, 100, 32));
+        level5B->setGeometry(QRect(190, 230, 100, 32));
 
         retranslateUi(Level);
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>534</width>
-    <height>445</height>
+    <width>525</width>
+    <height>457</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QPushButton" name="Level1">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>120</y>
+     <x>190</x>
+     <y>30</y>
      <width>100</width>
      <height>32</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="level2B">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>170</y>
+     <x>190</x>
+     <y>80</y>
      <width>100</width>
      <height>32</height>
     </rect>
@@ -42,8 +42,8 @@
   <widget class="QPushButton" name="level3B">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>220</y>
+     <x>190</x>
+     <y>130</y>
      <width>100</width>
      <height>32</height>
     </rect>
@@ -55,8 +55,8 @@
   <widget class="QPushButton" name="level4B">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>270</y>
+     <x>190</x>
+     <y>180</y>
      <width>100</width>
      <height>32</height>
     </rect>
@@ -68,8 +68,8 @@
   <widget class="QPushButton" name="level5B">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>320</y>
+     <x>190</x>
+     <y>230</y>
      <width>100</width>
      <height>32</height>
     </rect>

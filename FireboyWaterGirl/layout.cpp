@@ -10,6 +10,7 @@
 
 Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
     //putting brick background
+    level = l;
     QGraphicsPixmapItem* brick = new QGraphicsPixmapItem();
     brick -> setPixmap(QPixmap(":/image/img/background.png").scaled(1000,800, Qt::KeepAspectRatio));
     brick-> setPos(0,0);
@@ -163,7 +164,7 @@ void Layout::closeGame(){
 
 void Layout::handleCollisions(Players *player, Obstacles* ob)
 {
-
+    WindowManager Manager;
 
     // check if the obstacle collides with the player
     if (ob->collidesWithItem(player)) {
@@ -174,9 +175,11 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
         if (fireboy) {
             if (ob -> objectName() == "Water"){
                 fireboy->kill();
+                Manager.showWindow(WindowManager::over, level);
                 closeGame(this);
             }else if (ob -> objectName() == "Acid"){
                 fireboy->kill();
+                Manager.showWindow(WindowManager::over, level);
                 closeGame(this);
             }else if (ob -> objectName() == "FireDoor"){
                 fd = true;
@@ -185,9 +188,11 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
         if(watergirl){
             if (ob -> objectName() == "Fire"){
                 watergirl->kill();
+                Manager.showWindow(WindowManager::over, level);
                 closeGame(this);
             } else if (ob -> objectName() == "Acid"){
                 watergirl->kill();
+                Manager.showWindow(WindowManager::over, level);
                 closeGame(this);
             }else if (ob -> objectName() == "WaterDoor"){
                 wd = true;
@@ -197,9 +202,8 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
 
     if (wd&&fd)
     {
-        WindowManager Manager;
         Manager.WonGame(true);
-        Manager.showWindow(WindowManager::over);
+        Manager.showWindow(WindowManager::over, level);
         closeGame(this);
     }
 }

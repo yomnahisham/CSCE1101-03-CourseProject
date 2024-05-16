@@ -12,7 +12,7 @@ class GameOver : public QDialog
     Q_OBJECT
 
 public:
-    explicit GameOver(QWidget *parent = nullptr, bool w = false);
+    explicit GameOver(QWidget *parent = nullptr, int l = 0, bool w = false);
     ~GameOver();
 
 private slots:
@@ -26,6 +26,7 @@ private slots:
 
 private:
     Ui::GameOver *ui;
+    int l;
 };
 
 #endif // GAMEOVER_H
