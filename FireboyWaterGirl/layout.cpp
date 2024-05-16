@@ -142,16 +142,14 @@ void Layout::baseLevel(){
     //add WaterDoor
     Obstacles* WD = new Obstacles();
     WD -> createObstacle(Obstacles::WaterDoor);
-    //WD -> setPos(893,80);
-    WD-> setPos(150,658);
+    WD -> setPos(893,715);
     addItem (WD);
     obList.append(WD);
 
     //add FireDoor
     Obstacles* FD = new Obstacles();
     FD -> createObstacle(Obstacles::FireDoor);
-    //FD -> setPos(789,80);
-    FD -> setPos(200,658);
+    FD -> setPos(789,715);
     addItem (FD);
     obList.append(FD);
 
@@ -211,29 +209,29 @@ void Layout::makeLevelTHREE(){
 }
 
 void Layout::makeLevelFOUR() {
-    // Insert a lever
+    // insert a lever
     Obstacles* lever = new Obstacles();
     lever->createObstacle(Obstacles::LeverRight);
-    lever->setPos(600, 384); // Adjust position as needed
+    lever->setPos(600, 384);
     addItem(lever);
 
-    // Start timer for dropping drops
+    // start timer for dropping drops
     QTimer* dropTimer = new QTimer(this);
     connect(dropTimer, &QTimer::timeout, [=]() {
-        // Create and add a drop at a random position
+        // create and add a drop at a random position
         Obstacles* drop = new Obstacles();
         drop->createObstacle(Obstacles::Drops);
-        int x = QRandomGenerator::global()->bounded(100, 900); // Adjust X range
-        int y = 0; // Start drops from the top of the screen
+        int x = QRandomGenerator::global()->bounded(100, 900);
+        int y = 0;
         drop->setPos(x, y);
         addItem(drop);
 
-        // Start timer for moving drops downwards
+        // start timer for moving drops downwards
         QTimer* dropMoveTimer = new QTimer(drop);
         connect(dropMoveTimer, &QTimer::timeout, [=]() {drop->moveBy(0, 5); });
-        dropMoveTimer->start(50); // Adjust drop movement speed
+        dropMoveTimer->start(50);
     });
-    dropTimer->start(500); // Adjust drop spawning interval
+    dropTimer->start(500);
 }
 
 
