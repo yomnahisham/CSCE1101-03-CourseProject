@@ -33,6 +33,8 @@ protected:
     void shootAcid (int x, int y);
 
     int nScore;
+    int health = 1000;
+    QGraphicsTextItem* healthText;
 
 };
 #endif // LAYOUT_H

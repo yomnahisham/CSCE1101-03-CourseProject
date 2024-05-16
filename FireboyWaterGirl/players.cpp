@@ -4,7 +4,13 @@
 #include <QTimer>
 
 
-Players::Players(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {}
+Players::Players(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {
+    QTimer * timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, [=]() {
+        checkCollisions();
+    });
+    timer->start(2000);
+}
 bool Players::hitPavement()
 {
     QList<QGraphicsItem *> colliding_items = collidingItems();

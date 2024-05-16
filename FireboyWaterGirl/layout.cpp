@@ -32,6 +32,7 @@ Layout::Layout(QObject* parent, int l, User* loggedUser, AllUsers* Allusers) : Q
         makeLevelTHREE();
         break;
     case 4:
+        baseLevel();
         makeLevelFOUR();
         break;
     case 5:
@@ -201,9 +202,32 @@ void Layout::makeLevelTHREE(){
 
 }
 
-void Layout::makeLevelFOUR(){
+void Layout::makeLevelFOUR() {
+    // Insert a lever
+    Obstacles* lever = new Obstacles();
+    lever->createObstacle(Obstacles::LeverRight);
+    lever->setPos(600, 384); // Adjust position as needed
+    addItem(lever);
 
+    // Start timer for dropping drops
+    QTimer* dropTimer = new QTimer(this);
+    connect(dropTimer, &QTimer::timeout, [=]() {
+        // Create and add a drop at a random position
+        Obstacles* drop = new Obstacles();
+        drop->createObstacle(Obstacles::Drops);
+        int x = QRandomGenerator::global()->bounded(100, 900); // Adjust X range
+        int y = 0; // Start drops from the top of the screen
+        drop->setPos(x, y);
+        addItem(drop);
+
+        // Start timer for moving drops downwards
+        QTimer* dropMoveTimer = new QTimer(drop);
+        connect(dropMoveTimer, &QTimer::timeout, [=]() {drop->moveBy(0, 5); });
+        dropMoveTimer->start(50); // Adjust drop movement speed
+    });
+    dropTimer->start(500); // Adjust drop spawning interval
 }
+
 
 void Layout::makeLevelFIVE(){
 
@@ -255,6 +279,23 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
             } else if (ob->objectName() == "Gem") {
                 removeItem(ob);
                 nScore += 100;
+            } else if (ob->objectName() == "Drops") {
+                // update health text for Fireboy
+                if (!healthText) {
+                    healthText = new QGraphicsTextItem();
+                    healthText->setDefaultTextColor(Qt::red);
+                    healthText->setFont(QFont("times", 16));
+                    healthText->setPos(50, 50); // Adjust position as needed
+                    addItem(healthText);
+                }
+                // update health
+                health -= 50;
+                healthText->setPlainText("Health: " + QString::number(health));
+                if (health <= 0) {
+                    fireboy->kill();
+                    Manager.showWindow(WindowManager::over, level);
+                    closeGame(this);
+                }
             }
         }
 
@@ -280,6 +321,12 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
             } else if (ob->objectName() == "Gem") {
                 removeItem(ob);
                 nScore += 100;
+            } else if (ob->objectName() == "Drops"){
+                // if a drop touches Watergirl, increase its descent speed
+                QTimer* dropMoveTimer = dynamic_cast<QTimer*>(ob->parent());
+                if (dropMoveTimer) {
+                    dropMoveTimer->setInterval(25);
+                }
             }
         }
     }

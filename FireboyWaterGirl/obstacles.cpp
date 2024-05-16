@@ -68,6 +68,14 @@ void Obstacles::createObstacle(ObstacleType type){
         setObjectName("Gem");
         setPixmap(QPixmap(":/image/img/gems.png").scaled(30, 40, Qt::KeepAspectRatio));
         break;
+    case ObstacleType::Drops:
+        setObjectName("Drops");
+        setPixmap(QPixmap(":/image/img/waterDrops.png").scaled(30, 40, Qt::KeepAspectRatio));
+        break;
+    case ObstacleType::LeverRight:
+        setObjectName("LeverRight");
+        setPixmap(QPixmap(":/image/img/lever.png").scaled(70, 57, Qt::KeepAspectRatio));
+        break;
     }
 }
 
