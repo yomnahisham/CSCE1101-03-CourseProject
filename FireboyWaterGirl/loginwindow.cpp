@@ -8,7 +8,7 @@
 #include <QPalette>
 #include <QString>
 
-LoginWindow::LoginWindow(QWidget *parent) : QDialog(parent), ui(new Ui::LoginWindow){
+LoginWindow::LoginWindow(QWidget *parent, AllUsers* Allusers) : QDialog(parent), ui(new Ui::LoginWindow), users(Allusers){
     ui->setupUi(this);
 
     qDebug()<<QSqlDatabase::drivers();
@@ -41,7 +41,7 @@ void LoginWindow::on_loginPush_clicked(){
     bool userTrue = AllUsers::authenticateUser(username, password);
     if (userTrue){
         WindowManager window;
-        window.showWindow(WindowManager::lev);
+        window.showWindow(WindowManager::lev, 0, loggedUser, users);
         hide();
     }else{
         ui->usernameError->setVisible(true);

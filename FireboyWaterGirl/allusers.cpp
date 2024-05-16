@@ -142,3 +142,23 @@ QSqlDatabase AllUsers::getDatabaseConnection() {
     }
     return db;
 }
+
+void AllUsers::updateScore(const QString& username, int newScore) {
+    QSqlDatabase db = getDatabaseConnection();
+    if (!db.isOpen()) {
+        qDebug() << "Error: Database is not open";
+        return;
+    }
+
+    QSqlQuery query(db);
+    query.prepare("UPDATE userInfo SET score = :score WHERE username = :username");
+    query.bindValue(":score", newScore);
+    query.bindValue(":username", username);
+
+    if (!query.exec()) {
+        qDebug() << "Error: Unable to update user score";
+        qDebug() << query.lastError().text();
+    } else {
+        qDebug() << "User score updated successfully for user: " << username;
+    }
+}

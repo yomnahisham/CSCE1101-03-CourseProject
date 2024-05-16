@@ -1,4 +1,6 @@
 #include "layout.h"
+#include "allusers.h"
+#include "status.h"
 #include "obstacles.h"
 #include "players.h"
 #include "fireboy.h"
@@ -8,9 +10,10 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
-Layout::Layout(QObject* parent, int l) : QGraphicsScene(parent) {
+Layout::Layout(QObject* parent, int l, User* loggedUser, AllUsers* Allusers) : QGraphicsScene(parent), user(loggedUser), allusers(Allusers) {
     //putting brick background
     level = l;
+    nScore = 0;
     QGraphicsPixmapItem* brick = new QGraphicsPixmapItem();
     brick -> setPixmap(QPixmap(":/image/img/background.png").scaled(1000,800, Qt::KeepAspectRatio));
     brick-> setPos(0,0);
@@ -83,6 +86,18 @@ void Layout::baseLevel(){
     addItem(l);
 
 
+    Obstacles* Gem1 = new Obstacles();
+    Gem1->createObstacle(Obstacles::Gem);
+    Gem1->setPos(348, 710);
+    addItem(Gem1);
+    obList.append(Gem1);
+
+    Obstacles* Gem2 = new Obstacles();
+    Gem2->createObstacle(Obstacles::Gem);
+    Gem2->setPos(850, 710);
+    addItem(Gem2);
+    obList.append(Gem2);
+
     //add fire pit
     Obstacles* fire = new Obstacles();
     fire->createObstacle(Obstacles::Fire);
@@ -131,8 +146,17 @@ void Layout::baseLevel(){
     addItem (FD);
     obList.append(FD);
 
+    Obstacles* redGem = new Obstacles();
+    redGem->createObstacle(Obstacles::Gem);
+    redGem->setPos(920, 140);
+    addItem(redGem);
+    obList.append(redGem);
 
-
+    Obstacles* redGem2 = new Obstacles();
+    redGem2->createObstacle(Obstacles::Gem);
+    redGem2->setPos(810, 140);
+    addItem(redGem2);
+    obList.append(redGem2);
 }
 
 
@@ -203,69 +227,71 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
 {
     WindowManager Manager;
 
-    // check if the obstacle collides with the player
+    // Check if the obstacle collides with the player
     if (ob->collidesWithItem(player)) {
-        // check if the player is a Fireboy or Watergirl
+        // Check if the player is a Fireboy or Watergirl
         FireBoy* fireboy = dynamic_cast<FireBoy*>(player);
         WaterGirl* watergirl = dynamic_cast<WaterGirl*>(player);
 
         if (fireboy) {
             if (wd)
-                player-> setZValue(1);
+                player->setZValue(1);
 
-            if (ob -> objectName() == "Water"){
+            if (ob->objectName() == "Water") {
                 fireboy->kill();
                 Manager.showWindow(WindowManager::over, level);
                 closeGame(this);
-            }else if (ob -> objectName() == "Acid"){
+            } else if (ob->objectName() == "Acid") {
                 fireboy->kill();
                 Manager.showWindow(WindowManager::over, level);
                 closeGame(this);
-            }else if (ob -> objectName() == "FireDoor"){
+            } else if (ob->objectName() == "FireDoor") {
                 fd = true;
                 Obstacles* openFDoor = new Obstacles();
-                openFDoor -> createObstacle(Obstacles::openFD);
-                openFDoor -> setPos(789,80);
-                addItem (openFDoor);
+                openFDoor->createObstacle(Obstacles::openFD);
+                openFDoor->setPos(789, 80);
+                addItem(openFDoor);
                 player->setZValue(1);
+            } else if (ob->objectName() == "Gem") {
+                removeItem(ob);
+                nScore += 100;
             }
         }
-        if(watergirl){
+
+        if (watergirl) {
             if (fd)
-                player-> setZValue(1);
+                player->setZValue(1);
 
-
-            if (ob -> objectName() == "Fire"){
+            if (ob->objectName() == "Fire") {
                 watergirl->kill();
                 Manager.showWindow(WindowManager::over, level);
                 closeGame(this);
-            } else if (ob -> objectName() == "Acid"){
+            } else if (ob->objectName() == "Acid") {
                 watergirl->kill();
                 Manager.showWindow(WindowManager::over, level);
                 closeGame(this);
-            }else if (ob -> objectName() == "WaterDoor"){
+            } else if (ob->objectName() == "WaterDoor") {
                 wd = true;
                 Obstacles* openWDoor = new Obstacles();
-                openWDoor -> createObstacle(Obstacles::openWD);
-                openWDoor -> setPos(893,80);
-                addItem (openWDoor);
-                player-> setZValue(1);
+                openWDoor->createObstacle(Obstacles::openWD);
+                openWDoor->setPos(893, 80);
+                addItem(openWDoor);
+                player->setZValue(1);
+            } else if (ob->objectName() == "Gem") {
+                removeItem(ob);
+                nScore += 100;
             }
         }
     }
 
-    if (wd&&fd)
-    {
-        QTimer timer;
-        timer.start(3000);
-        QObject::connect(&timer, &QTimer::timeout, [&]() { });
+    if (wd && fd) {
+        AllUsers::updateScore(user->username, nScore);
         Manager.WonGame(true);
-        Manager.showWindow(WindowManager::over, level);
+        Manager.showWindow(WindowManager::over, level, user, allusers);
         closeGame(this);
-
-
     }
 }
+
 
 
 

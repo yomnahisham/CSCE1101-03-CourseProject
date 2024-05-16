@@ -1,6 +1,8 @@
 #ifndef REGISTERWINDOW_H
 #define REGISTERWINDOW_H
 
+#include "user.h"
+#include "allusers.h"
 #include <QDialog>
 
 namespace Ui {
@@ -22,6 +24,8 @@ private slots:
 
 private:
     Ui::RegisterWindow *ui;
+    User* user;
+    AllUsers* users;
 };
 
 #endif // REGISTERWINDOW_H

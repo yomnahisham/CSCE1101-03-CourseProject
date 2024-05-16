@@ -12,6 +12,7 @@ public:
     static void showLeaderboard();
     static bool authenticateUser(const QString &username, const QString &password);
     static bool search(const QString& username);
+    static void updateScore(const QString& username, int newScore);
     static QSqlDatabase getDatabaseConnection();
 
 private:

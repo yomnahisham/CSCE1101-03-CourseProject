@@ -6,10 +6,11 @@ User::User(const QString& username, const QString& password) : username(username
     score = 0;
 }
 
-void User::updateScore(int nScore) {
-    //AllUsers::updateScoreInDropbox(username, nScore);
+void User::updateScore(int nScore){
+    AllUsers::updateScore(username, nScore);
 }
 
 void User::newUser(const QString& username, const QString& password){
-    AllUsers::addUser(username, password); // Call addUser directly from AllUsers
+    AllUsers::addUser(username, password);
 }
+

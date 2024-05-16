@@ -9,9 +9,10 @@ public:
     User(const QString& username, const QString& password);
     void updateScore(int nScore);
     static void newUser(const QString& username, const QString& password);
+   // static QString getUsername();
+    QString username;
 
 private:
-    QString username;
     QString password;
     int score;
 };

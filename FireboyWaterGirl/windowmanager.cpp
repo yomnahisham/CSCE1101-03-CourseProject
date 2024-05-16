@@ -12,12 +12,12 @@
 #include <QPushButton>
 
 
-WindowManager::WindowManager(QObject *parent) : QObject(parent) {    won = false;
-}
+WindowManager::WindowManager(QObject *parent) : QObject(parent) { won = false; }
 
 void WindowManager::gameDemo(){
     QGraphicsView* view = new QGraphicsView();
     Layout* scene = new Layout(nullptr, 1);
+    //Layout* scene = new Layout(nullptr, 4);
 
     // setting up scene to start game
     view->setFixedSize(1000, 800);
@@ -62,7 +62,7 @@ void WindowManager::startLogin(){
     loginON = true;
 }
 
-void WindowManager::showWindow(WindowType type, int l) {
+void WindowManager::showWindow(WindowType type, int l, User* loggedUser, AllUsers* Allusers) {
 
     switch (type){
     case login:
