@@ -7,6 +7,7 @@
 class User {
 public:
     User(const QString& username, const QString& password);
+    User(const QString& username, const QString& password, const int& s);
     void updateScore(int nScore);
     static void newUser(const QString& username, const QString& password);
    // static QString getUsername();

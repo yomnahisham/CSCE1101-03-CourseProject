@@ -90,11 +90,11 @@ void AllUsers::showLeaderboard() {
     }
 }
 
-bool AllUsers::authenticateUser(const QString &username, const QString &password) {
+User* AllUsers::authenticateUser(const QString &username, const QString &password) {
     QSqlDatabase db = getDatabaseConnection();
     if (!db.isOpen()) {
         qDebug() << "Error: Database is not open";
-        return false;
+        return nullptr; // Return nullptr if database is not open
     }
 
     QString hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
@@ -106,13 +106,35 @@ bool AllUsers::authenticateUser(const QString &username, const QString &password
     if (!query.exec()) {
         qDebug() << "Error: Unable to authenticate user";
         qDebug() << query.lastError().text();
-        return false;
+        return nullptr; // Return nullptr if query execution fails
     }
 
     query.next();
     int count = query.value(0).toInt();
-    return (count == 1);
+    if (count == 1) {
+        // authentication successful, get user information
+        query.prepare("SELECT * FROM userInfo WHERE username = :username AND password = :password");
+        query.bindValue(":username", username);
+        query.bindValue(":password", hashedPass);
+        if (query.exec() && query.next()) {
+            QString username = query.value("username").toString();
+            int score = query.value("score").toInt();
+            QString password = query.value("password").toString(); // Fetch password from the database
+            User* user = new User(username, password, score); // Modify the User constructor accordingly
+            return user;
+        } else {
+            qDebug() << "Error: Unable to retrieve user information";
+            qDebug() << query.lastError().text();
+            return nullptr;
+        }
+    } else {
+        // authentication failed
+        qDebug() << "Authentication failed for user: " << username;
+        return nullptr;
+    }
 }
+
+
 
 bool AllUsers::search(const QString& username) {
     QSqlDatabase db = getDatabaseConnection();

@@ -5,6 +5,7 @@
 User::User(const QString& username, const QString& password) : username(username), password(password){
     score = 0;
 }
+User::User(const QString& username, const QString& password, const int& s): username(username), password(password), score(s){}
 
 void User::updateScore(int nScore){
 //AllUsers::updateScore(username, nScore);

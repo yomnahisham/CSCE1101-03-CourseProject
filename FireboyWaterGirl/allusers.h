@@ -10,7 +10,7 @@ public:
     static void initializeDatabase();
     static void addUser(const QString& username, const QString& password);
     static void showLeaderboard();
-    static bool authenticateUser(const QString &username, const QString &password);
+    static User* authenticateUser(const QString &username, const QString &password);
     static bool search(const QString& username);
     static void updateScore(User* loggedUser, int newScore);
     static QSqlDatabase getDatabaseConnection();
