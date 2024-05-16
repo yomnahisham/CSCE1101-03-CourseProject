@@ -143,28 +143,36 @@ QSqlDatabase AllUsers::getDatabaseConnection() {
     return db;
 }
 
-void AllUsers::updateScore(const QString& username, int newScore) {
-    qDebug() << "entered update";
+void AllUsers::updateScore(User* loggedUser, int newScore) {
+    if (!loggedUser) {
+        qDebug() << "Error: Logged user is null";
+        return;
+    }
+
+    qDebug() << "Entered update";
+    QString username = loggedUser->username;
+    qDebug() << "Username: " << username; // Print the username parameter
 
     QSqlDatabase db = getDatabaseConnection();
     if (!db.isOpen()) {
         qDebug() << "Error: Database is not open";
         return;
-    }else
-        qDebug() << "opened succesfully";
+    } else {
+        qDebug() << "Database connection is open"; // Add this line
+    }
 
     QSqlQuery query(db);
-    qDebug() << "opened succesfully";
 
-    query.prepare("UPDATE userInfo SET score = :score WHERE username = :username");
-        qDebug() << "prepare update";
+    if (!query.prepare("UPDATE userInfo SET score = :score WHERE username = :username")) {
+        qDebug() << "Error preparing update query";
+        qDebug() << query.lastError().text();
+        return;
+    } else {
+        qDebug() << "Update query prepared successfully"; // Add this line
+    }
 
     query.bindValue(":score", newScore);
-        qDebug() << "score";
-
     query.bindValue(":username", username);
-        qDebug() << "user";
-
 
     if (!query.exec()) {
         qDebug() << "Error: Unable to update user score";
@@ -173,3 +181,4 @@ void AllUsers::updateScore(const QString& username, int newScore) {
         qDebug() << "User score updated successfully for user: " << username;
     }
 }
+
