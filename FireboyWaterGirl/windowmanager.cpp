@@ -63,6 +63,8 @@ void WindowManager::startLogin(){
 }
 
 void WindowManager::showWindow(WindowType type, int l, User* loggedUser, AllUsers* Allusers) {
+    user=loggedUser;
+    allusers=Allusers;
 
     switch (type){
     case login:
@@ -120,7 +122,7 @@ void WindowManager::showWindow(WindowType type, int l, User* loggedUser, AllUser
     } else if(mainON){
 
         QGraphicsView* view = new QGraphicsView();
-        Layout* scene = new Layout(nullptr, l);
+        Layout* scene = new Layout(nullptr, l, user, allusers );
 
         // setting up scene to start game
         view->setFixedSize(1000, 800);
@@ -133,7 +135,7 @@ void WindowManager::showWindow(WindowType type, int l, User* loggedUser, AllUser
         view->setScene(scene);
         view->show();
     } else if(overON){
-        GameOver* gameover = new GameOver(nullptr, l, won);
+        GameOver* gameover = new GameOver(nullptr, l, won, user, allusers );
         gameover->resize(500, 500);
         gameover -> show();
     }

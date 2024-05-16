@@ -1,6 +1,8 @@
 #ifndef WINDOWMANAGER_H
 #define WINDOWMANAGER_H
 
+#include "user.h"
+#include"allusers.h"
 #include <QGraphicsView>
 #include "registerwindow.h"
 #include "loginwindow.h"
@@ -23,6 +25,9 @@ public:
 private:
     WindowType type;
     int l; //level
+
+    User* user;
+    AllUsers* allusers;
 
     bool loginON;
     bool registerON;

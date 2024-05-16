@@ -135,14 +135,16 @@ void Layout::baseLevel(){
     //add WaterDoor
     Obstacles* WD = new Obstacles();
     WD -> createObstacle(Obstacles::WaterDoor);
-    WD -> setPos(893,80);
+    //WD -> setPos(893,80);
+    WD-> setPos( 150,658);
     addItem (WD);
     obList.append(WD);
 
     //add FireDoor
     Obstacles* FD = new Obstacles();
     FD -> createObstacle(Obstacles::FireDoor);
-    FD -> setPos(789,80);
+    //FD -> setPos(789,80);
+    FD-> setPos( 200,658);
     addItem (FD);
     obList.append(FD);
 
@@ -285,9 +287,13 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
     }
 
     if (wd && fd) {
+        qDebug()<< "going to update";
         AllUsers::updateScore(user->username, nScore);
+        qDebug()<< "set won";
         Manager.WonGame(true);
+        qDebug()<< "show window";
         Manager.showWindow(WindowManager::over, level, user, allusers);
+        qDebug()<< "close";
         closeGame(this);
     }
 }

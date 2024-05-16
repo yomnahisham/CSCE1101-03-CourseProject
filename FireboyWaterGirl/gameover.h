@@ -1,6 +1,8 @@
 #ifndef GAMEOVER_H
 #define GAMEOVER_H
 
+#include "user.h"
+#include"allusers.h"
 #include <QDialog>
 
 namespace Ui {
@@ -12,7 +14,7 @@ class GameOver : public QDialog
     Q_OBJECT
 
 public:
-    explicit GameOver(QWidget *parent = nullptr, int l = 0, bool w = false);
+    explicit GameOver(QWidget *parent = nullptr, int l = 0, bool w = false, User* loggedUser = nullptr, AllUsers* Allusers = nullptr);
     ~GameOver();
 
 private slots:
@@ -25,6 +27,8 @@ private slots:
     void on_leaderboardButton_clicked();
 
 private:
+    User* user;
+    AllUsers* allusers;
     Ui::GameOver *ui;
     int l;
 };
