@@ -56,8 +56,9 @@ void RegisterWindow::on_regButton_clicked()
     }
     if (passMatchs && !userExists){
         User::newUser(inputUsername, inputPassword);    //add user to allusers database
+        user = AllUsers::authenticateUser(inputUsername, inputPassword);   //get user
         WindowManager win;                    //open level window
-        win.showWindow(WindowManager::lev, 0, user, users);
+        win.showWindow(WindowManager::lev, 0, user);
         hide();
     }
 }

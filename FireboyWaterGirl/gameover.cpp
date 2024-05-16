@@ -2,16 +2,15 @@
 #include "ui_gameover.h"
 #include "windowmanager.h"
 
-GameOver::GameOver(QWidget *parent, int l, bool w,User* loggedUser, AllUsers* Allusers)
+GameOver::GameOver(QWidget *parent, int l, bool w,User* loggedUser)
     : QDialog(parent)
     , ui(new Ui::GameOver)
     , user(loggedUser)
-    ,allusers(Allusers)
 {
     ui->setupUi(this);
 
     this -> l = l;
-
+    qDebug()<< "game over created";
     if (!w)
     {
         ui -> wonLabel -> hide();
@@ -27,7 +26,8 @@ GameOver::~GameOver()
 void GameOver::on_retryButton_clicked()
 {
     WindowManager Manager;
-    Manager.showWindow(WindowManager::main, l, user, allusers);
+    qDebug()<< "retrying";
+    Manager.showWindow(WindowManager::main, l, user);
     this->close();
 }
 
@@ -35,7 +35,7 @@ void GameOver::on_checkLevelsButton_clicked()
 {
     this->close();
     WindowManager Manager;
-    Manager.showWindow(WindowManager::lev, 0, user, allusers);
+    Manager.showWindow(WindowManager::lev, 0, user);
 }
 
 void GameOver::on_exitButton_clicked()

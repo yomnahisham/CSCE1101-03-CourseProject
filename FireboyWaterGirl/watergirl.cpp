@@ -43,7 +43,7 @@ void WaterGirl::keyPressEvent(QKeyEvent* event) {
         //qDebug()<< "moved right";
     }
 
-    checkCollisions();
+    //checkCollisions();
 }
 
 void WaterGirl::jump(int jumpStep) {

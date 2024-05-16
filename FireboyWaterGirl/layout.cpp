@@ -10,10 +10,16 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
-Layout::Layout(QObject* parent, int l, User* loggedUser, AllUsers* Allusers) : QGraphicsScene(parent), user(loggedUser), allusers(Allusers) {
+Layout::Layout(QObject* parent, int l, User* loggedUser) : QGraphicsScene(parent), user(loggedUser) {
     //putting brick background
     level = l;
     nScore = 0;
+
+    if (user)
+        qDebug()<< user->username;
+    else
+        qDebug()<<"failed to transfer user";
+
     QGraphicsPixmapItem* brick = new QGraphicsPixmapItem();
     brick -> setPixmap(QPixmap(":/image/img/background.png").scaled(1000,800, Qt::KeepAspectRatio));
     brick-> setPos(0,0);
@@ -135,14 +141,16 @@ void Layout::baseLevel(){
     //add WaterDoor
     Obstacles* WD = new Obstacles();
     WD -> createObstacle(Obstacles::WaterDoor);
-    WD -> setPos(893,80);
+    //WD -> setPos(893,80);
+    WD-> setPos(150,658);
     addItem (WD);
     obList.append(WD);
 
     //add FireDoor
     Obstacles* FD = new Obstacles();
     FD -> createObstacle(Obstacles::FireDoor);
-    FD -> setPos(789,80);
+    //FD -> setPos(789,80);
+    FD -> setPos(200,658);
     addItem (FD);
     obList.append(FD);
 
@@ -284,14 +292,21 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
         }
     }
 
+    if (endgame)
+    {
+        wd = false;
+        fd = false;
+    }
+
     if (wd && fd) {
-        qDebug()<< "going to update";
+        endgame = true;
+        qDebug()<< "entered if again";
         //QString username = user->username;
         AllUsers::updateScore(user, nScore);
         qDebug()<< "set won";
         Manager.WonGame(true);
         qDebug()<< "show window";
-        Manager.showWindow(WindowManager::over, level, user, allusers);
+        Manager.showWindow(WindowManager::over, level, user);
         qDebug()<< "close";
         closeGame(this);
     }
