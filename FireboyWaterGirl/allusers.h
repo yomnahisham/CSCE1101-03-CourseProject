@@ -9,7 +9,7 @@ public:
     AllUsers();
     static void initializeDatabase();
     static void addUser(const QString& username, const QString& password);
-    static void showLeaderboard();
+    static QVector<QPair<QString, int>> showLeaderboard();
     static User* authenticateUser(const QString &username, const QString &password);
     static bool search(const QString& username);
     static void updateScore(User* loggedUser, int newScore);

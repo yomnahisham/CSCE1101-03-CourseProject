@@ -75,19 +75,23 @@ void AllUsers::addUser(const QString& username, const QString& password) {
     }
 }
 
-void AllUsers::showLeaderboard() {
+QVector<QPair<QString, int>> AllUsers::showLeaderboard() {
+    QVector<QPair<QString, int>> leaderboardData;
+
     QSqlDatabase db = getDatabaseConnection();
     if (!db.isOpen()) {
         qDebug() << "Error: Database is not open";
-        return;
+        return leaderboardData;
     }
 
     QSqlQuery query("SELECT username, score FROM userInfo ORDER BY score DESC LIMIT 10", db);
     while (query.next()) {
         QString username = query.value(0).toString();
         int score = query.value(1).toInt();
-        qDebug() << "Username:" << username << "Score:" << score;
+        leaderboardData.append(qMakePair(username, score));
     }
+
+    return leaderboardData;
 }
 
 User* AllUsers::authenticateUser(const QString &username, const QString &password) {

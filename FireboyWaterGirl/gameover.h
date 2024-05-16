@@ -24,7 +24,7 @@ private slots:
 
     void on_exitButton_clicked();
 
-    void on_leaderboardButton_clicked();
+    void on_leaderboard_clicked();
 
 private:
     User* user;
