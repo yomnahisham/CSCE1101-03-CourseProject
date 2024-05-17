@@ -19,10 +19,7 @@ protected:
     void gravity ();
     bool hitPavement();
     bool hitSide();
-    bool hitSlope();
     bool hitCeiling();
-    bool hitFloor();
-    int originalY;
 
 };
 

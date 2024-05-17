@@ -5,7 +5,6 @@
 #include<QTimer>
 #include <QTransform>
 
-// Pavement, Fire, Water, Acid, Lever, Button, SlidingFloor, FireDoor, WaterDoor
 
 Obstacles::Obstacles(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {
 }
@@ -125,29 +124,4 @@ void Obstacles::moveAcid()
         delete this;                //delete object
     }
 }
-
-/*    case ObstacleType::LeverRight:
-        setObjectName("LeverRight");
-        setPixmap(QPixmap(":/image/img/lever.png").scaled(70, 57, Qt::KeepAspectRatio));
-        break;
-        case ObstacleType::LeverLeft:
-        setObjectName("LeverLeft");
-        setPixmap(QPixmap(":/image/img/LeverLeft.png").scaled(70, 57, Qt::KeepAspectRatio));
-        break;
-    case ObstacleType::Button1:
-        setObjectName("Button1");
-        setPixmap(QPixmap(":/image/img/pushButton1.png").scaled(50, 24, Qt::KeepAspectRatio));
-        break;
-    case ObstacleType::Button2:
-        setObjectName("Button2");
-        setPixmap(QPixmap(":/image/img/pushButton2.png").scaled(50, 24, Qt::KeepAspectRatio));
-        break;
-    case ObstacleType::SlidingFloor1:
-        setObjectName("SlidingFloor1");
-        setPixmap(QPixmap(":/image/img/slidingFloor.png").scaled(110, 34, Qt::KeepAspectRatio));
-        break;
-    case ObstacleType::SlidingFloor2:
-        setObjectName("SlidingFloor2");
-        setPixmap(QPixmap(":/image/img/slidingFloor2.png").scaled(110, 34, Qt::KeepAspectRatio));
-        break;*/
 

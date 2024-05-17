@@ -142,14 +142,12 @@ void Layout::baseLevel(){
     WD -> createObstacle(Obstacles::WaterDoor);
     WD -> setPos(893,80);
     addItem (WD);
-    obList.append(WD);
 
     //add FireDoor
     Obstacles* FD = new Obstacles();
     FD -> createObstacle(Obstacles::FireDoor);
     FD -> setPos(789,80);
     addItem (FD);
-    obList.append(FD);
 
     Obstacles* redGem = new Obstacles();
     redGem->createObstacle(Obstacles::Gem);

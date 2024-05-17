@@ -13,12 +13,8 @@ class WindowManager : public QObject {
 public:
     explicit WindowManager(QObject *parent = nullptr);
     void startLogin();
-    void gameDemo();
-
     enum WindowType{login, reg, lev, main, over};
     void showWindow(WindowType type, int l = 0, User* loggedUser = nullptr);
-    void endWindow(WindowType type);
-    void transferLevel (int n);
     void WonGame(bool i);
 
 private:

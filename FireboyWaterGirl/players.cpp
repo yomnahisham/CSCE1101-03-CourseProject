@@ -22,17 +22,6 @@ bool Players::hitPavement()
     return false;
 }
 
-bool Players::hitFloor()
-{
-    QList<QGraphicsItem *> colliding_items = collidingItems();
-    for (int i = 0, n = colliding_items.size(); i < n; ++i) {
-        Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
-        if (ptr && ((ptr->objectName() == "SlidingFloor1")||(ptr->objectName() == "SlidingFloor2"))) {
-            return true;}
-    }
-    return false;
-}
-
 void Players::gravity ()
 {
 
@@ -56,19 +45,7 @@ bool Players:: hitSide ()
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
-        if ((ptr) && (ptr -> objectName() == "Side" || ptr -> objectName() == "SlidingDoor")) {
-            return true;
-        }
-    }
-    return false;
-}
-
-bool Players:: hitSlope ()
-{
-    QList<QGraphicsItem *> colliding_items = collidingItems();
-    for (int i = 0, n = colliding_items.size(); i < n; ++i){
-        Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
-        if ((ptr) && (ptr -> objectName() == "Slope")) {
+        if ((ptr) && (ptr -> objectName() == "Side")) {
             return true;
         }
     }
@@ -100,8 +77,3 @@ void Players::checkCollisions ()
 
     }
 }
-
-
-
-//Players::~Players() {}
-

@@ -26,7 +26,6 @@ protected:
     void shootAcid (int x, int y);
     void lostgame();
 
-    QList<Obstacles*> obList;
     int lever;
     bool wd = false;
     bool fd = false;

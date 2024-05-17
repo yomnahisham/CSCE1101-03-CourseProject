@@ -52,8 +52,7 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../FireboyWaterGirl/abilities.cpp \
-		../FireboyWaterGirl/allusers.cpp \
+SOURCES       = ../FireboyWaterGirl/allusers.cpp \
 		../FireboyWaterGirl/fireboy.cpp \
 		../FireboyWaterGirl/gameover.cpp \
 		../FireboyWaterGirl/layout.cpp \
@@ -73,8 +72,7 @@ SOURCES       = ../FireboyWaterGirl/abilities.cpp \
 		moc_players.cpp \
 		moc_registerwindow.cpp \
 		moc_windowmanager.cpp
-OBJECTS       = abilities.o \
-		allusers.o \
+OBJECTS       = allusers.o \
 		fireboy.o \
 		gameover.o \
 		layout.o \
@@ -286,8 +284,7 @@ DIST          = ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/exceptions.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/yacc.prf \
 		../../../../Qt/6.7.0/macos/mkspecs/features/lex.prf \
-		../FireboyWaterGirl/FireboyWaterGirl.pro ../FireboyWaterGirl/abilities.h \
-		../FireboyWaterGirl/allusers.h \
+		../FireboyWaterGirl/FireboyWaterGirl.pro ../FireboyWaterGirl/allusers.h \
 		../FireboyWaterGirl/fireboy.h \
 		../FireboyWaterGirl/gameover.h \
 		../FireboyWaterGirl/layout.h \
@@ -298,8 +295,7 @@ DIST          = ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../FireboyWaterGirl/registerwindow.h \
 		../FireboyWaterGirl/user.h \
 		../FireboyWaterGirl/watergirl.h \
-		../FireboyWaterGirl/windowmanager.h ../FireboyWaterGirl/abilities.cpp \
-		../FireboyWaterGirl/allusers.cpp \
+		../FireboyWaterGirl/windowmanager.h ../FireboyWaterGirl/allusers.cpp \
 		../FireboyWaterGirl/fireboy.cpp \
 		../FireboyWaterGirl/gameover.cpp \
 		../FireboyWaterGirl/layout.cpp \
@@ -759,8 +755,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../FireboyWaterGirl/Resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../FireboyWaterGirl/abilities.h ../FireboyWaterGirl/allusers.h ../FireboyWaterGirl/fireboy.h ../FireboyWaterGirl/gameover.h ../FireboyWaterGirl/layout.h ../FireboyWaterGirl/level.h ../FireboyWaterGirl/loginwindow.h ../FireboyWaterGirl/obstacles.h ../FireboyWaterGirl/players.h ../FireboyWaterGirl/registerwindow.h ../FireboyWaterGirl/user.h ../FireboyWaterGirl/watergirl.h ../FireboyWaterGirl/windowmanager.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../FireboyWaterGirl/abilities.cpp ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/gameover.cpp ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/main.cpp ../FireboyWaterGirl/obstacles.cpp ../FireboyWaterGirl/players.cpp ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/user.cpp ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/windowmanager.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../FireboyWaterGirl/allusers.h ../FireboyWaterGirl/fireboy.h ../FireboyWaterGirl/gameover.h ../FireboyWaterGirl/layout.h ../FireboyWaterGirl/level.h ../FireboyWaterGirl/loginwindow.h ../FireboyWaterGirl/obstacles.h ../FireboyWaterGirl/players.h ../FireboyWaterGirl/registerwindow.h ../FireboyWaterGirl/user.h ../FireboyWaterGirl/watergirl.h ../FireboyWaterGirl/windowmanager.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/gameover.cpp ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/main.cpp ../FireboyWaterGirl/obstacles.cpp ../FireboyWaterGirl/players.cpp ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/user.cpp ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/windowmanager.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../FireboyWaterGirl/gameover.ui ../FireboyWaterGirl/level.ui ../FireboyWaterGirl/loginwindow.ui ../FireboyWaterGirl/registerwindow.ui $(DISTDIR)/
 
 
@@ -1517,9 +1513,6 @@ compiler_lex_clean:
 compiler_clean: compiler_rcc_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
-
-abilities.o: ../FireboyWaterGirl/abilities.cpp ../FireboyWaterGirl/abilities.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o abilities.o ../FireboyWaterGirl/abilities.cpp
 
 allusers.o: ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/allusers.h \
 		../FireboyWaterGirl/user.h \
