@@ -223,7 +223,7 @@ void Layout::makeLevelFOUR() {
             // create and add a drop at a random position
             Obstacles* drop = new Obstacles();
             drop->createObstacle(Obstacles::Drops);
-            int x = QRandomGenerator::global()->bounded(100, 900);
+            int x = QRandomGenerator::global()->bounded(30, 920);
             int y = 0;
             drop->setPos(x, y);
             addItem(drop);
@@ -376,7 +376,7 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
                 // if a drop touches Watergirl, increase its descent speed
                 QTimer* dropMoveTimer = dynamic_cast<QTimer*>(ob->parent());
                 if (dropMoveTimer) {
-                    dropMoveTimer->setInterval(25);
+                    dropMoveTimer->setInterval(15);
                 }
             } else if (ob->objectName() == "LeverLeft"){
                 Obstacles* switched = new Obstacles();
@@ -385,8 +385,8 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
                 addItem(switched);
                 removeItem(ob);
 
-                dropsSwitchedOff = true;  // Set the flag to true
-                dropTimer->stop();  // Stop the drop timer
+                dropsSwitchedOff = true;  // set the flag to true
+                dropTimer->stop();  // stop the drop timer
             }
         }
     }
