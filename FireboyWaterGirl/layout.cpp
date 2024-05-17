@@ -360,6 +360,7 @@ void Layout::makeLevelFIVE(){
 }
 
 void Layout::closeGame(QGraphicsScene* scene){
+    // closes the view
     QList<QGraphicsView *> views = scene->views();
     for (QGraphicsView *view : views) {
         view->close();
