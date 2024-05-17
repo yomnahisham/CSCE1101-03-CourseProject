@@ -30,11 +30,13 @@ QString AllUsers::getDatabasePath() {
 }
 
 void AllUsers::initializeDatabase() {
+    // check if the "QSQLITE" driver is available
     if (!QSqlDatabase::isDriverAvailable("QSQLITE")) {
         qDebug() << "Error: QSQLITE driver not available";
         return;
     }
 
+    // set up connection using path
     db = QSqlDatabase::addDatabase("QSQLITE", "GameDB");
     db.setDatabaseName(getDatabasePath());
 
@@ -59,8 +61,10 @@ void AllUsers::addUser(const QString& username, const QString& password) {
         return;
     }
 
+    // hashes password for security
     QString hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
 
+    // adds new user to database
     QSqlQuery query(db);
     query.prepare("INSERT INTO userInfo (username, password, score) VALUES (:username, :password, :score)");
     query.bindValue(":username", username);
@@ -76,6 +80,7 @@ void AllUsers::addUser(const QString& username, const QString& password) {
 }
 
 QVector<QPair<QString, int>> AllUsers::showLeaderboard() {
+    // returns a vector of username and scores to be displayed
     QVector<QPair<QString, int>> leaderboardData;
 
     QSqlDatabase db = getDatabaseConnection();
@@ -84,7 +89,8 @@ QVector<QPair<QString, int>> AllUsers::showLeaderboard() {
         return leaderboardData;
     }
 
-    QSqlQuery query("SELECT username, score FROM userInfo ORDER BY score DESC LIMIT 10", db);
+    // retrieves the usernames and score by decending order
+    QSqlQuery query("SELECT username, score FROM userInfo ORDER BY score DESC LIMIT 5", db);
     while (query.next()) {
         QString username = query.value(0).toString();
         int score = query.value(1).toInt();
@@ -101,6 +107,7 @@ User* AllUsers::authenticateUser(const QString &username, const QString &passwor
         return nullptr; // Return nullptr if database is not open
     }
 
+    // hashes input password to check with table
     QString hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
     QSqlQuery query(db);
     query.prepare("SELECT COUNT(*) FROM userInfo WHERE username = :username AND password = :password");
@@ -110,12 +117,12 @@ User* AllUsers::authenticateUser(const QString &username, const QString &passwor
     if (!query.exec()) {
         qDebug() << "Error: Unable to authenticate user";
         qDebug() << query.lastError().text();
-        return nullptr; // Return nullptr if query execution fails
+        return nullptr; // return nullptr if query execution fails
     }
 
     query.next();
     int count = query.value(0).toInt();
-    if (count == 1) {
+    if (count == 1) {       // count should be one because there should only be one user with that username
         // authentication successful, get user information
         query.prepare("SELECT * FROM userInfo WHERE username = :username AND password = :password");
         query.bindValue(":username", username);
@@ -123,8 +130,8 @@ User* AllUsers::authenticateUser(const QString &username, const QString &passwor
         if (query.exec() && query.next()) {
             QString username = query.value("username").toString();
             int score = query.value("score").toInt();
-            QString password = query.value("password").toString(); // Fetch password from the database
-            User* user = new User(username, password, score); // Modify the User constructor accordingly
+            QString password = query.value("password").toString(); // fetch password from the database
+            User* user = new User(username, password, score);
             return user;
         } else {
             qDebug() << "Error: Unable to retrieve user information";
@@ -147,6 +154,7 @@ bool AllUsers::search(const QString& username) {
         return false;
     }
 
+    // searches in db for a user with the given username
     QSqlQuery query(db);
     query.prepare("SELECT COUNT(*) FROM userInfo WHERE username = :username");
     query.bindValue(":username", username);
@@ -159,10 +167,11 @@ bool AllUsers::search(const QString& username) {
 
     query.next();
     int count = query.value(0).toInt();
-    return (count > 0);
+    return (count > 0); // count > 0 means there is at least one user, at least is done in case of problem with having duplicate usernames
 }
 
 QSqlDatabase AllUsers::getDatabaseConnection() {
+    // initializes database if not open
     if (!db.isOpen()) {
         initializeDatabase();
     }
@@ -177,24 +186,25 @@ void AllUsers::updateScore(User* loggedUser, int newScore) {
 
     qDebug() << "Entered update";
     QString username = loggedUser->username;
-    qDebug() << "Username: " << username; // Print the username parameter
+    qDebug() << "Username: " << username;
 
+    // opens db
     QSqlDatabase db = getDatabaseConnection();
     if (!db.isOpen()) {
         qDebug() << "Error: Database is not open";
         return;
     } else {
-        qDebug() << "Database connection is open"; // Add this line
+        qDebug() << "Database connection is open";
     }
 
     QSqlQuery query(db);
-
+    // updates db with the new score for the given username
     if (!query.prepare("UPDATE userInfo SET score = :score WHERE username = :username")) {
         qDebug() << "Error preparing update query";
         qDebug() << query.lastError().text();
         return;
     } else {
-        qDebug() << "Update query prepared successfully"; // Add this line
+        qDebug() << "Update query prepared successfully";
     }
 
     query.bindValue(":score", newScore);
