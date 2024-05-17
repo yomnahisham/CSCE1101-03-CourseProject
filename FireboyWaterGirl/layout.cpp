@@ -42,6 +42,7 @@ Layout::Layout(QObject* parent, int l, User* loggedUser) : QGraphicsScene(parent
         makeLevelFOUR();
         break;
     case 5:
+        baseLevel();
         makeLevelFIVE();
         break;
     }
@@ -280,6 +281,20 @@ void Layout::makeLevelFOUR() {
 
 
 void Layout::makeLevelFIVE(){
+    // moving floors
+    Obstacles* movingPlatform1 = new Obstacles();
+    movingPlatform1->createObstacle(Obstacles::SlidingFloor2);
+    movingPlatform1->setPos(300, 500);
+    addItem(movingPlatform1);
+    obList.append(movingPlatform1);
+    movingPlatform1->setMovement(Qt::Horizontal, 200);
+
+    Obstacles* movingPlatform2 = new Obstacles();
+    movingPlatform2->createObstacle(Obstacles::SlidingFloor);
+    movingPlatform2->setPos(600, 300);
+    addItem(movingPlatform2);
+    obList.append(movingPlatform2);
+    movingPlatform2->setMovement(Qt::Vertical, 150);
 
 }
 

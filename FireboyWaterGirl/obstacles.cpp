@@ -3,13 +3,18 @@
 #include "watergirl.h"
 #include "players.h"
 #include<QTimer>
+#include <QTransform>
 
 // Pavement, Fire, Water, Acid, Lever, Button, SlidingFloor, FireDoor, WaterDoor
 
-Obstacles::Obstacles(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {
+Obstacles::Obstacles(QGraphicsItem* parent) : QGraphicsPixmapItem(parent), movementTimer(new QTimer(this)), movingForward(true) {
+    connect(movementTimer, &QTimer::timeout, this, &Obstacles::movePlatform);
 }
 
 void Obstacles::createObstacle(ObstacleType type){
+    QTransform transform;
+    transform.rotate(180);
+
     switch (type) {
     case ObstacleType::Pavement:
         setObjectName("Pavement");
@@ -80,8 +85,48 @@ void Obstacles::createObstacle(ObstacleType type){
         setObjectName("LeverLeft");
         setPixmap(QPixmap(":/image/img/LeverLeft.png").scaled(70, 57, Qt::KeepAspectRatio));
         break;
+    case ObstacleType::SlidingFloor2:
+        setObjectName("SlidingFloor2");
+        setPixmap(QPixmap(":/image/img/slidingFloor2.png").transformed(transform).scaled(66, 57, Qt::KeepAspectRatio));
+        break;
+    case ObstacleType::SlidingFloor:
+        setObjectName("SlidingFloor");
+        {
+            QPixmap pixmap(":/image/img/slidingFloor.png");
+            setPixmap(pixmap.transformed(transform).scaled(66, 57, Qt::KeepAspectRatio));
+        }
+        break;
     }
 }
+
+void Obstacles::setMovement(Qt::Orientation orientation, int distance)
+{
+    movementOrientation = orientation;
+    movementDistance = distance;
+    movementTimer->start(50); // adjust the interval as needed
+}
+
+void Obstacles::movePlatform()
+{
+    if (movementOrientation == Qt::Horizontal) {
+        if (movingForward) {
+            setPos(x() + 2, y());
+            if (x() >= movementDistance) movingForward = false;
+        } else {
+            setPos(x() - 2, y());
+            if (x() <= 0) movingForward = true;
+        }
+    } else if (movementOrientation == Qt::Vertical) {
+        if (movingForward) {
+            setPos(x(), y() + 2);
+            if (y() >= movementDistance) movingForward = false;
+        } else {
+            setPos(x(), y() - 2);
+            if (y() <= 0) movingForward = true;
+        }
+    }
+}
+
 
 void Obstacles::timerAcid()
 {
