@@ -31,11 +31,13 @@ protected:
     int level;
     void shootAcid (int x, int y);
     bool endgame = false;
+
     int nScore;
     int health = 1000;
     QGraphicsTextItem* healthText;
 
     QTimer* dropTimer;
+    bool dropsSwitchedOff;
 
 };
 #endif // LAYOUT_H

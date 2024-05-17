@@ -14,6 +14,7 @@ Layout::Layout(QObject* parent, int l, User* loggedUser) : QGraphicsScene(parent
     //putting brick background
     level = l;
     nScore = 0;
+    dropsSwitchedOff = false;
 
     if (user)
         qDebug()<< user->username;
@@ -218,21 +219,24 @@ void Layout::makeLevelFOUR() {
     // start timer for dropping drops
     dropTimer = new QTimer(this);
     connect(dropTimer, &QTimer::timeout, [=]() {
-        // create and add a drop at a random position
-        Obstacles* drop = new Obstacles();
-        drop->createObstacle(Obstacles::Drops);
-        int x = QRandomGenerator::global()->bounded(100, 900);
-        int y = 0;
-        drop->setPos(x, y);
-        addItem(drop);
+        if (!dropsSwitchedOff) {
+            // create and add a drop at a random position
+            Obstacles* drop = new Obstacles();
+            drop->createObstacle(Obstacles::Drops);
+            int x = QRandomGenerator::global()->bounded(100, 900);
+            int y = 0;
+            drop->setPos(x, y);
+            addItem(drop);
 
-        // start timer for moving drops downwards
-        QTimer* dropMoveTimer = new QTimer(drop);
-        connect(dropMoveTimer, &QTimer::timeout, [=]() {drop->moveBy(0, 5); });
-        dropMoveTimer->start(50);
+            // start timer for moving drops downwards
+            QTimer* dropMoveTimer = new QTimer(drop);
+            connect(dropMoveTimer, &QTimer::timeout, [=]() { drop->moveBy(0, 5); });
+            dropMoveTimer->start(50);
+        }
     });
     dropTimer->start(500);
 }
+
 
 
 void Layout::makeLevelFIVE(){
@@ -334,24 +338,14 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
                     dropMoveTimer->setInterval(25);
                 }
             } else if (ob->objectName() == "LeverLeft"){
-                bool switchedOff = true;
                 Obstacles* switched = new Obstacles();
                 switched->createObstacle(Obstacles::LeverRight);
                 switched->setPos(ob->x(), ob->y());
                 addItem(switched);
                 removeItem(ob);
 
-                if(switchedOff){
-                    // Stop all drops from falling
-                    foreach(QGraphicsItem* item, items()) {
-                        Obstacles* drop = dynamic_cast<Obstacles*>(item);
-                        if (drop && drop->objectName() == "Drops") {
-                            drop->deleteLater(); // Remove the drop
-                        }
-                    }
-                    // Stop the drop timer
-                    dropTimer->stop();
-                }
+                dropsSwitchedOff = true;  // Set the flag to true
+                dropTimer->stop();  // Stop the drop timer
             }
         }
     }
