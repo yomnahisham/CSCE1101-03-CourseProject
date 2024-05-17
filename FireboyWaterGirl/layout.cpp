@@ -211,7 +211,7 @@ void Layout::makeLevelTHREE(){
 void Layout::makeLevelFOUR() {
     // insert a lever
     Obstacles* lever = new Obstacles();
-    lever->createObstacle(Obstacles::LeverRight);
+    lever->createObstacle(Obstacles::LeverLeft);
     lever->setPos(600, 384);
     addItem(lever);
 
@@ -257,9 +257,9 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
 {
     WindowManager Manager;
 
-    // Check if the obstacle collides with the player
+    // check if the obstacle collides with the player
     if (ob->collidesWithItem(player)) {
-        // Check if the player is a Fireboy or Watergirl
+        // check if the player is a Fireboy or Watergirl
         FireBoy* fireboy = dynamic_cast<FireBoy*>(player);
         WaterGirl* watergirl = dynamic_cast<WaterGirl*>(player);
 
@@ -333,6 +333,12 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
                 if (dropMoveTimer) {
                     dropMoveTimer->setInterval(25);
                 }
+            } else if (ob->objectName() == "LeverLeft"){
+                Obstacles* switched = new Obstacles();
+                switched->createObstacle(Obstacles::LeverRight);
+                switched->setPos(ob->x(), ob->y());
+                addItem(switched);
+                removeItem(ob);
             }
         }
     }

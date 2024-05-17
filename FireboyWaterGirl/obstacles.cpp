@@ -76,6 +76,10 @@ void Obstacles::createObstacle(ObstacleType type){
         setObjectName("LeverRight");
         setPixmap(QPixmap(":/image/img/lever.png").scaled(70, 57, Qt::KeepAspectRatio));
         break;
+    case ObstacleType::LeverLeft:
+        setObjectName("LeverLeft");
+        setPixmap(QPixmap(":/image/img/LeverLeft.png").scaled(70, 57, Qt::KeepAspectRatio));
+        break;
     }
 }
 
