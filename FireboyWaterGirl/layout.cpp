@@ -235,6 +235,47 @@ void Layout::makeLevelFOUR() {
         }
     });
     dropTimer->start(500);
+
+    // possible positions for obstacles
+    QVector<QPointF> positions = {
+                                  {400, 568}, {600, 150}, {690, 150}, {300, 275}
+    };
+
+    // function to randomly display an obstacle
+    auto showRandomObstacle = [=](Obstacles::ObstacleType type) {
+        Obstacles* obstacle = new Obstacles();
+        obstacle->createObstacle(type);
+        QPointF pos = positions[QRandomGenerator::global()->bounded(positions.size())];
+        obstacle->setPos(pos);
+
+        addItem(obstacle);
+        obstacle->setVisible(true);
+
+        QTimer::singleShot(1000, obstacle, [=]() {
+            removeItem(obstacle);
+            delete obstacle;
+        });
+    };
+
+    // timers for random obstacles
+    QTimer* randomObstacleTimer = new QTimer(this);
+    connect(randomObstacleTimer, &QTimer::timeout, [=]() {
+        int randomType = QRandomGenerator::global()->bounded(3);
+        switch (randomType) {
+        case 0:
+            showRandomObstacle(Obstacles::Acid);
+            break;
+        case 1:
+            showRandomObstacle(Obstacles::Fire);
+            break;
+        case 2:
+            showRandomObstacle(Obstacles::Water);
+            break;
+        }
+    });
+
+    // start the timer with a random interval between 1 and 3 seconds
+    randomObstacleTimer->start(1000 + QRandomGenerator::global()->bounded(2000));
 }
 
 

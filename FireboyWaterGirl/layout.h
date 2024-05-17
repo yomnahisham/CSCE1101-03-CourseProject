@@ -16,6 +16,7 @@ public:
     void makeLevelFOUR();
     void makeLevelFIVE();
 
+
     void closeGame();
     void handleCollisions(Players *player, Obstacles* ob);
     static void closeGame(QGraphicsScene* scene);
