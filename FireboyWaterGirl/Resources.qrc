@@ -4,7 +4,6 @@
         <file>img/block.png</file>
         <file>img/water.png</file>
         <file>img/WaterDoor.png</file>
-        <file>img/pushButton1.png</file>
         <file>img/lever.png</file>
         <file>img/acid.png</file>
         <file>img/fire.png</file>
@@ -24,7 +23,6 @@
         <file>img/openFD.png</file>
         <file>img/openWD.png</file>
         <file>img/waterDrops.png</file>
-        <file>img/SlidingDoor.png</file>
         <file>img/smallFire.png</file>
         <file>img/Smallwater.png</file>
     </qresource>

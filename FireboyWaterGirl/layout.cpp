@@ -204,7 +204,7 @@ void Layout::makeLevelTHREE(){
     Gem3->setPos(50, 420);
     addItem(Gem3);
 
-    QTimer * timer = new QTimer(this);
+    QTimer * timer = new QTimer(this);          //creating acid balls useing a timer for different loactions
     connect(timer, &QTimer::timeout, [=]() {
         shootAcid(400, 180);
         shootAcid(200, 600);

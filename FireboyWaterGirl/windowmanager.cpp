@@ -79,9 +79,6 @@ void WindowManager::showWindow(WindowType type, int l, User* loggedUser) {
         levWindow -> show();
 
     } else if(mainON){
-
-        qDebug()<< "setting up a main";
-
         QGraphicsView* view = new QGraphicsView();
         Layout* scene = new Layout(nullptr, l, user);
 

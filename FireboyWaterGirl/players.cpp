@@ -27,7 +27,6 @@ void Players::gravity ()
 
     if (!hitPavement()||hitCeiling())
     {
-        //qDebug()<< "in the air";
         moveBy (0,2);
         QTimer::singleShot(10, this, [this]() { gravity(); });
 

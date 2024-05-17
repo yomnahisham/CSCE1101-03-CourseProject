@@ -36,14 +36,11 @@ void WaterGirl::keyPressEvent(QKeyEvent* event) {
     } else if (event->key() == Qt::Key_A) {
         direction = 2;
         moveBy(-10, 0);
-        //qDebug()<< "moved left";
     } else if (event->key() == Qt::Key_D) {
         direction = 1;
         moveBy(10, 0);
-        //qDebug()<< "moved right";
     }
 
-    //checkCollisions();
 }
 
 void WaterGirl::jump(int jumpStep) {
@@ -66,14 +63,12 @@ void WaterGirl::jump(int jumpStep) {
         if (jumpStep == 14) // when jumpStep reaches 5 without the help of hitCeiling or hitSide then there is no ceiling there
         {
             upLevel = true;
-            //qDebug()<<"activating uplevel";
         }
 
         if (hitCeiling())
         {
             moveBy(0, 7.5);                  //move down 1 jumpStep
             jumpStep = 14;                   //fast track to part 2
-            //qDebug() << "Hit ceiling";
         }
 
         if (hitPavement())
@@ -82,7 +77,7 @@ void WaterGirl::jump(int jumpStep) {
         }
 
         if (hitSide())
-        {   //qDebug() << "Hit side";
+        {
             if (direction == 1)
                 moveBy(-13.5, 0);         //move back 1 jumpStep
             else if (direction ==2)
@@ -96,12 +91,8 @@ void WaterGirl::jump(int jumpStep) {
     }
     else if (!hitPavement())            //part 2: downwards arc of jump
     {
-        //qDebug() << "part 2";
-
         if (!upLevel)
         {
-            //qDebug() << " not up level";
-
             switch (direction){
             case 0:
                 moveBy(0, 7.5);
@@ -116,8 +107,6 @@ void WaterGirl::jump(int jumpStep) {
             }
         }else if (upLevel)
         {
-            //qDebug() << " up level";
-
             switch (direction){
             case 0:
                 moveBy(0, 7.5);
@@ -125,7 +114,6 @@ void WaterGirl::jump(int jumpStep) {
             case 1:
                 moveBy(5, 7.5);
                 break;
-                //qDebug() << "moved down";
             case 2:
                 moveBy(-5, 7.5);
                 break ;
@@ -133,7 +121,7 @@ void WaterGirl::jump(int jumpStep) {
         }
 
         if (hitSide())
-        {   //qDebug() << "Hit side";
+        {
             if (direction == 1)
                 moveBy(-13.5, 0);         //move back 1 jumpStep
             else if (direction ==2)
@@ -144,7 +132,6 @@ void WaterGirl::jump(int jumpStep) {
 
         if (hitPavement())              //if hit pavement: end jump and return
         {
-            //qDebug() << "end jump";
             isJumping = false;
             gravity();
             return;
@@ -152,7 +139,6 @@ void WaterGirl::jump(int jumpStep) {
             QTimer::singleShot(20, this, [this, jumpStep]() { jump(jumpStep); });
     }else if (hitPavement())              //if hit pavement: end jump and return
     {
-        //qDebug() << "end jump";
         gravity();
         isJumping = false;
         return;

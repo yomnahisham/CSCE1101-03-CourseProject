@@ -791,7 +791,6 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../../../../Qt/6.7.0/macos/libexec/rcc \
 		../FireboyWaterGirl/img/FireBoy.png \
 		../FireboyWaterGirl/img/lever.png \
-		../FireboyWaterGirl/img/pushButton1.png \
 		../FireboyWaterGirl/img/level1F.png \
 		../FireboyWaterGirl/img/background.png \
 		../FireboyWaterGirl/img/registerBackground.png \
@@ -810,7 +809,6 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/openFD.png \
 		../FireboyWaterGirl/img/acid.png \
 		../FireboyWaterGirl/img/tinyacid.png \
-		../FireboyWaterGirl/img/SlidingDoor.png \
 		../FireboyWaterGirl/img/waterDrops.png \
 		../FireboyWaterGirl/img/gems.png \
 		../FireboyWaterGirl/img/Level1Side.png \
