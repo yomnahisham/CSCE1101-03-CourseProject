@@ -9,28 +9,14 @@
 class Obstacles : public QObject, public QGraphicsPixmapItem {
     Q_OBJECT
 public:
-    enum ObstacleType{Side, Pavement,Slope,Ceiling, Fire, Water, Acid,tinyAcid, acidBall, openWD, openFD, FireDoor, WaterDoor, Block, Gem, Drops, LeverRight, LeverLeft, SlidingFloor2, SlidingFloor};
+    enum ObstacleType{Side, Pavement,Slope,Ceiling, Fire, Water, Acid,tinyAcid, tinyWater, tinyFire, acidBall, openWD, openFD, FireDoor, WaterDoor, Block, Gem, Drops, LeverRight, LeverLeft, SlidingDoor, Button};
     Obstacles(QGraphicsItem* parent = nullptr);
     void createObstacle(ObstacleType type);
-    void lowerFloor();
-    void elevateFloor(Players* player);
     void timerAcid();
     void moveAcid();
-
-    void setMovement(Qt::Orientation orientation, int distance);
-
-private slots:
-    void movePlatform();
-
+    void moveDoor(int x);
 
 private:
-    ObstacleType getType()const;
-    ObstacleType type;
-
-    QTimer *movementTimer;
-    int movementDistance;
-    Qt::Orientation movementOrientation;
-    bool movingForward;
 
 };
 

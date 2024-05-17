@@ -56,7 +56,7 @@ bool Players:: hitSide ()
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; ++i){
         Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
-        if ((ptr) && (ptr -> objectName() == "Side")) {
+        if ((ptr) && (ptr -> objectName() == "Side" || ptr -> objectName() == "SlidingDoor")) {
             return true;
         }
     }

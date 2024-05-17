@@ -7,13 +7,11 @@
 
 // Pavement, Fire, Water, Acid, Lever, Button, SlidingFloor, FireDoor, WaterDoor
 
-Obstacles::Obstacles(QGraphicsItem* parent) : QGraphicsPixmapItem(parent), movementTimer(new QTimer(this)), movingForward(true) {
-    connect(movementTimer, &QTimer::timeout, this, &Obstacles::movePlatform);
+Obstacles::Obstacles(QGraphicsItem* parent) : QGraphicsPixmapItem(parent) {
 }
 
 void Obstacles::createObstacle(ObstacleType type){
-    QTransform transform;
-    transform.rotate(180);
+    //switch case for each obstacle that sets the object name (for collisions) and sets qpixmap
 
     switch (type) {
     case ObstacleType::Pavement:
@@ -30,7 +28,7 @@ void Obstacles::createObstacle(ObstacleType type){
         break;
     case ObstacleType::Fire:
         setObjectName("Fire");
-        setPixmap(QPixmap(":/image/img/fire.png").scaled(174, 45)); //multiply pixels by a factor to get proper size
+        setPixmap(QPixmap(":/image/img/fire.png").scaled(174, 45));
         break;
     case ObstacleType::Water:
         setObjectName("Water");
@@ -44,10 +42,18 @@ void Obstacles::createObstacle(ObstacleType type){
         setObjectName("Acid");
         setPixmap(QPixmap(":/image/img/tinyacid.png").scaled(70, 45, Qt::KeepAspectRatio));
         break;
+    case ObstacleType::tinyWater:
+        setObjectName("Water");
+        setPixmap(QPixmap(":/image/img/Smallwater.png").scaled(70, 45, Qt::KeepAspectRatio));
+        break;
+    case ObstacleType::tinyFire:
+        setObjectName("Fire");
+        setPixmap(QPixmap(":/image/img/smallFire.png").scaled(70, 45, Qt::KeepAspectRatio));
+        break;
     case ObstacleType::acidBall:
         setObjectName("Acid");
         setPixmap(QPixmap(":/image/img/acid ball.png").scaled(15, 15, Qt::KeepAspectRatio));
-        timerAcid();
+        timerAcid();    //call timer for acidbals whenever acid balls are created
         break;
     case ObstacleType::openWD:
         setObjectName("openWD");
@@ -85,51 +91,14 @@ void Obstacles::createObstacle(ObstacleType type){
         setObjectName("LeverLeft");
         setPixmap(QPixmap(":/image/img/LeverLeft.png").scaled(70, 57, Qt::KeepAspectRatio));
         break;
-    case ObstacleType::SlidingFloor2:
-        setObjectName("SlidingFloor2");
-        setPixmap(QPixmap(":/image/img/slidingFloor2.png").transformed(transform).scaled(66, 57, Qt::KeepAspectRatio));
-        break;
-    case ObstacleType::SlidingFloor:
-        setObjectName("SlidingFloor");
-        {
-            QPixmap pixmap(":/image/img/slidingFloor.png");
-            setPixmap(pixmap.transformed(transform).scaled(66, 57, Qt::KeepAspectRatio));
-        }
-        break;
     }
 }
 
-void Obstacles::setMovement(Qt::Orientation orientation, int distance)
-{
-    movementOrientation = orientation;
-    movementDistance = distance;
-    movementTimer->start(50); // adjust the interval as needed
-}
-
-void Obstacles::movePlatform()
-{
-    if (movementOrientation == Qt::Horizontal) {
-        if (movingForward) {
-            setPos(x() + 2, y());
-            if (x() >= movementDistance) movingForward = false;
-        } else {
-            setPos(x() - 2, y());
-            if (x() <= 0) movingForward = true;
-        }
-    } else if (movementOrientation == Qt::Vertical) {
-        if (movingForward) {
-            setPos(x(), y() + 2);
-            if (y() >= movementDistance) movingForward = false;
-        } else {
-            setPos(x(), y() - 2);
-            if (y() <= 0) movingForward = true;
-        }
-    }
-}
 
 
 void Obstacles::timerAcid()
 {
+    //use a Qtimer to call moveAcid every 40 ms
     QTimer * timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Obstacles::moveAcid);
     timer->start(40);
@@ -138,47 +107,24 @@ void Obstacles::timerAcid()
 void Obstacles::moveAcid()
 {
 
-    setPos(x(),y()+5);
+    setPos(x(),y()+5);  //moe it downwards
 
-    bool hitPav = false;
+    bool hitPav = false;    //initalize hitpavement as false before checking
 
+    //go through colliding items and make sure it isn't hitting pavement
     QList<QGraphicsItem *> colliding_items = collidingItems();
     for (int i = 0, n = colliding_items.size(); i < n; ++i) {
         Obstacles* ptr = dynamic_cast<Obstacles*>(colliding_items[i]);
         if (ptr && ((ptr->objectName() == "Pavement")||(ptr->objectName() == "Block"))) {
-            hitPav = true;}
+            hitPav = true;} //if it hit pavement set boolean to true
     }
-
-    //qDebug()<< hitPav;
 
     if (hitPav)
     {
-        qDebug()<< "hit pav";
-        scene()->removeItem(this);
-        delete this;
+        scene()->removeItem(this);  //remove drop from scene
+        delete this;                //delete object
     }
 }
-
-
-void Obstacles::lowerFloor(){ //animate it more
-
-    while (y() < 528)
-    {
-        moveBy(0, 3);
-        QTimer::singleShot(40, this, [this]() { lowerFloor(); });
-    }
-    return;
-}
-void Obstacles::elevateFloor(Players* player){ //animate it more
-
-    while (y() > 404 )
-    {
-        player -> moveBy(0,-3);
-        moveBy(0, - 3);
-        QTimer::singleShot(40, this, [this, player]() { elevateFloor(player); });
-    }
-}
-
 
 /*    case ObstacleType::LeverRight:
         setObjectName("LeverRight");

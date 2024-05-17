@@ -25,6 +25,7 @@ public:
     QPushButton *checkLevelsButton;
     QLabel *gameOver;
     QLabel *wonLabel;
+    QPushButton *leaderboard;
 
     void setupUi(QDialog *GameOver)
     {
@@ -36,7 +37,7 @@ public:
         retryButton->setGeometry(QRect(149, 220, 201, 32));
         exitButton = new QPushButton(GameOver);
         exitButton->setObjectName("exitButton");
-        exitButton->setGeometry(QRect(150, 320, 201, 32));
+        exitButton->setGeometry(QRect(150, 360, 201, 32));
         checkLevelsButton = new QPushButton(GameOver);
         checkLevelsButton->setObjectName("checkLevelsButton");
         checkLevelsButton->setGeometry(QRect(150, 260, 201, 32));
@@ -46,6 +47,9 @@ public:
         wonLabel = new QLabel(GameOver);
         wonLabel->setObjectName("wonLabel");
         wonLabel->setGeometry(QRect(220, 190, 58, 16));
+        leaderboard = new QPushButton(GameOver);
+        leaderboard->setObjectName("leaderboard");
+        leaderboard->setGeometry(QRect(150, 300, 201, 32));
 
         retranslateUi(GameOver);
 
@@ -60,6 +64,7 @@ public:
         checkLevelsButton->setText(QCoreApplication::translate("GameOver", "Check Levels", nullptr));
         gameOver->setText(QCoreApplication::translate("GameOver", "Game Over!", nullptr));
         wonLabel->setText(QCoreApplication::translate("GameOver", "You Won!", nullptr));
+        leaderboard->setText(QCoreApplication::translate("GameOver", "LeaderBoard", nullptr));
     } // retranslateUi
 
 };

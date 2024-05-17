@@ -62,7 +62,6 @@ SOURCES       = ../FireboyWaterGirl/abilities.cpp \
 		../FireboyWaterGirl/obstacles.cpp \
 		../FireboyWaterGirl/players.cpp \
 		../FireboyWaterGirl/registerwindow.cpp \
-		../FireboyWaterGirl/status.cpp \
 		../FireboyWaterGirl/user.cpp \
 		../FireboyWaterGirl/watergirl.cpp \
 		../FireboyWaterGirl/windowmanager.cpp qrc_Resources.cpp \
@@ -84,7 +83,6 @@ OBJECTS       = abilities.o \
 		obstacles.o \
 		players.o \
 		registerwindow.o \
-		status.o \
 		user.o \
 		watergirl.o \
 		windowmanager.o \
@@ -298,7 +296,6 @@ DIST          = ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../FireboyWaterGirl/obstacles.h \
 		../FireboyWaterGirl/players.h \
 		../FireboyWaterGirl/registerwindow.h \
-		../FireboyWaterGirl/status.h \
 		../FireboyWaterGirl/user.h \
 		../FireboyWaterGirl/watergirl.h \
 		../FireboyWaterGirl/windowmanager.h ../FireboyWaterGirl/abilities.cpp \
@@ -311,7 +308,6 @@ DIST          = ../../../../Qt/6.7.0/macos/mkspecs/features/spec_pre.prf \
 		../FireboyWaterGirl/obstacles.cpp \
 		../FireboyWaterGirl/players.cpp \
 		../FireboyWaterGirl/registerwindow.cpp \
-		../FireboyWaterGirl/status.cpp \
 		../FireboyWaterGirl/user.cpp \
 		../FireboyWaterGirl/watergirl.cpp \
 		../FireboyWaterGirl/windowmanager.cpp
@@ -763,8 +759,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../FireboyWaterGirl/Resources.qrc $(DISTDIR)/
-	$(COPY_FILE) --parents ../FireboyWaterGirl/abilities.h ../FireboyWaterGirl/allusers.h ../FireboyWaterGirl/fireboy.h ../FireboyWaterGirl/gameover.h ../FireboyWaterGirl/layout.h ../FireboyWaterGirl/level.h ../FireboyWaterGirl/loginwindow.h ../FireboyWaterGirl/obstacles.h ../FireboyWaterGirl/players.h ../FireboyWaterGirl/registerwindow.h ../FireboyWaterGirl/status.h ../FireboyWaterGirl/user.h ../FireboyWaterGirl/watergirl.h ../FireboyWaterGirl/windowmanager.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../FireboyWaterGirl/abilities.cpp ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/gameover.cpp ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/main.cpp ../FireboyWaterGirl/obstacles.cpp ../FireboyWaterGirl/players.cpp ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/status.cpp ../FireboyWaterGirl/user.cpp ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/windowmanager.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../FireboyWaterGirl/abilities.h ../FireboyWaterGirl/allusers.h ../FireboyWaterGirl/fireboy.h ../FireboyWaterGirl/gameover.h ../FireboyWaterGirl/layout.h ../FireboyWaterGirl/level.h ../FireboyWaterGirl/loginwindow.h ../FireboyWaterGirl/obstacles.h ../FireboyWaterGirl/players.h ../FireboyWaterGirl/registerwindow.h ../FireboyWaterGirl/user.h ../FireboyWaterGirl/watergirl.h ../FireboyWaterGirl/windowmanager.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../FireboyWaterGirl/abilities.cpp ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/gameover.cpp ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/main.cpp ../FireboyWaterGirl/obstacles.cpp ../FireboyWaterGirl/players.cpp ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/user.cpp ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/windowmanager.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../FireboyWaterGirl/gameover.ui ../FireboyWaterGirl/level.ui ../FireboyWaterGirl/loginwindow.ui ../FireboyWaterGirl/registerwindow.ui $(DISTDIR)/
 
 
@@ -798,8 +794,6 @@ compiler_rcc_clean:
 qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../../../../Qt/6.7.0/macos/libexec/rcc \
 		../FireboyWaterGirl/img/FireBoy.png \
-		../FireboyWaterGirl/img/slidingFloor2.png \
-		../FireboyWaterGirl/img/slidingFloor.png \
 		../FireboyWaterGirl/img/lever.png \
 		../FireboyWaterGirl/img/pushButton1.png \
 		../FireboyWaterGirl/img/level1F.png \
@@ -808,6 +802,8 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/LoginWindow.png \
 		../FireboyWaterGirl/img/acid\ ball.png \
 		../FireboyWaterGirl/img/openWD.png \
+		../FireboyWaterGirl/img/smallFire.png \
+		../FireboyWaterGirl/img/Smallwater.png \
 		../FireboyWaterGirl/img/WaterGirl.png \
 		../FireboyWaterGirl/img/fire.png \
 		../FireboyWaterGirl/img/LeverLeft.png \
@@ -818,7 +814,8 @@ qrc_Resources.cpp: ../FireboyWaterGirl/Resources.qrc \
 		../FireboyWaterGirl/img/openFD.png \
 		../FireboyWaterGirl/img/acid.png \
 		../FireboyWaterGirl/img/tinyacid.png \
-		../FireboyWaterGirl/img/pushButton2.png \
+		../FireboyWaterGirl/img/SlidingDoor.png \
+		../FireboyWaterGirl/img/waterDrops.png \
 		../FireboyWaterGirl/img/gems.png \
 		../FireboyWaterGirl/img/Level1Side.png \
 		../FireboyWaterGirl/img/level1c.png \
@@ -840,21 +837,10 @@ moc_fireboy.cpp: ../FireboyWaterGirl/fireboy.h \
 	/Users/LiloBilo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/LiloBilo/Qt/6.7.0/macos/mkspecs/macx-clang -I'/Users/LiloBilo/Documents/GitHub/Fire&Water/FireboyWaterGirl' -I/opt/homebrew/opt/sqlite/include -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/LiloBilo/Qt/6.7.0/macos/lib ../FireboyWaterGirl/fireboy.h -o moc_fireboy.cpp
 
 moc_gameover.cpp: ../FireboyWaterGirl/gameover.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/LiloBilo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/LiloBilo/Qt/6.7.0/macos/mkspecs/macx-clang -I'/Users/LiloBilo/Documents/GitHub/Fire&Water/FireboyWaterGirl' -I/opt/homebrew/opt/sqlite/include -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/LiloBilo/Qt/6.7.0/macos/lib ../FireboyWaterGirl/gameover.h -o moc_gameover.cpp
-
-moc_level.cpp: ../FireboyWaterGirl/level.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/LiloBilo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/LiloBilo/Qt/6.7.0/macos/mkspecs/macx-clang -I'/Users/LiloBilo/Documents/GitHub/Fire&Water/FireboyWaterGirl' -I/opt/homebrew/opt/sqlite/include -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/LiloBilo/Qt/6.7.0/macos/lib ../FireboyWaterGirl/level.h -o moc_level.cpp
-
-moc_loginwindow.cpp: ../FireboyWaterGirl/loginwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
@@ -870,6 +856,61 @@ moc_loginwindow.cpp: ../FireboyWaterGirl/loginwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../FireboyWaterGirl/allusers.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/LiloBilo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/LiloBilo/Qt/6.7.0/macos/mkspecs/macx-clang -I'/Users/LiloBilo/Documents/GitHub/Fire&Water/FireboyWaterGirl' -I/opt/homebrew/opt/sqlite/include -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/LiloBilo/Qt/6.7.0/macos/lib ../FireboyWaterGirl/gameover.h -o moc_gameover.cpp
+
+moc_level.cpp: ../FireboyWaterGirl/level.h \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/LiloBilo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/LiloBilo/Qt/6.7.0/macos/mkspecs/macx-clang -I'/Users/LiloBilo/Documents/GitHub/Fire&Water/FireboyWaterGirl' -I/opt/homebrew/opt/sqlite/include -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/LiloBilo/Qt/6.7.0/macos/lib ../FireboyWaterGirl/level.h -o moc_level.cpp
+
+moc_loginwindow.cpp: ../FireboyWaterGirl/loginwindow.h \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
@@ -1043,7 +1084,6 @@ moc_loginwindow.cpp: ../FireboyWaterGirl/loginwindow.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
@@ -1136,19 +1176,10 @@ moc_players.cpp: ../FireboyWaterGirl/players.h \
 	/Users/LiloBilo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/LiloBilo/Qt/6.7.0/macos/mkspecs/macx-clang -I'/Users/LiloBilo/Documents/GitHub/Fire&Water/FireboyWaterGirl' -I/opt/homebrew/opt/sqlite/include -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/LiloBilo/Qt/6.7.0/macos/lib ../FireboyWaterGirl/players.h -o moc_players.cpp
 
 moc_registerwindow.cpp: ../FireboyWaterGirl/registerwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../../../../Qt/6.7.0/macos/libexec/moc
-	/Users/LiloBilo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/LiloBilo/Qt/6.7.0/macos/mkspecs/macx-clang -I'/Users/LiloBilo/Documents/GitHub/Fire&Water/FireboyWaterGirl' -I/opt/homebrew/opt/sqlite/include -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/LiloBilo/Qt/6.7.0/macos/lib ../FireboyWaterGirl/registerwindow.h -o moc_registerwindow.cpp
-
-moc_windowmanager.cpp: ../FireboyWaterGirl/windowmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../FireboyWaterGirl/registerwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../FireboyWaterGirl/loginwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
@@ -1164,6 +1195,38 @@ moc_windowmanager.cpp: ../FireboyWaterGirl/windowmanager.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.7.0/macos/libexec/moc
+	/Users/LiloBilo/Qt/6.7.0/macos/libexec/moc $(DEFINES) -D__APPLE__ -D__GNUC__=4 -D__APPLE_CC__ -D__cplusplus=199711L -D__APPLE_CC__=6000 -D__clang__ -D__clang_major__=15 -D__clang_minor__=0 -D__clang_patchlevel__=0 -D__GNUC__=4 -D__GNUC_MINOR__=2 -D__GNUC_PATCHLEVEL__=1 -I/Users/LiloBilo/Qt/6.7.0/macos/mkspecs/macx-clang -I'/Users/LiloBilo/Documents/GitHub/Fire&Water/FireboyWaterGirl' -I/opt/homebrew/opt/sqlite/include -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtMultimedia.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtWidgets.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtGui.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtNetwork.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtSql.framework/Headers -I/Users/LiloBilo/Qt/6.7.0/macos/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/Users/LiloBilo/Qt/6.7.0/macos/lib ../FireboyWaterGirl/registerwindow.h -o moc_registerwindow.cpp
+
+moc_windowmanager.cpp: ../FireboyWaterGirl/windowmanager.h \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../FireboyWaterGirl/registerwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
@@ -1337,7 +1400,6 @@ moc_windowmanager.cpp: ../FireboyWaterGirl/windowmanager.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
@@ -1413,6 +1475,8 @@ moc_windowmanager.cpp: ../FireboyWaterGirl/windowmanager.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../FireboyWaterGirl/allusers.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../FireboyWaterGirl/level.h \
@@ -1458,13 +1522,12 @@ abilities.o: ../FireboyWaterGirl/abilities.cpp ../FireboyWaterGirl/abilities.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o abilities.o ../FireboyWaterGirl/abilities.cpp
 
 allusers.o: ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/allusers.h \
+		../FireboyWaterGirl/user.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
-		../FireboyWaterGirl/user.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
@@ -1478,6 +1541,7 @@ allusers.o: ../FireboyWaterGirl/allusers.cpp ../FireboyWaterGirl/allusers.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QDebug \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QCryptographicHash \
@@ -1503,16 +1567,11 @@ fireboy.o: ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/fireboy.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-		../FireboyWaterGirl/windowmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../FireboyWaterGirl/registerwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../FireboyWaterGirl/loginwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
+		../FireboyWaterGirl/allusers.h \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
@@ -1528,6 +1587,17 @@ fireboy.o: ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/fireboy.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../FireboyWaterGirl/windowmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../FireboyWaterGirl/registerwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
@@ -1700,7 +1770,6 @@ fireboy.o: ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/fireboy.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
@@ -1770,15 +1839,10 @@ fireboy.o: ../FireboyWaterGirl/fireboy.cpp ../FireboyWaterGirl/fireboy.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fireboy.o ../FireboyWaterGirl/fireboy.cpp
 
 gameover.o: ../FireboyWaterGirl/gameover.cpp ../FireboyWaterGirl/gameover.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		ui_gameover.h \
-		../FireboyWaterGirl/windowmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../FireboyWaterGirl/registerwindow.h \
-		../FireboyWaterGirl/loginwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
@@ -1794,6 +1858,17 @@ gameover.o: ../FireboyWaterGirl/gameover.cpp ../FireboyWaterGirl/gameover.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../FireboyWaterGirl/allusers.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_gameover.h \
+		../FireboyWaterGirl/windowmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../FireboyWaterGirl/registerwindow.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
@@ -1967,7 +2042,6 @@ gameover.o: ../FireboyWaterGirl/gameover.cpp ../FireboyWaterGirl/gameover.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
@@ -2045,7 +2119,10 @@ gameover.o: ../FireboyWaterGirl/gameover.cpp ../FireboyWaterGirl/gameover.h \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-		../FireboyWaterGirl/level.h
+		../FireboyWaterGirl/level.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QVBoxLayout \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qboxlayout.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QPropertyAnimation
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gameover.o ../FireboyWaterGirl/gameover.cpp
 
 layout.o: ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/layout.h \
@@ -2060,18 +2137,11 @@ layout.o: ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/layout.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-		../FireboyWaterGirl/fireboy.h \
-		../FireboyWaterGirl/watergirl.h \
-		../FireboyWaterGirl/windowmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../FireboyWaterGirl/registerwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../FireboyWaterGirl/loginwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
+		../FireboyWaterGirl/allusers.h \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
@@ -2087,6 +2157,19 @@ layout.o: ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/layout.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../FireboyWaterGirl/fireboy.h \
+		../FireboyWaterGirl/watergirl.h \
+		../FireboyWaterGirl/windowmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../FireboyWaterGirl/registerwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
@@ -2259,7 +2342,6 @@ layout.o: ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/layout.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
@@ -2328,15 +2410,10 @@ layout.o: ../FireboyWaterGirl/layout.cpp ../FireboyWaterGirl/layout.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o layout.o ../FireboyWaterGirl/layout.cpp
 
 level.o: ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/level.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		ui_level.h \
-		../FireboyWaterGirl/windowmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../FireboyWaterGirl/registerwindow.h \
-		../FireboyWaterGirl/loginwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
@@ -2352,6 +2429,15 @@ level.o: ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/level.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_level.h \
+		../FireboyWaterGirl/windowmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../FireboyWaterGirl/registerwindow.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
@@ -2525,7 +2611,6 @@ level.o: ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/level.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
@@ -2601,14 +2686,17 @@ level.o: ../FireboyWaterGirl/level.cpp ../FireboyWaterGirl/level.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../FireboyWaterGirl/allusers.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o level.o ../FireboyWaterGirl/level.cpp
 
 loginwindow.o: ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/loginwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
@@ -2624,6 +2712,9 @@ loginwindow.o: ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/loginwind
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
@@ -2797,7 +2888,6 @@ loginwindow.o: ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/loginwind
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
@@ -2864,9 +2954,6 @@ loginwindow.o: ../FireboyWaterGirl/loginwindow.cpp ../FireboyWaterGirl/loginwind
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qyieldcpu.h \
 		ui_loginwindow.h \
 		../FireboyWaterGirl/registerwindow.h \
-		../FireboyWaterGirl/user.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../FireboyWaterGirl/allusers.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
 		../FireboyWaterGirl/main.cpp \
@@ -2907,34 +2994,7 @@ obstacles.o: ../FireboyWaterGirl/obstacles.cpp ../FireboyWaterGirl/obstacles.h \
 		../FireboyWaterGirl/fireboy.h \
 		../FireboyWaterGirl/watergirl.h \
 		../FireboyWaterGirl/layout.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obstacles.o ../FireboyWaterGirl/obstacles.cpp
-
-players.o: ../FireboyWaterGirl/players.cpp ../FireboyWaterGirl/players.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
-		../FireboyWaterGirl/obstacles.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
-		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../FireboyWaterGirl/layout.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o players.o ../FireboyWaterGirl/players.cpp
-
-registerwindow.o: ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/registerwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		ui_registerwindow.h \
+		../FireboyWaterGirl/allusers.h \
 		../FireboyWaterGirl/user.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
@@ -2954,6 +3014,77 @@ registerwindow.o: ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/reg
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QTransform \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qtransform.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obstacles.o ../FireboyWaterGirl/obstacles.cpp
+
+players.o: ../FireboyWaterGirl/players.cpp ../FireboyWaterGirl/players.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QObject \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qobject.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QKeyEvent \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qevent.h \
+		../FireboyWaterGirl/obstacles.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
+		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../FireboyWaterGirl/layout.h \
+		../FireboyWaterGirl/allusers.h \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QTimer \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qtimer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o players.o ../FireboyWaterGirl/players.cpp
+
+registerwindow.o: ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/registerwindow.h \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriverplugin.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlerror.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlfield.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlindex.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquery.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlquerymodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrecord.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaldelegate.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlrelationaltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_registerwindow.h \
 		../FireboyWaterGirl/allusers.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
 		../FireboyWaterGirl/windowmanager.h \
@@ -3214,17 +3345,6 @@ registerwindow.o: ../FireboyWaterGirl/registerwindow.cpp ../FireboyWaterGirl/reg
 		../FireboyWaterGirl/level.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o registerwindow.o ../FireboyWaterGirl/registerwindow.cpp
 
-status.o: ../FireboyWaterGirl/status.cpp ../FireboyWaterGirl/status.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsTextItem \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QMessageBox \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qmessagebox.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o status.o ../FireboyWaterGirl/status.cpp
-
 user.o: ../FireboyWaterGirl/user.cpp ../FireboyWaterGirl/user.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
@@ -3263,16 +3383,11 @@ watergirl.o: ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/watergirl.h \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-		../FireboyWaterGirl/windowmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../FireboyWaterGirl/registerwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../FireboyWaterGirl/loginwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
+		../FireboyWaterGirl/allusers.h \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
@@ -3288,6 +3403,17 @@ watergirl.o: ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/watergirl.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
+		../FireboyWaterGirl/windowmanager.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../FireboyWaterGirl/registerwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
@@ -3460,7 +3586,6 @@ watergirl.o: ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/watergirl.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
@@ -3530,13 +3655,10 @@ watergirl.o: ../FireboyWaterGirl/watergirl.cpp ../FireboyWaterGirl/watergirl.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o watergirl.o ../FireboyWaterGirl/watergirl.cpp
 
 windowmanager.o: ../FireboyWaterGirl/windowmanager.cpp ../FireboyWaterGirl/windowmanager.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-		../FireboyWaterGirl/registerwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
-		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
-		../FireboyWaterGirl/loginwindow.h \
-		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
+		../FireboyWaterGirl/user.h \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QString \
+		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSql \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldatabase.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqldriver.h \
@@ -3552,6 +3674,13 @@ windowmanager.o: ../FireboyWaterGirl/windowmanager.cpp ../FireboyWaterGirl/windo
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqlresult.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qsqltablemodel.h \
 		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/qtsqlversion.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsView \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsview.h \
+		../FireboyWaterGirl/registerwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QDialog \
+		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qdialog.h \
+		../FireboyWaterGirl/loginwindow.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QtSQL \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/QtCore \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qglobal.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/q20algorithm.h \
@@ -3725,7 +3854,6 @@ windowmanager.o: ../FireboyWaterGirl/windowmanager.cpp ../FireboyWaterGirl/windo
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstandardpaths.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstaticlatin1stringmatcher.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstorageinfo.h \
-		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstring.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringalgorithms.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringbuilder.h \
 		../../../../Qt/6.7.0/macos/lib/QtCore.framework/Headers/qstringconverter.h \
@@ -3801,6 +3929,8 @@ windowmanager.o: ../FireboyWaterGirl/windowmanager.cpp ../FireboyWaterGirl/windo
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsPixmapItem \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/QPixmap \
 		../../../../Qt/6.7.0/macos/lib/QtGui.framework/Headers/qpixmap.h \
+		../FireboyWaterGirl/allusers.h \
+		../../../../Qt/6.7.0/macos/lib/QtSql.framework/Headers/QSqlDatabase \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/QGraphicsScene \
 		../../../../Qt/6.7.0/macos/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
 		../FireboyWaterGirl/level.h \

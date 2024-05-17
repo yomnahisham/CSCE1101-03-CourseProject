@@ -16,8 +16,6 @@ public:
     void makeLevelFOUR();
     void makeLevelFIVE();
 
-
-    void closeGame();
     void handleCollisions(Players *player, Obstacles* ob);
     static void closeGame(QGraphicsScene* scene);
 
@@ -25,12 +23,14 @@ public:
 
 protected:
     void keyPressEvent(QKeyEvent* event) override;
+    void shootAcid (int x, int y);
+    void lostgame();
+
     QList<Obstacles*> obList;
     int lever;
     bool wd = false;
     bool fd = false;
     int level;
-    void shootAcid (int x, int y);
     bool endgame = false;
 
     int nScore;
