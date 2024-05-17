@@ -15,7 +15,7 @@
 WindowManager::WindowManager(QObject *parent) : QObject(parent) { won = false; }
 
 void WindowManager::startLogin(){
-
+    // starts login
     LoginWindow* loginWindow = new LoginWindow();
     loginWindow->resize(1000, 500);
     loginWindow->show();
@@ -23,6 +23,8 @@ void WindowManager::startLogin(){
 }
 
 void WindowManager::showWindow(WindowType type, int l, User* loggedUser) {
+    // shows window based on bool
+
     user = loggedUser;
 
     switch (type){
