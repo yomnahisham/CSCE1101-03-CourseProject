@@ -95,12 +95,12 @@ void WindowManager::showWindow(WindowType type, int l, User* loggedUser) {
                               "         Controls for Water Girl: \n"
                               "             Press A for left, W for jump, D for right, \n "
                               "             E and Q to leap above puddles. \n"
-                              "             and for going up floors you can press W then A or D dependning"
+                              "             and for going up floors you can press W then A or D dependning \n"
                               "             on the direction you want \n\n"
                               "         Controls for Fire Boy: \n"
                               "             Press Left Arrow for left, Up Arrow for jump, Right Arrow for right,  \n"
                               "             / and Shift to leap above puddles. \n"
-                              "             and for going up floors you can press Up then Right or Left dependning"
+                              "             and for going up floors you can press Up then Right or Left dependning \n"
                               "             on the direction you want \n\n"
                               "                                 Enjoy playing!");
             infoLabel.setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
@@ -123,12 +123,12 @@ void WindowManager::showWindow(WindowType type, int l, User* loggedUser) {
                               "         Controls for Water Girl: \n"
                               "             Press A for left, W for jump, D for right, \n "
                               "             E and Q to leap above puddles. \n"
-                              "             and for going up floors you can press W then A or D dependning"
+                              "             and for going up floors you can press W then A or D dependning \n"
                               "             on the direction you want \n\n"
                               "         Controls for Fire Boy: \n"
                               "             Press Left Arrow for left, Up Arrow for jump, Right Arrow for right,  \n"
                               "             / and Shift to leap above puddles. \n"
-                              "             and for going up floors you can press Up then Right or Left dependning"
+                              "             and for going up floors you can press Up then Right or Left dependning \n"
                               "             on the direction you want \n\n"
                               "                                 Enjoy playing!");
             infoLabel.setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
@@ -148,8 +148,8 @@ void WindowManager::showWindow(WindowType type, int l, User* loggedUser) {
             QVBoxLayout layout(&dialog);
             QLabel infoLabel(&dialog);
             infoLabel.setText("                 This is level 3 of Fire Boy & Water Girl. \n"
-                              "         The goal of this level is to avoid the puddles and be carefull"
-                              "                 of the acid balls falling at particular spots\n"
+                              "         The goal of this level is to avoid the puddles and be carefull \n"
+                              "                 of the acid balls falling at particular spots \n"
                               "                                 Enjoy playing!");
             infoLabel.setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
             layout.addWidget(&infoLabel);
@@ -168,8 +168,8 @@ void WindowManager::showWindow(WindowType type, int l, User* loggedUser) {
             QVBoxLayout layout(&dialog);
             QLabel infoLabel(&dialog);
             infoLabel.setText("                 This is level 4 of Fire Boy & Water Girl. \n"
-                              "         The goal of this level is to avoid the landmine puddles that can appear "
-                              "         randomly and at any time, while also being careful of the acid balls\n"
+                              "         The goal of this level is to avoid the landmine puddles that can appear \n"
+                              "         randomly and at any time, while also being careful of the acid balls \n"
                               "                                 Enjoy playing!");
             infoLabel.setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
             layout.addWidget(&infoLabel);
@@ -188,9 +188,9 @@ void WindowManager::showWindow(WindowType type, int l, User* loggedUser) {
             QVBoxLayout layout(&dialog);
             QLabel infoLabel(&dialog);
             infoLabel.setText("                 This is level 5 of Fire Boy & Water Girl. \n"
-                              "         Water droplets will start falling over the whole course, "
-                              "         so be carefull of FireBiy's Health. To save him Water girl "
-                              "         must reach the lever to close it off. Don't forget about the "
+                              "         Water droplets will start falling over the whole course, \n"
+                              "         so be carefull of FireBiy's Health. To save him Water girl \n"
+                              "         must reach the lever to close it off. Don't forget about the \n"
                               "                         landmine puddeles though\n"
                               "                                 Enjoy playing!");
             infoLabel.setSizePolicy(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
