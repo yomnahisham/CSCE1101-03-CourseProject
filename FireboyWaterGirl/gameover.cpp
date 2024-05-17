@@ -28,6 +28,7 @@ GameOver::~GameOver()
 
 void GameOver::on_retryButton_clicked()
 {
+    // start level again
     WindowManager Manager;
     qDebug()<< "retrying";
     Manager.showWindow(WindowManager::main, l, user);
@@ -36,6 +37,7 @@ void GameOver::on_retryButton_clicked()
 
 void GameOver::on_checkLevelsButton_clicked()
 {
+    // start level ui
     this->close();
     WindowManager Manager;
     Manager.showWindow(WindowManager::lev, 0, user);
