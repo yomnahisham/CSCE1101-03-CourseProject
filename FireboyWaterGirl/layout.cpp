@@ -1,6 +1,5 @@
 #include "layout.h"
 #include "allusers.h"
-#include "status.h"
 #include "obstacles.h"
 #include "players.h"
 #include "fireboy.h"
@@ -238,7 +237,7 @@ void Layout::makeLevelFOUR() {
 
     // possible positions for obstacles
     QVector<QPointF> positions = {
-                                  {400, 568}, {600, 150}, {690, 150}, {300, 275}
+        {400, 568}, {600, 150}, {690, 150}, {300, 275}
     };
 
     // function to randomly display an obstacle

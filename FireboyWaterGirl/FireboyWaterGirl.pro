@@ -22,7 +22,6 @@ SOURCES += \
     obstacles.cpp \
     players.cpp \
     registerwindow.cpp \
-    status.cpp \
     user.cpp \
     watergirl.cpp \
     windowmanager.cpp
@@ -38,7 +37,6 @@ HEADERS += \
     obstacles.h \
     players.h \
     registerwindow.h \
-    status.h \
     user.h \
     watergirl.h \
     windowmanager.h \
