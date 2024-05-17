@@ -460,8 +460,10 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
     }
 
     if (wd && fd) {
+        // both fire bpy and water girl have reached their respective doors
         endgame = true;
-        AllUsers::updateScore(user, nScore);
+        AllUsers::updateScore(user, nScore); // update score
+        // show over ui
         WindowManager Manager;
         Manager.WonGame(true);
         Manager.showWindow(WindowManager::over, level, user);
@@ -470,7 +472,9 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
 }
 
 void Layout::lostgame(){
+    // user lost
     endgame = true;
+    // show over ui
     WindowManager Manager;
     Manager.showWindow(WindowManager::over, level, user);
     closeGame(this);
