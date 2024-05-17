@@ -216,7 +216,7 @@ void Layout::makeLevelFOUR() {
     addItem(lever);
 
     // start timer for dropping drops
-    QTimer* dropTimer = new QTimer(this);
+    dropTimer = new QTimer(this);
     connect(dropTimer, &QTimer::timeout, [=]() {
         // create and add a drop at a random position
         Obstacles* drop = new Obstacles();
@@ -334,11 +334,24 @@ void Layout::handleCollisions(Players *player, Obstacles* ob)
                     dropMoveTimer->setInterval(25);
                 }
             } else if (ob->objectName() == "LeverLeft"){
+                bool switchedOff = true;
                 Obstacles* switched = new Obstacles();
                 switched->createObstacle(Obstacles::LeverRight);
                 switched->setPos(ob->x(), ob->y());
                 addItem(switched);
                 removeItem(ob);
+
+                if(switchedOff){
+                    // Stop all drops from falling
+                    foreach(QGraphicsItem* item, items()) {
+                        Obstacles* drop = dynamic_cast<Obstacles*>(item);
+                        if (drop && drop->objectName() == "Drops") {
+                            drop->deleteLater(); // Remove the drop
+                        }
+                    }
+                    // Stop the drop timer
+                    dropTimer->stop();
+                }
             }
         }
     }

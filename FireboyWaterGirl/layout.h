@@ -35,6 +35,8 @@ protected:
     int health = 1000;
     QGraphicsTextItem* healthText;
 
+    QTimer* dropTimer;
+
 };
 #endif // LAYOUT_H
 
