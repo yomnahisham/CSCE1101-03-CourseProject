@@ -188,7 +188,7 @@ void AllUsers::updateScore(User* loggedUser, int newScore) {
     QString username = loggedUser->username;
     qDebug() << "Username: " << username;
 
-    // opens db
+    // Open database connection
     QSqlDatabase db = getDatabaseConnection();
     if (!db.isOpen()) {
         qDebug() << "Error: Database is not open";
@@ -198,23 +198,44 @@ void AllUsers::updateScore(User* loggedUser, int newScore) {
     }
 
     QSqlQuery query(db);
-    // updates db with the new score for the given username
-    if (!query.prepare("UPDATE userInfo SET score = :score WHERE username = :username")) {
-        qDebug() << "Error preparing update query";
-        qDebug() << query.lastError().text();
-        return;
-    } else {
-        qDebug() << "Update query prepared successfully";
-    }
 
-    query.bindValue(":score", newScore);
+    // Retrieve the current score for the user
+    query.prepare("SELECT score FROM userInfo WHERE username = :username");
     query.bindValue(":username", username);
 
     if (!query.exec()) {
-        qDebug() << "Error: Unable to update user score";
+        qDebug() << "Error: Unable to retrieve current score";
         qDebug() << query.lastError().text();
+        return;
+    }
+
+    if (query.next()) {
+        int currentScore = query.value(0).toInt();
+        qDebug() << "Current score for user" << username << "is" << currentScore;
+
+        // Update the score only if the new score is greater than the current score
+        if (newScore > currentScore) {
+            if (!query.prepare("UPDATE userInfo SET score = :score WHERE username = :username")) {
+                qDebug() << "Error preparing update query";
+                qDebug() << query.lastError().text();
+                return;
+            } else {
+                qDebug() << "Update query prepared successfully";
+            }
+            query.bindValue(":score", newScore);
+            query.bindValue(":username", username);
+
+            if (!query.exec()) {
+                qDebug() << "Error: Unable to update user score";
+                qDebug() << query.lastError().text();
+            } else {
+                qDebug() << "User score updated successfully for user: " << username;
+            }
+        } else {
+            qDebug() << "New score is not greater than current score. No update performed.";
+        }
     } else {
-        qDebug() << "User score updated successfully for user: " << username;
+        qDebug() << "Error: No user found with username" << username;
     }
 }
 
