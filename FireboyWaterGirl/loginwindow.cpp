@@ -38,13 +38,14 @@ LoginWindow::~LoginWindow(){
 void LoginWindow::on_loginPush_clicked(){
     QString username = ui->username_line->text();
     QString password = ui->pass_line->text();
-    loggedUser = AllUsers::authenticateUser(username, password);
-    //qDebug ()<< loggedUser->username;
+    loggedUser = AllUsers::authenticateUser(username, password); //check user with db
     if (loggedUser){
+        // show level
         WindowManager window;
         window.showWindow(WindowManager::lev, 0, loggedUser);
         hide();
     }else{
+        // show errors
         ui->usernameError->setVisible(true);
         ui->passError->setVisible(true);
     }
@@ -52,6 +53,7 @@ void LoginWindow::on_loginPush_clicked(){
 
 
 void LoginWindow::on_registerPush_clicked(){
+    // show reg window
     WindowManager Manager;
     Manager.showWindow(WindowManager::reg);
     hide();
